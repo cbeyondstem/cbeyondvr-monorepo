@@ -1,9 +1,10 @@
 {
-  "name": "@lerna-monorepo/shared-ui",
+  "name": "@cbeyond/shared-ui",
   "description": "Lerna monorepo finisher",
   "version": "1.0.2",
   "author": "Andrico Karoulla <karoulla.andrico@gmail.com>",
   "dependencies": {
+    "@cbeyond/graphics3d": "^0.0.1",
     "gatsby": "^1.9.247",
     "gatsby-link": "^1.6.40",
     "react": "16.4.2",

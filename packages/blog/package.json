@@ -1,10 +1,10 @@
 {
-  "name": "@lerna-monorepo/blog",
+  "name": "@cbeyond/blog",
   "description": "Lerna monorepo finisher",
   "version": "1.0.2",
   "author": "Andrico Karoulla <karoulla.andrico@gmail.com>",
   "dependencies": {
-    "@lerna-monorepo/shared-ui": "^1.0.1",
+    "@cbeyond/shared-ui": "^1.0.1",
     "dotenv": "^6.0.0",
     "gatsby": "^1.9.247",
     "gatsby-link": "^1.6.40",

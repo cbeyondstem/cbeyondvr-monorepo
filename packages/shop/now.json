@@ -1,6 +1,6 @@
 {
   "type": "static",
-  "alias": "lerna-monorepo-shop",
+  "alias": "cbeyond-shop",
   "static": {
     "public": "public"
   },

@@ -1,19 +1,10 @@
-0 silly input []
-1 silly flags { _: [ 'bootstrap' ],
-1 silly flags   'reject-cycles': false,
-1 silly flags   rejectCycles: false,
-1 silly flags   args: [] }
-2 verbose rootPath /Users/Home/Documents/Coding/lerna-monorepo-blog/lerna-monorepo-finisher
-3 info version 2.11.0
-4 silly existsSync /Users/Home/Documents/Coding/lerna-monorepo-blog/lerna-monorepo-finisher/VERSION
-5 error EPACKAGES Errored while collecting packages and package graph
-6 error JSONError: Unexpected token } in JSON at position 888 while parsing near '...tier": "^1.12.0",  },  "repository": {...' in package.json
-6 error     at module.exports (/Users/Home/.config/yarn/global/node_modules/lerna/node_modules/parse-json/index.js:26:19)
-6 error     at parse (/Users/Home/.config/yarn/global/node_modules/lerna/node_modules/load-json-file/index.js:8:29)
-6 error     at Function.module.exports.sync.fp [as sync] (/Users/Home/.config/yarn/global/node_modules/lerna/node_modules/load-json-file/index.js:11:29)
-6 error     at Function.module.exports.sync (/Users/Home/.config/yarn/global/node_modules/lerna/node_modules/read-pkg/index.js:40:25)
-6 error     at /Users/Home/.config/yarn/global/node_modules/lerna/lib/PackageUtilities.js:138:47
-6 error     at Array.forEach (<anonymous>)
-6 error     at /Users/Home/.config/yarn/global/node_modules/lerna/lib/PackageUtilities.js:132:86
-6 error     at Array.forEach (<anonymous>)
-6 error     at Function.getPackages (/Users/Home/.config/yarn/global/node_modules/lerna/lib/PackageUtilities.js:131:22)
+0 silly argv { _: [ 'add' ],
+0 silly argv   globs: [],
+0 silly argv   lernaVersion: '3.18.3',
+0 silly argv   '$0':
+0 silly argv    'C:\\Users\\Armelle Laine\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\lerna\\cli.js',
+0 silly argv   pkg: '@cbeyond/graphics3D' }
+1 notice cli v3.18.3
+2 verbose rootPath C:\depot\cbeyond\cbeyondvr-monorepo
+3 error Error: 404 Not Found - GET https://registry.npmjs.org/@cbeyond%2fgraphics3D - Not found
+3 error     at res.buffer.catch.then.body (C:\depot\cbeyond\cbeyondvr-monorepo\node_modules\@evocateur\npm-registry-fetch\check-response.js:104:15)
