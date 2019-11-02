@@ -10039,6 +10039,13 @@ gatsby-plugin-google-analytics@^2.0.5:
   dependencies:
     "@babel/runtime" "^7.6.3"
 
+gatsby-plugin-layout@^1.1.13:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-layout/-/gatsby-plugin-layout-1.1.13.tgz#334e2192c5a4e8e802706eadee99e5906528df1f"
+  integrity sha512-/UqHYq4/ODFXH/LHG1PoAJfRbZcE2EGN1ozf502P0W9/AvFBjnXbOr8aD7UXtgE0iO+jZtVr+I0uHbqQnBTmpA==
+  dependencies:
+    "@babel/runtime" "^7.6.3"
+
 gatsby-plugin-manifest@^2.0.5:
   version "2.2.26"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.2.26.tgz#040a7dc2ab54e64cc97481adfb498e5dc8caade4"
@@ -21831,6 +21838,16 @@ typedarray-to-buffer@^3.1.5:
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
+
+typeface-michroma@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-michroma/-/typeface-michroma-0.0.72.tgz#2d40cdc4bc7507d4dc9ad5e7937a604a92fb33f7"
+  integrity sha512-K4lsVdc27CPpTZ0rpIowZ8syJNoSMYkr+rUEssZPC0dOZIZzPulNgnH55tiZLPI8HA+PONjjrF815wS5QGH1hA==
+
+typeface-roboto@^0.0.75:
+  version "0.0.75"
+  resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-0.0.75.tgz#98d5ba35ec234bbc7172374c8297277099cc712b"
+  integrity sha512-VrR/IiH00Z1tFP4vDGfwZ1esNqTiDMchBEXYY9kilT6wRGgFoCAlgkEUMHb1E3mB0FsfZhv756IF0+R+SFPfdg==
 
 typescript@3.5.3:
   version "3.5.3"

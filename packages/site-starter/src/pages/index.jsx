@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { LandingPage } from '../components/ui/LandingPage'
+import { LandingPage } from 'views/LandingPage'
 
 export default function Index() {
   return <LandingPage />

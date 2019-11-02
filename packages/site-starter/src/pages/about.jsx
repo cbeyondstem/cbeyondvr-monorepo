@@ -1,35 +1,40 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Container from '@material-ui/core/Container'
-import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
-import MuiLink from '@material-ui/core/Link'
-import ProTip from '../components/ProTip'
-import Link from '../components/Link'
+import Link from 'components/Link'
+import { Layout, SEO } from 'layouts'
 
-function Copyright() {
+// function Copyright() {
+//   return (
+//     <Typography variant="body2" color="textSecondary" align="center">
+//       Copyright ©
+//       <MuiLink color="inherit" href="https://material-ui.com/">
+//         Your Website
+//       </MuiLink>{" "}
+//       {new Date().getFullYear()}
+//       '.'
+//     </Typography>
+//   );
+// }
+
+export const MyPage = ({ location }) => {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      Copyright © 
-      <MuiLink color="inherit" href="https://material-ui.com/">
-        Your Website
-      </MuiLink>{' '}
-      {new Date().getFullYear()}
-      '.'
-    </Typography>
+    <Layout location={location}>
+      <SEO title="ABOUT" />
+      <Container maxWidth="sm">
+        <Box my={4}>
+          <Link to="/">HOME</Link>
+        </Box>
+      </Container>
+    </Layout>
   )
 }
 
-export default function About() {
-  return (
-    <Container maxWidth="sm">
-      <Box my={4}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Gatsby v4-beta example
-        </Typography>
-        <Link to="/">Go to the main page</Link>
-        <ProTip />
-        <Copyright />
-      </Box>
-    </Container>
-  )
+MyPage.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired
 }
+
+export default MyPage

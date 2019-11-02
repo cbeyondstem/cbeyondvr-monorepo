@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import Layout from '../components/Layout'
-import SEO from '../components/Seo'
+import { Layout, SEO } from 'layouts'
 
-export const NotFoundPage = ({ location }) => {
+export const MyPage = ({ location }) => {
   return (
     <Layout location={location}>
       <SEO title="404: Not Found" />
@@ -13,9 +12,11 @@ export const NotFoundPage = ({ location }) => {
     </Layout>
   )
 }
-NotFoundPage.propTypes = {
+
+MyPage.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
   }).isRequired
 }
-export default NotFoundPage
+
+export default MyPage

@@ -1,72 +1,74 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const _ = require('lodash')
+const _ = require("lodash");
 
-const path = require(`path`)
-const { startCase } = require('lodash')
+const path = require(`path`);
+const { startCase } = require("lodash");
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     node: {
-      fs: 'empty'
+      fs: "empty"
     },
     resolve: {
       modules: [
-        path.resolve(__dirname, 'src'),
-        path.resolve(__dirname, 'content'),
-        'node_modules',
-        'node_modules/@cbeyond/material-kit/src'
+        path.resolve(__dirname, "src"),
+        path.resolve(__dirname, "content"),
+        "node_modules",
+        "node_modules/@creative/material-kit/src"
       ]
     }
-  })
-}
+  });
+};
 exports.onCreateNode = async ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
 
-  if (node.internal.type === 'Mdx') {
-    const parent = getNode(node.parent)
-    let value = _.get(node, 'frontmatter.slug', null) || parent.relativePath.replace(parent.ext, '')
-    if (!['pages', 'content'].includes(parent.sourceInstanceName)) {
-      value = `${parent.sourceInstanceName}/${value}`
+  if (node.internal.type === "Mdx") {
+    const parent = getNode(node.parent);
+    let value =
+      _.get(node, "frontmatter.slug", null) ||
+      parent.relativePath.replace(parent.ext, "");
+    if (!["pages", "content"].includes(parent.sourceInstanceName)) {
+      value = `${parent.sourceInstanceName}/${value}`;
     }
-    if (value === 'index') {
-      value = ''
+    if (value === "index") {
+      value = "";
     }
     createNodeField({
-      name: 'slug',
+      name: "slug",
       node,
       value: `/${value}`
-    })
+    });
 
     createNodeField({
-      name: 'id',
+      name: "id",
       node,
       value: node.id
-    })
+    });
 
     createNodeField({
-      name: 'title',
+      name: "title",
       node,
       value: node.frontmatter.title || startCase(parent.name)
-    })
+    });
 
     createNodeField({
-      name: 'author',
+      name: "author",
       node,
       value: node.frontmatter.author
-    })
+    });
 
     createNodeField({
-      name: 'date',
+      name: "date",
       node,
       value: node.frontmatter.date
-    })
+    });
   }
-}
+};
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
-  const blogPost = path.resolve(`./src/templates/mdx-layout.jsx`)
+  const blogPost = path.resolve(`./src/templates/mdx-layout.jsx`);
   return graphql(
     `
       {
@@ -81,7 +83,10 @@ exports.createPages = ({ graphql, actions }) => {
             favicon
           }
         }
-        allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
+        allMdx(
+          sort: { fields: [frontmatter___date], order: DESC }
+          limit: 1000
+        ) {
           edges {
             node {
               id
@@ -112,15 +117,16 @@ exports.createPages = ({ graphql, actions }) => {
     `
   ).then(result => {
     if (result.errors) {
-      throw result.errors
+      throw result.errors;
     }
 
     // Create blog posts pages.
-    const posts = result.data.allMdx.edges
+    const posts = result.data.allMdx.edges;
 
     posts.forEach((post, index) => {
-      const previous = index === posts.length - 1 ? null : posts[index + 1].node
-      const next = index === 0 ? null : posts[index - 1].node
+      const previous =
+        index === posts.length - 1 ? null : posts[index + 1].node;
+      const next = index === 0 ? null : posts[index - 1].node;
 
       createPage({
         path: post.node.fields.slug,
@@ -132,7 +138,7 @@ exports.createPages = ({ graphql, actions }) => {
           previous,
           next
         }
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};

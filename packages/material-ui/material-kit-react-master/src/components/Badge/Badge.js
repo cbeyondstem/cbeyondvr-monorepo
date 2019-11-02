@@ -13,7 +13,7 @@ export default function Badge(props) {
   const classes = useStyles()
   const { color, children } = props
   return (
-    <span className={`${classes.badge  } ${  classes[color]}`}>{children}</span>
+    <span className={`${classes.badge} ${classes[color]}`}>{children}</span>
   )
 }
 

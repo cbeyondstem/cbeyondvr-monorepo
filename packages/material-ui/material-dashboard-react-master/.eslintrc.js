@@ -17,5 +17,28 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended"
+  ],
+  settings: {
+    "import/resolver": {
+      node: {
+        moduleDirectory: ["node_modules", "src/"]
+      }
+    },
+    "import/extensions": ["warn", "never", { ".js": "always" }]
+  },
+  overrides: [
+    {
+      files: ["*.js"],
+      rules: {
+        "import/extensions": "off",
+        "react/jsx-filename-extension": "off"
+      }
+    }
+    // {
+    //   files: ["*-test.js", "*.spec.js"],
+    //   rules: {
+    //     "no-unused-expressions": "off"
+    //   }
+    // }
   ]
 };

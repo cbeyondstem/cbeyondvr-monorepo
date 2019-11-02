@@ -2,24 +2,22 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
-import theme from '../theme'
+import theme from './theme'
 
-export default function TopLayout(props) {
+// this layout is loaded by gatsby-plugin-layout
+// we want to use this layout plugin for all layout context that must persist
+// through the component mounting lifecyle
+// see details at: https://www.gatsbyjs.org/packages/gatsby-plugin-layout/
+// essentially all providers that must persist have to go there
+export function TopLayout(props) {
   return (
-    <>
-      <Helmet>
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet" />
-      </Helmet>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        {props.children}
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme}>
+      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+      <CssBaseline />
+      {props.children}
+    </ThemeProvider>
   )
 }
 

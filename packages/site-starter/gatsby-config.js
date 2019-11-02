@@ -252,6 +252,8 @@ module.exports = {
         modules: [`react-spring`, `react-hot-loader`]
       }
     },
+    // gatsby plugin layout sticks a layout (by default located under ./src/layout)
+    'gatsby-plugin-layout',
     'gatsby-plugin-typescript',
     'gatsby-plugin-material-ui'
   ]
