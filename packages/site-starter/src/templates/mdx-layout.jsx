@@ -14,7 +14,6 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
-import { rhythm, scale } from '../utils/typography'
 
 // const AuthorBioMdx = data => {
 //   // check if there is a detailed author bio provided as part of an mdx
@@ -69,10 +68,10 @@ const BlogPostTemplate = ({ location, pageContext }) => {
       <h1>{post.fields.title}</h1>
       <p
         style={{
-          ...scale(-1 / 5),
-          display: `block`,
-          marginBottom: rhythm(1),
-          marginTop: rhythm(-1)
+          // ...scale(-1 / 5),
+          display: `block`
+          // marginBottom: rhythm(1),
+          // marginTop: rhythm(-1)
         }}
       >
         {post.fields.date}
@@ -93,9 +92,11 @@ const BlogPostTemplate = ({ location, pageContext }) => {
         <MDXRenderer {...props}>{post.body}</MDXRenderer>
       </MDXProvider>
       <hr
-        style={{
-          marginBottom: rhythm(1)
-        }}
+        style={
+          {
+            // marginBottom: rhythm(1)
+          }
+        }
       />
 
       <ul

@@ -17,5 +17,21 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended"
-  ]
+  ],
+  settings: {
+    "import/resolver": {
+      alias: {
+        map: [
+          [("components", "./src/components/")],
+          [("assets", "./src/assets/")],
+          [("views", "./src/views/")]
+        ],
+        extensions: [".js"]
+      },
+      node: {
+        moduleDirectory: ["node_modules", "src/"]
+      }
+    },
+    "import/extensions": ["warn", "never", { ".js": "always" }]
+  }
 };

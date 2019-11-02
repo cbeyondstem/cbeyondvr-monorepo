@@ -1,1 +1,0 @@
-export { ColoredRect } from './ColoredRect'

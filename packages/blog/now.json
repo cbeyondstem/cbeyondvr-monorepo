@@ -1,8 +1,0 @@
-{
-  "type": "static",
-  "alias": "cbeyond-blog",
-  "static": {
-    "public": "public"
-  },
-  "public": true
-}

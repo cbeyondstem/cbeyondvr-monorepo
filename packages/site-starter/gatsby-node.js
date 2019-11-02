@@ -10,7 +10,12 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       fs: 'empty'
     },
     resolve: {
-      modules: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'content'), 'node_modules']
+      modules: [
+        path.resolve(__dirname, 'src'),
+        path.resolve(__dirname, 'content'),
+        'node_modules',
+        'node_modules/@cbeyond/material-kit/src'
+      ]
     }
   })
 }

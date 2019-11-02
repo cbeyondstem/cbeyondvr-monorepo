@@ -5,7 +5,12 @@
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
   "dependencies": {
     "lerna": "^3.18.3",
-    "react": "16.0.0"
+    "react": "^16.2.0"
+  },
+  "resolutions": {
+    "sharp": "0.23.1",
+    "favicons/**/sharp": "0.23.1",
+    "favicons/**/react": "^16.2.0"
   },
   "devDependencies": {
     "@storybook/addon-info": "^5.2.3",
@@ -54,6 +59,7 @@
   },
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/material-ui/*"
   ]
 }

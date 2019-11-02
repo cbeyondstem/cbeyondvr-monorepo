@@ -1,8 +1,0 @@
-{
-  "type": "static",
-  "alias": "cbeyond-shop",
-  "static": {
-    "public": "public"
-  },
-  "public": true
-}
