@@ -4,6 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
+import { SiteConfig } from 'components/SiteConfig'
 import theme from './theme'
 
 // this layout is loaded by gatsby-plugin-layout
@@ -14,9 +15,11 @@ import theme from './theme'
 export function TopLayout(props) {
   return (
     <ThemeProvider theme={theme}>
-      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-      <CssBaseline />
-      {props.children}
+      <SiteConfig.Provider>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        {props.children}
+      </SiteConfig.Provider>
     </ThemeProvider>
   )
 }

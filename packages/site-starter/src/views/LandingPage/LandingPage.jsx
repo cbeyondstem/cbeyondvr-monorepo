@@ -3,7 +3,7 @@ import React from 'react'
 import classNames from 'classnames'
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles'
-
+import { Toolbar, Box } from '@material-ui/core'
 // @material-ui/icons
 
 // core components and styles
@@ -34,9 +34,9 @@ export default function LandingPage(props) {
   const classes = useStyles()
   const { ...rest } = props
   return (
-    <div>
+    <>
       <Header
-        color="transparent"
+        color="dark"
         routes={dashboardRoutes}
         brand="DMG Design"
         rightLinks={<HeaderLinks />}
@@ -47,6 +47,7 @@ export default function LandingPage(props) {
         }}
         {...rest}
       />
+      <Toolbar />
       <div className={classes.container}>
         <GridContainer>
           <GridItem xs={12} sm={12} md={6}>
@@ -73,6 +74,6 @@ export default function LandingPage(props) {
         <div className={classes.container} />
       </div>
       <Footer />
-    </div>
+    </>
   )
 }

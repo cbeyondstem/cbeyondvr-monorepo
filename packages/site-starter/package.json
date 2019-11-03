@@ -1,6 +1,5 @@
 {
   "name": "@cbeyond/site-starter",
-  "private": true,
   "description": "coding for science storytelling",
   "version": "0.1.0",
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
@@ -31,6 +30,7 @@
   "dependencies": {
     "@creative/material-kit": "^1.8.0",
     "@cbeyond/mdx-kit": "^1.0.0",
+    "@cbeyond/ui-kit": "^1.0.0",
     "@material-ui/core": "^4.5.2",
     "@material-ui/icons": "^4.5.1",
     "@material-ui/styles": "^4.5.2",

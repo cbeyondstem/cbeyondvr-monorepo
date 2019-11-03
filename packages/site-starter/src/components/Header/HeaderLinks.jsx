@@ -1,27 +1,27 @@
-import React from "react";
+import React from 'react'
 // import DeleteIcon from '@material-ui/icons/Delete'
 // import IconButton from '@material-ui/core/IconButton'
 
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+import { makeStyles } from '@material-ui/core/styles'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
 // import Tooltip from '@material-ui/core/Tooltip'
 
 // @material-ui/icons
 // import { Apps, CloudDownload } from '@material-ui/icons'
 
 // core components
-import { Button } from "@creative/material-kit";
+import { Button } from '@creative/material-kit'
 
 // style
-import { headerLinksStyle } from "assets";
-import Link from "../Link";
+import { headerLinksStyle } from 'assets'
+import { Link } from '@cbeyond/ui-kit'
 
-const useStyles = makeStyles(headerLinksStyle);
+const useStyles = makeStyles(headerLinksStyle)
 
 export function HeaderLinks(props) {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <List className={classes.list}>
       {/* <ListItem className={classes.listItem}>
@@ -115,51 +115,31 @@ export function HeaderLinks(props) {
       </ListItem> */}
       <ListItem className={classes.listItem}>
         <Link to="/about" className={classes.white}>
-          <Button
-            color="transparent"
-            target="_blank"
-            className={classes.navLink}
-          >
+          <Button color="transparent" target="_blank" className={classes.navLink}>
             ABOUT
           </Button>
-        </Link>{" "}
+        </Link>{' '}
         <Link to="/architecture" className={classes.white}>
-          <Button
-            color="transparent"
-            target="_blank"
-            className={classes.navLink}
-          >
+          <Button color="transparent" target="_blank" className={classes.navLink}>
             ARCHITECTURE
           </Button>
         </Link>
         <Link to="/interiors" className={classes.white}>
-          <Button
-            color="transparent"
-            target="_blank"
-            className={classes.navLink}
-          >
+          <Button color="transparent" target="_blank" className={classes.navLink}>
             INTERIORS
           </Button>
         </Link>
         <Link to="/furniture" className={classes.white}>
-          <Button
-            color="transparent"
-            target="_blank"
-            className={classes.navLink}
-          >
+          <Button color="transparent" target="_blank" className={classes.navLink}>
             FURNITURE/LIGHTS
           </Button>
         </Link>
         <Link to="/contact" className={classes.white}>
-          <Button
-            color="transparent"
-            target="_blank"
-            className={classes.navLink}
-          >
+          <Button color="transparent" target="_blank" className={classes.navLink}>
             CONTACT
           </Button>
-        </Link>{" "}
+        </Link>{' '}
       </ListItem>
     </List>
-  );
+  )
 }

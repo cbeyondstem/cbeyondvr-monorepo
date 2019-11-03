@@ -36,12 +36,12 @@ const theme = createMuiTheme({
     primary: {
       main: '#ffffff'
     },
-    // secondary: {
-    //   main: '#19857b'
-    // },
-    // error: {
-    //   main: red.A400
-    // },
+    // // secondary: {
+    // //   main: '#19857b'
+    // // },
+    // // error: {
+    // //   main: red.A400
+    // // },
     background: {
       default: '#2d2d2d'
     }
