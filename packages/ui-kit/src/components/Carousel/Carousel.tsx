@@ -1,14 +1,23 @@
 import * as _ from 'lodash'
 import * as React from 'react'
-import { ImageSharpFluidFilterInput } from 'types/gatsby-graphql-types.d.ts'
+import {
+  ImageSharpFluidFilterInput,
+  ImageSharpFixedFilterInput,
+} from 'types/gatsby-graphql-types.d.ts'
 
 /// <reference path="../../types/react-image-gallery.d.ts"/>
 import ImageGallery, { ImageItemProps } from 'react-image-gallery'
 
 import './image-gallery.css'
+import { style } from 'typestyle'
+import * as csx from 'csx'
 
 export interface CarouselProps {
-  images: { path: string; img: ImageSharpFluidFilterInput }[]
+  images: {
+    path: string
+    img: ImageSharpFluidFilterInput
+    thumb: string
+  }[]
   renderImage: (item: ImageItemProps) => React.ReactNode
 }
 
@@ -16,8 +25,13 @@ export const Carousel: React.FunctionComponent<CarouselProps> = props => {
   const { images, renderImage } = props
   const [isFullScreen, setFullScreen] = React.useState(false)
   const imgItems: ImageItemProps[] = images.map(
-    (item: { path: string; img: ImageSharpFluidFilterInput }) => ({
+    (item: {
+      path: string
+      img: ImageSharpFluidFilterInput
+      thumb: string
+    }) => ({
       original: item.img,
+      thumbnail: item.thumb,
     })
   )
 
@@ -29,9 +43,11 @@ export const Carousel: React.FunctionComponent<CarouselProps> = props => {
     <div />
   ) : (
     <ImageGallery
+      className={style({ maxHeight: csx.important('80%') })}
       // ref={i => this._imageGallery = i}
       items={imgItems}
       renderItem={renderImage}
+      // renderThumbInner={renderImage}
       lazyLoad
       // onClick={this._onImageClick.bind(this)}
       // onImageLoad={this._onImageLoad}
@@ -41,7 +57,7 @@ export const Carousel: React.FunctionComponent<CarouselProps> = props => {
       infinite
       showBullets={false}
       showFullscreenButton={false}
-      showThumbnails={false}
+      showThumbnails
       showIndex
       showNav
       showPlayButton

@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 // @material-ui/icons
+import Grid from '@material-ui/core/Grid'
 
 // core components and styles
 import {
@@ -24,6 +25,7 @@ import { HeaderLinks } from 'components/Header/HeaderLinks'
 import { Footer } from 'components/Footer/Footer'
 import BrandSvg from 'assets/img/dmg-brand.comp.svg'
 import { Link } from '@cbeyond/ui-kit'
+import { Box } from '@material-ui/core'
 
 const useStyles = makeStyles({
   brand: {
@@ -54,8 +56,15 @@ export const Layout = props => {
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
       <Header color="dark" brand={<Brand />} rightLinks={<HeaderLinks />} sticky />
-      {children}
-      <Footer />
+      <Box p={0.5} />
+      <Grid container>
+        <Grid container item xs={12} spacing={3}>
+          {children}
+        </Grid>
+        <Grid container item xs={12} spacing={3}>
+          <Footer />
+        </Grid>
+      </Grid>
     </>
   )
 }

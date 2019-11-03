@@ -72,6 +72,7 @@ declare module 'react-image-gallery' {
     renderPlayPauseButton?: () => void
     renderFullscreenButton?: () => void
     renderItem?: (item: ImageItemProps) => React.ReactNode
+    renderThumbInner?: (item: ImageItemProps) => React.ReactNode
     stopPropagation?: boolean
     additionalClass?: string
     useTranslate3D?: boolean

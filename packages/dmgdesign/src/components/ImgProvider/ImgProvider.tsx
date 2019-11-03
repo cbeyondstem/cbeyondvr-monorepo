@@ -26,6 +26,9 @@ const ImgProviderComp: React.FunctionComponent<ImgProviderProps> = props => {
                   fluid(quality: 100, maxWidth: 800, maxHeight: 700, fit: FILL) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
+                  fixed(quality: 100, fit: COVER, cropFocus: CENTER, width: 75, height: 56) {
+                    src
+                  }
                 }
               }
             }
@@ -35,9 +38,11 @@ const ImgProviderComp: React.FunctionComponent<ImgProviderProps> = props => {
       render={data => {
         const images = data.contents.edges.map((edge: FileEdge, idx: number) => {
           const img = _.get(edge, 'node.childImageSharp.fluid', null)
+          const thumb = _.get(edge, 'node.childImageSharp.fixed.src', null)
+
           const path = _.get(edge, 'node.relativeDirectory', '')
           if (img) {
-            return { path, img }
+            return { path, img, thumb }
           }
         })
         return (
