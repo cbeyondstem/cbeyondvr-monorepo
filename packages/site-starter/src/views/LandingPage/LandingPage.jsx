@@ -3,13 +3,12 @@ import React from 'react'
 import classNames from 'classnames'
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles'
-import { Toolbar, Box } from '@material-ui/core'
+import { Toolbar } from '@material-ui/core'
 // @material-ui/icons
 
 // core components and styles
 import {
   Header,
-  Footer,
   GridContainer,
   GridItem,
   Button
@@ -18,6 +17,8 @@ import {
 
 // styles
 import { landingPageStyles } from 'assets'
+
+import { Footer } from 'components/Footer'
 
 // Sections for this page
 // import ProductSection from './Sections/ProductSection.js'

@@ -2,7 +2,7 @@ import React from 'react'
 import { SiteConfig } from 'components/SiteConfig'
 import { Box } from '@material-ui/core'
 
-export default function Footer() {
+export function Footer() {
   return (
     <SiteConfig.Consumer>
       {({ title }) => {
