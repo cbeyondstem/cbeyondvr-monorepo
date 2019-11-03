@@ -1,136 +1,45 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const _ = require("lodash");
 
-const path = require(`path`);
-const { startCase } = require("lodash");
+const path = require('path')
+const mdxUtils = require('@cbeyond/mdx-kit/gatsby-node-utils')
+const { siteMetadata } = require('./gatsby-config')
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     node: {
-      fs: "empty"
+      fs: 'empty'
     },
     resolve: {
       modules: [
-        path.resolve(__dirname, "src"),
-        path.resolve(__dirname, "content"),
-        "node_modules",
-        "node_modules/@creative/material-kit/src"
+        path.resolve(__dirname, 'src'),
+        path.resolve(__dirname, 'content'),
+        'node_modules',
+        'node_modules/@creative/material-kit/src'
       ]
     }
-  });
-};
-exports.onCreateNode = async ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
+  })
+}
 
-  if (node.internal.type === "Mdx") {
-    const parent = getNode(node.parent);
-    let value =
-      _.get(node, "frontmatter.slug", null) ||
-      parent.relativePath.replace(parent.ext, "");
-    if (!["pages", "content"].includes(parent.sourceInstanceName)) {
-      value = `${parent.sourceInstanceName}/${value}`;
-    }
-    if (value === "index") {
-      value = "";
-    }
-    createNodeField({
-      name: "slug",
-      node,
-      value: `/${value}`
-    });
+if (siteMetadata.mdx) {
+  exports.onCreateNode = mdxUtils.onCreateNode
 
-    createNodeField({
-      name: "id",
-      node,
-      value: node.id
-    });
+  exports.createPages = async ({ graphql, actions }) => {
+    const { createPage } = actions
 
-    createNodeField({
-      name: "title",
-      node,
-      value: node.frontmatter.title || startCase(parent.name)
-    });
+    const result = await mdxUtils.getAllMdx(graphql)
 
-    createNodeField({
-      name: "author",
-      node,
-      value: node.frontmatter.author
-    });
-
-    createNodeField({
-      name: "date",
-      node,
-      value: node.frontmatter.date
-    });
-  }
-};
-
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
-
-  const blogPost = path.resolve(`./src/templates/mdx-layout.jsx`);
-  return graphql(
-    `
-      {
-        site {
-          siteMetadata {
-            title
-            author
-            description
-            siteUrl
-            org
-            contact
-            favicon
-          }
-        }
-        allMdx(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              id
-              excerpt(pruneLength: 160)
-              fields {
-                slug
-                author {
-                  id
-                  bio
-                  twitter
-                  avatar {
-                    childImageSharp {
-                      fixed {
-                        src
-                        srcSet
-                      }
-                    }
-                  }
-                }
-                title
-                date(formatString: "MMMM DD, YYYY")
-              }
-              body
-            }
-          }
-        }
-      }
-    `
-  ).then(result => {
-    if (result.errors) {
-      throw result.errors;
-    }
+    const mdxLayout = mdxUtils.getMdxLayout('mdx-layout-default')
 
     // Create blog posts pages.
-    const posts = result.data.allMdx.edges;
+    const posts = result.data.allMdx.edges
 
     posts.forEach((post, index) => {
-      const previous =
-        index === posts.length - 1 ? null : posts[index + 1].node;
-      const next = index === 0 ? null : posts[index - 1].node;
+      const previous = index === posts.length - 1 ? null : posts[index + 1].node
+      const next = index === 0 ? null : posts[index - 1].node
 
       createPage({
         path: post.node.fields.slug,
-        component: blogPost,
+        component: mdxLayout,
         context: {
           slug: post.node.fields.slug,
           mdx: post.node,
@@ -138,7 +47,7 @@ exports.createPages = ({ graphql, actions }) => {
           previous,
           next
         }
-      });
-    });
-  });
-};
+      })
+    })
+  }
+}

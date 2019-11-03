@@ -1,50 +1,43 @@
-# partition cbeyond sdk in plug-and-play packages
+# @cbeyond/site-starter
 
-## learn lerna
+starter for a cbeyond gatsby static website, written in both javascript and typescript, using material-ui, and storybook/jest for component development.
 
-multi-packages single repo
+Also, this starter allows to easily leverage from:
 
-https://www.gatsbyjs.org/packages/gatsby-plugin-material-ui/
+- **@creative/material-kit** for quick UI design with professional look-and-feel
+- **@cbeyond/mdx-kit** for adding blog or stories capabilties to the site
 
-https://github.com/mui-org/material-ui/tree/master/examples/gatsby
+## Look-and-Feel customisation
 
-# cbeyond-gatsby
+### site config
 
-## layouts
+update gatsby-config site object with your site name, description, etc.
 
-## authentication and authorization
+### typeface
 
-start with homemade (jsw) then move to okta
-https://developer.okta.com/pricing/ (more security and email / password recovery support)
-may move to Auth0 for single sign on (SSO) or rather federated and delegated to Google/Facebook/Twitter
+Default typeface is Roboto. You may customise as described below:
 
-## state mgt with Redux
+1. update typeface dependencies - our default is Roboto.
 
-## page state localstorage or cookies?
+```
+yarn remove typeface-roboto
+yarn add typeface-<my site chosen typeface>
+```
 
-## react ui framework
+2. then update gatsby-brower.js
 
-https://medium.com/@zeolearn/6-best-reactjs-based-ui-frameworks-9c780b96236c
+```
+import 'typeface-roboto'
+```
 
-try material-ui because semantic-ui is abandoned, could switch to
-fomantic but the whole theme customisation is not convenient.
-might as well try material-ui.
-https://material-ui.com/getting-started/templates/
+### general theme
 
-https://www.gatsbyjs.org/packages/gatsby-plugin-material-ui/
+update ./src/layouts/theme.js and optionally ./src/layouts/TopLayout.js
 
-# cbeyond-graphql
+### view-specific theme
 
-deployed on zeit now with graphql serverless
-https://github.com/nicolasdao/graphql-serverless
+update ./src/assets/jss
 
-https://zeit.co/dashboard
+### layout
 
-# cbeyond-prisma
-
-deployed on the prisma website
-https://app.prisma.io/armellelaine/services
-
-# graphql gen
-
-https://www.isaacbroyles.com/2018/08/19/gatsbyjs-typescript.html
+update ./src/layouts/Layout.tsx to define the Navigation bar (top / side and responsiveness), the header and the footer.

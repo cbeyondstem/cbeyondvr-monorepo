@@ -5,40 +5,45 @@ const site = {
   siteUrl: `https://cbeyonstem.org/`,
   org: `CbeyondSTEM`,
   contact: `hello@cbeyondstem.org`,
-  favicon: './content/assets/cbeyondstem-favicon.png'
+  favicon: './src/assets/img/cbeyondstem-favicon.png',
+
+  // @cbeyond mdx-kit configuration: mdx folder and authors
+  // dictionary describing the mdx folder hierarchy (for blog/stories content)
+  // mdx: {
+  //   'content/blog':'blog',
+  //   'content/stories': 'stories'
+  //   'content/assets': 'assets'
+  // }
+  mdx: null,
+
+  // set authors to true if blog authors attributes are defined in a json file
+  authors: false
 }
+
+const gatsbySourceList = site.mdx
+  ? Object.entries(site.mdx).forEach((path, name) => {
+      return {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          path: `${__dirname}/${path}`,
+          name: `${name}`
+        }
+      }
+    })
+  : []
+
 module.exports = {
   siteMetadata: site,
-  mapping: {
+  mapping: site.authors && {
     'Mdx.fields.author': `AuthorJson`
   },
   plugins: [
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/pages`,
-        name: `content`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`
-      }
-    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
         gatsbyRemarkPlugins: [
+          ...gatsbySourceList,
           {
             resolve: `gatsby-remark-images`,
             options: {

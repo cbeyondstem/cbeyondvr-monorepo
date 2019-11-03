@@ -1,5 +1,5 @@
 // import { red } from '@material-ui/core/colors'
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme } from '@material-ui/core/styles'
 // import EurostileNormal from './fonts/Eurostile-Normal.woff2'
 // import EurostileBold from './fonts/EurostileBold.woff2'
 
@@ -32,9 +32,9 @@ import { createMuiTheme } from "@material-ui/core/styles";
 // A custom theme for this app
 const theme = createMuiTheme({
   palette: {
-    type: "dark",
+    type: 'dark',
     primary: {
-      main: "#ffffff"
+      main: '#ffffff'
     },
     // secondary: {
     //   main: '#19857b'
@@ -43,11 +43,11 @@ const theme = createMuiTheme({
     //   main: red.A400
     // },
     background: {
-      default: "#2d2d2d"
+      default: '#2d2d2d'
     }
   },
   typography: {
-    fontFamily: ["Michroma", "Roboto"].join(",")
+    fontFamily: ['Michroma', 'Roboto'].join(',')
     // overrides: {
     //   MuiCssBaseline: {
     //     '@global': {
@@ -56,6 +56,6 @@ const theme = createMuiTheme({
     //   }
     // }
   }
-});
+})
 
-export default theme;
+export default theme

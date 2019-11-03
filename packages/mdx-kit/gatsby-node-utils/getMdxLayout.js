@@ -2,6 +2,6 @@
 const path = require('path')
 
 function getMdxLayout(layout) {
-  return path.resolve(__dirname, `../templates/${layout}.jsx`)
+  return path.resolve(__dirname, `../src/templates/${layout}.jsx`)
 }
 exports.getMdxLayout = getMdxLayout

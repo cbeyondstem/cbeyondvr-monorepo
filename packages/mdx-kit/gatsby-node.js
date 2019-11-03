@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 
-const mdxUtils = require('./src/gatsby-node-utils')
+const mdxUtils = require('./gatsby-node-utils')
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -13,6 +13,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     }
   })
 }
+
 exports.onCreateNode = mdxUtils.onCreateNode
 
 exports.createPages = async ({ graphql, actions }) => {

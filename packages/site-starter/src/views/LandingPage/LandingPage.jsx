@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames'
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles'
 
 // @material-ui/icons
 
@@ -13,26 +13,26 @@ import {
   GridContainer,
   GridItem,
   Button
-  //Parallax
-} from "@creative/material-kit";
+  // Parallax
+} from '@creative/material-kit'
 
 // styles
-import { landingPageStyles } from "assets";
+import { landingPageStyles } from 'assets'
 
 // Sections for this page
 // import ProductSection from './Sections/ProductSection.js'
 // import TeamSection from './Sections/TeamSection.js'
 // import WorkSection from './Sections/WorkSection.js'
 // import landingBg from '@creative/material-kit/src/assets/img/landing-bg.jpg'
-import { HeaderLinks } from "components/Header/HeaderLinks";
+import { HeaderLinks } from 'components/Header/HeaderLinks'
 
-const dashboardRoutes = [];
+const dashboardRoutes = []
 
-const useStyles = makeStyles(landingPageStyles);
+const useStyles = makeStyles(landingPageStyles)
 
 export default function LandingPage(props) {
-  const classes = useStyles();
-  const { ...rest } = props;
+  const classes = useStyles()
+  const { ...rest } = props
   return (
     <div>
       <Header
@@ -43,7 +43,7 @@ export default function LandingPage(props) {
         fixed
         changeColorOnScroll={{
           height: 400,
-          color: "white"
+          color: 'white'
         }}
         {...rest}
       />
@@ -52,10 +52,8 @@ export default function LandingPage(props) {
           <GridItem xs={12} sm={12} md={6}>
             <h1 className={classes.title}>Your Story Starts With Us.</h1>
             <h4>
-              Every landing page needs a small description after the big bold
-              title, that{"'"}s why we added this text here. Add here all the
-              information that can make you or your product create the first
-              impression.
+              Every landing page needs a small description after the big bold title, that{"'"}s why we added this text
+              here. Add here all the information that can make you or your product create the first impression.
             </h4>
             <br />
             <Button
@@ -76,5 +74,5 @@ export default function LandingPage(props) {
       </div>
       <Footer />
     </div>
-  );
+  )
 }
