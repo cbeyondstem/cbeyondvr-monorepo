@@ -44,7 +44,3 @@ https://zeit.co/dashboard
 
 deployed on the prisma website
 https://app.prisma.io/armellelaine/services
-
-# graphql gen
-
-https://www.isaacbroyles.com/2018/08/19/gatsbyjs-typescript.html

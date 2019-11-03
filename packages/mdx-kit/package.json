@@ -1,7 +1,7 @@
 {
-  "name": "@cbeyond/site-starter",
+  "name": "@cbeyond/mdx-kit",
+  "description": "CBeyondVR mdx-kit supporting mdx-defined explorable explanations",
   "private": true,
-  "description": "coding for science storytelling",
   "version": "0.1.0",
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
   "scripts": {
@@ -29,10 +29,6 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
-    "@creative/material-kit": "^1.8.0",
-    "@material-ui/core": "^4.5.2",
-    "@material-ui/icons": "^4.5.1",
-    "@material-ui/styles": "^4.5.2",
     "@mdx-js/mdx": "^1.4.0",
     "@mdx-js/react": "^1.4.0",
     "@mdx-js/tag": "^0.20.3",
@@ -48,7 +44,6 @@
     "gatsby-plugin-google-analytics": "^2.0.5",
     "gatsby-plugin-layout": "^1.1.13",
     "gatsby-plugin-manifest": "^2.0.5",
-    "gatsby-plugin-material-ui": "^2.1.6",
     "gatsby-plugin-mdx": "^1.0.47",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-react-svg": "^2.1.2",
@@ -76,7 +71,6 @@
     "react-uid": "^2.2.0",
     "slash": "^3.0.0",
     "storybook": "^5.1.11",
-    "typeface-michroma": "^0.0.72",
     "typeface-roboto": "^0.0.75",
     "typescript": "^3.6.3",
     "typestyle": "^2.0.4"
@@ -115,14 +109,16 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.1.0"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/ArmelleS/cbeyondvr-monorepo/packages/mdx-kit#README",
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "mdx",
+    "explorable-explanations"
   ],
   "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/ArmelleS/cbeyondvr-monorepo.git"
   }
 }
