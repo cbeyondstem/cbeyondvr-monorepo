@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react'
 import PropTypes from 'prop-types'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { SiteConfig } from 'components/SiteConfig'
 import { ImgProvider } from 'components/ImgProvider'
@@ -17,11 +16,7 @@ export function TopLayout(props) {
   return (
     <ThemeProvider theme={theme}>
       <SiteConfig.Provider>
-        <ImgProvider.Provider>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          {props.children}
-        </ImgProvider.Provider>
+        <ImgProvider.Provider>{props.children}</ImgProvider.Provider>
       </SiteConfig.Provider>
     </ThemeProvider>
   )

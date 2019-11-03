@@ -2,68 +2,59 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // nodejs library that concatenates classes
-import classNames from 'classnames'
+// import classNames from 'classnames'
 // @material-ui/core components
+// import { makeStyles } from '@material-ui/core/styles'
+// import { Toolbar } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { Toolbar } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
-
+import CssBaseline from '@material-ui/core/CssBaseline'
 // @material-ui/icons
 
 // core components and styles
 import {
-  Header,
-  GridContainer
+  Header
+  // GridContainer
   // GridItem,
   // Button
   // Parallax
 } from '@creative/material-kit'
-
-// styles
-import { landingPageStyles } from 'assets'
 
 import { HeaderLinks } from 'components/Header/HeaderLinks'
 import { Footer } from 'components/Footer/Footer'
 import BrandSvg from 'assets/img/dmg-brand.comp.svg'
 import { Link } from '@cbeyond/ui-kit'
 
-const dashboardRoutes = []
+const useStyles = makeStyles({
+  brand: {
+    fill: '#fcfcfc !important',
+    stroke: 'transparent !important',
+    marginLeft: '1px',
+    marginRight: '3px'
+  }
+})
 
-const useStyles = makeStyles(landingPageStyles)
 export const Layout = props => {
   // Similar to componentDidMount and componentDidUpdate:
   // useEffect(() => {
   //   Prism.highlightAll()
   // })
-  const classes = useStyles()
   const { children } = props
+  const classes = useStyles(props)
+
   const Brand = () => (
     <Link to="/">
       <Button>
-        <BrandSvg style={{ fill: '#FFF', stroke: '#FFF' }} viewBox="0 0 253.19 15.663" width="250" height="15" />
+        <BrandSvg className={classes.brand} viewBox="0 0 253.19 15.663" width="200" height="12" />
       </Button>
     </Link>
   )
   return (
     <>
-      <Header
-        color="dark"
-        routes={dashboardRoutes}
-        brand={<Brand />}
-        rightLinks={<HeaderLinks />}
-        fixed
-        changeColorOnScroll={{
-          height: 400,
-          color: 'white'
-        }}
-      />
-      <Toolbar />
-      <div className={classes.container}>
-        <GridContainer>{children}</GridContainer>
-      </div>
-      <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={classes.container} />
-      </div>
+      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+      <CssBaseline />
+      <Header color="dark" brand={<Brand />} rightLinks={<HeaderLinks />} sticky />
+      {children}
       <Footer />
     </>
   )

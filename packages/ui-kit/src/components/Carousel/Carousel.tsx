@@ -17,7 +17,7 @@ export const Carousel: React.FunctionComponent<CarouselProps> = props => {
   const [isFullScreen, setFullScreen] = React.useState(false)
   const imgItems: ImageItemProps[] = images.map(
     (item: { path: string; img: ImageSharpFluidFilterInput }) => ({
-      original: item.img.originalImg,
+      original: item.img,
     })
   )
 
@@ -40,7 +40,7 @@ export const Carousel: React.FunctionComponent<CarouselProps> = props => {
       onScreenChange={onScreenChange}
       infinite
       showBullets={false}
-      showFullscreenButton
+      showFullscreenButton={false}
       showThumbnails={false}
       showIndex
       showNav

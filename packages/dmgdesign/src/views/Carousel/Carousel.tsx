@@ -5,7 +5,7 @@ import { style } from 'typestyle'
 
 import { ImageSharpFluidFilterInput } from 'types/gatsby-graphql-types.d.ts'
 import { ImgProvider } from 'components/ImgProvider'
-import { Carousel as CarouselBase } from 'components/Carousel'
+import { Carousel as CarouselBase } from '@cbeyond/ui-kit/src/components/Carousel'
 
 /// <reference path="../../types/react-image-gallery.d.ts"/>
 import { ImageItemProps } from 'react-image-gallery'
