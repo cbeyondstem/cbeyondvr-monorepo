@@ -1,11 +1,11 @@
 const site = {
-  title: `CBeyondSTEM Stories Starter`,
+  title: `DMG Design SF`,
   author: `Armelle Laine`,
-  description: `A starter allowing to create your first explorable stories with CBeyondSTEM kit`,
-  siteUrl: `https://cbeyonstem.org/`,
-  org: `CbeyondSTEM`,
-  contact: `hello@cbeyondstem.org`,
-  favicon: './src/assets/img/cbeyondstem-favicon.png',
+  description: `Architecture and Interior Design`,
+  siteUrl: `https://dmgdesignsf.com/`,
+  org: `DMGDesign`,
+  contact: `hello@@dmgdesignsf.com`,
+  favicon: './src/assets/img/dmg-favicon.png',
 
   // @cbeyond mdx-kit configuration: mdx folder and authors
   // dictionary describing the mdx folder hierarchy (for blog/stories content)
@@ -39,6 +39,13 @@ module.exports = {
   },
   plugins: [
     ...gatsbySourceList,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/assets/pix`,
+        name: 'images'
+      }
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {

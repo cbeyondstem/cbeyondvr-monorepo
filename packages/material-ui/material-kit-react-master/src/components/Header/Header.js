@@ -60,18 +60,19 @@ export default function Header(props) {
     [classes.absolute]: absolute,
     [classes.fixed]: fixed,
   })
-  const brandComponent = <Button className={classes.title}>{brand}</Button>
+  const brandComponent = 'HUM'
+
   return (
     <AppBar className={appBarClasses}>
       <Toolbar className={classes.container}>
-        {leftLinks !== undefined ? brandComponent : null}
+        {leftLinks !== undefined ? brand : null}
         <div className={classes.flex}>
           {leftLinks !== undefined ? (
             <Hidden smDown implementation="css">
               {leftLinks}
             </Hidden>
           ) : (
-            brandComponent
+            brand
           )}
         </div>
         <Hidden smDown implementation="css">
@@ -125,7 +126,7 @@ Header.propTypes = {
   ]),
   rightLinks: PropTypes.node,
   leftLinks: PropTypes.node,
-  brand: PropTypes.string,
+  brand: PropTypes.node.isRequired,
   fixed: PropTypes.bool,
   absolute: PropTypes.bool,
   // this will cause the sidebar to change the color from
