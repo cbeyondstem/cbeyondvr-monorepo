@@ -38,7 +38,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
       <Paper square>
         <Typography variant="subtitle2">TITLE</Typography>
         <Typography variant="caption" className={classes.caption}>
-          Paper can be used to build surface for many and more of your application
+          Paper can be used to build surface for
         </Typography>
       </Paper>
     </>

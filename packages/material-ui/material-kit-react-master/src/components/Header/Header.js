@@ -52,13 +52,18 @@ export default function Header(props) {
         .classList.remove(classes[changeColorOnScroll.color])
     }
   }
-  const { color, rightLinks, leftLinks, brand, fixed, absolute } = props
+  const { rightLinks, leftLinks, brand } = props
   const appBarClasses = classNames({
     [classes.appBar1]: true,
     // [classes[color]]: color,
   })
   return (
-    <AppBar position="sticky" disableGutters variant="dense" className={appBarClasses}>
+    <AppBar
+      position="sticky"
+      disableGutters
+      variant="dense"
+      className={appBarClasses}
+    >
       <Toolbar className={classes.container}>
         {leftLinks !== undefined ? brand : null}
         <div className={classes.flex}>

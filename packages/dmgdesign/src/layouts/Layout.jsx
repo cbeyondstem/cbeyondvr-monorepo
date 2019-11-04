@@ -57,7 +57,7 @@ export const Layout = props => {
       <CssBaseline />
       <Header color="dark" brand={<Brand />} rightLinks={<HeaderLinks />} sticky />
       <Box p={0.5} />
-      <Grid container>
+      <Grid container justify="center">
         <Grid container item xs={12} spacing={3}>
           {children}
         </Grid>
