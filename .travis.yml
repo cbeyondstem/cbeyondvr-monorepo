@@ -11,9 +11,9 @@ install:
 matrix:
   include:
     - name: dmgdesign Pipeline
-      env: PACKAGE_LOCATION=packages/dmgdesign PACKAGE_NAME=cbeyondvr-monorepo
+      env: PACKAGE_LOCATION=packages/dmgdesign PACKAGE_NAME=cbeyondvr-monorepo MY_ALIAS=dmgdesignsf
     # - name: site-starter Pipeline
-    #   env: PACKAGE_LOCATION=packages/site-starter PACKAGE_NAME=cbeyondvr-monorepo
+    #   env: PACKAGE_LOCATION=packages/site-starter PACKAGE_NAME=cbeyondvr-monorepo  MY_ALIAS=cbeyond-starter
 
 script:
   - cd $PACKAGE_LOCATION
@@ -22,7 +22,7 @@ script:
 
 deploy:
   provider: script
-  script: now public --token $NOW_TOKEN
+  script: now alias --token=$NOW_TOKEN $(now ./out --static --no-clipboard --token=$NOW_TOKEN --public) $MY_ALIAS
   skip_cleanup: true
   app: $PACKAGE_NAME
   on:
