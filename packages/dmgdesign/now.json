@@ -1,0 +1,9 @@
+{
+  "type": "static",
+  "alias": "dmgdesignsf",
+  "static": {
+    "public": "public"
+  },
+  "public": true,
+  "version": 1
+}

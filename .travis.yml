@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "10.9.0"
+  - "10.15.3"
 
 cache: yarn
 
@@ -10,15 +10,15 @@ install:
 
 matrix:
   include:
-  - name: Blog Pipeline
-    env: PACKAGE_LOCATION=packages/blog PACKAGE_NAME=lerna-monorepo-blog
-  - name: Shop Pipeline
-    env: PACKAGE_LOCATION=packages/shop PACKAGE_NAME=lerna-monorepo-shop
+    - name: dmgdesign Pipeline
+      env: PACKAGE_LOCATION=packages/dmgdesign PACKAGE_NAME=cbeyondvr-monorepo
+    - name: site-starter Pipeline
+      env: PACKAGE_LOCATION=packages/site-starter PACKAGE_NAME=cbeyondvr-monorepo
 
 script:
   - cd $PACKAGE_LOCATION
-  - yarn test
   - yarn build
+#  - yarn test
 
 deploy:
   provider: script
