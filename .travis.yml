@@ -12,8 +12,8 @@ matrix:
   include:
     - name: dmgdesign Pipeline
       env: PACKAGE_LOCATION=packages/dmgdesign PACKAGE_NAME=cbeyondvr-monorepo
-    - name: site-starter Pipeline
-      env: PACKAGE_LOCATION=packages/site-starter PACKAGE_NAME=cbeyondvr-monorepo
+    # - name: site-starter Pipeline
+    #   env: PACKAGE_LOCATION=packages/site-starter PACKAGE_NAME=cbeyondvr-monorepo
 
 script:
   - cd $PACKAGE_LOCATION

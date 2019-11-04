@@ -9,7 +9,6 @@ import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
-// @material-ui/icons
 import Grid from '@material-ui/core/Grid'
 
 // core components and styles
@@ -57,11 +56,11 @@ export const Layout = props => {
       <CssBaseline />
       <Header color="dark" brand={<Brand />} rightLinks={<HeaderLinks />} sticky />
       <Box p={0.5} />
-      <Grid container justify="center">
-        <Grid container item xs={12} spacing={3}>
+      <Grid container justify="center" width={1} direction="column" alignItems="center">
+        <Grid container item md>
           {children}
         </Grid>
-        <Grid container item xs={12} spacing={3}>
+        <Grid container item md>
           <Footer />
         </Grid>
       </Grid>

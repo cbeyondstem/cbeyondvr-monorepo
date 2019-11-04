@@ -6,6 +6,7 @@ import { style, TypeStyle } from 'typestyle'
 import { ImageSharpFluidFilterInput } from 'types/gatsby-graphql-types.d.ts'
 import { ImgProvider } from 'components/ImgProvider'
 import { Carousel as CarouselBase } from '@cbeyond/ui-kit/src/components/Carousel'
+import { Container } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
@@ -48,7 +49,11 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
     <ImgProvider.Consumer>
       {({ images }) => {
         const viewImages = images.filter(img => img.path.search(path) > -1)
-        return <CarouselBase images={viewImages} renderImage={renderImage} />
+        return (
+          <Container maxWidth="sm">
+            <CarouselBase images={viewImages} renderImage={renderImage} />
+          </Container>
+        )
       }}
     </ImgProvider.Consumer>
   )

@@ -58,12 +58,7 @@ export default function Header(props) {
     // [classes[color]]: color,
   })
   return (
-    <AppBar
-      position="sticky"
-      disableGutters
-      variant="dense"
-      className={appBarClasses}
-    >
+    <AppBar position="sticky" variant="dense" className={appBarClasses}>
       <Toolbar className={classes.container}>
         {leftLinks !== undefined ? brand : null}
         <div className={classes.flex}>

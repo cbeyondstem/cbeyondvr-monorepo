@@ -1,18 +1,9 @@
 import * as React from 'react'
-import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
-import Link from '@material-ui/core/Link'
-import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
-import Paper from '@material-ui/core/Paper'
 
-import Typography from '@material-ui/core/Typography'
+import { Typography, Container, Divider, Box, Grid, Paper } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
 import BrandIcon from 'assets/img/dmg-icon-color.comp.svg'
 
 const useStyles = makeStyles(theme => ({
@@ -42,65 +33,76 @@ const useStyles = makeStyles(theme => ({
 
 export const Contact: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> = props => {
   const classes = useStyles(props)
+  // <Container maxWidth="sm">
+  // <Box my={4}>
 
   return (
-    <Paper>
-      <Typography component="h1" variant="h5">
-        Contact Us
-      </Typography>
-      <form className={classes.form} noValidate>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              autoComplete="fname"
-              name="firstName"
-              variant="outlined"
-              required
-              fullWidth
-              id="firstName"
-              label="First Name"
-              autoFocus
-            />
+    <Container maxWidth="sm">
+      <Paper>
+        <Typography component="h1" variant="h5">
+          Call Us
+        </Typography>
+        <Box p={2}>
+          <Typography variant="body1">415 810 8704</Typography>
+        </Box>
+        <Divider />
+        <Typography component="h1" variant="h5">
+          Email Us
+        </Typography>
+        <form className={classes.form} noValidate>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="fname"
+                name="firstName"
+                variant="outlined"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                // autoFocus
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                autoComplete="lname"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="message"
+                label="Message"
+                type="message"
+                id="message"
+                autoComplete="current-message"
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              variant="outlined"
-              required
-              fullWidth
-              id="lastName"
-              label="Last Name"
-              name="lastName"
-              autoComplete="lname"
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              required
-              fullWidth
-              name="message"
-              label="Message"
-              type="message"
-              id="message"
-              autoComplete="current-message"
-            />
-          </Grid>
-        </Grid>
-        <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
-          Send email
-        </Button>
-      </form>
-    </Paper>
+          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+            Send email
+          </Button>
+        </form>
+      </Paper>
+    </Container>
   )
 }

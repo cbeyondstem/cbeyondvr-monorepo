@@ -1,14 +1,13 @@
 import React from 'react'
 import { SiteConfig } from 'components/SiteConfig'
-import { Box } from '@material-ui/core'
+import { Box, Grid, Typography } from '@material-ui/core'
 import Icon from 'assets/img/dmg-icon-color.comp.svg'
 import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles({
   root: {
-    width: '100%',
-    bottom: '0em'
+    bottom: '0em',
+    flexGrow: 1
     // position: 'absolute'
   },
   caption: {
@@ -22,30 +21,36 @@ export function Footer(props) {
     <SiteConfig.Consumer>
       {({ title }) => {
         return (
-          // <Grid container spacing={1} direction="row" justify="center" alignItems="center">
-          //   <Grid item sm>
-          //     <Icon viewBox="0 0 14 14" width="25px" height="25px" />
-          //   </Grid>
-          //   <Grid item sm>
-          //     Copyright: &copy; {1900 + new Date().getYear()}
-          //     &nbsp;&nbsp;
-          //     {title}. All rights reserved.
-          //   </Grid>
-          // </Grid>
           <div className={classes.root}>
-            <Box display="flex" p={1}>
+            <Box p={2} />
+            <Grid container spacing={3}>
+              <Grid item xs={4}>
+                <Typography align="right">
+                  <Icon viewBox="0 0 14 14" width="25px" height="25px" />
+                </Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <Typography align="left" variant="caption" className={classes.caption}>
+                  Copyright: &copy; {1900 + new Date().getYear()}
+                  &nbsp;&nbsp;&nbsp;
+                  {title}.&nbsp; All rights reserved.
+                </Typography>
+              </Grid>
+            </Grid>
+            {/* <Box display="flex" p={1}>
               <Box p={1} m={2} flexGrow={1}>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <Icon viewBox="0 0 14 14" width="25px" height="25px" />
+                <Typography align="right">
+                  <Icon viewBox="0 0 14 14" width="25px" height="25px" />
+                </Typography>
               </Box>
               <Box p={1} m={2}>
-                <Typography variant="caption" className={classes.caption}>
+                <Typography align="left" variant="caption" className={classes.caption}>
                   Copyright: &copy; {1900 + new Date().getYear()}
                   &nbsp;&nbsp;&nbsp;
                   {title}.&nbsp; All rights reserved.
                 </Typography>
               </Box>
-            </Box>
+            </Box> */}
           </div>
         )
       }}
