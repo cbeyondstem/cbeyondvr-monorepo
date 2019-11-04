@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-
+const fs = require('fs')
 const path = require('path')
 const mdxUtils = require('@cbeyond/mdx-kit/gatsby-node-utils')
 const { siteMetadata } = require('./gatsby-config')
@@ -50,4 +50,13 @@ if (siteMetadata.mdx) {
       })
     })
   }
+}
+
+exports.onPostBuild = function onPostBuild() {
+  if (process.env.DEPLOY_TO) {
+    fs.renameSync(path.join(__dirname, 'public'), path.join(__dirname, process.env.DEPLOY_TO))
+  }
+  // fs.mkdirSync(path.join(__dirname, 'public'))
+
+  // fs.renameSync(path.join(__dirname, 'public-blog'), path.join(__dirname, 'public', 'blog'))
 }
