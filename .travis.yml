@@ -25,3 +25,5 @@ deploy:
   script: now public --token $NOW_TOKEN
   skip_cleanup: true
   app: $PACKAGE_NAME
+  on:
+    all_branches: true
