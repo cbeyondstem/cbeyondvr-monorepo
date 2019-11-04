@@ -22,7 +22,7 @@ script:
 
 deploy:
   provider: script
-  script: now alias --token=$NOW_TOKEN $(now ./out --static --no-clipboard --token=$NOW_TOKEN --public) $MY_ALIAS
+  script: now alias --token=$NOW_TOKEN $(now ./public --static --no-clipboard --token=$NOW_TOKEN --public) $MY_ALIAS
   skip_cleanup: true
   app: $PACKAGE_NAME
   on:
