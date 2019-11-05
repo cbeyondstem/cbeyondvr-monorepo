@@ -20,6 +20,16 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   })
 }
 
+exports.onPostBuild = function onPostBuild() {
+  const prefix = process.env.DEPLOY_TO_PREFIX || ''
+  if (process.env.DEPLOY_TO) {
+    fs.renameSync(path.join(__dirname, 'public'), path.join(__dirname, prefix + process.env.DEPLOY_TO))
+  }
+  // fs.mkdirSync(path.join(__dirname, 'public'))
+
+  // fs.renameSync(path.join(__dirname, 'public-blog'), path.join(__dirname, 'public', 'blog'))
+}
+
 if (siteMetadata.mdx) {
   exports.onCreateNode = mdxUtils.onCreateNode
 
