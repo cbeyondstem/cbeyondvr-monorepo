@@ -37,7 +37,7 @@ export const Contact: React.FunctionComponent<React.ComponentPropsWithRef<'div'>
   // <Box my={4}>
 
   return (
-    <Container maxWidth="sm">
+    <Container>
       <Paper>
         <Typography component="h1" variant="h5">
           Call Us

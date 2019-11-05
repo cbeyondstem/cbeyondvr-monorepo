@@ -13,11 +13,11 @@ import Drawer from '@material-ui/core/Drawer'
 // @material-ui/icons
 import Menu from '@material-ui/icons/Menu'
 // core components
-import styles from 'assets/jss/material-kit-react/components/headerStyle.js'
+import styles from 'assets/jss/material-kit-react/components/headerStyle'
 
 const useStyles = makeStyles(styles)
 
-export default function Header(props) {
+export function Header(props) {
   const classes = useStyles()
   const [mobileOpen, setMobileOpen] = React.useState(false)
   React.useEffect(() => {

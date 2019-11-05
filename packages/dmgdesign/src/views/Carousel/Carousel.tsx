@@ -50,7 +50,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
       {({ images }) => {
         const viewImages = images.filter(img => img.path.search(path) > -1)
         return (
-          <Container maxWidth="sm">
+          <Container>
             <CarouselBase images={viewImages} renderImage={renderImage} />
           </Container>
         )

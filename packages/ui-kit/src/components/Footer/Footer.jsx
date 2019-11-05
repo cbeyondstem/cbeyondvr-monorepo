@@ -2,24 +2,24 @@ import React from 'react'
 import { SiteConfig } from 'components/SiteConfig'
 import { Box, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { Space } from '@cbeyond/ui-kit/src/components/Utils'
 import Icon from 'assets/img/dmg-icon-color.comp.svg'
+import { Space } from '../Utils'
 
 const useStyles = makeStyles({
   root: {
     bottom: '0em',
-    flexGrow: 1
+    flexGrow: 1,
     // position: 'absolute'
   },
   caption: {
-    fontSize: '10px !important'
+    fontSize: '10px !important',
   },
   span: {
     paddingBottom: '1rem !important',
     '& > svg': {
-      marginBottom: '-0.5rem !important'
-    }
-  }
+      marginBottom: '-0.5rem !important',
+    },
+  },
 })
 
 export function Footer(props) {
@@ -32,13 +32,18 @@ export function Footer(props) {
             <Box p={2} />
             <Grid container>
               <Grid item xs={12}>
-                <Typography justify="center" align="center" variant="body1" className={classes.caption}>
+                <Typography
+                  justify="center"
+                  align="center"
+                  variant="body1"
+                  className={classes.caption}
+                >
                   <span className={classes.span}>
                     <Icon viewBox="0 0 14 14" width="30px" height="30px" />
                     <Space cnt={2} />
                     &copy;
                     <Space cnt={1} />
-                    {1900 + new Date().getYear()}
+                    {new Date().getFullYear()}
                     <Space cnt={1} />
                     {title}.
                     <Space cnt={1} />

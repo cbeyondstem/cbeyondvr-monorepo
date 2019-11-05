@@ -87,8 +87,21 @@ interface ActivityProps extends React.ComponentPropsWithRef<'div'> {
 }
 
 const useStyles = makeStyles(theme => ({
-  caption: {
-    fontSize: '10px !important'
+  root: {
+    paddingLeft: '0 !important',
+    paddingRight: '0 !important'
+  },
+  activity: {
+    paddingLeft: '0 !important',
+    paddingRight: '0 !important',
+    '& div.left': {
+      paddingLeft: '0 !important',
+      paddingRight: '0.5rem !important'
+    },
+    '& div.right': {
+      paddingLeft: '0.5rem !important',
+      paddingRight: '0 !important'
+    }
   },
   bio: {
     paddingBottom: '1rem',
@@ -96,7 +109,7 @@ const useStyles = makeStyles(theme => ({
     // overflowWrap: 'break-word'
   },
   where: {
-    fontSize: '10px !important'
+    fontSize: '12px !important'
     // overflowWrap: 'break-word'
   },
   what: {
@@ -104,7 +117,8 @@ const useStyles = makeStyles(theme => ({
     // overflowWrap: 'break-word'
   },
   paper: {
-    backgroundColor: `${theme.palette.background} !important`
+    backgroundColor: `${theme.palette.primary} !important`
+    // backgroundColor: `#000 !important`
   },
   divider: {
     backgroundColor: '#787878 !important'
@@ -115,79 +129,77 @@ const Activity: React.FunctionComponent<ActivityProps> = props => {
   const classes = useStyles(props)
   const { date, where, what } = props
   return (
-    <Paper className={classes.paper}>
-      <Grid container direction="row" spacing={3}>
+    <Container>
+      <Grid className={classes.activity} container direction="row" spacing={3}>
         <Grid item xs={4}>
-          <Grid container direction="column" spacing={3}>
-            <Grid item xs={12}>
+          <Grid container direction="column" spacing={3} className="left">
+            <Grid item xs={12} className="left">
               <Typography variant="body1">{date}</Typography>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} className="left">
               <Typography variant="caption" className={classes.where}>
                 {where}
               </Typography>
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={8} className="right">
           <Typography variant="body1" className={classes.what}>
             {what}
           </Typography>
         </Grid>
       </Grid>
-    </Paper>
+    </Container>
   )
 }
 
 export const About: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> = props => {
   const classes = useStyles(props)
   const Exhibitions = exhibitions.map((p, idx) => (
-    <Box key={uid(p, idx)} p={1} m={2}>
+    <Box key={uid(p, idx)} py={1} my={2}>
       <Activity {...p} />
     </Box>
   ))
   const Commissioned = commissioned.map((p, idx) => (
-    <Box key={uid(p, idx)} p={1} m={2}>
+    <Box key={uid(p, idx)} py={1} my={2}>
       <Activity {...p} />
     </Box>
   ))
   const Education = education.map((p, idx) => (
-    <Box key={uid(p, idx)} p={1} m={2}>
+    <Box key={uid(p, idx)} py={1} my={2}>
       <Activity {...p} />
     </Box>
   ))
 
   return (
-    <Container maxWidth="md">
-      <Paper>
-        <Box p={2} />
-        <Typography variant="h5">ABOUT</Typography>
-        <Box p={1} m={2}>
-          <Paper key="bio" className={classes.paper}>
-            <Typography variant="body1" className={classes.bio}>
-              Dominique Maxime Genauzeau was born in La Rochelle/France, currently lives and works in San Francisco. He
-              is the Designer for DMG Design's Interiors, commercial and private, translating conceptual designs into
-              very detailed realizations, extending his creativity into furniture, light fixtures and art installations.
-              His passion for the ocean, fluidity, organic forms, translate into his compositions. Mixing his classical
-              heritage with modernity is fundamental element of his own aesthetic. His partnership with talented
-              contractors, wood and metal craftsmen, allows him to complete challenging remodeling projects.
-            </Typography>
-          </Paper>
-        </Box>
-        <Box p={1} />
-        <Typography variant="h5">EXHIBITIONS</Typography>
-        <Box p={2} />
-        {Exhibitions}
-        <Box p={2} />
-        <Typography variant="h5">COMMiSSIONED ART / INSTALLATIONS</Typography>
-        <Box p={2} />
-        {Commissioned}
-        <Box p={2} />
-        <Typography variant="h5">EDUCATION</Typography>
-        <Box p={2} />
-        {Education}
-        <Box p={2} />
-      </Paper>
+    <Container className={classes.root}>
+      <Box py={2} />
+      <Typography variant="h5">ABOUT</Typography>
+      <Box py={1} my={2}>
+        <Container>
+          <Typography variant="body1" className={classes.bio}>
+            Dominique Maxime Genauzeau was born in La Rochelle/France, currently lives and works in San Francisco. He is
+            the Designer for DMG Design's Interiors, commercial and private, translating conceptual designs into very
+            detailed realizations, extending his creativity into furniture, light fixtures and art installations. His
+            passion for the ocean, fluidity, organic forms, translate into his compositions. Mixing his classical
+            heritage with modernity is fundamental element of his own aesthetic. His partnership with talented
+            contractors, wood and metal craftsmen, allows him to complete challenging remodeling projects.
+          </Typography>
+        </Container>
+      </Box>
+      <Box py={1} />
+      <Typography variant="h5">EXHIBITIONS</Typography>
+      <Box py={2} />
+      {Exhibitions}
+      <Box py={2} />
+      <Typography variant="h5">COMMiSSIONED ART / INSTALLATIONS</Typography>
+      <Box py={2} />
+      {Commissioned}
+      <Box py={2} />
+      <Typography variant="h5">EDUCATION</Typography>
+      <Box py={2} />
+      {Education}
+      <Box py={2} />
     </Container>
   )
 }

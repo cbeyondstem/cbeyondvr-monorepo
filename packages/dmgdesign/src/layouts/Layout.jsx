@@ -8,15 +8,16 @@ import PropTypes from 'prop-types'
 // import { Toolbar } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Box, Grid, Button, CssBaseline } from '@material-ui/core'
-import { Header, Link, Space } from '@cbeyond/ui-kit'
+import { Header, Footer, Link, Space } from '@cbeyond/ui-kit'
 
 import { HeaderLinks } from 'components/Header/HeaderLinks'
-import { Footer } from 'components/Footer/Footer'
+import { container } from 'assets/jss/material-kit-react'
 
 import BrandSvg from 'assets/img/dmg-brand.comp.svg'
 import BrandLogoSvg from 'assets/img/dmg-icon-color.comp.svg'
 
 const useStyles = makeStyles({
+  container,
   brand: {
     '& >svg:first-child': {
       marginBottom: '-0.5rem'
@@ -27,6 +28,10 @@ const useStyles = makeStyles({
       marginLeft: '1px',
       marginRight: '3px'
     }
+  },
+  item: {
+    paddingLeft: '0 !important',
+    paddingRight: '0 !important'
   }
 })
 
@@ -55,11 +60,11 @@ export const Layout = props => {
       <CssBaseline />
       <Header color="dark" brand={<Brand />} rightLinks={<HeaderLinks />} sticky />
       <Box p={0.5} />
-      <Grid container justify="center" width={1} direction="column" alignItems="center">
-        <Grid container item md>
+      <Grid container justify="center" direction="column" alignItems="center" className={classes.container}>
+        <Grid container item className={classes.item}>
           {children}
         </Grid>
-        <Grid container item md>
+        <Grid container item>
           <Footer />
         </Grid>
       </Grid>
