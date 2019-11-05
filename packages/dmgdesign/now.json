@@ -2,7 +2,7 @@
   "type": "static",
   "alias": "dmgdesignsf",
   "static": {
-    "public": "dmgdesignsf"
+    "public": "qa.dmgdesignsf.com"
   },
   "public": true,
   "version": 1
