@@ -20,9 +20,10 @@ script:
   - yarn build
 #  - yarn test
 
+# script: now --token=$NOW_TOKEN --target staging
 deploy:
   provider: script
-  script: now --token=$NOW_TOKEN --target staging
+  script: now alias --token=$NOW_TOKEN $(now ./$DEPLOY_TO --no-clipboard --token=$NOW_TOKEN --public) $DEPLOY_TO
   skip_cleanup: true
   app: $PACKAGE_NAME
   on:
