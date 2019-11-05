@@ -23,7 +23,7 @@ script:
 # script: now --token=$NOW_TOKEN --target staging
 deploy:
   provider: script
-  script: now alias --token=$NOW_TOKEN $(now ./$DEPLOY_TO --no-clipboard --token=$NOW_TOKEN --public) $DEPLOY_TO
+  script: yarn run now ./$DEPLOY_TO --token=$NOW_TOKEN --target staging
   skip_cleanup: true
   app: $PACKAGE_NAME
   on:

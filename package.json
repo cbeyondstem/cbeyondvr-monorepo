@@ -26,5 +26,8 @@
   "workspaces": [
     "packages/*",
     "packages/material-ui/*"
-  ]
+  ],
+  "devDependencies": {
+    "now": "^16.4.4"
+  }
 }
