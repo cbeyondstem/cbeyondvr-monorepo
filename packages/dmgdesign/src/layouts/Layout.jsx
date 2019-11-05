@@ -7,31 +7,26 @@ import PropTypes from 'prop-types'
 // import { makeStyles } from '@material-ui/core/styles'
 // import { Toolbar } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Grid from '@material-ui/core/Grid'
-
-// core components and styles
-import {
-  Header
-  // GridContainer
-  // GridItem,
-  // Button
-  // Parallax
-} from '@creative/material-kit'
+import { Box, Grid, Button, CssBaseline } from '@material-ui/core'
+import { Header, Link, Space } from '@cbeyond/ui-kit'
 
 import { HeaderLinks } from 'components/Header/HeaderLinks'
 import { Footer } from 'components/Footer/Footer'
+
 import BrandSvg from 'assets/img/dmg-brand.comp.svg'
-import { Link } from '@cbeyond/ui-kit'
-import { Box } from '@material-ui/core'
+import BrandLogoSvg from 'assets/img/dmg-icon-color.comp.svg'
 
 const useStyles = makeStyles({
   brand: {
-    fill: '#fcfcfc !important',
-    stroke: 'transparent !important',
-    marginLeft: '1px',
-    marginRight: '3px'
+    '& >svg:first-child': {
+      marginBottom: '-0.5rem'
+    },
+    '& >svg:nth-child(3)': {
+      fill: '#fcfcfc !important',
+      stroke: 'transparent !important',
+      marginLeft: '1px',
+      marginRight: '3px'
+    }
   }
 })
 
@@ -46,7 +41,11 @@ export const Layout = props => {
   const Brand = () => (
     <Link to="/">
       <Button>
-        <BrandSvg className={classes.brand} viewBox="0 0 253.19 15.663" width="200" height="12" />
+        <span className={classes.brand}>
+          <BrandLogoSvg viewBox="0 0 14 14" width="30px" height="30px" />
+          <Space cnt={1} />
+          <BrandSvg className={classes.brand} viewBox="0 0 253.19 15.663" width="200" height="12" />
+        </span>
       </Button>
     </Link>
   )

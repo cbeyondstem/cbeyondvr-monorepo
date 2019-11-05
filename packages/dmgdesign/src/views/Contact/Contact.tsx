@@ -60,7 +60,7 @@ export const Contact: React.FunctionComponent<React.ComponentPropsWithRef<'div'>
                 fullWidth
                 id="firstName"
                 label="First Name"
-                // autoFocus
+                autoFocus
               />
             </Grid>
             <Grid item xs={12} sm={6}>

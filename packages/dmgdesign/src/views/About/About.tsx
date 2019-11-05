@@ -5,9 +5,9 @@ import { uid } from 'react-uid'
 import { makeStyles } from '@material-ui/core/styles'
 import { Container, Typography, Paper, Box, Grid } from '@material-ui/core'
 
-const studies = [
+const education = [
   {
-    date: 'August 1989',
+    date: 'Aug. 1989',
     where: 'GEORGIA TECH UNIVERSITY, ATLANTA, GA, USA.',
     what: 'ARCHITECTURAL SEMINAR about "American cities"'
   },
@@ -24,21 +24,21 @@ const studies = [
   {
     date: '1978',
     where: 'LYCEE BELLEVUE, SAINTES, FRANCE.',
-    what: 'HIGH-SCHOOL DEGREE, mathematics/physics'
+    what: <>HIGH-SCHOOL DEGREE, mathematics & physics</>
   }
 ]
 const exhibitions = [
   {
-    date: 'October 2000',
+    date: 'Oct. 2000',
     where: 'WILKES BASHFORD, 375 Sutter Street, San Francisco.',
     what: '"RENCONTRES No1" - Series of 6 paintings, ink and graphite on vellum, 21"x 34"'
   },
   {
-    date: 'November 1999',
+    date: 'Nov. 1999',
     where: 'SKYBAR, HOTEL MONDRIAN, 8440 Sunset Blvd, Los Angeles',
     what:
       '"RENCONTRES No2" - Series of 6 paintings, ink and graphite on vellum, 21"x 34"' +
-      'for "PICTURE THIS"/Fund Raising for the Silver Lining Foundation, ' +
+      'for "PICTURE THIS" Fund Raising for the Silver Lining Foundation, ' +
       'hosted by Cindy Crawford and Rande Gerber'
   },
   {
@@ -47,8 +47,8 @@ const exhibitions = [
     what: '"PASTIS...IS CETERA" - Series of 6 paintings, acrylic on canvas, 18"x 18"'
   },
   {
-    date: 'October 1999',
-    where: 'FRINGALE RESTAURANT,570 4TH Street, San Francisco.',
+    date: 'Oct. 1999',
+    where: 'FRINGALE RESTAURANT, 570 4TH Street, San Francisco.',
     what: '"3, BETWEEN 2 STARS" - Series of 5 paintings, ink and graphite on vellum, 26"x 32"'
   }
 ]
@@ -62,36 +62,54 @@ const commissioned = [
   },
   {
     date: '2007',
-    where: 'KRONENBEGER/ROSENFELD Internet Law Attorneys, 150 Post Street, Suite 520, San Francisco.',
-    what: '"&MEETS&copy;" - Triptich, acrylic and graphite on wood, 3 x 12" x 72"'
+    where: (
+      <>
+        <small>KRONENBEGER ROSENFELD INTERNET LAW ATTORNEYS</small>, 150 Post Street, Suite 520, San Francisco.
+      </>
+    ),
+    what: <>"MEETS&copy;" Triptich, acrylic and graphite on wood, 3 x 12" x 72"</>
   },
   {
     date: '1998',
-    where: 'PARTECH/VENTURE CAPITAL Vincent Worm, 50 California Street, San Francisco.',
+    where: (
+      <>
+        <small>PARTECH VENTURE CAPITAL</small> Vincent Worm, 50 California Street, San Francisco.
+      </>
+    ),
     what: '"RENCONTRE No1 and No2", ink and graphite on vellum, 2 x 19" x 26"'
   }
 ]
 
 interface ActivityProps extends React.ComponentPropsWithRef<'div'> {
-  date: string
-  where: string
-  what: string
+  date: string | React.ReactNode
+  where: string | React.ReactNode
+  what: string | React.ReactNode
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   caption: {
     fontSize: '10px !important'
   },
+  bio: {
+    paddingBottom: '1rem',
+    paddingTop: '1rem'
+    // overflowWrap: 'break-word'
+  },
   where: {
     fontSize: '10px !important'
+    // overflowWrap: 'break-word'
   },
   what: {
     fontSize: '14px !important'
+    // overflowWrap: 'break-word'
   },
   paper: {
+    backgroundColor: `${theme.palette.background} !important`
+  },
+  divider: {
     backgroundColor: '#787878 !important'
   }
-})
+}))
 
 const Activity: React.FunctionComponent<ActivityProps> = props => {
   const classes = useStyles(props)
@@ -133,7 +151,7 @@ export const About: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> 
       <Activity {...p} />
     </Box>
   ))
-  const Studies = studies.map((p, idx) => (
+  const Education = education.map((p, idx) => (
     <Box key={uid(p, idx)} p={1} m={2}>
       <Activity {...p} />
     </Box>
@@ -146,7 +164,7 @@ export const About: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> 
         <Typography variant="h5">ABOUT</Typography>
         <Box p={1} m={2}>
           <Paper key="bio" className={classes.paper}>
-            <Typography variant="caption">
+            <Typography variant="body1" className={classes.bio}>
               Dominique Maxime Genauzeau was born in La Rochelle/France, currently lives and works in San Francisco. He
               is the Designer for DMG Design's Interiors, commercial and private, translating conceptual designs into
               very detailed realizations, extending his creativity into furniture, light fixtures and art installations.
@@ -165,9 +183,9 @@ export const About: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> 
         <Box p={2} />
         {Commissioned}
         <Box p={2} />
-        <Typography variant="h5">STUDIES</Typography>
+        <Typography variant="h5">EDUCATION</Typography>
         <Box p={2} />
-        {Studies}
+        {Education}
         <Box p={2} />
       </Paper>
     </Container>
