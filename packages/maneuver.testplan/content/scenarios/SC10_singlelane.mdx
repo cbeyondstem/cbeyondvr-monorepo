@@ -1,0 +1,121 @@
+---
+title: Single Lane
+---
+
+# Situation Overview
+
+Route is a single lane, route guidance is continueOn.
+This scenario tests the NV safely slows or stop when leading vehicle slows down or worse when
+a sudden immobile obstacle shows up.
+
+
+<FeatMap>
+
+## route
+
+- lanes = ['C']
+- **RGContinueOn**
+
+## virtual lane
+
+- push C.lane to lane queue
+
+## strategy
+
+- **LaneKeepSame**
+
+## decision
+
+- **LaneKeepSame**
+- To Confirm: _laneBrake_ma / laneBrake_mb not necessary_
+
+## execution
+
+- LaneKeepSameProcedure:
+    - _follows the lane track_
+    - _complies to speed limits (user target and road)_
+    - _keeps safe distance with front vehicle_:
+       - _slows down (and even stop) if front vehicle slows down_
+       - _selects the acceleration profile (when and how much to accelerate/decelerate)_
+    - _no rule-based design to implement this_
+
+</FeatMap>
+
+
+# Scenarios
+
+   - SingleLane.RGContinueOn.FrontVehicleStopping
+   - SingleLane.RGContinueOn.SuddenStoppedCar
+
+## SingleLane.RGContinueOn.SuddenStoppedCar
+
+```bash
+duration 500s
+declare extern $starting_speed defaulted to 50kmph
+declare extern $trailing_dist defaulted to 300m
+declare extern $min_distance defaulted to 3m
+
+road {
+    road.lanes(C)
+}
+
+nv:
+    speed: $starting_speed
+
+car1:
+    depart: position(ahead: nv, lane: C, dist: $trailing_dist)
+    speed: 0mps
+
+["nv brakes to avoid car1"] {
+    do {
+    }
+    until {
+        nv.speed == 0kmph
+    }
+
+    assert {
+        car1.distance(from: nv) >= $min_distance
+    }
+}
+```
+
+## SingleLane.RGContinueOn.LeadingVehicleStopping
+
+
+```bash
+
+duration 60s
+
+declare extern $starting_speed defaulted to 50kmph
+declare extern $trailing_dist defaulted to 60m
+declare extern $deceleration defaulted to -1g
+declare extern $min_distance defaulted to 3m
+
+road {
+    road.lanes(C)
+}
+
+nv:
+    speed: $starting_speed
+
+car1:
+    depart: position(ahead: nv, lane: C, dist: $trailing_dist)
+    speed: $starting_speed
+
+["car1 slows down"] {
+    do {
+        car1.speed(target_speed: 0kmph, acceleration: $deceleration)
+    }
+
+    until {
+        nv.speed == 0kmph
+        car1.speed == 0kmph
+    }
+
+    assert {
+        car1.distance(from: nv) >= $min_distance
+    }
+}
+
+```
+

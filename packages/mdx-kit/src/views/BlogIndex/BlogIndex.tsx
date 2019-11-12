@@ -14,6 +14,12 @@ export const BlogIndex = (props: BlogIndexProps) => {
   return (
     <>
       {posts.map(({ node }) => {
+        if (node.fields.category !== 'blog') {
+          return null
+        }
+        if (!node.fields.route) {
+          return null
+        }
         const linkProps: React.ComponentPropsWithRef<'a'> = {
           to: node.fields.slug,
           style: { boxShadow: `none` },

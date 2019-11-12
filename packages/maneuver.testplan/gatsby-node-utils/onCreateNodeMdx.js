@@ -10,10 +10,17 @@ async function onCreateNode({ node, getNode, actions }) {
     const parent = getNode(node.parent)
     let value = _.get(node, 'frontmatter.slug', null) || parent.relativePath.replace(parent.ext, '')
     if (!['pages', 'content'].includes(parent.sourceInstanceName)) {
-      value = `${parent.sourceInstanceName}/${value}`
+      // value = `${parent.sourceInstanceName}/${value}`
+      value = `${value}`
     }
     if (value === 'index') {
       value = ''
+    }
+    let uid = _.split(value, '/')
+    uid = uid[uid.length - 1]
+    const uid1 = _.split(uid, '_')
+    if (uid1.length > 0) {
+      ;[uid] = uid1
     }
     createNodeField({
       name: 'slug',
@@ -22,9 +29,9 @@ async function onCreateNode({ node, getNode, actions }) {
     })
 
     createNodeField({
-      name: 'id',
+      name: 'uid',
       node,
-      value: node.id
+      value: `${uid}`
     })
 
     createNodeField({
@@ -47,4 +54,4 @@ async function onCreateNode({ node, getNode, actions }) {
   }
 }
 
-exports.onCreateNode = onCreateNode
+exports.onCreateNodeMdx = onCreateNode

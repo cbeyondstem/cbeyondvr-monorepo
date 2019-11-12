@@ -1,0 +1,1 @@
+export { AllSvg } from './AllSvg'

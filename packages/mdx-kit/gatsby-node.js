@@ -15,31 +15,32 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 }
 
 exports.onCreateNode = mdxUtils.onCreateNode
+exports.createPagesStatefully = mdxUtils.createPagesStatefully
+// exports.createPages = async ({ graphql, actions }) => {
+//   const { createPage } = actions
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+//   const result = await mdxUtils.getAllMdx(graphql)
 
-  const result = await mdxUtils.getAllMdx(graphql)
+//   const mdxLayout = mdxUtils.getMdxLayout('mdx-layout-default')
 
-  const mdxLayout = mdxUtils.getMdxLayout('mdx-layout-default')
+//   // Create blog posts pages.
+//   const posts = result.data.allMdx.edges
 
-  // Create blog posts pages.
-  const posts = result.data.allMdx.edges
+//   posts.forEach((post, index) => {
+//     const previous = index === posts.length - 1 ? null : posts[index + 1].node
+//     const next = index === 0 ? null : posts[index - 1].node
 
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
-
-    createPage({
-      path: post.node.fields.slug,
-      component: mdxLayout,
-      context: {
-        slug: post.node.fields.slug,
-        mdx: post.node,
-        site: result.data.site,
-        previous,
-        next
-      }
-    })
-  })
-}
+//     createPage({
+//       path: post.node.fields.slug,
+//       component: mdxLayout,
+//       context: {
+//         id: post.node.id,
+//         slug: post.node.fields.slug,
+//         mdx: post.node,
+//         site: result.data.site,
+//         previous,
+//         next
+//       }
+//     })
+//   })
+// }

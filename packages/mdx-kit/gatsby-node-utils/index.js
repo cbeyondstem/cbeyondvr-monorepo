@@ -1,8 +1,14 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { getMdxLayout } = require('./getMdxLayout')
-const { onCreateNode } = require('./onCreateNode')
+const { onCreateNodeMdx } = require('./onCreateNodeMdx')
+const { onCreateNodeSvg } = require('./onCreateNodeSvg')
 const { getAllMdx } = require('./getAllMdx')
+const { createPagesStatefully } = require('./onCreatePages')
 
 exports.getAllMdx = getAllMdx
 exports.getMdxLayout = getMdxLayout
-exports.onCreateNode = onCreateNode
+exports.onCreateNode = async p => {
+  await onCreateNodeMdx(p)
+  await onCreateNodeSvg(p)
+}
+exports.createPagesStatefully = createPagesStatefully
