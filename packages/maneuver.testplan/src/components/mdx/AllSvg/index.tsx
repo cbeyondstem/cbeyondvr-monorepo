@@ -1,1 +1,0 @@
-export { AllSvg } from './AllSvg'

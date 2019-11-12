@@ -1,1 +1,0 @@
-export { AllMdx } from './AllMdx'
