@@ -72,7 +72,11 @@ const StyledElem = (el, bookmarkIdx = '') => p => {
     return <List>{children}</List>
   }
   if (el === 'ol') {
-    return <List>{children}</List>
+    return (
+      <Typography variant="body1">
+        <ol>{children}</ol>
+      </Typography>
+    )
   }
   if (el === 'li') {
     return (
@@ -90,7 +94,7 @@ const StyledElem = (el, bookmarkIdx = '') => p => {
   }
   if (el === 'pre') {
     return (
-      <Container className={classes.container}>
+      <Container>
         <GridList cols={1} cellHeight="auto">
           <pre {...others}>{children}</pre>
         </GridList>
@@ -121,9 +125,9 @@ export const MDXLayoutComponents = {
   h5: StyledElem('h6'),
   h6: StyledElem('h6'),
   p: StyledElem('p'),
-  // ol: StyledElem('ol'),
-  // ul: StyledElem('ul'),
-  // li: StyledElem('li'),
+  ol: StyledElem('ol'),
+  ul: StyledElem('ul'),
+  li: StyledElem('li'),
   pre: StyledElem('pre'),
   em: StyledElem('em')
   // table: p => <table className={css.mdxTable} {...p} />,

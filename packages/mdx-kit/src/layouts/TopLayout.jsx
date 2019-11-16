@@ -10,6 +10,7 @@ import theme from './theme'
 
 // custom typefaces
 import 'typeface-roboto'
+import 'assets/prismjs/prism_clear.css'
 
 // import 'prismjs/themes/prism-okaidia.css'
 // import 'prismjs/plugins/command-line/prism-command-line.css'

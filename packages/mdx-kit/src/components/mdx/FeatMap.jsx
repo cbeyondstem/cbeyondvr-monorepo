@@ -19,7 +19,6 @@ import {
   ListItemText
 } from '@material-ui/core'
 import red from '@material-ui/core/colors/red'
-import { MDXLayoutComponents } from './layout'
 
 const StyledTableCell = withStyles(theme =>
   createStyles({
@@ -72,7 +71,6 @@ const useStyles = makeStyles(theme => ({
 export const FeatMap = props => {
   const classes = useStyles(props)
   const { children } = props
-  const addCell = false
   let addAlert = false
   const rowEl = 'h2'
   const rowRawNames = []

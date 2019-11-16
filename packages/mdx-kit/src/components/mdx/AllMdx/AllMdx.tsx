@@ -1,30 +1,32 @@
-import * as _ from "lodash";
-import * as React from "react";
-import { graphql, StaticQuery } from "gatsby";
-import { FileEdge } from "types/gatsby-graphql-types.d.ts";
+import * as _ from 'lodash'
+import * as React from 'react'
+import { graphql, StaticQuery } from 'gatsby'
+import { FileEdge } from 'types/gatsby-graphql-types.d.ts'
 
 export interface MdxProps {
-  uid: string;
-  title: string;
-  category: string;
-  route: boolean;
-  slug: string;
-  excerpt: string;
-  path: string;
+  uid: string
+  title: string
+  category: string
+  route: boolean
+  slug: string
+  excerpt: string
+  path: string
+  children: MdxProps[]
+  parent?: MdxProps
 }
 export interface MdxListProps {
-  mdxList: MdxProps[];
+  mdxList: MdxProps[]
 }
 const { Consumer, Provider } = React.createContext({
   mdxList: []
-} as MdxListProps);
+} as MdxListProps)
 
 export interface MdxProviderProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const AllMdxComp: React.FunctionComponent<MdxProviderProps> = props => {
-  const { children } = props;
+  const { children } = props
   return (
     <StaticQuery
       query={graphql`
@@ -51,19 +53,24 @@ const AllMdxComp: React.FunctionComponent<MdxProviderProps> = props => {
       `}
       render={data => {
         const mdxList = data.allMdx.edges.map((edge: FileEdge) => {
-          const excerpt = _.get(edge, "node.excerpt", null);
-          const uid = _.get(edge, "node.fields.uid", null);
-          const slug = _.get(edge, "node.fields.slug", null);
-          const category = _.get(edge, "node.fields.category", null);
-          const route = _.get(edge, "node.fields.route", null);
-          let title = _.get(edge, "node.frontmatter.title", null);
+          const excerpt = _.get(edge, 'node.excerpt', null)
+          const uid = _.get(edge, 'node.fields.uid', null)
+          const slug = _.get(edge, 'node.fields.slug', null)
+          const category = _.get(edge, 'node.fields.category', null)
+          const route = _.get(edge, 'node.fields.route', null)
+          let title = _.get(edge, 'node.frontmatter.title', null)
           if (title.length === 0) {
-            title = slug;
+            title = slug
           }
-          const path = _.get(edge, "node.fileAbsolutePath", "");
-
-          return { uid, title, slug, route, category, excerpt, path };
-        });
+          const path = _.get(edge, 'node.fileAbsolutePath', '')
+          return { uid, title, slug, route, category, excerpt, path }
+        })
+        mdxList.forEach((m: MdxProps) => {
+          Object.assign(m, { children: mdxList.filter((c: MdxProps) => c.slug.search(`${m.slug}/`) === 0) })
+          m.children.forEach((c: MdxProps) => {
+            Object.assign(c, { parent: m })
+          })
+        })
         return (
           <Provider
             value={{
@@ -72,13 +79,13 @@ const AllMdxComp: React.FunctionComponent<MdxProviderProps> = props => {
           >
             {children}
           </Provider>
-        );
+        )
       }}
     />
-  );
-};
+  )
+}
 
 export const AllMdx = {
   Provider: AllMdxComp,
   Consumer
-};
+}

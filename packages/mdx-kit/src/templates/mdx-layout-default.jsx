@@ -48,7 +48,7 @@ const BlogPostTemplate = props => {
               <MDXProvider
                 components={{
                   ...MDXLayoutComponents,
-                  ...MDXGlobalComponents
+                  ...MDXGlobalComponents(nodes[0])
                 }}
               >
                 {children}

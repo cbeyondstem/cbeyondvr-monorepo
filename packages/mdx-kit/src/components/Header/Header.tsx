@@ -1,36 +1,45 @@
-import React from 'react'
+import * as React from 'react'
 // nodejs library that concatenates classes
 import classNames from 'classnames'
 // nodejs library to set properties for components
-import PropTypes from 'prop-types'
 // @material-ui/core components
-import { makeStyles } from '@material-ui/core/styles'
-import { Hidden, Drawer, Divider, Toolbar, AppBar, IconButton } from '@material-ui/core'
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+import { Hidden, Drawer, Toolbar, AppBar, IconButton } from '@material-ui/core'
 import { Menu } from '@material-ui/icons'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import headerStyle from './headerStyle'
 import headerLinksStyle from './headerLinksStyle'
 
-const useStyles = makeStyles(theme => ({
-  colors: {
-    color: `${theme.typography.h1.color}`,
-    backgroundColor: `${theme.palette.primary.main} !important`,
-    '& span': {
-      color: `${theme.typography.h1.color}`
+const colors = (theme: Theme) =>
+  createStyles({
+    colors: {
+      color: theme.typography.h1.color,
+      backgroundColor: `${theme.palette.primary.main} !important`,
+      '& span': {
+        color: theme.typography.h1.color
+      }
+    },
+    drawerHeader: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: theme.spacing(1, 2),
+      ...theme.mixins.toolbar,
+      justifyContent: 'flex-start'
     }
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(1, 2),
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-start'
-  },
+  })
+
+const useStyles = makeStyles((theme: Theme) => ({
+  ...colors(theme),
   ...headerStyle(theme),
   ...headerLinksStyle(theme)
 }))
 
-export function Header(props) {
+export interface HeaderProps {
+  rightLinks?: React.ReactNode
+  leftLinks?: React.ReactNode
+  brand: React.ReactNode
+}
+export const Header = (props: HeaderProps) => {
   const classes = useStyles(props)
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
@@ -40,8 +49,8 @@ export function Header(props) {
 
   const { rightLinks, leftLinks, brand } = props
   return (
-    <AppBar position="sticky" variant="dense" className={classNames(classes.appBar, classes.colors)}>
-      <Toolbar className={classes.container}>
+    <AppBar position="sticky" className={classNames(classes.appBar, classes.colors)}>
+      <Toolbar className={classes.container} variant="dense" disableGutters>
         {leftLinks !== undefined ? brand : null}
         <div className={classes.flex}>
           {leftLinks !== undefined ? (
@@ -90,15 +99,4 @@ export function Header(props) {
       </Hidden>
     </AppBar>
   )
-}
-
-Header.defaultProps = {
-  rightLinks: null,
-  leftLinks: null
-}
-
-Header.propTypes = {
-  rightLinks: PropTypes.node,
-  leftLinks: PropTypes.node,
-  brand: PropTypes.node.isRequired
 }
