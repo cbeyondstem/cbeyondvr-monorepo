@@ -5,6 +5,7 @@
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
   "scripts": {
     "build": "yarn run gatsby build",
+    "serve": "yarn run gatsby serve",
     "clean": "rimraf public .cache",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "dev": "yarn run gatsby develop",

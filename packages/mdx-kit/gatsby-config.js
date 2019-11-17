@@ -5,7 +5,7 @@ const site = {
   siteUrl: `https://cbeyondstem.org/`,
   org: `CbeyondSTEM`,
   contact: `hello@cbeyondstem.org`,
-  favicon: './src/assets/img/favicon.png'
+  favicon: './src/assets/img/favicon2.png'
 }
 module.exports = {
   siteMetadata: site,
