@@ -68,6 +68,9 @@ const AllMdxComp: React.FunctionComponent<MdxProviderProps> = props => {
 
           if (title.length === 0) {
             title = slug
+              .split('/')
+              .slice(-1)
+              .join('/')
           }
           const path = _.get(edge, 'node.fileAbsolutePath', '')
           return { uid, title, slug, route, category, excerpt, path, frontmatter }

@@ -43,7 +43,7 @@ export const BlogIndex = props => {
                 return null
               }
               return (
-                <>
+                <div key={uid(m, idx)}>
                   <ListItem key={uid(m, idx)}>
                     <ListItemText
                       primary={
@@ -76,7 +76,7 @@ export const BlogIndex = props => {
                       />
                     </ListItem>
                   ))}
-                </>
+                </div>
               )
             })}
           </>

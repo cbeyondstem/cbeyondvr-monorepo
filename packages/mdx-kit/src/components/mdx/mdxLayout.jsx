@@ -72,9 +72,9 @@ const StyledElem = (el, bookmarkIdx = '') => p => {
   }
   if (el === 'pre') {
     return (
-      <Box p={2}>
+      <GridList cols={1} cellHeight="auto">
         <pre {...others}>{children}</pre>
-      </Box>
+      </GridList>
     )
   }
   if (el === 'em') {

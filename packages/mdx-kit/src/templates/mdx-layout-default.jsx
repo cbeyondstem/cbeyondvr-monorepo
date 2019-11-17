@@ -36,7 +36,7 @@ const BlogPostTemplate = props => {
             <SEO title={title} description={title} />
             <Paper className={classes.paper}>
               <Typography
-                variant="h2"
+                variant="h3"
                 style={{
                   color: theme.palette.primary.main,
                   overflowWrap: 'break-word'
