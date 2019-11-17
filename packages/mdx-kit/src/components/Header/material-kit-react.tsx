@@ -63,12 +63,6 @@ const card = {
   background: '#fff'
 }
 
-const defaultFont = {
-  fontFamily: "'Michroma', sans-serif",
-  fontWeight: '400',
-  lineHeight: '1.5em'
-}
-
 const primaryColor = '#9c27b0'
 const warningColor = '#ff9800'
 const dangerColor = '#f44336'
@@ -135,8 +129,7 @@ const cardActions = {
   margin: '0 20px 10px',
   paddingTop: '10px',
   borderTop: '1px solid #eeeeee',
-  height: 'auto',
-  ...defaultFont
+  height: 'auto'
 }
 
 const cardHeader = {
@@ -186,7 +179,6 @@ export {
   containerFluid,
   boxShadow,
   card,
-  defaultFont,
   primaryColor,
   warningColor,
   dangerColor,

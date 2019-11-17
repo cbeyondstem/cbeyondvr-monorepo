@@ -1,46 +1,87 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/no-danger */
 import * as React from 'react'
-import { Query } from 'types/gatsby-graphql-types.d.ts'
+import { uid } from 'react-uid'
+import { Link } from 'components/Link'
+import { AllMdx, MdxProps } from 'components/mdx/AllMdx'
+import { Typography, List, ListItem, ListItemText, Theme, makeStyles, createStyles } from '@material-ui/core'
 
-export interface BlogIndexProps {
-  Link: React.ComponentType<React.ComponentPropsWithRef<'a'>>
-  data: Query
-}
-
-export const BlogIndex = (props: BlogIndexProps) => {
-  const { data, Link } = props
-  const posts = data.allMdx.edges
+const caretRight = '"\\25B8"'
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: '100%',
+      // maxWidth: 360,
+      backgroundColor: theme.palette.background.paper
+    },
+    nested: {
+      paddingLeft: theme.spacing(4),
+      '& a:before': {
+        content: caretRight,
+        paddingRight: '8px',
+        color: theme.palette.primary.light
+      }
+    }
+  })
+)
+export const BlogIndex = props => {
+  const classes = useStyles(props)
   return (
-    <>
-      {posts.map(({ node }) => {
-        if (node.fields.category !== 'blog') {
-          return null
-        }
-        if (!node.fields.route) {
-          return null
-        }
-        const linkProps: React.ComponentPropsWithRef<'a'> = {
-          to: node.fields.slug,
-          style: { boxShadow: `none` },
-          children: node.frontmatter.title || node.fields.slug
-        } as React.ComponentPropsWithRef<'a'>
-        return (
-          <div key={node.fields.slug}>
-            <h3
-              style={
-                {
-                  // marginBottom: rhythm(1 / 4)
-                }
+    <List className={classes.root}>
+      <AllMdx.Consumer>
+        {({ mdxList }) => (
+          <>
+            {mdxList.map((m: MdxProps, idx: number) => {
+              if (m.category !== 'blog') {
+                return null
               }
-            >
-              <Link {...(linkProps as React.ComponentPropsWithRef<'a'>)} />
-            </h3>
-            <small>{node.frontmatter.date}</small>
-            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-          </div>
-        )
-      })}
-    </>
+              if (!m.route) {
+                return null
+              }
+              if (m.parent) {
+                // list only the top-level blogs in the index
+                return null
+              }
+              return (
+                <div key={uid(m, idx)}>
+                  <ListItem key={uid(m, idx)}>
+                    <ListItemText
+                      primary={
+                        <h3>
+                          <Link to={m.slug} style={{ boxShadow: `none` }}>
+                            {m.title}
+                          </Link>
+                        </h3>
+                      }
+                      secondary={
+                        <Typography variant="body1">
+                          {/* {m.frontmatter.date}
+                          <br /> */}
+                          {m.excerpt}
+                        </Typography>
+                      }
+                    />
+                  </ListItem>
+                  {m.children.map((c, cidx) => (
+                    <ListItem key={uid(c, cidx)} className={classes.nested}>
+                      <ListItemText
+                        primary={
+                          <h4>
+                            <Link to={c.slug} style={{ boxShadow: `none` }}>
+                              {c.title}
+                            </Link>
+                          </h4>
+                        }
+                        secondary={<Typography variant="body1">{c.excerpt}</Typography>}
+                      />
+                    </ListItem>
+                  ))}
+                </div>
+              )
+            })}
+          </>
+        )}
+      </AllMdx.Consumer>
+    </List>
   )
 }

@@ -1,5 +1,5 @@
 const site = {
-  title: `CBeyondSTEM Stories Starter`,
+  title: `Stories Starter`,
   author: `Armelle Laine`,
   description: `A starter allowing to create your first explorable stories with CBeyondSTEM kit`,
   siteUrl: `https://cbeyondstem.org/`,

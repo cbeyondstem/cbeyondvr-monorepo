@@ -1,25 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import * as _ from 'lodash'
 import * as React from 'react'
-import PropTypes from 'prop-types'
 import { uid } from 'react-uid'
 
 import { makeStyles, createStyles, withStyles } from '@material-ui/core/styles'
-import { SiteConfig } from 'components/SiteConfig'
-import {
-  Box,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Typography,
-  List,
-  ListItemText
-} from '@material-ui/core'
+import { Box, Paper, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core'
 import red from '@material-ui/core/colors/red'
-import { MDXLayoutComponents } from './layout'
 
 const StyledTableCell = withStyles(theme =>
   createStyles({
@@ -69,29 +55,62 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export const FeatMap = props => {
+export interface FeatMapProps {
+  children: React.ReactNode[]
+}
+
+export const FeatMap = (props: FeatMapProps) => {
   const classes = useStyles(props)
   const { children } = props
-  const addCell = false
   let addAlert = false
-  const rowEl = 'h2'
-  const rowRawNames = []
-  const rowItems = []
-  children.forEach(child => {
+  const rowEl = 'ol'
+  let currentRow: string
+  let currentCol: string
+  let currentKey: string
+  const colEl = 'h2'
+  const colRawNames: string[] = []
+  const rowNames: string[] = []
+  const items: { [rowCol: string]: (JSX.Element | string)[] } = {}
+  children.forEach((child: JSX.Element) => {
     if (child.props.originalType === rowEl) {
-      rowRawNames.push(child.props.children)
-      rowItems.push([])
-    } else if (rowItems.length === 0) {
-      console.alert('FeatMap malformed: the first line must always be a second-level header ##')
+      if (colRawNames.length === 0) {
+        colRawNames[0] = 'variant'
+      } else if (colRawNames[0] !== 'variant') {
+        colRawNames.splice(0, 0, 'variant')
+      }
+      currentCol = 'variant'
+      currentRow = `${child.props.children.props.children}`
+      currentKey = `[${currentRow},${currentCol}]`
+      if (!(currentKey in items)) {
+        items[currentKey] = []
+      }
+      items[currentKey].push(<strong>{currentRow}</strong>)
+      rowNames.push(currentRow)
+    } else if (child.props.originalType === colEl) {
+      currentCol = `${child.props.children}`
+      if (colRawNames.indexOf(currentCol) === -1) {
+        colRawNames.push(currentCol)
+      }
+      if (currentRow === undefined) {
+        currentRow = ''
+        rowNames.push(currentRow)
+      }
+      currentKey = `[${currentRow},${currentCol}]`
+      items[currentKey] = []
+    } else if (!currentKey || !(currentKey in items)) {
+      // alert('FeatMap malformed: the first line must always be a second-level header ##')
       addAlert = true
     } else {
-      rowItems[rowItems.length - 1].push(child)
+      items[currentKey].push(child)
     }
   })
 
-  const rowNames = rowRawNames.map(r => {
+  const colNames = colRawNames.map(r => {
     if (r.toLowerCase().search('route') > -1) {
       return 'Route Guidance'
+    }
+    if (r.toLowerCase().search('variant') > -1) {
+      return 'SUT Variant'
     }
     if (r.toLowerCase().search('lane') > -1) {
       return 'Virtual Lane'
@@ -112,30 +131,27 @@ export const FeatMap = props => {
   })
   return (
     <Box p={2}>
-      <SiteConfig.Org />
       <Paper className={classes.root}>
         {addAlert ? <em>Feature Map malformed: all text before the first second level header is ignored</em> : null}
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              {rowNames.map((r, idx) => (
-                <StyledTableCell key={uid(r, idx)}>{r}</StyledTableCell>
+              {colNames.map((c, idx) => (
+                <StyledTableCell key={uid(c, idx)}>{c}</StyledTableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow className={classes.row}>
-              {rowItems.map((r, idx) => (
-                <StyledTableCell key={uid(r, idx)}>{r}</StyledTableCell>
-              ))}
-            </TableRow>
+            {rowNames.map((r, ridx) => (
+              <TableRow key={uid(r, ridx)} className={classes.row}>
+                {colRawNames.map((c, cidx) => {
+                  return <StyledTableCell key={uid(c, cidx)}>{items[`[${r},${c}]`]}</StyledTableCell>
+                })}
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </Paper>
     </Box>
   )
-}
-
-FeatMap.propTypes = {
-  children: PropTypes.node.isRequired
 }

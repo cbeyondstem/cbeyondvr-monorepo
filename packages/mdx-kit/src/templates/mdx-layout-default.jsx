@@ -36,19 +36,19 @@ const BlogPostTemplate = props => {
             <SEO title={title} description={title} />
             <Paper className={classes.paper}>
               <Typography
-                variant="h2"
+                variant="h3"
                 style={{
-                  color: theme.typography.h1.color,
+                  color: theme.palette.primary.main,
                   overflowWrap: 'break-word'
                 }}
               >
                 {title}
               </Typography>
-              <Box p={3} />
+              <Box p={1} />
               <MDXProvider
                 components={{
                   ...MDXLayoutComponents,
-                  ...MDXGlobalComponents
+                  ...MDXGlobalComponents(nodes[0])
                 }}
               >
                 {children}
