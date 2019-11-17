@@ -37,33 +37,31 @@ export const HeaderLinks = (props: HeaderLinksProps) => {
   return (
     <AllMdx.Consumer>
       {({ mdxList }) => {
-        let selected: MdxProps[] = []
+        const selected = mdxList.filter(mdx => {
+          if (!mdx.route) {
+            return false
+          }
+          if (mdx.category === 'pages') {
+            return false
+          }
+          if (mdx.slug === path) {
+            // this is not a sub-path - is not added to current menu
+            return false
+          }
+          if (mdx.slug.search(path) !== 0) {
+            // this is not a sub-path - is not added to current menu
+            return false
+          }
+          const subPaths = mdx.slug.replace(`${path}`, '').split('/')
+          if (!select(subPaths)) {
+            return false
+          }
+          return true
+        })
         const nodes = mdxList.filter(m => m.slug === path)
         if (nodes.length !== 0) {
           selected.push(...nodes[0].children)
           parent = nodes[0].parent ? nodes[0].parent.slug : parent
-        } else {
-          selected = mdxList.filter(mdx => {
-            if (!mdx.route) {
-              return false
-            }
-            if (mdx.category === 'pages') {
-              return false
-            }
-            if (mdx.slug === path) {
-              // this is not a sub-path - is not added to current menu
-              return false
-            }
-            if (mdx.slug.search(path) !== 0) {
-              // this is not a sub-path - is not added to current menu
-              return false
-            }
-            const subPaths = mdx.slug.replace(`${path}`, '').split('/')
-            if (!select(subPaths)) {
-              return false
-            }
-            return true
-          })
         }
         if (selected.length > 0) {
           selected.sort(sortCompare)

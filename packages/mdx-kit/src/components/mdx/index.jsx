@@ -4,7 +4,7 @@ import { FeatMap } from './FeatMap'
 import { Svg } from './Svg'
 import { Toc } from './Toc'
 
-export { MDXLayoutComponents } from './layout'
+export { MDXLayoutComponents } from './mdxLayout'
 
 export const MDXGlobalComponents = m => ({
   Link,

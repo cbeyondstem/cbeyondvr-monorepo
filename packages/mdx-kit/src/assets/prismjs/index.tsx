@@ -91,12 +91,18 @@ export const gatsbyHighlightLanguageBadges = (t: Theme) => {
     '@global': {
       ".gatsby-highlight pre[class*='language-']": {
         border: 0,
-        WebkitOverflowScrolling: `touch`,
-        overflowY: 'hidden !important' as 'hidden'
+        // WebkitOverflowScrolling: `touch`,
+        maxHeight: '60vh'
+        // [t.breakpoints.up('md')]: {
+        //   // do not vertical scroll on large screen
+        //   overflowY: 'hidden !important' as 'hidden'
+        //   // maxHeight: '100%'
+        // }
       },
       ".gatsby-highlight code[class*='language-']": {
         // backgroundColor: `transparent`,
         textShadow: 'none !important',
+        maxHeight: '60vh',
         padding: t.spacing(4, 1, 2, 4)
       },
       ".gatsby-highlight pre[class*='language-'].line-numbers .line-numbers-rows": {

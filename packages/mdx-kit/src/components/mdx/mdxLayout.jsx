@@ -6,34 +6,12 @@ import { red } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles'
 
 const caretRight = '"\\25B8"'
-const containerFluid = {
-  paddingRight: '15px',
-  paddingLeft: '15px',
-  marginRight: 'auto',
-  marginLeft: 'auto',
-  width: '100%'
-}
 
 const useStyles = makeStyles(theme => ({
   gridList: {
     flexWrap: 'nowrap',
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)'
-  },
-  container: {
-    ...containerFluid,
-    '@media (min-width: 576px)': {
-      maxWidth: '540px'
-    },
-    '@media (min-width: 768px)': {
-      maxWidth: '720px'
-    },
-    '@media (min-width: 992px)': {
-      maxWidth: '960px'
-    },
-    '@media (min-width: 1200px)': {
-      maxWidth: '1140px'
-    }
   },
   table: {
     minWidth: 700,
@@ -50,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   header: {
-    color: theme.typography.h1.color,
+    color: theme.palette.primary.main,
     overflowWrap: 'break-word'
   },
   em: { backgroundColor: red[100] },
@@ -58,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     '&:before': {
       content: caretRight,
       paddingRight: '8px',
-      color: theme.palette.primary.main
+      color: theme.palette.primary.light
     }
   }
 }))
@@ -94,11 +72,9 @@ const StyledElem = (el, bookmarkIdx = '') => p => {
   }
   if (el === 'pre') {
     return (
-      <Container>
-        <GridList cols={1} cellHeight="auto">
-          <pre {...others}>{children}</pre>
-        </GridList>
-      </Container>
+      <Box p={2}>
+        <pre {...others}>{children}</pre>
+      </Box>
     )
   }
   if (el === 'em') {

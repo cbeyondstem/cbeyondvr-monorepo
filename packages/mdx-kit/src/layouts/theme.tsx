@@ -6,7 +6,9 @@ const theme = createMuiTheme({
   palette: {
     type: 'light',
     primary: {
-      main: '#d7d7f4'
+      light: '#d7d7f4',
+      main: '#2c2ca0'
+      // contrastText: '#2c2ca0'
     },
     secondary: {
       main: '#f5f2f0'
@@ -19,10 +21,10 @@ const theme = createMuiTheme({
     // }
   },
   typography: {
-    fontFamily: ['Roboto'].join(','),
-    h1: {
-      color: '#2c2ca0'
-    }
+    fontFamily: ['Roboto'].join(',')
+    // h1: {
+    //   color: '#2c2ca0'
+    // }
   }
 })
 
@@ -40,6 +42,25 @@ const scroll = createStyles({
     '*::-webkit-scrollbar-thumb': {
       backgroundColor: theme.palette.secondary.dark,
       outline: '1px solid slategrey'
+    },
+    '.container-fluid': {
+      paddingRight: '15px',
+      paddingLeft: '15px',
+      marginRight: 'auto',
+      marginLeft: 'auto',
+      width: '100%',
+      '@media (min-width: 576px)': {
+        maxWidth: '576px'
+      },
+      '@media (min-width: 768px)': {
+        maxWidth: '768px'
+      },
+      '@media (min-width: 992px)': {
+        maxWidth: '992px'
+      },
+      '@media (min-width: 1200px)': {
+        maxWidth: '1200px'
+      }
     }
   }
 })
