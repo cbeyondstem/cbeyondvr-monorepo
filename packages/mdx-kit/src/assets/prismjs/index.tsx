@@ -96,10 +96,9 @@ export const gatsbyHighlightLanguageBadges = (t: Theme) => {
         [t.breakpoints.up('md')]: {
           // do not vertical scroll on large screen
           overflowY: 'hidden !important' as 'hidden'
-          // maxHeight: '60vh'
         },
         [t.breakpoints.down('sm')]: {
-          // do not vertical scroll on large screen
+          // allow vertical scroll on small screen and limit the height
           maxHeight: '60vh'
         }
       },
