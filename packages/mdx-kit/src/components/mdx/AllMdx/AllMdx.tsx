@@ -1,7 +1,7 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
-import { FileEdg, MdxFrontmatter } from 'types/gatsby-graphql-types.d.ts'
+import { FileEdge, MdxFrontmatter } from 'types/gatsby-graphql-types.d.ts'
 
 export interface MdxProps {
   uid: string
@@ -9,6 +9,7 @@ export interface MdxProps {
   category: string
   route: boolean
   slug: string
+  sourceInstanceName: string
   excerpt: string
   path: string
   children: MdxProps[]
@@ -45,6 +46,7 @@ const AllMdxComp: React.FunctionComponent<MdxProviderProps> = props => {
                   uid
                   route
                   category
+                  sourceInstanceName
                 }
                 frontmatter {
                   title
@@ -62,6 +64,7 @@ const AllMdxComp: React.FunctionComponent<MdxProviderProps> = props => {
           const uid = _.get(edge, 'node.fields.uid', null)
           const slug = _.get(edge, 'node.fields.slug', null)
           const category = _.get(edge, 'node.fields.category', null)
+          const sourceInstanceName = _.get(edge, 'node.fields.sourceInstanceName', null)
           const route = _.get(edge, 'node.fields.route', null)
           let title = _.get(edge, 'node.frontmatter.title', null)
           const frontmatter = _.get(edge, 'node.frontmatter', null)
@@ -73,10 +76,22 @@ const AllMdxComp: React.FunctionComponent<MdxProviderProps> = props => {
               .join('/')
           }
           const path = _.get(edge, 'node.fileAbsolutePath', '')
-          return { uid, title, slug, route, category, excerpt, path, frontmatter }
+          return {
+            uid,
+            title,
+            slug,
+            sourceInstanceName,
+            route,
+            category,
+            excerpt,
+            path,
+            frontmatter
+          }
         })
         mdxList.forEach((m: MdxProps) => {
-          Object.assign(m, { children: mdxList.filter((c: MdxProps) => c.slug.search(`${m.slug}/`) === 0) })
+          Object.assign(m, {
+            children: mdxList.filter((c: MdxProps) => c.slug.search(`${m.slug}/`) === 0)
+          })
           m.children.forEach((c: MdxProps) => {
             Object.assign(c, { parent: m })
           })

@@ -1,8 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react'
+import * as React from 'react'
 import MuiLink from '@material-ui/core/Link'
+// import { TypographyProps } from '@material-ui/core/Typography'
 import { Link as GatsbyLink } from 'gatsby'
 
-export const Link = React.forwardRef(function Link(props, ref) {
-  return <MuiLink component={GatsbyLink} ref={ref} {...props} />
-})
+// export interface LinkProps extends GatsbyLinkProps<any> {
+//   TypographyClasses?: TypographyProps['classes']
+//   underline?: 'none' | 'hover' | 'always'
+// }
+export const Link = React.forwardRef((props, ref) => <MuiLink ref={ref} component={GatsbyLink} {...props} />)

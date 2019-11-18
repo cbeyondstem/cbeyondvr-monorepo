@@ -7,8 +7,9 @@ import { uid } from 'react-uid'
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles'
 import { List, ListItem, Button, IconButton } from '@material-ui/core'
 import SubdirectoryArrowRightIcon from '@material-ui/icons/SubdirectoryArrowRight'
+import { AllMdx } from 'components/mdx/AllMdx'
+import { MdxProps } from 'components/mdx/AllMdx/AllMdx'
 import { Link } from 'components/Link'
-import { AllMdx, MdxProps } from 'components/mdx/AllMdx'
 
 // style
 import styles from './headerLinksStyle'

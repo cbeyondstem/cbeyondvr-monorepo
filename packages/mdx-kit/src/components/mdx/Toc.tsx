@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { uid } from 'react-uid'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import { MdxProps } from 'components/mdx/AllMdx'
+import { MdxProps } from 'components/mdx/AllMdx/AllMdx'
 import { List, ListItem, Typography } from '@material-ui/core'
 import { Link } from 'components/Link'
 

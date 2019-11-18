@@ -3,7 +3,9 @@
 import * as React from 'react'
 import { uid } from 'react-uid'
 import { Link } from 'components/Link'
-import { AllMdx, MdxProps } from 'components/mdx/AllMdx'
+import { AllMdx } from 'components/mdx/AllMdx'
+import { MdxProps } from 'components/mdx/AllMdx/AllMdx'
+
 import { Typography, List, ListItem, ListItemText, Theme, makeStyles, createStyles } from '@material-ui/core'
 
 const caretRight = '"\\25B8"'
@@ -24,8 +26,8 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   })
 )
-export const BlogIndex = props => {
-  const classes = useStyles(props)
+export const BlogIndex = () => {
+  const classes = useStyles({})
   return (
     <List className={classes.root}>
       <AllMdx.Consumer>
@@ -62,7 +64,7 @@ export const BlogIndex = props => {
                       }
                     />
                   </ListItem>
-                  {m.children.map((c, cidx) => (
+                  {m.children.map((c: MdxProps, cidx: number) => (
                     <ListItem key={uid(c, cidx)} className={classes.nested}>
                       <ListItemText
                         primary={

@@ -70,6 +70,7 @@ export const css = {
     })
 }
 
-export const StyledTable = ({ children }) => (
-  <table className={style({ borderStyle: 'none !important' })}>{children}</table>
-)
+export const StyledTable = (props: React.ComponentPropsWithRef<'table'>) => {
+  const { children } = props
+  return <table className={style({ borderStyle: 'none !important' })}>{children}</table>
+}

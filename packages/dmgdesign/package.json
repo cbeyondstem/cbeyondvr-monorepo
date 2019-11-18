@@ -5,6 +5,7 @@
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
   "scripts": {
     "build": "gatsby build",
+    "serve": "gatsby serve",
     "clean": "rimraf public .cache",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "dev": "gatsby develop",
@@ -20,17 +21,13 @@
     "gql-gen": "gql-gen"
   },
   "resolutions": {
-    "sharp": "0.23.1",
-    "favicons/**/sharp": "0.23.1",
+    "sharp": "^0.23.1",
+    "favicons/**/sharp": "^0.23.1",
     "favicons/**/react": "^16.2.0"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
     "@cbeyond/mdx-kit": "^1.0.0",
     "@cbeyond/ui-kit": "^1.0.0",
-    "@creative/material-kit": "^1.8.0",
     "@material-ui/core": "^4.5.2",
     "@material-ui/icons": "^4.5.1",
     "@material-ui/styles": "^4.5.2",
@@ -117,7 +114,7 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.1.0"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/ArmelleS/cbeyondvr-monorepo#readme",
   "keywords": [
     "gatsby"
   ],
@@ -125,6 +122,6 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/ArmelleS/cbeyondvr-monorepo.git"
   }
 }

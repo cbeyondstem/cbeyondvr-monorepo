@@ -3,7 +3,10 @@
   "description": "CBeyondVR mdx-kit supporting mdx-defined explorable explanations",
   "version": "1.0.0",
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
+  "main": "dist/mdx-kit/index.js",
+  "types": "dist/mdx-kit/index.d.ts",
   "scripts": {
+    "prepublish": "tsc",
     "build": "yarn run gatsby build",
     "serve": "yarn run gatsby serve",
     "clean": "rimraf public .cache",
@@ -124,7 +127,6 @@
     "explorable-explanations"
   ],
   "license": "MIT",
-  "main": "n/a",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ArmelleS/cbeyondvr-monorepo.git"

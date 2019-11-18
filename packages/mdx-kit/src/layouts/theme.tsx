@@ -11,14 +11,9 @@ const theme = createMuiTheme({
       // contrastText: '#2c2ca0'
     },
     secondary: {
+      // use as the prism code highlighting background
       main: '#f5f2f0'
     }
-    // error: {
-    //    main: red.A400
-    // },
-    // background: {
-    //   default: '#2c2ca0'
-    // }
   },
   typography: {
     fontFamily: ['Roboto'].join(',')

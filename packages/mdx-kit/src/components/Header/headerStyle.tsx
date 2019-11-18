@@ -2,7 +2,6 @@ import { Theme, createStyles } from '@material-ui/core/styles'
 
 import {
   container,
-  defaultFont,
   primaryColor,
   infoColor,
   successColor,

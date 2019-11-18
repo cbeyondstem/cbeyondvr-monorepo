@@ -4,10 +4,12 @@ import { MDXProvider } from '@mdx-js/react'
 import { Typography, Box, Paper } from '@material-ui/core'
 
 import { useTheme, makeStyles } from '@material-ui/core/styles'
-import { Layout, SEO } from 'layouts'
 
 import { MDXLayoutComponents, MDXGlobalComponents } from 'components/mdx'
 import { AllMdx } from 'components/mdx/AllMdx'
+import { Layout } from 'layouts'
+import { SiteConfig } from 'components/SiteConfig'
+import { Svg } from 'components/mdx/Svg'
 
 const useStyles = makeStyles({
   paper: {
@@ -33,7 +35,6 @@ const BlogPostTemplate = props => {
         const { title } = nodes[0]
         return (
           <Layout location={location} title={title}>
-            <SEO title={title} description={title} />
             <Paper className={classes.paper}>
               <Typography
                 variant="h3"
@@ -62,7 +63,8 @@ const BlogPostTemplate = props => {
 }
 
 const FrontmatterType = PropTypes.shape({
-  title: PropTypes.string.isRequired
+  title: PropTypes.string,
+  date: PropTypes.string
 })
 
 BlogPostTemplate.propTypes = {

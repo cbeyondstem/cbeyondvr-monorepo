@@ -5,8 +5,12 @@ const site = {
   siteUrl: `https://cbeyondstem.org/`,
   org: `CbeyondSTEM`,
   contact: `hello@cbeyondstem.org`,
-  favicon: './src/assets/img/favicon2.png'
+  favicon: './src/assets/img/favicon2.png',
+  faviconSvg: './src/assets/img/favicon.comp.svg',
+  logo: './src/assets/img/logo.comp.svg',
+  icon: './src/assets/img/icon.comp.svg'
 }
+
 module.exports = {
   siteMetadata: site,
   mapping: {
@@ -25,6 +29,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/assets/img`,
+        name: `assets/img`
       }
     },
     // {

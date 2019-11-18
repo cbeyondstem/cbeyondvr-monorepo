@@ -28,6 +28,12 @@ async function onCreateNode({ node, getNode, actions }) {
     })
 
     createNodeField({
+      name: 'sourceInstanceName',
+      node,
+      value: parent.sourceInstanceName
+    })
+
+    createNodeField({
       name: 'uid',
       node,
       value: `${uid}`

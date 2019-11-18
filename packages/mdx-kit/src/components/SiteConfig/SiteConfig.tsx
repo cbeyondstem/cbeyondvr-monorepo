@@ -1,8 +1,8 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react'
 import * as _ from 'lodash'
 import { graphql, StaticQuery } from 'gatsby'
-import { Space } from 'components/Space'
-import Icon from 'assets/img/favicon.comp.svg'
+import { AllSvg } from 'components/mdx/AllSvg'
 
 export interface SiteConfigProviderProps {
   title: string
@@ -10,6 +10,8 @@ export interface SiteConfigProviderProps {
   siteUrl: string
   org: string
   contact: string
+  favicon: string
+  logo: string
 }
 
 const { Consumer, Provider } = React.createContext({
@@ -17,7 +19,9 @@ const { Consumer, Provider } = React.createContext({
   description: ``,
   siteUrl: ``,
   org: ``,
-  contact: ``
+  contact: ``,
+  favicon: ``,
+  logo: ``
 } as SiteConfigProviderProps)
 
 export interface SiteConfigProps {
@@ -37,6 +41,9 @@ const SiteConfigComp: React.FunctionComponent<SiteConfigProps> = props => {
               siteUrl
               org
               contact
+              faviconSvg
+              logo
+              icon
             }
           }
         }
@@ -56,6 +63,31 @@ const SiteConfigComp: React.FunctionComponent<SiteConfigProps> = props => {
   )
 }
 
+export const GetSvg: (key: string) => React.FunctionComponent<React.SVGProps<SVGSVGElement>> = (key: string) => {
+  if (!['faviconSvg', 'logo', 'icon'].includes(key)) {
+    return null
+  }
+  return props => (
+    <Consumer>
+      {(cfg: SiteConfigProviderProps) => (
+        <AllSvg.Consumer>
+          {({ svgByPath }) => {
+            let src = _.get(cfg, key, `unknown key ${key}`)
+            src = src.replace('./', '').replace('src/', '')
+            console.log(`SiteConfig.Logo ${src}`)
+            if (!(src in svgByPath)) {
+              console.log(`SiteConfig.Logo ${src} not found`)
+              return <em>{`<Svg src=${src}/> not found`}</em>
+            }
+            const { Svg: SvgRaw } = svgByPath[src]
+            console.log(`SiteConfig.Logo ${src} all good!!`)
+            return <SvgRaw {...props} />
+          }}
+        </AllSvg.Consumer>
+      )}
+    </Consumer>
+  )
+}
 export const Get: (key: string) => React.FunctionComponent<React.ComponentPropsWithRef<'span'>> = (
   key: string
 ) => props => (
@@ -76,6 +108,8 @@ export const SiteConfig = {
   Contact: Get('contact'),
   Title: Get('title'),
   Description: Get('description'),
-  Favicon: p => <Icon {...p} />,
+  Favicon: GetSvg('faviconSvg'),
+  Icon: GetSvg('icon'),
+  Logo: GetSvg('logo'),
   Consumer
 }

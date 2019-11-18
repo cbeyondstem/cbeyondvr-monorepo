@@ -1,67 +1,29 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react'
 
-import { createStyles, Theme, makeStyles, useTheme } from '@material-ui/core/styles'
-import { Box, Container, Button, CssBaseline, Typography } from '@material-ui/core'
-import { Header, HeaderLinks } from 'components/HeaderBlog'
+// import { createStyles, Theme, makeStyles } from '@material-ui/core/styles'
+import { Box, Container, Button, CssBaseline } from '@material-ui/core'
+
+import { HeaderBlog as Header } from 'components/HeaderBlog'
 import { Footer } from 'components/Footer'
 import { Link } from 'components/Link'
-import { Space } from 'components/Space'
-import { MdxProps, AllMdx } from 'components/mdx/AllMdx'
-import IconSvg from 'assets/img/icon.comp.svg'
+import { AllMdx } from 'components/mdx/AllMdx'
+import { MdxProps } from 'components/mdx/AllMdx/AllMdx'
+import { SEO, SEOProps } from './Seo'
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    brand: {
-      color: theme.typography.h1.color,
-      textTransform: 'none',
-      '& svg': {
-        marginBottom: theme.spacing(-0.3)
-      }
-      // '& >svg:nth-child(3)': {
-      //   fill: '#fcfcfc !important',
-      //   stroke: 'transparent !important',
-      //   marginLeft: '1px',
-      //   marginRight: '3px'
-      // }
-    },
-    item: {
-      paddingLeft: '0 !important',
-      paddingRight: '0 !important'
-    }
-  })
-)
-
-export interface LayoutProps {
+export interface LayoutProps extends SEOProps {
   children: React.ReactNode
-  title: string
   location: {
     pathname: string
   }
 }
-export const Layout = (props: LayoutProps) => {
-  // Similar to componentDidMount and componentDidUpdate:
-  // React.useEffect(() => {
-  //   Prism.highlightAll()
-  // })
-  const { children, location, title: pageTitle } = props
-  const { pathname } = location
-  const classes = useStyles(props)
-  const theme = useTheme()
-  const brand = (
-    <Typography variant="body1">
-      <span className={classes.brand}>
-        <Space cnt={1} />
-        <IconSvg viewBox="0 0 20.015 20.091" width={theme.spacing(4)} height={theme.spacing(4)} />
-        <Space cnt={1} />
-        CBeyond<span style={{ color: '#ffa800' }}>S</span>
-        <span style={{ color: '#1fd2ff' }}>T</span>
-        <span style={{ color: '#ff007f' }}>E</span>
-        <span style={{ color: '#00d400' }}>M</span>
-      </span>
-    </Typography>
-  )
 
-  const BrandButton = () => (
+export const Layout = (props: LayoutProps & { brand: React.ReactNode }) => {
+  const { brand, children, location, title: pageTitle, ...seoProps } = props
+  const { pathname } = location
+  // const classes = useStyles(props)
+
+  const BrandButton = (
     <Link underline="none" to="/">
       <Button>{brand}</Button>
     </Link>
@@ -97,9 +59,12 @@ export const Layout = (props: LayoutProps) => {
           return (
             <>
               {' '}
-              <Header brand={<BrandButton />} title={title} subtitle={subtitle} parent={parent} />
+              <Header brand={BrandButton} title={title} subtitle={subtitle} parent={parent} />
               <Box p={0.5} />
-              <Container className="container-fluid">{children}</Container>
+              <Container className="container-fluid">
+                <SEO title={title} {...seoProps} />
+                {children}
+              </Container>
             </>
           )
         }}
