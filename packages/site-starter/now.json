@@ -1,9 +1,0 @@
-{
-  "type": "static",
-  "alias": "cbeyondvr-starter",
-  "static": {
-    "public": "cbeyondvr-starter"
-  },
-  "public": true,
-  "version": 1
-}
