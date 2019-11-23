@@ -4,10 +4,11 @@ import * as React from 'react'
 import { Typography, Box, List, ListItemText, GridList } from '@material-ui/core'
 import { red } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles'
+import * as classnames from 'classnames'
 
 const caretRight = '"\\25B8"'
 
-const useStyles = makeStyles(theme => ({
+export const mdxLayoutStyles = makeStyles(theme => ({
   gridList: {
     flexWrap: 'nowrap',
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
@@ -31,82 +32,110 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.main,
     overflowWrap: 'break-word'
   },
-  em: { backgroundColor: red[100] },
+  em: {
+    backgroundColor: red[100]
+  },
   li: {
-    '&:before': {
+    '&.spanSimple :before': {
       content: caretRight,
       paddingRight: '8px',
       color: theme.palette.primary.light
+    },
+    '&.spanSimple': {
+      paddingRight: theme.spacing(2)
+    },
+    '&.spanComplex > span > div :before': {
+      content: caretRight,
+      paddingRight: '8px',
+      color: theme.palette.primary.light
+    },
+    '&.spanComplex > span > div': {
+      padding: theme.spacing(0, 2, 0, 0)
     }
   }
 }))
 
-const StyledElem = <T extends React.ElementType>(el: T, bookmarkIdx = '') => (p: React.ComponentPropsWithRef<T>) => {
-  const classes = useStyles(p)
-  const { children, ...others } = p
+const StyledElem: (
+  classes: Record<'gridList' | 'table' | 'paper' | 'header' | 'em' | 'li', string>,
+  el: React.ElementType,
+  bookmarkIdx?: string
+) => React.FunctionComponent<React.ComponentPropsWithRef<React.ElementType>> = (classes, el, bookmarkIdx = '') => {
   // console.log(`Generating element ${el}`)
-
   if (el === 'ul') {
-    return <List>{children}</List>
+    return (p: React.ComponentPropsWithRef<'ul'>) => <List>{p.children}</List>
   }
   if (el === 'ol') {
-    return (
+    return (p: React.ComponentPropsWithRef<'ol'>) => (
       <Typography variant="body1">
-        <ol>{children}</ol>
+        <ol>{p.children}</ol>
       </Typography>
     )
   }
   if (el === 'li') {
-    return (
-      <ListItemText inset className={classes.li}>
-        {children}{' '}
-      </ListItemText>
-    )
+    return (p: React.ComponentPropsWithRef<'li'>) => {
+      const { children } = p
+      if (typeof children === 'string') {
+        return (
+          <ListItemText inset className={classnames(classes.li, 'spanSimple')}>
+            {children}
+          </ListItemText>
+        )
+      }
+      return (
+        <ListItemText inset className={classnames(classes.li, 'spanComplex')}>
+          {children}
+        </ListItemText>
+      )
+    }
   }
   if (el === 'p') {
-    return (
+    return (p: React.ComponentPropsWithRef<'p'>) => (
       <Box p={2}>
-        <Typography variant="body1">{children}</Typography>
+        <Typography variant="body1">{p.children}</Typography>
       </Box>
     )
   }
   if (el === 'pre') {
-    return (
-      <GridList cols={1} cellHeight="auto">
-        <pre {...others}>{children}</pre>
-      </GridList>
-    )
+    return (p: React.ComponentPropsWithRef<'pre'>) => {
+      const { children, ...others } = p
+      return (
+        <GridList cols={1} cellHeight="auto">
+          <pre {...others}>{children}</pre>
+        </GridList>
+      )
+    }
   }
   if (el === 'em') {
-    return <em className={classes.em}>{children}</em>
+    return (p: React.ComponentPropsWithRef<'em'>) => <em className={classes.em}>{p.children}</em>
   }
   if (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(`${el}`)) {
-    return (
-      <Box p={2} id={_.kebabCase(`${children}`) + bookmarkIdx}>
+    return (p: React.ComponentPropsWithRef<'h1'>) => (
+      <Box p={2} id={_.kebabCase(`${p.children}`) + bookmarkIdx}>
         <Typography variant={el as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'} className={classes.header}>
-          {children}
+          {p.children}
         </Typography>
       </Box>
     )
   }
-  console.log(`StyledElem {el}`)
-  const element = React.createElement(el, p)
-  return <Box p={2}>{element}</Box>
+  return () => null
 }
 
-export const MDXLayoutComponents = {
-  h1: StyledElem('h3'),
-  h2: StyledElem('h4'),
-  h3: StyledElem('h5'),
-  h4: StyledElem('h6'),
-  h5: StyledElem('h6'),
-  h6: StyledElem('h6'),
-  p: StyledElem('p'),
-  ol: StyledElem('ol'),
-  ul: StyledElem('ul'),
-  li: StyledElem('li'),
-  pre: StyledElem('pre'),
-  em: StyledElem('em')
+export const MDXLayoutComponents = (
+  classes: Record<'gridList' | 'table' | 'paper' | 'header' | 'em' | 'li', string>
+) => ({
+  h1: StyledElem(classes, 'h3'),
+  h2: StyledElem(classes, 'h4'),
+  h3: StyledElem(classes, 'h5'),
+  h4: StyledElem(classes, 'h6'),
+  h5: StyledElem(classes, 'h6'),
+  h6: StyledElem(classes, 'h6'),
+  p: StyledElem(classes, 'p'),
+  ol: StyledElem(classes, 'ol'),
+  ul: StyledElem(classes, 'ul'),
+  li: StyledElem(classes, 'li'),
+  pre: StyledElem(classes, 'pre'),
+  em: StyledElem(classes, 'em')
+
   // table: p => <table className={css.mdxTable} {...p} />,
   // tr: p => <tr className={css.mdxTableRow} {...p} />,
-}
+})

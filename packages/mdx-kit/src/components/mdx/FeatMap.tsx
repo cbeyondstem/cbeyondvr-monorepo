@@ -73,18 +73,42 @@ export const FeatMap = (props: FeatMapProps) => {
   const items: { [rowCol: string]: (JSX.Element | string)[] } = {}
   children.forEach((child: JSX.Element) => {
     if (child.props.originalType === rowEl) {
-      if (colRawNames.length === 0) {
-        colRawNames[0] = 'variant'
-      } else if (colRawNames[0] !== 'variant') {
-        colRawNames.splice(0, 0, 'variant')
+      let variantCategory = 'variant'
+      const variantMdx = []
+      if (typeof child.props.children.props.children === 'string') {
+        currentRow = `${child.props.children.props.children}`
+        const variantNames = currentRow.split(':')
+        if (variantNames.length === 2) {
+          ;[variantCategory, currentRow] = variantNames
+        }
+        variantMdx.push(currentRow)
+      } else {
+        currentRow = ''
+        child.props.children.props.children.slice(1).forEach((c: React.ReactElement) => {
+          variantMdx.push(c)
+          if (typeof c === 'string') {
+            currentRow += c
+          } else {
+            currentRow += `${c.props.children}`
+          }
+        })
+        variantCategory = `${child.props.children.props.children[0].props.children}`
       }
-      currentCol = 'variant'
-      currentRow = `${child.props.children.props.children}`
+
+      if (colRawNames.length === 0) {
+        colRawNames[0] = variantCategory
+      } else if (colRawNames[0] !== variantCategory) {
+        colRawNames.splice(0, 0, variantCategory)
+      }
+      currentCol = variantCategory
+
       currentKey = `[${currentRow},${currentCol}]`
       if (!(currentKey in items)) {
         items[currentKey] = []
       }
-      items[currentKey].push(<strong>{currentRow}</strong>)
+      variantMdx.forEach((v, idx) => {
+        items[currentKey].push(<strong key={uid(v, idx)}>{v}</strong>)
+      })
       rowNames.push(currentRow)
     } else if (child.props.originalType === colEl) {
       currentCol = `${child.props.children}`
@@ -97,6 +121,27 @@ export const FeatMap = (props: FeatMapProps) => {
       }
       currentKey = `[${currentRow},${currentCol}]`
       items[currentKey] = []
+    } else if (child.props.mdxType === 'Svg') {
+      if (currentRow === undefined) {
+        currentRow = ''
+        rowNames.push(currentRow)
+        if (colRawNames.length === 0) {
+          colRawNames[0] = 'images'
+        } else if (colRawNames[0] !== 'images') {
+          colRawNames.splice(0, 0, 'images')
+        }
+        currentCol = 'images'
+      } else {
+        if (!colRawNames.includes('images')) {
+          colRawNames.splice(1, 0, 'images')
+        }
+        currentCol = 'images'
+      }
+      currentKey = `[${currentRow},${currentCol}]`
+      if (!(currentKey in items)) {
+        items[currentKey] = []
+      }
+      items[currentKey].push(child)
     } else if (!currentKey || !(currentKey in items)) {
       // alert('FeatMap malformed: the first line must always be a second-level header ##')
       addAlert = true
@@ -109,8 +154,17 @@ export const FeatMap = (props: FeatMapProps) => {
     if (r.toLowerCase().search('route') > -1) {
       return 'Route Guidance'
     }
+    if (r.toLowerCase().search('images') > -1) {
+      return 'Illustration'
+    }
+    if (r.toLowerCase().search('sut variant') > -1) {
+      return 'SUT Variants'
+    }
+    if (r.toLowerCase().search('scenario variant') > -1) {
+      return 'Scenario Variants'
+    }
     if (r.toLowerCase().search('variant') > -1) {
-      return 'SUT Variant'
+      return 'SUT Variants'
     }
     if (r.toLowerCase().search('lane') > -1) {
       return 'Virtual Lane'

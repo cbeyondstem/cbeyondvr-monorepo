@@ -2,9 +2,9 @@
 /* eslint-disable react/jsx-filename-extension */
 import * as React from 'react'
 import { ThemeProvider, Theme } from '@material-ui/core/styles'
-import { AllMdx } from 'components/mdx/AllMdx'
-import { AllSvg } from 'components/mdx/AllSvg'
-import { SiteConfig } from 'components/SiteConfig'
+import { AllMdx } from '../components/mdx/AllMdx'
+import { AllSvg } from '../components/mdx/AllSvg'
+import { SiteConfig } from '../components/SiteConfig'
 
 // import 'prismjs/plugins/command-line/prism-command-line.css'
 // import 'prismjs/plugins/toolbar/prism-toolbar'
@@ -21,7 +21,7 @@ export interface TopLayoutProps {
   children: React.ReactNode
 }
 
-export const GetTopLayout = (theme: Theme) => (props: TopLayoutProps) => {
+export const getTopLayout = (theme: Theme) => (props: TopLayoutProps) => {
   const { children } = props
   return (
     <ThemeProvider theme={theme}>

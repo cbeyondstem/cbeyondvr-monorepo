@@ -12,7 +12,7 @@ const prismTheme = (t: Theme) => ({
       text: '#000',
       background: t.palette.secondary.main,
       lineHighlightBorder: t.palette.secondary.main,
-      lineHighlightBackground: t.palette.secondary.dark
+      lineHighlightBackground: t.palette.primary.light
     },
     comment: '#708090', // slategray
     tag: '#995',
@@ -115,13 +115,13 @@ export const gatsbyHighlightLanguageBadges = (t: Theme) => {
 
       ".gatsby-highlight pre[class*='language-']::before": {
         background: t.palette.primary.light,
-        borderRadius: `0 0 .8em .8em`,
+        borderRadius: `0 0 .6em .6em`,
         color: '#FFF',
         fontSize: '12px',
         // fontFamily: 'Roboto',
         // letterSpacing: t.letterSpacings.tracked,
         // lineHeight: t.lineHeights.solid,
-        padding: t.spacing(1, 1),
+        padding: t.spacing(0.5, 1),
         position: `absolute`,
         left: t.spacing(3),
         textAlign: `right`,

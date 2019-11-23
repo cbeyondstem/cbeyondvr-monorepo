@@ -8,4 +8,6 @@ import { Link as GatsbyLink } from 'gatsby'
 //   TypographyClasses?: TypographyProps['classes']
 //   underline?: 'none' | 'hover' | 'always'
 // }
-export const Link = React.forwardRef((props, ref) => <MuiLink ref={ref} component={GatsbyLink} {...props} />)
+export const Link = React.forwardRef((props, ref) => (
+  <MuiLink ref={ref} component={GatsbyLink} {...props} />
+))

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
+import { SEOProps } from '@cbeyond/ui-kit'
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
@@ -13,13 +14,6 @@ const detailsQuery = graphql`
     }
   }
 `
-export interface SEOProps {
-  description?: string
-  lang?: string
-  meta?: string[]
-  keywords?: string[]
-  title: string
-}
 
 export function SEO(props: SEOProps) {
   const { description = '', lang = 'en', meta = [], keywords = [], title } = props

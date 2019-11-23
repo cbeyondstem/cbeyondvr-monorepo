@@ -1,22 +1,9 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist/",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "allowJs": true,
-    "module": "commonjs",
-    "target": "esnext",
-    "jsx": "react",
-    "lib": ["dom", "esnext"],
-    "declaration": true,
-    // decorators required for using class-transformer (for parsing JSON)
-    // https://github.com/typestack/class-transformer
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "baseUrl": ".",
     "paths": {
-      "*": ["*", "src/*", "src/types/*"]
+      "*": ["src/*", "types/*"]
     }
-  },
-  "include": ["mdx-kit/*", "src/**/*"]
+  }
+  //"include": ["src/**/*"]
 }

@@ -20,7 +20,7 @@
     "test": "jest test"
   },
   "engines": {
-    "node": "^10.15.3"
+    "node": "^12.13.1"
   },
   "private": true,
   "workspaces": [

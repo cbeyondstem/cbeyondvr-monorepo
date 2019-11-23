@@ -3,8 +3,9 @@ import * as React from 'react'
 
 import { Container } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { AllSvg } from 'components/mdx/AllSvg'
-import { MdxProps } from 'components/mdx/AllMdx/AllMdx'
+import * as URI from 'uri-js'
+import { AllSvg } from './AllSvg'
+import { MdxProps } from './AllMdx/AllMdx'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -40,5 +41,14 @@ export const Svg = (props: SvgProps) => {
 
 export const SvgAtMdxPath: (m: MdxProps) => React.FunctionComponent<SvgProps> = (m: MdxProps) => props => {
   const { src, ...others } = props
-  return <Svg src={`${m.sourceInstanceName}/${src}`} {...others} />
+  let asrc = src // absolute
+  if (src[0] === '.') {
+    // relative to the mdx in which svg is imported
+    const dirname = m.path
+      .split('/')
+      .slice(0, -1)
+      .join('/')
+    asrc = URI.normalize(`${dirname}/${src}`)
+  }
+  return <Svg src={`${m.sourceInstanceName}/${asrc}`} {...others} />
 }

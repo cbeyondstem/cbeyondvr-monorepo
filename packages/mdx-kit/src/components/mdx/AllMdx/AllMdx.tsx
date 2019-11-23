@@ -1,7 +1,7 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
-import { FileEdge, MdxFrontmatter } from 'types/gatsby-graphql-types.d.ts'
+import { FileEdge, MdxFrontmatter } from '../../../types/gatsby-graphql-types'
 
 export interface MdxProps {
   uid: string
@@ -47,6 +47,7 @@ const AllMdxComp: React.FunctionComponent<MdxProviderProps> = props => {
                   route
                   category
                   sourceInstanceName
+                  relativePath
                 }
                 frontmatter {
                   title
@@ -69,13 +70,18 @@ const AllMdxComp: React.FunctionComponent<MdxProviderProps> = props => {
           let title = _.get(edge, 'node.frontmatter.title', null)
           const frontmatter = _.get(edge, 'node.frontmatter', null)
 
+          // note on the path field:
+          // the ':' is a workaround due to a recent behavior of gatbsy graphql
+          // which maps a path object instead of the string when the string
+          // exactly matches a file. so to prevent the string to match we add a ':' prefix
+          const path = _.get(edge, 'node.fields.relativePath', ':').slice(1)
+
           if (title.length === 0) {
             title = slug
               .split('/')
-              .slice(-1)
+              .slice(-2, -1)
               .join('/')
           }
-          const path = _.get(edge, 'node.fileAbsolutePath', '')
           return {
             uid,
             title,
@@ -90,7 +96,7 @@ const AllMdxComp: React.FunctionComponent<MdxProviderProps> = props => {
         })
         mdxList.forEach((m: MdxProps) => {
           Object.assign(m, {
-            children: mdxList.filter((c: MdxProps) => c.slug.search(`${m.slug}/`) === 0)
+            children: mdxList.filter((c: MdxProps) => c !== m && c.slug.search(`${m.slug}`) === 0)
           })
           m.children.forEach((c: MdxProps) => {
             Object.assign(c, { parent: m })

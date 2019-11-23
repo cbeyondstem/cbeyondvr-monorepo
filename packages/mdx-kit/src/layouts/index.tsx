@@ -1,7 +1,10 @@
-import * as React from 'react'
-import { GetTopLayout } from './TopLayout'
-import { Layout as LayoutWithBrand, LayoutProps } from './Layout'
+import { withPrefix } from 'gatsby'
+import { Link } from '../components/Link'
+import { SiteConfig } from '../components/SiteConfig'
+import { getTopLayout } from './TopLayout'
+import { getLayout } from './LayoutBlog'
 import { Brand } from './Brand'
+import { SEO } from './Seo'
 import theme from './theme'
 
 // custom typefaces
@@ -12,9 +15,5 @@ import 'assets/prismjs/prism_clear.css'
 // we want to use this layout plugin for all layout context that must persist
 // through the component mounting lifecyle
 // see details at: https://www.gatsbyjs.org/packages/gatsby-plugin-layout/
-export default GetTopLayout(theme)
-
-// eslint-disable-next-line react/jsx-props-no-spreading
-export const Layout = (props: LayoutProps) => <LayoutWithBrand brand={<Brand />} {...props} />
-export { GetTopLayout } from './TopLayout'
-export { SEO } from './Seo'
+export default getTopLayout(theme)
+export const Layout = getLayout(Link, SEO, Brand, SiteConfig.Org, withPrefix)

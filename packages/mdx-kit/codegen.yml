@@ -4,7 +4,7 @@ documents:
   - "./src/**/*.graphql"
 config: {}
 generates:
-  ./src/types/gatsby-graphql-types.d.ts:
+  ./src/types/gatsby-graphql-types.ts:
     config: {}
     plugins:
       - "typescript-common"

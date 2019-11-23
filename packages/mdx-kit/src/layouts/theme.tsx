@@ -1,6 +1,6 @@
 // import { red } from '@material-ui/core/colors'
 import { createMuiTheme, createStyles } from '@material-ui/core/styles'
-import { gatsbyHighlight, gatsbyHighlightLanguageBadges } from 'assets/prismjs'
+import { gatsbyHighlight, gatsbyHighlightLanguageBadges } from '../assets/prismjs'
 
 const theme = createMuiTheme({
   palette: {

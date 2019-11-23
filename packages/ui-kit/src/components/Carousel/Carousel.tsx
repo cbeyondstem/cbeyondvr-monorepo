@@ -1,16 +1,16 @@
 import * as _ from 'lodash'
 import * as React from 'react'
+
+import ImageGallery, { ImageItemProps } from 'react-image-gallery'
+
+import '../../assets/image-gallery.css'
+
+import { style } from 'typestyle'
+import * as csx from 'csx'
 import {
   ImageSharpFluidFilterInput,
   ImageSharpFixedFilterInput,
-} from 'types/gatsby-graphql-types.d.ts'
-
-/// <reference path="../../types/react-image-gallery.d.ts"/>
-import ImageGallery, { ImageItemProps } from 'react-image-gallery'
-
-import './image-gallery.css'
-import { style } from 'typestyle'
-import * as csx from 'csx'
+} from '../../types/gatsby-graphql-types'
 
 export interface CarouselProps {
   images: {

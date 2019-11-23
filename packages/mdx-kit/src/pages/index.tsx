@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 
-import { Layout } from 'layouts'
-import { BlogIndex } from 'views/BlogIndex'
-import { Query } from 'types/gatsby-graphql-types.d.ts'
+import { Layout } from '../layouts'
+import { BlogIndex } from '../views/BlogIndex'
+import { Query } from '../types/gatsby-graphql-types'
 
 export interface BlogIndexProps {
   data: Query

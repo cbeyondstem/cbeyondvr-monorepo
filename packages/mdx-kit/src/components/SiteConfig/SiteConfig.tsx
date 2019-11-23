@@ -2,7 +2,7 @@
 import * as React from 'react'
 import * as _ from 'lodash'
 import { graphql, StaticQuery } from 'gatsby'
-import { AllSvg } from 'components/mdx/AllSvg'
+import { AllSvg } from '../mdx/AllSvg'
 
 export interface SiteConfigProviderProps {
   title: string
@@ -95,8 +95,8 @@ export const Get: (key: string) => React.FunctionComponent<React.ComponentPropsW
     {(cfg: SiteConfigProviderProps) => {
       const text = _.get(cfg, key, `unknown key ${key}`)
       // const sp = <Space cnt={1} />
-      const st = <strong>{text}</strong>
-      return React.createElement('span', { props }, [st])
+      // const st = <strong>{text}</strong>
+      return React.createElement('span', { props }, [text])
     }}
   </Consumer>
 )

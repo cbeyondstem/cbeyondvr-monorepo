@@ -13,7 +13,7 @@ const watchDirectory = require('./watch-directory')
 
 const myCreatePage = (filePath, slug, createPage) => {
   // Create page object
-  console.log(slug)
+  console.log(`monitoring page at: /${systemPath.relative(systemPath.join(__dirname, '..'), filePath)}/`)
   const page = {
     path: slug,
     component: filePath
@@ -25,11 +25,7 @@ const myCreatePage = (filePath, slug, createPage) => {
 
 // Path creator.
 // Auto-create pages.
-exports.createPagesStatefully = async (
-  { store, actions, reporter, graphql },
-  { path: pagesPath = './content' },
-  doneCb
-) => {
+exports.createPagesStatefully = async ({ store, actions, reporter, graphql }, { path: pagesPath }, doneCb) => {
   const { createPage, deletePage } = actions
   const exts = 'md,mdx' // program.extensions.map(e => `${e.slice(1)}`).join(`,`)
 

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Layout } from 'layouts'
+import { Layout } from '../layouts'
 
 export interface MyPageProps {
   location: {

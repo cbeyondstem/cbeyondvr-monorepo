@@ -12,6 +12,7 @@ const site = {
 }
 
 module.exports = {
+  pathPrefix: `/blog`,
   siteMetadata: site,
   mapping: {
     'Mdx.fields.author': `AuthorJson`
@@ -25,10 +26,22 @@ module.exports = {
       }
     },
     {
+      resolve: `custom-page-creator`,
+      options: {
+        path: `${__dirname}/content/pages`
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`
+      }
+    },
+    {
+      resolve: `custom-page-creator`,
+      options: {
+        path: `${__dirname}/content/blog`
       }
     },
     {

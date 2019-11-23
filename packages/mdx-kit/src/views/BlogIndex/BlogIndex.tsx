@@ -2,11 +2,10 @@
 /* eslint-disable react/no-danger */
 import * as React from 'react'
 import { uid } from 'react-uid'
-import { Link } from 'components/Link'
-import { AllMdx } from 'components/mdx/AllMdx'
-import { MdxProps } from 'components/mdx/AllMdx/AllMdx'
-
 import { Typography, List, ListItem, ListItemText, Theme, makeStyles, createStyles } from '@material-ui/core'
+import { Link } from '../../components/Link'
+import { AllMdx } from '../../components/mdx/AllMdx'
+import { MdxProps } from '../../components/mdx/AllMdx/AllMdx'
 
 const caretRight = '"\\25B8"'
 const useStyles = makeStyles((theme: Theme) =>

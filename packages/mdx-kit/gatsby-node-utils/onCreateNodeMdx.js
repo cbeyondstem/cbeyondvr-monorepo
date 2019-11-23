@@ -24,13 +24,24 @@ async function onCreateNode({ node, getNode, actions }) {
     createNodeField({
       name: 'slug',
       node,
-      value: `/${_.join(names, '/')}`
+      value: `/${_.join(names, '/')}/`
     })
+    console.log(`found mdx at path: /${_.join(names, '/')}/`)
 
     createNodeField({
       name: 'sourceInstanceName',
       node,
       value: parent.sourceInstanceName
+    })
+
+    createNodeField({
+      name: 'relativePath',
+      node,
+      // note on the path value:
+      // the ':' is a workaround due to a recent behavior of gatbsy graphql
+      // which maps a path object instead of the string when the string
+      // exactly matches a file. so to prevent the string to match we add a ':' prefix
+      value: `:${parent.relativePath}`
     })
 
     createNodeField({

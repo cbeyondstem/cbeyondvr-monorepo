@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { createStyles, Theme, makeStyles, useTheme } from '@material-ui/core/styles'
-import { SiteConfig } from 'components/SiteConfig'
+import { SiteConfig } from '../components/SiteConfig'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

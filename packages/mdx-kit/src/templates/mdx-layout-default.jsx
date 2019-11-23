@@ -2,14 +2,13 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import { Typography, Box, Paper } from '@material-ui/core'
+import { withPrefix } from 'gatsby'
 
 import { useTheme, makeStyles } from '@material-ui/core/styles'
 
-import { MDXLayoutComponents, MDXGlobalComponents } from 'components/mdx'
-import { AllMdx } from 'components/mdx/AllMdx'
-import { Layout } from 'layouts'
-import { SiteConfig } from 'components/SiteConfig'
-import { Svg } from 'components/mdx/Svg'
+import { MDXLayoutComponents, MDXGlobalComponents, mdxLayoutStyles } from 'components/mdx'
+import { Layout } from '../layouts'
+import { AllMdx } from '../components/mdx/AllMdx/AllMdx'
 
 const useStyles = makeStyles({
   paper: {
@@ -22,17 +21,20 @@ const useStyles = makeStyles({
 })
 
 const BlogPostTemplate = props => {
-  const { location, uri, children } = props
+  const { location, children } = props
+  let { pathname } = location
   const theme = useTheme(props)
   const classes = useStyles(props)
+  const mdxClasses = mdxLayoutStyles(props)
+  pathname = `/${pathname.replace(withPrefix('/'), '')}`
   return (
     <AllMdx.Consumer>
-      {({ mdxList }) => {
-        const nodes = mdxList.filter(m => m.slug === uri)
-        if (nodes.length === 0) {
+      {({ mdxBySlug }) => {
+        if (!(pathname in mdxBySlug)) {
           return null
         }
-        const { title } = nodes[0]
+        const mdx = mdxBySlug[pathname]
+        const { title } = mdx
         return (
           <Layout location={location} title={title}>
             <Paper className={classes.paper}>
@@ -48,8 +50,8 @@ const BlogPostTemplate = props => {
               <Box p={1} />
               <MDXProvider
                 components={{
-                  ...MDXLayoutComponents,
-                  ...MDXGlobalComponents(nodes[0])
+                  ...MDXLayoutComponents(mdxClasses),
+                  ...MDXGlobalComponents(mdx)
                 }}
               >
                 {children}
@@ -71,7 +73,6 @@ BlogPostTemplate.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
   }).isRequired,
-  uri: PropTypes.string.isRequired,
   pageContext: PropTypes.shape({
     frontmatter: FrontmatterType.isRequired
   }).isRequired,
