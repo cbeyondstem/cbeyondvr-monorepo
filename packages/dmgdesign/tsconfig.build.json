@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.build.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "*",
+        "types/*",
+        "node_modules/@cbeyond/ui-kit/types/*",
+        "../../node_modules/@cbeyond/ui-kit/types/*",
+        "node_modules/@cbeyond/mdx-kit/types/*",
+        "../../node_modules/@cbeyond/mdx-kit/types/*"
+      ]
+    }
+  },
+  "references": [
+    {
+      "path": "../ui-kit/tsconfig.build.json"
+    }
+  ],
+  "include": ["src/**/*"]
+}

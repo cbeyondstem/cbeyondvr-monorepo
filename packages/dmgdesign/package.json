@@ -4,9 +4,10 @@
   "version": "0.1.0",
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
   "scripts": {
-    "build": "gatsby build",
+    "build": "yarn run clean &&  yarn run compile && yarn run gatsby build",
+    "clean": "rimraf public .cache dist && rm -rf tsconfig.build.tsbuildinfo",
+    "compile": "tsc -b tsconfig.build.json",
     "serve": "gatsby serve",
-    "clean": "rimraf public .cache",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "dev": "gatsby develop",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,md,mdx}\" \"content/**/*.{js,jsx,ts,tsx,md,mdx}\"",

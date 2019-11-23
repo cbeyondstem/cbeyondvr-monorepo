@@ -74,13 +74,10 @@ export const GetSvg: (key: string) => React.FunctionComponent<React.SVGProps<SVG
           {({ svgByPath }) => {
             let src = _.get(cfg, key, `unknown key ${key}`)
             src = src.replace('./', '').replace('src/', '')
-            console.log(`SiteConfig.Logo ${src}`)
             if (!(src in svgByPath)) {
-              console.log(`SiteConfig.Logo ${src} not found`)
               return <em>{`<Svg src=${src}/> not found`}</em>
             }
             const { Svg: SvgRaw } = svgByPath[src]
-            console.log(`SiteConfig.Logo ${src} all good!!`)
             return <SvgRaw {...props} />
           }}
         </AllSvg.Consumer>

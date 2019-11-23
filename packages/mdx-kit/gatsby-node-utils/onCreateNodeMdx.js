@@ -9,9 +9,7 @@ async function onCreateNode({ node, getNode, actions }) {
   if (node.internal.type === 'Mdx') {
     const parent = getNode(node.parent)
     let value = _.get(node, 'frontmatter.slug', null) || parent.relativePath.replace(parent.ext, '')
-    if (!['pages', 'content'].includes(parent.sourceInstanceName)) {
-      value = `${parent.sourceInstanceName}/${value}`
-    }
+    value = `${parent.sourceInstanceName}/${value}`
     const names = _.split(value, '/')
     if (names[names.length - 1] === 'index') {
       names.splice(names.length - 1, 1)

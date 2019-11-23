@@ -12,7 +12,7 @@ const site = {
 }
 
 module.exports = {
-  pathPrefix: `/blog`,
+  pathPrefix: `/blog-prefix`,
   siteMetadata: site,
   mapping: {
     'Mdx.fields.author': `AuthorJson`

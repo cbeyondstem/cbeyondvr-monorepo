@@ -20,7 +20,6 @@ export const getLayout: (
     let { pathname } = location
     pathname = `/${pathname.replace(withPrefix('/'), '')}`
     // const classes = useStyles(props)
-
     const BrandButton = (
       <Link underline="none" to="/">
         <Button>
