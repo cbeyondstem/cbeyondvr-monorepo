@@ -1,4 +1,4 @@
-export { Space } from "./components/Space";
+export { Space } from './components/Space'
 export {
   Header,
   getHeaderLinks,
@@ -7,7 +7,7 @@ export {
 } from './components/Header'
 export { getHeader as getHeaderBlog } from './components/HeaderBlog'
 export { Footer } from './components/Footer'
-export { Carousel } from './components/Carousel'
+export * from './components/Carousel'
 export {
   LinkProps,
   SEOProps,

@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react'
 import * as _ from 'lodash'
-import { graphql, StaticQuery } from 'gatsby'
-import { AllSvg } from '../mdx/AllSvg'
+import { AllSvgConsumer } from '../AllSvg'
 
 export interface SiteConfigProviderProps {
   title: string
@@ -14,7 +13,7 @@ export interface SiteConfigProviderProps {
   logo: string
 }
 
-const { Consumer, Provider } = React.createContext({
+export const { Consumer: SiteConfigConsumer, Provider: SiteConfigProvider } = React.createContext({
   title: ``,
   description: ``,
   siteUrl: ``,
@@ -28,49 +27,14 @@ export interface SiteConfigProps {
   children: React.ReactNode
 }
 
-const SiteConfigComp: React.FunctionComponent<SiteConfigProps> = props => {
-  const { children } = props
-  return (
-    <StaticQuery
-      query={graphql`
-        query SiteConfigQuery {
-          site {
-            siteMetadata {
-              title
-              description
-              siteUrl
-              org
-              contact
-              faviconSvg
-              logo
-              icon
-            }
-          }
-        }
-      `}
-      render={data => {
-        return (
-          <Provider
-            value={{
-              ...data.site.siteMetadata
-            }}
-          >
-            {children}
-          </Provider>
-        )
-      }}
-    />
-  )
-}
-
 export const GetSvg: (key: string) => React.FunctionComponent<React.SVGProps<SVGSVGElement>> = (key: string) => {
   if (!['faviconSvg', 'logo', 'icon'].includes(key)) {
     return null
   }
   return props => (
-    <Consumer>
+    <SiteConfigConsumer>
       {(cfg: SiteConfigProviderProps) => (
-        <AllSvg.Consumer>
+        <AllSvgConsumer>
           {({ svgByPath }) => {
             let src = _.get(cfg, key, `unknown key ${key}`)
             src = src.replace('./', '').replace('src/', '')
@@ -80,26 +44,23 @@ export const GetSvg: (key: string) => React.FunctionComponent<React.SVGProps<SVG
             const { Svg: SvgRaw } = svgByPath[src]
             return <SvgRaw {...props} />
           }}
-        </AllSvg.Consumer>
+        </AllSvgConsumer>
       )}
-    </Consumer>
+    </SiteConfigConsumer>
   )
 }
-export const Get: (key: string) => React.FunctionComponent<React.ComponentPropsWithRef<'span'>> = (
-  key: string
-) => props => (
-  <Consumer>
+const Get: (key: string) => React.FunctionComponent<React.ComponentPropsWithRef<'span'>> = (key: string) => props => (
+  <SiteConfigConsumer>
     {(cfg: SiteConfigProviderProps) => {
       const text = _.get(cfg, key, `unknown key ${key}`)
       // const sp = <Space cnt={1} />
       // const st = <strong>{text}</strong>
       return React.createElement('span', { props }, [text])
     }}
-  </Consumer>
+  </SiteConfigConsumer>
 )
 
 export const SiteConfig = {
-  Provider: SiteConfigComp,
   Org: Get('org'),
   SiteUrl: Get('siteUrl'),
   Contact: Get('contact'),
@@ -107,6 +68,5 @@ export const SiteConfig = {
   Description: Get('description'),
   Favicon: GetSvg('faviconSvg'),
   Icon: GetSvg('icon'),
-  Logo: GetSvg('logo'),
-  Consumer
+  Logo: GetSvg('logo')
 }

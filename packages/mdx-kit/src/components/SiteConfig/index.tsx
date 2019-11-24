@@ -1,1 +1,1 @@
-export { SiteConfig } from './SiteConfig'
+export * from "./SiteConfig";

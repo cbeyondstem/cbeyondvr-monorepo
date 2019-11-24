@@ -1,13 +1,14 @@
 // import { red } from '@material-ui/core/colors'
 import { createMuiTheme, createStyles } from '@material-ui/core/styles'
-import { gatsbyHighlight, gatsbyHighlightLanguageBadges } from 'assets/prismjs'
+import { gatsbyHighlight, gatsbyHighlightLanguageBadges } from '@cbeyond/mdx-kit/src/assets/prismjs'
 
 const theme = createMuiTheme({
   palette: {
-    type: 'light',
+    type: 'dark',
     primary: {
       light: '#d7d7f4',
-      main: '#2c2ca0'
+      main: '#ffffff',
+      dark: '#2d2d2d'
       // contrastText: '#2c2ca0'
     },
     secondary: {
@@ -16,10 +17,7 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: ['Roboto'].join(',')
-    // h1: {
-    //   color: '#2c2ca0'
-    // }
+    fontFamily: ['Michroma'].join(',')
   }
 })
 

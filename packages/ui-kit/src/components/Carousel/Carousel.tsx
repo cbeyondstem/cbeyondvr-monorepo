@@ -18,7 +18,7 @@ export interface CarouselProps {
     img: ImageSharpFluidFilterInput
     thumb: string
   }[]
-  renderImage: (item: ImageItemProps) => React.ReactNode
+  renderImage?: (item: ImageItemProps) => React.ReactNode
 }
 
 export const Carousel: React.FunctionComponent<CarouselProps> = props => {

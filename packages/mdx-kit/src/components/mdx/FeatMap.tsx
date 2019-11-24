@@ -59,7 +59,7 @@ export interface FeatMapProps {
   children: React.ReactNode[]
 }
 
-export const FeatMap = (props: FeatMapProps) => {
+export const FeatMap: React.FunctionComponent<FeatMapProps> = (props: FeatMapProps) => {
   const classes = useStyles(props)
   const { children } = props
   let addAlert = false

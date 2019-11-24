@@ -63,8 +63,8 @@ module.exports = {
       options: {
         extensions: ['.mdx', '.md'],
         defaultLayouts: {
-          pages: require.resolve('./src/templates/mdx-layout-default.jsx'),
-          blog: require.resolve('./src/templates/mdx-layout-default.jsx')
+          pages: require.resolve('./src/gatsby-tpl/mdx-layout-default.jsx'),
+          blog: require.resolve('./src/gatsby-tpl/mdx-layout-default.jsx')
         },
         gatsbyRemarkPlugins: [
           {

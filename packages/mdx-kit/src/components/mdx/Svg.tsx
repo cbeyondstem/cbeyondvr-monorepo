@@ -4,8 +4,8 @@ import * as React from 'react'
 import { Container } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import * as URI from 'uri-js'
-import { AllSvg } from './AllSvg'
-import { MdxProps } from './AllMdx/AllMdx'
+import { AllSvgConsumer } from '../AllSvg'
+import { MdxProps } from './AllMdx'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -23,7 +23,7 @@ export const Svg = (props: SvgProps) => {
   const classes = useStyles(props)
   const { className, src, width, height } = props
   return (
-    <AllSvg.Consumer>
+    <AllSvgConsumer>
       {({ svgByPath }) => {
         if (!(src in svgByPath)) {
           return <em>{`<Svg src=${src}/> not found`}</em>
@@ -35,7 +35,7 @@ export const Svg = (props: SvgProps) => {
           </Container>
         )
       }}
-    </AllSvg.Consumer>
+    </AllSvgConsumer>
   )
 }
 

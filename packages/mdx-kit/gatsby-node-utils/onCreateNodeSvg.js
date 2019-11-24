@@ -79,7 +79,7 @@ async function onCreateNode({ node, actions, loadNodeContent, createNodeId, crea
   })
   const { data: optimizedSVG } = await svgo.optimize(content)
   svgNode.content = optimizedSVG
-  svgNode.path = node.relativePath
+  svgNode.path = `:${node.relativePath}`
   svgNode.sourceInstanceName = node.sourceInstanceName
   svgNode.internal.contentDigest = createContentDigest(svgNode)
   createNode(svgNode)

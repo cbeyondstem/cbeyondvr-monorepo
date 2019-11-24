@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
-const mdxUtils = require('@cbeyond/mdx-kit/gatsby-node-utils')
+// const mdxUtils = require('@cbeyond/mdx-kit/gatsby-node-utils')
+const sharp = require('sharp')
 const { siteMetadata } = require('./gatsby-config')
+
+sharp.simd(false)
+sharp.cache(false)
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -19,9 +23,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   })
 }
 
-if (siteMetadata.mdx) {
-  exports.onCreateNode = mdxUtils.onCreateNode
-  exports.createPagesStatefully = mdxUtils.createPagesStatefully
-}
+// if (siteMetadata.mdx) {
+//   exports.onCreateNode = mdxUtils.onCreateNode
+// }
 
-exports.onPostBuild = mdxUtils.onPostBuild
+// exports.onPostBuild = mdxUtils.onPostBuild

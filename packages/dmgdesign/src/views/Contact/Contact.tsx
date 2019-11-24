@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField'
 
 import { Typography, Container, Divider, Box, Grid, Paper } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import BrandIcon from 'assets/img/dmg-icon-color.comp.svg'
+// import BrandIcon from 'assets/img/dmg-icon-color.comp.svg'
 
 const useStyles = makeStyles(theme => ({
   // '@global': {

@@ -1,8 +1,8 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
-import { FileEdge } from 'types/gatsby-graphql-types.d.ts'
-import { CarouselProps } from '@cbeyond/ui-kit/src/components/Carousel'
+import { FileEdge } from '@cbeyond/ui-kit/src/types/gatsby-graphql-types'
+import { CarouselProps } from '@cbeyond/ui-kit/src'
 
 const { Consumer, Provider } = React.createContext({
   images: []

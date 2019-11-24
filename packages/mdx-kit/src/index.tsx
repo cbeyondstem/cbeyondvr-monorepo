@@ -1,16 +1,14 @@
-// Link resuable component compatible with material ui's MuiLink and Gatsby's Link
 export { Link } from './components/Link'
-
 // reusable MDX components
-export { SiteConfig } from './components/SiteConfig'
-export { AllMdx } from './components/mdx/AllMdx'
-export { AllSvg } from './components/mdx/AllSvg'
+export { SiteConfig, SiteConfigConsumer, SiteConfigProvider, SiteConfigProps } from './components/SiteConfig'
+export { AllMdxConsumer, allMdxQueryRender, MdxProviderProps } from './components/mdx/AllMdx'
+export { AllSvgConsumer, allSvgQueryRender, SvgProviderProps } from './components/AllSvg'
 export { MDXLayoutComponents, MDXGlobalComponents, mdxLayoutStyles } from './components/mdx'
 
 // reusable View components
 export { BlogIndex } from './views/BlogIndex'
 
 // reusable Layout components
-export { getTopLayout } from './layouts/TopLayout'
-export { getLayout as getLayoutBlog } from './layouts/LayoutBlog'
-export { SEO } from './layouts/Seo'
+export { getLayout as getLayoutBlog } from './components/LayoutBlog'
+export { SEO } from './components/SEO'
+export { getLayoutMdx } from './components/mdx/LayoutMdx'

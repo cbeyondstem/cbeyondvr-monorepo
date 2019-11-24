@@ -1,1 +1,1 @@
-export { AllMdx, MdxProps } from './AllMdx'
+export * from './AllMdx'

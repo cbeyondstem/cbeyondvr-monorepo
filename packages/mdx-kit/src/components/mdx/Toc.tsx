@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react'
 import { uid } from 'react-uid'
 import { makeStyles } from '@material-ui/core/styles'
@@ -26,7 +27,6 @@ export const Toc: (m: MdxProps) => React.FunctionComponent<React.ComponentPropsW
 ) => props => {
   const classes = useStyles(props)
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
     <Typography variant="h5">
       <List {...props} className={classes.root}>
         {m.children.map((c: MdxProps, idx: number) => (

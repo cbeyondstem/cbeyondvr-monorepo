@@ -3,9 +3,9 @@ import { SiteConfig } from '../SiteConfig'
 import { FeatMap } from './FeatMap'
 import { SvgAtMdxPath } from './Svg'
 import { Toc } from './Toc'
-import { MdxProps } from './AllMdx/AllMdx'
+import { MdxProps } from './AllMdx'
 
-export { MDXLayoutComponents, mdxLayoutStyles } from './mdxLayout'
+export { MDXLayoutComponents, mdxLayoutStyles } from './mdxStyles'
 
 export const MDXGlobalComponents = (m: MdxProps) => ({
   Link,

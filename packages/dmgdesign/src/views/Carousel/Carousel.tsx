@@ -1,18 +1,17 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 import Img from 'gatsby-image'
-import { style, TypeStyle } from 'typestyle'
+import { style } from 'typestyle'
 
-import { ImageSharpFluidFilterInput } from 'types/gatsby-graphql-types.d.ts'
-import { ImgProvider } from 'components/ImgProvider'
+import { ImageSharpFluidFilterInput } from '@cbeyond/mdx-kit/src/types/gatsby-graphql-types'
 import { Carousel as CarouselBase } from '@cbeyond/ui-kit/src/components/Carousel'
 import { Container } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
-/// <reference path="../../types/react-image-gallery.d.ts"/>
 import { ImageItemProps } from 'react-image-gallery'
+import { ImgProvider } from '../../components/ImgProvider'
 
 export interface CarouselViewProps {
   path: string

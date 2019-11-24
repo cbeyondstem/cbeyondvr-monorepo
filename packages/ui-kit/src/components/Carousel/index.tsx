@@ -1,1 +1,1 @@
-export { Carousel, CarouselProps } from './Carousel'
+export * from './Carousel'

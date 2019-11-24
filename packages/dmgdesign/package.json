@@ -27,7 +27,6 @@
     "favicons/**/react": "^16.2.0"
   },
   "dependencies": {
-    "@cbeyond/mdx-kit": "^1.0.0",
     "@cbeyond/ui-kit": "^1.0.0",
     "@material-ui/core": "^4.5.2",
     "@material-ui/icons": "^4.5.1",
@@ -74,8 +73,10 @@
     "react-jss": "^10.0.0",
     "react-live": "^2.2.0",
     "react-uid": "^2.2.0",
+    "sharp": "^0.23.3",
     "slash": "^3.0.0",
     "storybook": "^5.1.11",
+    "svg-parser": "^2.0.2",
     "typeface-michroma": "^0.0.72",
     "typeface-roboto": "^0.0.75",
     "typescript": "^3.6.3",
