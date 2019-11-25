@@ -12,12 +12,13 @@ import {
   LayoutProps,
   MenuItem,
   LinkProps,
+  BrandProps,
 } from '../../../types/interfaces'
 
 export const getLayout: (
   Link: React.FunctionComponent<LinkProps>,
   SEO: React.FunctionComponent<SEOProps>,
-  Brand: React.FunctionComponent,
+  Brand: React.FunctionComponent<BrandProps>,
   Org: React.FunctionComponent,
   menuItems: MenuItem[],
   withPrefix: (p: string) => string
@@ -38,7 +39,7 @@ export const getLayout: (
     const BrandButton = (
       <Link underline="none" to="/">
         <Button>
-          <Brand />
+          <Brand type="header" />
         </Button>
       </Link>
     )
@@ -55,7 +56,7 @@ export const getLayout: (
           <SEO title={pageTitle} {...seoProps} />
           {children}
         </Container>
-        <Footer brand={<Brand />} org={<Org />} />
+        <Footer brand={<Brand type="footer" />} org={<Org />} />
       </>
     )
   }

@@ -1,36 +1,44 @@
 import * as React from 'react'
 
 import { createStyles, Theme, makeStyles, useTheme } from '@material-ui/core/styles'
-import { SiteConfig } from '@cbeyond/ui-kit'
+import { SiteConfig, BrandProps } from '@cbeyond/ui-kit'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    brand: {
+    header: {
       color: theme.palette.primary.main,
       textTransform: 'none',
-      '& svg': {
-        marginBottom: theme.spacing(-0.3)
+      '& >svg:first-child': {
+        marginBottom: theme.spacing(-0.5)
+      },
+      '& >svg:nth-child(2)': {
+        fill: '#fcfcfc !important',
+        stroke: 'transparent !important',
+        marginLeft: '1px',
+        marginRight: '3px',
+        marginBottom: theme.spacing(0.5)
       }
-      // '& >svg:nth-child(3)': {
-      //   fill: '#fcfcfc !important',
-      //   stroke: 'transparent !important',
-      //   marginLeft: '1px',
-      //   marginRight: '3px'
-      // }
+    },
+    footer: {
+      '& >svg:first-child': {
+        marginBottom: theme.spacing(-1)
+      }
     }
   })
 )
-export const Brand = () => {
+export const Brand = (props: BrandProps) => {
+  const { type } = props
   const classes = useStyles({})
   const theme = useTheme()
 
-  return (
-    <span className={classes.brand}>
+  return type === 'header' ? (
+    <span className={classes.header}>
       <SiteConfig.Icon width={theme.spacing(4)} height={theme.spacing(4)} />
-      CBeyond<span style={{ color: '#ffa800' }}>S</span>
-      <span style={{ color: '#1fd2ff' }}>T</span>
-      <span style={{ color: '#ff007f' }}>E</span>
-      <span style={{ color: '#00d400' }}>M</span>
+      <SiteConfig.Logo viewBox="0 0 253.19 15.663" width="200" height="12" />
+    </span>
+  ) : (
+    <span className={classes.footer}>
+      <SiteConfig.Icon width={theme.spacing(3)} height={theme.spacing(3)} />
     </span>
   )
 }

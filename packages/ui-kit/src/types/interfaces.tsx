@@ -40,4 +40,8 @@ export interface MenuItem {
   popup?: boolean
 }
 
+export interface BrandProps {
+  type: 'header' | 'footer'
+}
+
 export { ImageItemProps } from './react-image-gallery/imgItemProps'

@@ -9,5 +9,12 @@ export interface ImageItemProps {
   renderThumbInner?: () => React.ReactNode
   bulletOnClick?: () => void
   bulletClass?: string
-  original?: ImageSharpFluid
+  original?: {
+    path: string
+    desktop: ImageSharpFluid
+    mobile?: ImageSharpFluid
+    thumb: string
+  }
+  originalTitle?: string
+  description?: string
 }

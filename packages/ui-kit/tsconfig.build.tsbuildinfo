@@ -1466,8 +1466,8 @@
         "signature": "6b6e9bde2caad51b70c15f4b339c9a59a0fad67b186ca091f8383d367cd9c32d"
       },
       "./src/types/gatsby-graphql-types.ts": {
-        "version": "82be281af88f390c5652da46fd08bca1e5c23d9b026c7bf5a9dc8bbe762618c1",
-        "signature": "730c89d0eef98d7821f553c2acf3f12ea43aa72a5a4d9ec9b18a38de41f149b9"
+        "version": "b82a3a7d5956fb7b2fa88bd268a4da914555e868c8e7675922d1d3ef6c9093d3",
+        "signature": "becc402e39c1cff8ddbda34a309be516bbff161ff79238b0a7dc6419490f2d7b"
       },
       "./src/types/react-image-gallery/imgItemProps.tsx": {
         "version": "2ca7cf341dc5088c7530416cb96138fa935eee219f0c920b0ab3a073863850d5",
@@ -1590,7 +1590,7 @@
         "signature": "d152e1ba15a97ce75ec770143daff6372a136c260ba3e356b52dff3f6a9fbc9b"
       },
       "./src/components/content/AllMdx/AllMdx.tsx": {
-        "version": "56c1f7a94ae36e12d9f16849637b76b3998575de6b8a9c8dd6c5e6450542f8a5",
+        "version": "0516826a7d870f1c1817a3d7f14dab97d3dbe02a279ba09f82a13d7b01b08cac",
         "signature": "40d990f37d5eb84639f2e6e2777be64f69671437c40169dd1645f6b65ea9697e"
       },
       "./src/components/content/AllMdx/index.tsx": {
@@ -1710,7 +1710,7 @@
         "signature": "176c1cc7c1aa5f94d056749d407310b8307d7d8009e8ad62357b3829ebd7707f"
       },
       "./src/components/ui/SEO/Seo.tsx": {
-        "version": "213d05a7ce326af1ecf190a5df54130d0450039eeb92ce1b7231002dbad415b5",
+        "version": "4510c387570cfecf0a0d2f714b129f5494655af8657729e4fc17b686d6876dcc",
         "signature": "9b83274b4bd475872d12974a69df1858cbd04e55129bb352e0b9c501252a2814"
       },
       "./src/components/ui/SEO/index.tsx": {

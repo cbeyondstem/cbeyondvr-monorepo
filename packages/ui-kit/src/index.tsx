@@ -6,6 +6,7 @@ export {
   PageProps,
   LayoutProps,
   MenuItem,
+  BrandProps,
   ImageItemProps,
 } from './types/interfaces'
 

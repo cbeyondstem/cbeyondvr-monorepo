@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
   "scripts": {
-    "build": "yarn run clean &&  yarn run compile && yarn run gatsby build",
+    "build": "yarn run gatsby build",
     "clean": "rimraf public .cache dist && rm -rf tsconfig.build.tsbuildinfo",
     "compile": "tsc -b tsconfig.build.json",
     "serve": "gatsby serve",

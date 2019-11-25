@@ -13,9 +13,9 @@ export interface DateQueryOperatorInput {
 
   lte?: Maybe<Date>
 
-  in?: Maybe<(Maybe<Date>)[]>
+  in?: Maybe<Maybe<Date>[]>
 
-  nin?: Maybe<(Maybe<Date>)[]>
+  nin?: Maybe<Maybe<Date>[]>
 }
 
 export interface FloatQueryOperatorInput {
@@ -31,9 +31,9 @@ export interface FloatQueryOperatorInput {
 
   lte?: Maybe<number>
 
-  in?: Maybe<(Maybe<number>)[]>
+  in?: Maybe<Maybe<number>[]>
 
-  nin?: Maybe<(Maybe<number>)[]>
+  nin?: Maybe<Maybe<number>[]>
 }
 
 export interface StringQueryOperatorInput {
@@ -41,9 +41,9 @@ export interface StringQueryOperatorInput {
 
   ne?: Maybe<string>
 
-  in?: Maybe<(Maybe<string>)[]>
+  in?: Maybe<Maybe<string>[]>
 
-  nin?: Maybe<(Maybe<string>)[]>
+  nin?: Maybe<Maybe<string>[]>
 
   regex?: Maybe<string>
 
@@ -63,9 +63,9 @@ export interface IntQueryOperatorInput {
 
   lte?: Maybe<number>
 
-  in?: Maybe<(Maybe<number>)[]>
+  in?: Maybe<Maybe<number>[]>
 
-  nin?: Maybe<(Maybe<number>)[]>
+  nin?: Maybe<Maybe<number>[]>
 }
 
 export interface ImageSharpFilterInput {
@@ -245,9 +245,9 @@ export interface BooleanQueryOperatorInput {
 
   ne?: Maybe<boolean>
 
-  in?: Maybe<(Maybe<boolean>)[]>
+  in?: Maybe<Maybe<boolean>[]>
 
-  nin?: Maybe<(Maybe<boolean>)[]>
+  nin?: Maybe<Maybe<boolean>[]>
 }
 
 export interface MdxFilterInput {
@@ -295,7 +295,11 @@ export interface MdxFrontmatterFilterInput {
 
   slug?: Maybe<StringQueryOperatorInput>
 
-  date?: Maybe<DateQueryOperatorInput>
+  date?: Maybe<StringQueryOperatorInput>
+
+  tags?: Maybe<StringQueryOperatorInput>
+
+  where?: Maybe<StringQueryOperatorInput>
 }
 
 export interface MdxHeadingMdxFilterListInput {
@@ -313,9 +317,9 @@ export interface JsonQueryOperatorInput {
 
   ne?: Maybe<Json>
 
-  in?: Maybe<(Maybe<Json>)[]>
+  in?: Maybe<Maybe<Json>[]>
 
-  nin?: Maybe<(Maybe<Json>)[]>
+  nin?: Maybe<Maybe<Json>[]>
 
   regex?: Maybe<Json>
 
@@ -345,7 +349,7 @@ export interface MdxFieldsFilterInput {
 
   author?: Maybe<AuthorJsonFilterInput>
 
-  date?: Maybe<DateQueryOperatorInput>
+  date?: Maybe<StringQueryOperatorInput>
 
   category?: Maybe<StringQueryOperatorInput>
 }
@@ -499,21 +503,21 @@ export interface Potrace {
 }
 
 export interface FileSortInput {
-  fields?: Maybe<(Maybe<FileFieldsEnum>)[]>
+  fields?: Maybe<Maybe<FileFieldsEnum>[]>
 
-  order?: (Maybe<SortOrderEnum>)[]
+  order?: Maybe<SortOrderEnum>[]
 }
 
 export interface MdxSortInput {
-  fields?: Maybe<(Maybe<MdxFieldsEnum>)[]>
+  fields?: Maybe<Maybe<MdxFieldsEnum>[]>
 
-  order?: (Maybe<SortOrderEnum>)[]
+  order?: Maybe<SortOrderEnum>[]
 }
 
 export interface ImageSharpSortInput {
-  fields?: Maybe<(Maybe<ImageSharpFieldsEnum>)[]>
+  fields?: Maybe<Maybe<ImageSharpFieldsEnum>[]>
 
-  order?: (Maybe<SortOrderEnum>)[]
+  order?: Maybe<SortOrderEnum>[]
 }
 
 export interface SitePageContextFilterInput {
@@ -525,11 +529,11 @@ export interface SitePageContextFrontmatterFilterInput {
 
   route?: Maybe<BooleanQueryOperatorInput>
 
+  slug?: Maybe<StringQueryOperatorInput>
+
   version?: Maybe<FloatQueryOperatorInput>
 
   author?: Maybe<StringQueryOperatorInput>
-
-  slug?: Maybe<StringQueryOperatorInput>
 
   date?: Maybe<DateQueryOperatorInput>
 }
@@ -571,7 +575,9 @@ export interface SitePluginPluginOptionsFilterInput {
 
   defaultLayouts?: Maybe<SitePluginPluginOptionsDefaultLayoutsFilterInput>
 
-  gatsbyRemarkPlugins?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput>
+  gatsbyRemarkPlugins?: Maybe<
+    SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput
+  >
 
   short_name?: Maybe<StringQueryOperatorInput>
 
@@ -757,15 +763,15 @@ export interface SitePageFilterInput {
 }
 
 export interface SitePageSortInput {
-  fields?: Maybe<(Maybe<SitePageFieldsEnum>)[]>
+  fields?: Maybe<Maybe<SitePageFieldsEnum>[]>
 
-  order?: (Maybe<SortOrderEnum>)[]
+  order?: Maybe<SortOrderEnum>[]
 }
 
 export interface SitePluginSortInput {
-  fields?: Maybe<(Maybe<SitePluginFieldsEnum>)[]>
+  fields?: Maybe<Maybe<SitePluginFieldsEnum>[]>
 
-  order?: (Maybe<SortOrderEnum>)[]
+  order?: Maybe<SortOrderEnum>[]
 }
 
 export interface SiteSiteMetadataFilterInput {
@@ -819,9 +825,9 @@ export interface SiteFilterInput {
 }
 
 export interface SiteSortInput {
-  fields?: Maybe<(Maybe<SiteFieldsEnum>)[]>
+  fields?: Maybe<Maybe<SiteFieldsEnum>[]>
 
-  order?: (Maybe<SortOrderEnum>)[]
+  order?: Maybe<SortOrderEnum>[]
 }
 
 export interface DirectoryFilterInput {
@@ -901,21 +907,21 @@ export interface DirectoryFilterInput {
 }
 
 export interface DirectorySortInput {
-  fields?: Maybe<(Maybe<DirectoryFieldsEnum>)[]>
+  fields?: Maybe<Maybe<DirectoryFieldsEnum>[]>
 
-  order?: (Maybe<SortOrderEnum>)[]
+  order?: Maybe<SortOrderEnum>[]
 }
 
 export interface AuthorJsonSortInput {
-  fields?: Maybe<(Maybe<AuthorJsonFieldsEnum>)[]>
+  fields?: Maybe<Maybe<AuthorJsonFieldsEnum>[]>
 
-  order?: (Maybe<SortOrderEnum>)[]
+  order?: Maybe<SortOrderEnum>[]
 }
 
 export interface SvgSortInput {
-  fields?: Maybe<(Maybe<SvgFieldsEnum>)[]>
+  fields?: Maybe<Maybe<SvgFieldsEnum>[]>
 
-  order?: (Maybe<SortOrderEnum>)[]
+  order?: Maybe<SortOrderEnum>[]
 }
 
 export enum PotraceTurnPolicy {
@@ -924,14 +930,14 @@ export enum PotraceTurnPolicy {
   TurnpolicyLeft = 'TURNPOLICY_LEFT',
   TurnpolicyRight = 'TURNPOLICY_RIGHT',
   TurnpolicyMinority = 'TURNPOLICY_MINORITY',
-  TurnpolicyMajority = 'TURNPOLICY_MAJORITY'
+  TurnpolicyMajority = 'TURNPOLICY_MAJORITY',
 }
 
 export enum ImageFormat {
   NoChange = 'NO_CHANGE',
   Jpg = 'JPG',
   Png = 'PNG',
-  Webp = 'WEBP'
+  Webp = 'WEBP',
 }
 
 export enum ImageCropFocus {
@@ -945,13 +951,13 @@ export enum ImageCropFocus {
   West = 'WEST',
   Northwest = 'NORTHWEST',
   Entropy = 'ENTROPY',
-  Attention = 'ATTENTION'
+  Attention = 'ATTENTION',
 }
 
 export enum ImageFit {
   Cover = 'COVER',
   Contain = 'CONTAIN',
-  Fill = 'FILL'
+  Fill = 'FILL',
 }
 
 export enum HeadingsMdx {
@@ -960,7 +966,7 @@ export enum HeadingsMdx {
   H3 = 'h3',
   H4 = 'h4',
   H5 = 'h5',
-  H6 = 'h6'
+  H6 = 'h6',
 }
 
 export enum FileFieldsEnum {
@@ -1183,6 +1189,8 @@ export enum FileFieldsEnum {
   ChildMdxFrontmatterAuthor = 'childMdx___frontmatter___author',
   ChildMdxFrontmatterSlug = 'childMdx___frontmatter___slug',
   ChildMdxFrontmatterDate = 'childMdx___frontmatter___date',
+  ChildMdxFrontmatterTags = 'childMdx___frontmatter___tags',
+  ChildMdxFrontmatterWhere = 'childMdx___frontmatter___where',
   ChildMdxBody = 'childMdx___body',
   ChildMdxExcerpt = 'childMdx___excerpt',
   ChildMdxHeadings = 'childMdx___headings',
@@ -1398,12 +1406,12 @@ export enum FileFieldsEnum {
   ChildSvgInternalType = 'childSvg___internal___type',
   ChildSvgContent = 'childSvg___content',
   ChildSvgPath = 'childSvg___path',
-  ChildSvgSourceInstanceName = 'childSvg___sourceInstanceName'
+  ChildSvgSourceInstanceName = 'childSvg___sourceInstanceName',
 }
 
 export enum SortOrderEnum {
   Asc = 'ASC',
-  Desc = 'DESC'
+  Desc = 'DESC',
 }
 
 export enum MdxFieldsEnum {
@@ -1415,6 +1423,8 @@ export enum MdxFieldsEnum {
   FrontmatterAuthor = 'frontmatter___author',
   FrontmatterSlug = 'frontmatter___slug',
   FrontmatterDate = 'frontmatter___date',
+  FrontmatterTags = 'frontmatter___tags',
+  FrontmatterWhere = 'frontmatter___where',
   Body = 'body',
   Excerpt = 'excerpt',
   Headings = 'headings',
@@ -1573,7 +1583,7 @@ export enum MdxFieldsEnum {
   InternalIgnoreType = 'internal___ignoreType',
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
-  InternalType = 'internal___type'
+  InternalType = 'internal___type',
 }
 
 export enum ImageSharpFieldsEnum {
@@ -1715,7 +1725,7 @@ export enum ImageSharpFieldsEnum {
   InternalIgnoreType = 'internal___ignoreType',
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
-  InternalType = 'internal___type'
+  InternalType = 'internal___type',
 }
 
 export enum SitePageFieldsEnum {
@@ -1812,9 +1822,9 @@ export enum SitePageFieldsEnum {
   IsCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
   ContextFrontmatterTitle = 'context___frontmatter___title',
   ContextFrontmatterRoute = 'context___frontmatter___route',
+  ContextFrontmatterSlug = 'context___frontmatter___slug',
   ContextFrontmatterVersion = 'context___frontmatter___version',
   ContextFrontmatterAuthor = 'context___frontmatter___author',
-  ContextFrontmatterSlug = 'context___frontmatter___slug',
   ContextFrontmatterDate = 'context___frontmatter___date',
   PluginCreatorId = 'pluginCreator___id',
   PluginCreatorParentId = 'pluginCreator___parent___id',
@@ -1911,7 +1921,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPackageJsonPeerDependenciesName = 'pluginCreator___packageJson___peerDependencies___name',
   PluginCreatorPackageJsonPeerDependenciesVersion = 'pluginCreator___packageJson___peerDependencies___version',
   PluginCreatorPackageJsonKeywords = 'pluginCreator___packageJson___keywords',
-  ComponentPath = 'componentPath'
+  ComponentPath = 'componentPath',
 }
 
 export enum SitePluginFieldsEnum {
@@ -2070,7 +2080,7 @@ export enum SitePluginFieldsEnum {
   PackageJsonPeerDependencies = 'packageJson___peerDependencies',
   PackageJsonPeerDependenciesName = 'packageJson___peerDependencies___name',
   PackageJsonPeerDependenciesVersion = 'packageJson___peerDependencies___version',
-  PackageJsonKeywords = 'packageJson___keywords'
+  PackageJsonKeywords = 'packageJson___keywords',
 }
 
 export enum SiteFieldsEnum {
@@ -2175,7 +2185,7 @@ export enum SiteFieldsEnum {
   PathPrefix = 'pathPrefix',
   MappingMdxFieldsAuthor = 'mapping___Mdx_fields_author',
   Polyfill = 'polyfill',
-  BuildTime = 'buildTime'
+  BuildTime = 'buildTime',
 }
 
 export enum DirectoryFieldsEnum {
@@ -2297,7 +2307,7 @@ export enum DirectoryFieldsEnum {
   Atime = 'atime',
   Mtime = 'mtime',
   Ctime = 'ctime',
-  Birthtime = 'birthtime'
+  Birthtime = 'birthtime',
 }
 
 export enum AuthorJsonFieldsEnum {
@@ -2535,6 +2545,8 @@ export enum AuthorJsonFieldsEnum {
   AvatarChildMdxFrontmatterAuthor = 'avatar___childMdx___frontmatter___author',
   AvatarChildMdxFrontmatterSlug = 'avatar___childMdx___frontmatter___slug',
   AvatarChildMdxFrontmatterDate = 'avatar___childMdx___frontmatter___date',
+  AvatarChildMdxFrontmatterTags = 'avatar___childMdx___frontmatter___tags',
+  AvatarChildMdxFrontmatterWhere = 'avatar___childMdx___frontmatter___where',
   AvatarChildMdxBody = 'avatar___childMdx___body',
   AvatarChildMdxExcerpt = 'avatar___childMdx___excerpt',
   AvatarChildMdxHeadings = 'avatar___childMdx___headings',
@@ -2640,7 +2652,7 @@ export enum AuthorJsonFieldsEnum {
   AvatarChildSvgPath = 'avatar___childSvg___path',
   AvatarChildSvgSourceInstanceName = 'avatar___childSvg___sourceInstanceName',
   Twitter = 'twitter',
-  Github = 'github'
+  Github = 'github',
 }
 
 export enum SvgFieldsEnum {
@@ -2732,7 +2744,7 @@ export enum SvgFieldsEnum {
   InternalType = 'internal___type',
   Content = 'content',
   Path = 'path',
-  SourceInstanceName = 'sourceInstanceName'
+  SourceInstanceName = 'sourceInstanceName',
 }
 
 /** A date string, such as 2007-12-03, compliant with the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
@@ -2895,7 +2907,7 @@ export interface Internal {
 
   description?: Maybe<string>
 
-  fieldOwners?: Maybe<(Maybe<string>)[]>
+  fieldOwners?: Maybe<Maybe<string>[]>
 
   ignoreType?: Maybe<boolean>
 
@@ -3057,7 +3069,7 @@ export interface Mdx extends Node {
 
   excerpt: string
 
-  headings?: Maybe<(Maybe<MdxHeadingMdx>)[]>
+  headings?: Maybe<Maybe<MdxHeadingMdx>[]>
 
   html?: Maybe<string>
 
@@ -3091,7 +3103,11 @@ export interface MdxFrontmatter {
 
   slug?: Maybe<string>
 
-  date?: Maybe<Date>
+  date?: Maybe<string>
+
+  tags?: Maybe<string>
+
+  where?: Maybe<string>
 }
 
 export interface MdxHeadingMdx {
@@ -3123,7 +3139,7 @@ export interface MdxFields {
 
   author?: Maybe<AuthorJson>
 
-  date?: Maybe<Date>
+  date?: Maybe<string>
 
   category?: Maybe<string>
 }
@@ -3321,11 +3337,11 @@ export interface SitePageContextFrontmatter {
 
   route?: Maybe<boolean>
 
+  slug?: Maybe<string>
+
   version?: Maybe<number>
 
   author?: Maybe<string>
-
-  slug?: Maybe<string>
 
   date?: Maybe<Date>
 }
@@ -3347,11 +3363,11 @@ export interface SitePlugin extends Node {
 
   pluginOptions?: Maybe<SitePluginPluginOptions>
 
-  nodeAPIs?: Maybe<(Maybe<string>)[]>
+  nodeAPIs?: Maybe<Maybe<string>[]>
 
-  browserAPIs?: Maybe<(Maybe<string>)[]>
+  browserAPIs?: Maybe<Maybe<string>[]>
 
-  ssrAPIs?: Maybe<(Maybe<string>)[]>
+  ssrAPIs?: Maybe<Maybe<string>[]>
 
   pluginFilepath?: Maybe<string>
 
@@ -3363,11 +3379,13 @@ export interface SitePluginPluginOptions {
 
   name?: Maybe<string>
 
-  extensions?: Maybe<(Maybe<string>)[]>
+  extensions?: Maybe<Maybe<string>[]>
 
   defaultLayouts?: Maybe<SitePluginPluginOptionsDefaultLayouts>
 
-  gatsbyRemarkPlugins?: Maybe<(Maybe<SitePluginPluginOptionsGatsbyRemarkPlugins>)[]>
+  gatsbyRemarkPlugins?: Maybe<
+    Maybe<SitePluginPluginOptionsGatsbyRemarkPlugins>[]
+  >
 
   short_name?: Maybe<string>
 
@@ -3401,7 +3419,7 @@ export interface SitePluginPluginOptions {
 
   icons?: Maybe<SitePluginPluginOptionsIcons>
 
-  modules?: Maybe<(Maybe<string>)[]>
+  modules?: Maybe<Maybe<string>[]>
 
   pathCheck?: Maybe<boolean>
 }
@@ -3481,13 +3499,13 @@ export interface SitePluginPackageJson {
 
   license?: Maybe<string>
 
-  dependencies?: Maybe<(Maybe<SitePluginPackageJsonDependencies>)[]>
+  dependencies?: Maybe<Maybe<SitePluginPackageJsonDependencies>[]>
 
-  devDependencies?: Maybe<(Maybe<SitePluginPackageJsonDevDependencies>)[]>
+  devDependencies?: Maybe<Maybe<SitePluginPackageJsonDevDependencies>[]>
 
-  peerDependencies?: Maybe<(Maybe<SitePluginPackageJsonPeerDependencies>)[]>
+  peerDependencies?: Maybe<Maybe<SitePluginPackageJsonPeerDependencies>[]>
 
-  keywords?: Maybe<(Maybe<string>)[]>
+  keywords?: Maybe<Maybe<string>[]>
 }
 
 export interface SitePluginPackageJsonDependencies {
@@ -4429,7 +4447,7 @@ export interface FluidImageSharpArgs {
 
   sizes?: string
   /** A list of image widths to be generated. Example: [ 200, 340, 520, 890 ] */
-  srcSetBreakpoints?: (Maybe<number>)[]
+  srcSetBreakpoints?: Maybe<number>[]
 }
 export interface SizesImageSharpArgs {
   maxWidth?: Maybe<number>
@@ -4466,7 +4484,7 @@ export interface SizesImageSharpArgs {
 
   sizes?: string
   /** A list of image widths to be generated. Example: [ 200, 340, 520, 890 ] */
-  srcSetBreakpoints?: (Maybe<number>)[]
+  srcSetBreakpoints?: Maybe<number>[]
 }
 export interface ResizeImageSharpArgs {
   width?: Maybe<number>
@@ -4509,26 +4527,6 @@ export interface HeadingsMdxArgs {
 }
 export interface TableOfContentsMdxArgs {
   maxDepth?: Maybe<number>
-}
-export interface DateMdxFrontmatterArgs {
-  /** Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens. */
-  formatString?: Maybe<string>
-  /** Returns a string generated with Moment.js' `fromNow` function */
-  fromNow?: Maybe<boolean>
-  /** Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds". */
-  difference?: Maybe<string>
-  /** Configures the locale Moment.js will use to format the date. */
-  locale?: Maybe<string>
-}
-export interface DateMdxFieldsArgs {
-  /** Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens. */
-  formatString?: Maybe<string>
-  /** Returns a string generated with Moment.js' `fromNow` function */
-  fromNow?: Maybe<boolean>
-  /** Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds". */
-  difference?: Maybe<string>
-  /** Configures the locale Moment.js will use to format the date. */
-  locale?: Maybe<string>
 }
 export interface DistinctFileConnectionArgs {
   field: FileFieldsEnum

@@ -4,7 +4,12 @@ import * as React from 'react'
 // import { createStyles, Theme, makeStyles } from '@material-ui/core/styles'
 import { Box, Container, Button, CssBaseline } from '@material-ui/core'
 
-import { LayoutProps, SEOProps, LinkProps } from '../../../types/interfaces'
+import {
+  LayoutProps,
+  SEOProps,
+  LinkProps,
+  BrandProps,
+} from '../../../types/interfaces'
 
 import { AllMdxConsumer, MdxProps } from '../../content/AllMdx'
 import { getHeader } from '../HeaderBlog'
@@ -13,7 +18,7 @@ import { Footer } from '../Footer'
 export const getLayout: (
   Link: React.FunctionComponent<LinkProps>,
   SEO: React.FunctionComponent<SEOProps>,
-  Brand: React.FunctionComponent,
+  Brand: React.FunctionComponent<BrandProps>,
   Org: React.FunctionComponent,
   withPrefix: (p: string) => string
 ) => React.FunctionComponent<LayoutProps> = (
@@ -32,7 +37,7 @@ export const getLayout: (
     const BrandButton = (
       <Link underline="none" to="/">
         <Button>
-          <Brand />
+          <Brand type="header" />
         </Button>
       </Link>
     )
@@ -83,7 +88,7 @@ export const getLayout: (
           }}
         </AllMdxConsumer>
 
-        <Footer brand={<Brand />} org={<Org />} />
+        <Footer brand={<Brand type="footer" />} org={<Org />} />
       </>
     )
   }

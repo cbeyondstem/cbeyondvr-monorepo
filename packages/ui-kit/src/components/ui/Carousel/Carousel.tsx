@@ -10,7 +10,8 @@ import { ImageSharpFluid } from '../../../types/gatsby-graphql-types'
 
 export interface CarouselImgProps {
   path: string
-  img: ImageSharpFluid
+  desktop: ImageSharpFluid
+  mobile?: ImageSharpFluid
   thumb: string
 }
 export interface CarouselProps {
@@ -22,9 +23,16 @@ export const Carousel: React.FunctionComponent<CarouselProps> = props => {
   const { images, renderImage } = props
   const [isFullScreen, setFullScreen] = React.useState(false)
   const imgItems: ImageItemProps[] = images.map(
-    (item: { path: string; img: ImageSharpFluid; thumb: string }) => ({
-      original: item.img,
+    (item: {
+      path: string
+      desktop: ImageSharpFluid
+      mobile?: ImageSharpFluid
+      thumb: string
+    }) => ({
+      original: item,
       thumbnail: item.thumb,
+      originalTitle: item.path,
+      description: item.path,
     })
   )
 

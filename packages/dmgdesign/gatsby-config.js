@@ -4,10 +4,10 @@ const site = {
   description: `Architecture and Interior Design`,
   siteUrl: `https://dmgdesignsf.com/`,
   org: `DMGDesign`,
-  contact: `hello@@dmgdesignsf.com`,
+  contact: `hello@dmgdesignsf.com`,
   favicon: './src/assets/img/dmg-favicon.png',
   faviconSvg: './src/assets/img/favicon.comp.svg',
-  logo: './src/assets/img/dmg-brand-color.comp.svg',
+  logo: './src/assets/img/dmg-brand.comp.svg',
   icon: './src/assets/img/dmg-icon-color.comp.svg',
 
   // @cbeyond mdx-kit configuration: mdx folder and authors

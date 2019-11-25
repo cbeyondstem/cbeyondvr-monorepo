@@ -1,7 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import * as _ from 'lodash'
 import * as React from 'react'
-import { Typography, Box, List, ListItemText, GridList } from '@material-ui/core'
+import {
+  Typography,
+  Box,
+  List,
+  ListItemText,
+  GridList,
+} from '@material-ui/core'
 import { red } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles'
 import * as classnames from 'classnames'
@@ -12,54 +18,61 @@ export const mdxLayoutStyles = makeStyles(theme => ({
   gridList: {
     flexWrap: 'nowrap',
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: 'translateZ(0)'
+    transform: 'translateZ(0)',
   },
   table: {
     minWidth: 700,
     '& > thead > tr > th': {
       borderLeftColor: theme.palette.grey[300],
-      borderLeftStyle: 'solid'
-    }
+      borderLeftStyle: 'solid',
+    },
   },
   paper: {
     '& svg:': {
       textAlign: 'center',
       borderStyle: 'solid',
-      borderColor: '#000'
-    }
+      borderColor: '#000',
+    },
   },
   header: {
     color: theme.palette.primary.main,
-    overflowWrap: 'break-word'
+    overflowWrap: 'break-word',
   },
   em: {
-    backgroundColor: red[100]
+    backgroundColor: red[100],
   },
   li: {
     '&.spanSimple :before': {
       content: caretRight,
       paddingRight: '8px',
-      color: theme.palette.primary.light
+      color: theme.palette.primary.light,
     },
     '&.spanSimple': {
-      paddingRight: theme.spacing(2)
+      paddingRight: theme.spacing(2),
     },
     '&.spanComplex > span > div :before': {
       content: caretRight,
       paddingRight: '8px',
-      color: theme.palette.primary.light
+      color: theme.palette.primary.light,
     },
     '&.spanComplex > span > div': {
-      padding: theme.spacing(0, 2, 0, 0)
-    }
-  }
+      padding: theme.spacing(0, 2, 0, 0),
+    },
+  },
 }))
 
 const StyledElem: (
-  classes: Record<'gridList' | 'table' | 'paper' | 'header' | 'em' | 'li', string>,
+  classes: Record<
+    'gridList' | 'table' | 'paper' | 'header' | 'em' | 'li',
+    string
+  >,
   el: React.ElementType,
   bookmarkIdx?: string
-) => React.FunctionComponent<React.ComponentPropsWithRef<React.ElementType>> = (classes, el, bookmarkIdx = '') => {
+) => React.FunctionComponent<React.ComponentPropsWithRef<React.ElementType>> = (
+  classes,
+  el,
+  bookmarkIdx = ''
+) => {
   // console.log(`Generating element ${el}`)
   if (el === 'ul') {
     return (p: React.ComponentPropsWithRef<'ul'>) => <List>{p.children}</List>
@@ -106,12 +119,17 @@ const StyledElem: (
     }
   }
   if (el === 'em') {
-    return (p: React.ComponentPropsWithRef<'em'>) => <em className={classes.em}>{p.children}</em>
+    return (p: React.ComponentPropsWithRef<'em'>) => (
+      <em className={classes.em}>{p.children}</em>
+    )
   }
   if (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(`${el}`)) {
     return (p: React.ComponentPropsWithRef<'h1'>) => (
       <Box p={2} id={_.kebabCase(`${p.children}`) + bookmarkIdx}>
-        <Typography variant={el as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'} className={classes.header}>
+        <Typography
+          variant={el as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'}
+          className={classes.header}
+        >
           {p.children}
         </Typography>
       </Box>
@@ -121,7 +139,10 @@ const StyledElem: (
 }
 
 export const MDXLayoutComponents = (
-  classes: Record<'gridList' | 'table' | 'paper' | 'header' | 'em' | 'li', string>
+  classes: Record<
+    'gridList' | 'table' | 'paper' | 'header' | 'em' | 'li',
+    string
+  >
 ) => ({
   h1: StyledElem(classes, 'h3'),
   h2: StyledElem(classes, 'h4'),
@@ -134,7 +155,7 @@ export const MDXLayoutComponents = (
   ul: StyledElem(classes, 'ul'),
   li: StyledElem(classes, 'li'),
   pre: StyledElem(classes, 'pre'),
-  em: StyledElem(classes, 'em')
+  em: StyledElem(classes, 'em'),
 
   // table: p => <table className={css.mdxTable} {...p} />,
   // tr: p => <tr className={css.mdxTableRow} {...p} />,

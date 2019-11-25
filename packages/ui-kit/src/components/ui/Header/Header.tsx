@@ -10,11 +10,15 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import headerStyle from './headerStyle'
 import headerLinksStyle from './headerLinksStyle'
 
-const colors = (theme: Theme) =>
-  createStyles({
+const colors = (theme: Theme) => {
+  const color =
+    theme.palette.type === 'light'
+      ? theme.palette.primary.light
+      : theme.palette.primary.dark
+  return createStyles({
     colors: {
       color: theme.typography.h1.color,
-      backgroundColor: `${theme.palette.primary.main} !important`,
+      backgroundColor: `${color} !important`,
       '& span': {
         color: theme.typography.h1.color,
       },
@@ -27,7 +31,7 @@ const colors = (theme: Theme) =>
       justifyContent: 'flex-start',
     },
   })
-
+}
 const useStyles = makeStyles((theme: Theme) => ({
   ...colors(theme),
   ...headerStyle(theme),

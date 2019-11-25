@@ -5,11 +5,15 @@ import { Toolbar, AppBar, IconButton, Typography } from '@material-ui/core'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import { LinkProps } from '../../../types/interfaces'
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles = makeStyles((theme: Theme) => {
+  const color =
+    theme.palette.type === 'light'
+      ? theme.palette.primary.light
+      : theme.palette.primary.dark
+  return createStyles({
     colors: {
       color: theme.palette.primary.main,
-      backgroundColor: `${theme.palette.primary.light} !important`,
+      backgroundColor: `${color} !important`,
       '& span': {
         color: theme.palette.primary.main,
       },
@@ -39,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
   })
-)
+})
 
 export interface HeaderProps {
   brand: React.ReactNode

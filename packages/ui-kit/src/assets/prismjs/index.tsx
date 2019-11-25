@@ -4,7 +4,7 @@ import { createStyles, Theme } from '@material-ui/core/styles'
 const prismTheme = (t: Theme) => ({
   fontWeights: {
     body: 'normal',
-    bold: 'bold'
+    bold: 'bold',
   },
   colors: {
     white: '#fff',
@@ -12,7 +12,7 @@ const prismTheme = (t: Theme) => ({
       text: '#000',
       background: t.palette.secondary.main,
       lineHighlightBorder: t.palette.secondary.main,
-      lineHighlightBackground: t.palette.primary.light
+      lineHighlightBackground: t.palette.primary.light,
     },
     comment: '#708090', // slategray
     tag: '#995',
@@ -24,8 +24,8 @@ const prismTheme = (t: Theme) => ({
     regex: '#e90',
     function: '#DD4A68',
     operator: '#9a6e3a',
-    invisibles: 'transparent'
-  }
+    invisibles: 'transparent',
+  },
 })
 
 export const prismToken = (t: Theme) => {
@@ -35,53 +35,53 @@ export const prismToken = (t: Theme) => {
     // https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/
     '@global': {
       '.token': {
-        display: `inline`
+        display: `inline`,
       },
       '.token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata': {
-        color: p.colors.comment
+        color: p.colors.comment,
       },
       '.token.property, .token.tag, .token.boolean, .token.number, .token.function-name, .token.constant, .token.symbol': {
-        color: p.colors.tag
+        color: p.colors.tag,
       },
       '.token.punctuation': {
-        color: p.colors.selector
+        color: p.colors.selector,
       },
       '.token.operator, .token.entity, .token.url, .token.variable': {},
       '.token.atrule, .token.attr-value, .token.keyword, .token.class-name': {
-        color: p.colors.keyword
+        color: p.colors.keyword,
       },
       '.token.inserted': {
-        color: p.colors.add
+        color: p.colors.add,
       },
       '.token.deleted': {
-        color: p.colors.remove
+        color: p.colors.remove,
       },
       '.token.regex, .token.important': {
-        color: p.colors.regex
+        color: p.colors.regex,
       },
       '.language-css .token.string, .style .token.string': {
-        color: p.colors.selector
+        color: p.colors.selector,
       },
       '.token.important': {
-        fontWeight: 'normal'
+        fontWeight: 'normal',
       },
       '.token.bold': {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
       },
       '.token.italic': {
-        fontStyle: `italic`
+        fontStyle: `italic`,
       },
       '.token.entity': {
-        cursor: `help`
+        cursor: `help`,
       },
       '.namespace': {
-        opacity: 0.7
+        opacity: 0.7,
       },
       // PrismJS plugin styles
       '.token.tab:not(:empty):before, .token.cr:before, .token.lf:before': {
-        color: p.colors.invisibles
-      }
-    }
+        color: p.colors.invisibles,
+      },
+    },
   })
 }
 
@@ -95,22 +95,22 @@ export const gatsbyHighlightLanguageBadges = (t: Theme) => {
         height: 'auto',
         [t.breakpoints.up('md')]: {
           // do not vertical scroll on large screen
-          overflowY: 'hidden !important' as 'hidden'
+          overflowY: 'hidden !important' as 'hidden',
         },
         [t.breakpoints.down('sm')]: {
           // allow vertical scroll on small screen and limit the height
-          maxHeight: '60vh'
-        }
+          maxHeight: '60vh',
+        },
       },
       ".gatsby-highlight code[class*='language-']": {
         // backgroundColor: `transparent`,
         textShadow: 'none !important',
-        padding: t.spacing(4, 1, 2, 4)
+        padding: t.spacing(4, 1, 2, 4),
       },
       ".gatsby-highlight pre[class*='language-'].line-numbers .line-numbers-rows": {
         // position: absolute;
         // pointer-events: none;
-        top: t.spacing(4.4)
+        top: t.spacing(4.4),
       },
 
       ".gatsby-highlight pre[class*='language-']::before": {
@@ -127,77 +127,77 @@ export const gatsbyHighlightLanguageBadges = (t: Theme) => {
         textAlign: `right`,
         textTransform: `uppercase`,
         textShadow: 'none',
-        top: `0`
+        top: `0`,
       },
       ".gatsby-highlight pre[class*='language-javascript']::before": {
         content: `'js'`,
-        background: `#f7df1e`
+        background: `#f7df1e`,
       },
       ".gatsby-highlight pre[class*='language-js']::before": {
         content: `'js'`,
-        background: `#f7df1e`
+        background: `#f7df1e`,
       },
       ".gatsby-highlight pre[class*='language-jsx']::before": {
         content: `'jsx'`,
-        background: `#61dafb`
+        background: `#61dafb`,
       },
       ".gatsby-highlight pre[class*='language-graphql']::before": {
         content: `'GraphQL'`,
         background: `#E10098`,
-        color: p.colors.white
+        color: p.colors.white,
       },
       ".gatsby-highlight pre[class*='language-html']::before": {
         content: `'html'`,
         background: `#005A9C`,
-        color: p.colors.white
+        color: p.colors.white,
       },
       ".gatsby-highlight pre[class*='language-css']::before": {
         content: `'css'`,
         background: `#ff9800`,
-        color: p.colors.white
+        color: p.colors.white,
       },
       ".gatsby-highlight pre[class*='language-mdx']::before": {
         content: `'mdx'`,
         background: `#f9ac00`,
         color: p.colors.white,
-        fontWeight: 'normal'
+        fontWeight: 'normal',
       },
       ".gatsby-highlight pre[class*='language-shell']::before": {
-        content: `'shell'`
+        content: `'shell'`,
       },
       ".gatsby-highlight pre[class*='language-python']::before": {
-        content: `'python'`
+        content: `'python'`,
       },
       ".gatsby-highlight pre[class*='language-sh']::before": {
-        content: `'sh'`
+        content: `'sh'`,
       },
       ".gatsby-highlight pre[class*='language-bash']::before": {
-        content: `'driving language'`
+        content: `'driving language'`,
       },
       ".gatsby-highlight pre[class*='language-yaml']::before": {
         content: `'yaml'`,
-        background: `#ffa8df`
+        background: `#ffa8df`,
       },
       ".gatsby-highlight pre[class*='language-markdown']::before": {
-        content: `'md'`
+        content: `'md'`,
       },
       ".gatsby-highlight pre[class*='language-json']::before, .gatsby-highlight pre[class='language-json5']::before": {
         content: `'json'`,
-        background: `linen`
+        background: `linen`,
       },
       ".gatsby-highlight pre[class*='language-diff']::before": {
         content: `'diff'`,
-        background: `#e6ffed`
+        background: `#e6ffed`,
       },
       ".gatsby-highlight pre[class*='language-text']::before": {
         content: `'text'`,
-        background: p.colors.white
+        background: p.colors.white,
       },
       ".gatsby-highlight pre[class*='language-flow']::before": {
         content: `'flow'`,
-        background: `#E8BD36`
-      }
-    }
+        background: `#E8BD36`,
+      },
+    },
   })
 }
 
@@ -209,7 +209,7 @@ export const gatsbyHighlight = (t: Theme) => {
       '.gatsby-highlight': {
         // background: p.colors.code.background,
         color: p.colors.code.text,
-        position: `relative`
+        position: `relative`,
         // WebkitOverflowScrolling: `touch`
       },
       '.gatsby-highlight pre code': {
@@ -219,7 +219,7 @@ export const gatsbyHighlight = (t: Theme) => {
         float: `left`,
         minWidth: `100%`,
         // reset code vertical padding declared earlier
-        padding: `0 ${t.spacing(6)}`
+        padding: `0 ${t.spacing(6)}`,
       },
       '.gatsby-highlight-code-line': {
         background: p.colors.code.lineHighlightBackground,
@@ -228,8 +228,8 @@ export const gatsbyHighlight = (t: Theme) => {
         // paddingLeft: t.spacing(5),
         // paddingRight: t.spacing(6),
         // borderLeft: `${t.spacing(1)} solid ${p.colors.code.lineHighlightBorder}`,
-        display: `block`
-      }
-    }
+        display: `block`,
+      },
+    },
   })
 }
