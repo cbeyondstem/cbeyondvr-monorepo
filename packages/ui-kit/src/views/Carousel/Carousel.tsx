@@ -1,7 +1,7 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 import Img from 'gatsby-image/withIEPolyfill'
-
+import { FluidObject } from 'gatsby-image'
 import { Container, Paper, useTheme } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
@@ -10,6 +10,7 @@ import { Carousel as CarouselBase } from '../../components/ui/Carousel'
 
 import { ImageItemProps } from '../../types/interfaces'
 import { AllImgConsumer } from '../../components/content/AllImages'
+import { ImageSharpFluid } from '../../types/gatsby-graphql-types'
 
 export interface CarouselViewProps {
   path: string
@@ -48,17 +49,28 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
+  const fixItem: (img: ImageSharpFluid) => FluidObject = img => {
+    const {
+      aspectRatio = 1.5,
+      src = '',
+      srcSet = '',
+      sizes = '',
+      ...fluid
+    } = img
+    return { aspectRatio, src, srcSet, sizes, ...fluid }
+  }
   const { path } = props
   const classes = useStyles(props)
   const theme = useTheme()
   const renderImage = (item: ImageItemProps) => {
     const sources = [
-      item.original.mobile,
+      fixItem(item.original.mobile),
       {
-        ...item.original.desktop,
+        ...fixItem(item.original.desktop),
         media: `(min-width: 768px)`,
       },
     ]
+
     return (
       <Container className={classes.imgContainer}>
         <Container>
