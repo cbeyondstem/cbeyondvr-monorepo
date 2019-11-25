@@ -16,7 +16,9 @@ matrix:
     #   env: PACKAGE_LOCATION=packages/site-starter PACKAGE_NAME=cbeyondvr-monorepo  DEPLOY_TO=cbeyond-starter
 
 script:
-  - cd $PACKAGE_LOCATION
+  - cd packages/ui-kit
+  - yarn build
+  - cd ../../$PACKAGE_LOCATION
   - yarn build
 #  - yarn test
 
@@ -28,3 +30,6 @@ deploy:
   app: $PACKAGE_NAME
   on:
     all_branches: true
+branches:
+  only:
+    - dmgdesign
