@@ -6,7 +6,7 @@
     "paths": {
       "@cbeyond/ui-kit": ["ui-kit/src"],
       "@cbeyond/mdx-kit": ["mdx-kit/src"],
-      "*": ["types/*"]
+      "*": ["../types/*", "types/*"]
     }
   }
 }

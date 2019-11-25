@@ -3,7 +3,7 @@ import * as React from 'react'
 import Img from 'gatsby-image'
 import { style } from 'typestyle'
 
-import { ImageSharpFluidFilterInput } from '@cbeyond/mdx-kit/src/types/gatsby-graphql-types'
+import { ImageSharpFluidFilterInput } from '@cbeyond/mdx-kit/dist/types/gatsby-graphql-types'
 import { Carousel as CarouselBase } from '@cbeyond/ui-kit/src/components/Carousel'
 import { Container } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'

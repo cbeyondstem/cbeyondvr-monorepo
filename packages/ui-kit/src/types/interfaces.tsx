@@ -2,6 +2,10 @@ import * as React from 'react'
 import { TypographyProps } from '@material-ui/core/Typography'
 import { GatsbyLinkProps } from 'gatsby'
 
+export interface ProviderProps {
+  children: React.ReactNode
+}
+
 export interface LinkProps extends GatsbyLinkProps<any> {
   TypographyClasses?: TypographyProps['classes']
   underline?: 'none' | 'hover' | 'always'
@@ -35,3 +39,5 @@ export interface MenuItem {
   divider?: boolean
   popup?: boolean
 }
+
+export { ImageItemProps } from './react-image-gallery/imgItemProps'
