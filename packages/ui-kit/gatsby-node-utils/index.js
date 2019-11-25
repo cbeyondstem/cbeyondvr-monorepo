@@ -4,7 +4,7 @@ const { onCreateNodeMdx } = require('./onCreateNodeMdx')
 const { onCreateNodeSvg } = require('./onCreateNodeSvg')
 const { getAllMdx } = require('./getAllMdx')
 const { createPagesStatefully } = require('./onCreatePages')
-const { onPostBuild } = require('./onPostBuild')
+const { getOnPostBuild } = require('./onPostBuild')
 
 exports.getAllMdx = getAllMdx
 exports.getMdxLayout = getMdxLayout
@@ -13,4 +13,4 @@ exports.onCreateNode = async p => {
   await onCreateNodeSvg(p)
 }
 exports.createPagesStatefully = createPagesStatefully
-exports.onPostBuild = onPostBuild
+exports.getOnPostBuild = getOnPostBuild

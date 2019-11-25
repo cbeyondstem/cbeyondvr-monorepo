@@ -20,4 +20,4 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 }
 
 exports.onCreateNode = mdxUtils.onCreateNode
-exports.onPostBuild = mdxUtils.onPostBuild
+exports.onPostBuild = mdxUtils.getOnPostBuild(__dirname)

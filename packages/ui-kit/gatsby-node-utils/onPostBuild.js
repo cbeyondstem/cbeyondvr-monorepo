@@ -2,12 +2,12 @@
 const fs = require('fs')
 const path = require('path')
 
-exports.onPostBuild = function onPostBuild() {
+exports.getOnPostBuild = dir => () => {
   const prefix = process.env.DEPLOY_TO_PREFIX || ''
   if (process.env.DEPLOY_TO) {
     fs.renameSync(
-      path.join(__dirname, 'public'),
-      path.join(__dirname, prefix + process.env.DEPLOY_TO)
+      path.join(dir, 'public'),
+      path.join(dir, prefix + process.env.DEPLOY_TO)
     )
   }
 }
