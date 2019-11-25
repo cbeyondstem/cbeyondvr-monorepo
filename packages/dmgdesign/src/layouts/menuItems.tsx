@@ -1,4 +1,4 @@
-import { MenuItem } from '@cbeyond/ui-kit/src/types/interfaces'
+import { MenuItem } from '@cbeyond/ui-kit'
 
 export const menuItems: MenuItem[] = [
   { name: 'ABOUT', path: '/about' },

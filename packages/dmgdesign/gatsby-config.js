@@ -17,11 +17,10 @@ const site = {
   //   'content/stories': 'stories'
   //   'content/assets': 'assets'
   // }
-  mdx: {},
-  // {
-  //   'content/projects': 'projects',
-  //   'content/pages': 'pages'
-  // },
+  mdx: {
+    'content/projects': 'projects',
+    'content/pages': 'pages'
+  },
 
   // set authors to true if blog authors attributes are defined in a json file
   authors: false
@@ -44,7 +43,7 @@ const gatsbyPageCreationList = mdx => {
   const l = []
   Object.entries(mdx).forEach(([path, name]) => {
     l.push({
-      resolve: require.resolve(`../../node_modules/@cbeyond/mdx-kit/plugins/custom-page-creator`),
+      resolve: require.resolve(`../../node_modules/@cbeyond/ui-kit/plugins/custom-page-creator`),
       options: {
         path: `${__dirname}/${path}`
       }
@@ -58,58 +57,58 @@ module.exports = {
     'Mdx.fields.author': `AuthorJson`
   },
   plugins: [
-    // ...gatsbySourceList(site.mdx),
-    // ...gatsbyPageCreationList(site.mdx),
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     path: `${__dirname}/src/assets/pix`,
-    //     name: 'images'
-    //   }
-    // },
+    ...gatsbySourceList(site.mdx),
+    ...gatsbyPageCreationList(site.mdx),
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/pix`,
+        name: 'images'
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/assets/img`,
-        name: 'images-svg'
+        name: 'assets/img'
       }
     },
-    // {
-    //   resolve: `gatsby-plugin-mdx`,
-    //   options: {
-    //     extensions: ['.mdx', '.md'],
-    //     // defaultLayouts: {
-    //     //   pages: require.resolve(`../../node_modules/@cbeyond/mdx-kit/src/templates/mdx-layout-default.jsx`),
-    //     //   projects: require.resolve(`../../node_modules/@cbeyond/mdx-kit/src/templates/mdx-layout-default.jsx`)
-    //     // },
-    //     gatsbyRemarkPlugins: [
-    //       {
-    //         resolve: `gatsby-remark-prismjs`,
-    //         options: {
-    //           showLineNumbers: true
-    //         }
-    //       },
-    //       {
-    //         resolve: `gatsby-remark-images`,
-    //         options: {
-    //           maxWidth: 1035
-    //         }
-    //       },
-    //       {
-    //         resolve: `gatsby-remark-responsive-iframe`,
-    //         options: {
-    //           wrapperStyle: `margin-bottom: 1.0725rem`
-    //         }
-    //       },
-    //       // {
-    //       //   resolve: `gatsby-remark-copy-linked-files`
-    //       // },
-    //       {
-    //         resolve: `gatsby-remark-smartypants`
-    //       }
-    //     ]
-    //   }
-    // },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: ['.mdx', '.md'],
+        defaultLayouts: {
+          pages: require.resolve('./src/gatsby/gatsby-tpl/mdx-layout-default.jsx'),
+          blog: require.resolve('./src/gatsby/gatsby-tpl/mdx-layout-default.jsx')
+        },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              showLineNumbers: true
+            }
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1035
+            }
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`
+            }
+          },
+          // {
+          //   resolve: `gatsby-remark-copy-linked-files`
+          // },
+          {
+            resolve: `gatsby-remark-smartypants`
+          }
+        ]
+      }
+    },
 
     {
       resolve: 'gatsby-plugin-react-svg',

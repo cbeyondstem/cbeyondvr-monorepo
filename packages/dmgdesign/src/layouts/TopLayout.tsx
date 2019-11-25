@@ -1,8 +1,18 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-filename-extension */
 import * as React from 'react'
-import { ThemeProvider, Theme } from '@material-ui/core/styles'
-// import { AllMdx, AllSvg, SiteConfig } from '@cbeyond/mdx-kit/src'
+import { ThemeProvider } from '@material-ui/core/styles'
+import { AllMdxQueryProvider } from '../gatsby/gatsby-gql/AllMdxQueryProvider'
+import { AllSvgQueryProvider } from '../gatsby/gatsby-gql/AllSvgQueryProvider'
+import { AllImgQueryProvider } from '../gatsby/gatsby-gql/AllImgQueryProvider'
+
+import { SiteConfigQueryProvider } from '../gatsby/gatsby-gql/SiteConfigQueryProvider'
+import theme from './theme'
+
+// custom typefaces
+import 'typeface-roboto'
+import '@cbeyond/ui-kit/dist/assets/prismjs/prism_clear.css'
+import '@cbeyond/ui-kit/dist/assets/carousel/image-gallery.css'
 
 // import 'prismjs/plugins/command-line/prism-command-line.css'
 // import 'prismjs/plugins/toolbar/prism-toolbar'
@@ -19,14 +29,17 @@ export interface TopLayoutProps {
   children: React.ReactNode
 }
 
-export const getTopLayout = (theme: Theme) => (props: TopLayoutProps) => {
+export const TopLayout = (props: TopLayoutProps) => {
   const { children } = props
-  return children
-  // <AllSvg.Provider>{children}</AllSvg.Provider>
-  // <ThemeProvider theme={theme}>
-  //   <SiteConfig.Provider>
-  //     <AllMdx.Provider>
-  //     </AllMdx.Provider>
-  //   </SiteConfig.Provider>
-  // </ThemeProvider>
+  return (
+    <ThemeProvider theme={theme}>
+      <SiteConfigQueryProvider>
+        <AllMdxQueryProvider>
+          <AllSvgQueryProvider>
+            <AllImgQueryProvider>{children}</AllImgQueryProvider>
+          </AllSvgQueryProvider>
+        </AllMdxQueryProvider>
+      </SiteConfigQueryProvider>
+    </ThemeProvider>
+  )
 }

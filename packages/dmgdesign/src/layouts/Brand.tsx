@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { createStyles, Theme, makeStyles, useTheme } from '@material-ui/core/styles'
-import { SiteConfig } from '@cbeyond/mdx-kit/src'
+import { SiteConfig } from '@cbeyond/ui-kit'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
