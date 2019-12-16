@@ -71,7 +71,9 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
     const sources = isLandscape
       ? fixItem(item.original.desktop)
       : fixItem(item.original.mobile)
-
+    const presWidth = isLandscape
+      ? item.original.desktop.presentationWidth
+      : item.original.mobile.presentationWidth
     return (
       <Container className={classes.imgContainer}>
         <Container>
@@ -84,6 +86,10 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
                 ? theme.palette.primary.light
                 : theme.palette.primary.dark
             }
+            style={{
+              maxWidth: presWidth,
+              margin: '0 auto', // Used to center the image
+            }}
           />
         </Container>
         <Paper square className={classes.paper}>

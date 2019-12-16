@@ -7,22 +7,24 @@ import { ProviderProps, CarouselImgProps, AllImgProvider } from '@cbeyond/ui-kit
 export const query = graphql`
   fragment ImgResponsiveDesktop on ImageSharp {
     fluid(quality: 100, maxHeight: 600, maxWidth: 1200, fit: CONTAIN, background: "#2d2d2d") {
-      ...GatsbyImageSharpFluid_withWebp_noBase64
+      ...GatsbyImageSharpFluid_withWebp
     }
   }
   fragment ImgResponsiveDesktop2 on ImageSharp {
     fluid(quality: 100, fit: COVER, srcSetBreakpoints: [600, 800, 1200, 1600, 2600]) {
       ...GatsbyImageSharpFluid_withWebp
+      presentationWidth
     }
   }
   fragment ImgResponsiveMobile on ImageSharp {
     fluid(quality: 100, background: "#2d2d2d") {
-      ...GatsbyImageSharpFluid_withWebp_tracedSVG
+      ...GatsbyImageSharpFluid_withWebp
     }
   }
   fragment ImgResponsiveMobile2 on ImageSharp {
     fluid(quality: 100, maxWidth: 380, fit: COVER, srcSetBreakpoints: [200, 370]) {
       ...GatsbyImageSharpFluid_withWebp
+      presentationWidth
     }
   }
   fragment Thumbnails on ImageSharp {
