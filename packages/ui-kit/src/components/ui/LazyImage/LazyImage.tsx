@@ -84,7 +84,7 @@ interface NoScriptImgProps {
   height?: number
   opacity?: number
   transitionDelay?: number
-  crossOrigin: string
+  crossOrigin: '' | 'anonymous' | 'use-credentials'
 }
 const noscriptImg = (props: NoScriptImgProps) => {
   // Check if prop exists before adding each attribute to the string output below to prevent
@@ -115,6 +115,7 @@ interface ImgProps {
   src: string
   srcSet?: string
   sizes?: string
+  crossOrigin?: '' | 'anonymous' | 'use-credentials'
 }
 interface SourceProps {
   // src: string,
@@ -183,7 +184,7 @@ export interface LazyImageProps {
   critical?: boolean
   Tag?: string
   itemProp?: string
-  crossOrigin?: string
+  crossOrigin?: '' | 'anonymous' | 'use-credentials'
 }
 
 export class LazyImage extends React.Component<LazyImageProps> {
@@ -340,7 +341,7 @@ export class LazyImage extends React.Component<LazyImageProps> {
       fixed,
       backgroundColor,
       durationFadeIn = 500,
-      crossOrigin = ``,
+      crossOrigin = 'anonymous',
       picture,
       onError,
     } = this.props
