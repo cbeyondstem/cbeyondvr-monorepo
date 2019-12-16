@@ -49,7 +49,7 @@ export const Carousel: React.FunctionComponent<CarouselProps> = props => {
       items={imgItems}
       renderItem={renderImage}
       // renderThumbInner={renderImage}
-      lazyLoad
+      // lazyLoad
       // onClick={this._onImageClick.bind(this)}
       // onImageLoad={this._onImageLoad}
       // onSlide={this._onSlide.bind(this)}

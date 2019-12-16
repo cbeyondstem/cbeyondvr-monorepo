@@ -1,7 +1,7 @@
 import * as _ from 'lodash'
 import * as React from 'react'
-import Img from 'gatsby-image/withIEPolyfill'
-import { FluidObject } from 'gatsby-image'
+import Img, { FluidObject } from 'gatsby-image'
+
 import { Container, Paper, useTheme, useMediaQuery } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
@@ -78,7 +78,6 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
           <Img
             className={classes.img}
             fluid={sources}
-            objectFit="scale-down"
             title={item.original.path}
             backgroundColor={
               theme.palette.type === 'light'

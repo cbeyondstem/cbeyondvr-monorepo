@@ -12,7 +12,7 @@ export const query = graphql`
   }
   fragment ImgResponsiveDesktop2 on ImageSharp {
     fluid(quality: 100, fit: COVER, srcSetBreakpoints: [600, 800, 1200, 1600, 2600]) {
-      ...GatsbyImageSharpFluid_withWebp_tracedSVG
+      ...GatsbyImageSharpFluid_withWebp
     }
   }
   fragment ImgResponsiveMobile on ImageSharp {
@@ -22,7 +22,7 @@ export const query = graphql`
   }
   fragment ImgResponsiveMobile2 on ImageSharp {
     fluid(quality: 100, maxWidth: 380, fit: COVER, srcSetBreakpoints: [200, 370]) {
-      ...GatsbyImageSharpFluid_withWebp_tracedSVG
+      ...GatsbyImageSharpFluid_withWebp
     }
   }
   fragment Thumbnails on ImageSharp {
