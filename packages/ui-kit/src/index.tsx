@@ -72,3 +72,8 @@ export {
   CarouselImgProps,
   CarouselProps,
 } from './components/ui/Carousel'
+export {
+  ResponsivePicture,
+  LazyImageProps,
+  LazyImage,
+} from './components/ui/LazyImage'

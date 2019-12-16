@@ -62,8 +62,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/pix`,
-        name: 'images'
+        path: `${__dirname}/content/pix_landscape`,
+        name: 'img_landscape'
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/pix_portrait`,
+        name: 'img_portrait'
       }
     },
     {

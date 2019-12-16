@@ -15,6 +15,11 @@ matrix:
     # - name: site-starter Pipeline
     #   env: PACKAGE_LOCATION=packages/site-starter PACKAGE_NAME=cbeyondvr-monorepo  DEPLOY_TO=cbeyond-starter
 
+cache:
+  directories:
+    - node_modules/
+    - $PACKAGE_LOCATION/.cache
+
 script:
   - cd packages/ui-kit
   - yarn build

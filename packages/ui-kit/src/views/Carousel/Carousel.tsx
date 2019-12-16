@@ -2,7 +2,7 @@ import * as _ from 'lodash'
 import * as React from 'react'
 import Img from 'gatsby-image/withIEPolyfill'
 import { FluidObject } from 'gatsby-image'
-import { Container, Paper, useTheme } from '@material-ui/core'
+import { Container, Paper, useTheme, useMediaQuery } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -18,8 +18,14 @@ export interface CarouselViewProps {
 
 const useStyles = makeStyles(theme => ({
   root: {
+    paddingLeft: '0',
+    paddingRight: '0',
     '@media (min-width: 1200px)': {
       maxWidth: '1100px !important',
+    },
+    '& div.MuiContainer-root': {
+      paddingLeft: '0',
+      paddingRight: '0',
     },
     '& div.image-gallery-slide': {
       backgroundColor: `${theme.palette.primary.dark} !important`,
@@ -38,17 +44,16 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingLeft: '0',
+    paddingRight: '0',
   },
   img: {
-    // overflow: 'hidden',
-    // position: 'relative',
-    // left: '50%',
-    // top: '50%',
-    // transform: 'translate(-50%, -50%)',
+    maxHeight: '70vh !important',
   },
 }))
 
 export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
+  const isLandscape = useMediaQuery('(orientation: landscape)')
   const fixItem: (img: ImageSharpFluid) => FluidObject = img => {
     const {
       aspectRatio = 1.5,
@@ -63,13 +68,9 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
   const classes = useStyles(props)
   const theme = useTheme()
   const renderImage = (item: ImageItemProps) => {
-    const sources = [
-      fixItem(item.original.mobile),
-      {
-        ...fixItem(item.original.desktop),
-        media: `(min-width: 768px)`,
-      },
-    ]
+    const sources = isLandscape
+      ? fixItem(item.original.desktop)
+      : fixItem(item.original.mobile)
 
     return (
       <Container className={classes.imgContainer}>
@@ -87,14 +88,18 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
           />
         </Container>
         <Paper square className={classes.paper}>
-          <Typography variant="subtitle2">
+          <Typography align="center" variant="subtitle2">
             {item.original.path
               .split('/')
               .slice(-1)
               .join('/')
               .toUpperCase()}
           </Typography>
-          <Typography variant="caption" className={classes.caption}>
+          <Typography
+            align="center"
+            variant="caption"
+            className={classes.caption}
+          >
             {item.original.path}
           </Typography>
         </Paper>{' '}
