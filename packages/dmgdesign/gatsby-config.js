@@ -3,7 +3,7 @@ const site = {
   author: `Armelle Laine`,
   description: `Architecture and Interior Design`,
   siteUrl: `https://dmgdesignsf.com/`,
-  org: `DMGDesign`,
+  org: `DMG Design SF`,
   contact: `hello@dmgdesignsf.com`,
   favicon: './src/assets/img/dmg-favicon.png',
   faviconSvg: './src/assets/img/favicon.comp.svg',
