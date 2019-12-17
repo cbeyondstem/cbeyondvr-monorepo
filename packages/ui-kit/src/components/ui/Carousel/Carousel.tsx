@@ -16,6 +16,7 @@ export interface CarouselImgProps {
 }
 export interface CarouselProps {
   images: CarouselImgProps[]
+  maxWidth?: number
   renderImage?: (item: ImageItemProps) => React.ReactNode
 }
 

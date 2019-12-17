@@ -11,7 +11,12 @@ export const query = graphql`
     }
   }
   fragment ImgResponsiveDesktop2 on ImageSharp {
-    fluid(quality: 100, fit: COVER, srcSetBreakpoints: [600, 800, 1200, 1600, 2600]) {
+    fluid(
+      quality: 100
+      fit: COVER
+      srcSetBreakpoints: [600, 800, 1200, 1600, 2600]
+      sizes: "(max-width: 1200px) 100vw, 1200px"
+    ) {
       ...GatsbyImageSharpFluid_withWebp
       presentationWidth
     }
@@ -22,7 +27,13 @@ export const query = graphql`
     }
   }
   fragment ImgResponsiveMobile2 on ImageSharp {
-    fluid(quality: 100, maxWidth: 380, fit: COVER, srcSetBreakpoints: [200, 370]) {
+    fluid(
+      quality: 100
+      maxWidth: 380
+      fit: COVER
+      srcSetBreakpoints: [200, 370]
+      sizes: "(max-width: 1200px) 100vw, 1200px"
+    ) {
       ...GatsbyImageSharpFluid_withWebp
       presentationWidth
     }
@@ -86,6 +97,7 @@ export const AllImgQueryProvider: React.FunctionComponent<ProviderProps> = props
         return (
           <AllImgProvider
             value={{
+              maxWidth: 1200,
               images
             }}
           >

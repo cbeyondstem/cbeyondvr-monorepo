@@ -67,7 +67,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
   const { path } = props
   const classes = useStyles(props)
   const theme = useTheme()
-  const renderImage = (item: ImageItemProps) => {
+  const renderImage = (maxWidth: number) => (item: ImageItemProps) => {
     const sources = isLandscape
       ? fixItem(item.original.desktop)
       : fixItem(item.original.mobile)
@@ -87,7 +87,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
                 : theme.palette.primary.dark
             }
             style={{
-              maxWidth: presWidth,
+              maxWidth,
               margin: '0 auto', // Used to center the image
             }}
           />
@@ -114,11 +114,14 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
 
   return (
     <AllImgConsumer>
-      {({ images }) => {
+      {({ images, maxWidth = 1200 }) => {
         const viewImages = images.filter(img => img.path.search(path) > -1)
         return (
           <Container className={classes.root}>
-            <CarouselBase images={viewImages} renderImage={renderImage} />
+            <CarouselBase
+              images={viewImages}
+              renderImage={renderImage(maxWidth)}
+            />
           </Container>
         )
       }}
