@@ -1,41 +1,21 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 
-import { StoryFn, StoryContext } from '@storybook/addons'
-
+/// <reference path="../../types/paths.macro.d.ts"/>
 import { base } from 'paths.macro'
 
 // import { action } from '@storybook/addon-actions'
 import { Thing } from './Thing'
-import { withCanvas } from '../utils'
+import { sbDecorator } from '../utils'
 
 const group = _.join(_.split(base, '/').slice(3), '/')
 
 export default {
   component: Thing,
   title: `${group}/Thing`,
-  decorators: [
-    (storyFn: StoryFn<React.FunctionComponent>, ctx: StoryContext) => {
-      const MyThing: React.FunctionComponent<StoryContext> = (
-        props: StoryContext
-      ) => <>{storyFn(props)}</>
-      const MyWrappedThing = withCanvas(MyThing)(ctx)
-      const s = `.sb-show-main{margin: 0, height: 100vh}`
-      return (
-        <>
-          <style>{s}</style>
-          <div
-            style={{
-              border: '1px solid red',
-              textAlign: 'center',
-            }}
-          >
-            {MyWrappedThing}
-          </div>
-        </>
-      )
-    },
-  ],
+  decorators: [sbDecorator]
 }
 
 export const simple = () => <Thing />
+export const planeBufferGeometry2x2 = () => <Thing args={[2, 2]} />
+export const planeBufferGeometry2x3 = () => <Thing args={[2, 3]} />
