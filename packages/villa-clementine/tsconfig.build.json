@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.build.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["*", "src/types/*"]
+    }
+  },
+  "references": [
+    {
+      "path": "../ui-kit/tsconfig.build.json"
+    }
+  ],
+  "include": ["src/**/*"]
+}
