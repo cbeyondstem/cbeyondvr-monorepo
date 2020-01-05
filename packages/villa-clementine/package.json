@@ -9,12 +9,11 @@
     "src"
   ],
   "scripts": {
-    "build": "yarn run clean &&  yarn run compile && yarn run copy-assets && yarn run copy-external-typings && yarn run gatsby build",
+    "build": "yarn run gatsby build",
     "clean": "rimraf public .cache dist && rm -rf tsconfig.build.tsbuildinfo",
     "copy-assets": "cp -rv src/assets dist/",
     "copy-external-typings": "cp -rv src/types/*.d.ts dist/types",
     "compile": "tsc -b tsconfig.build.json",
-    "gbuild": "yarn run gatsby build",
     "serve": "yarn run gatsby serve",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "start": "yarn run gatsby develop",
