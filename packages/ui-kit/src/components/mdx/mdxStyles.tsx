@@ -11,6 +11,7 @@ import {
 import { red } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles'
 import * as classnames from 'classnames'
+import { instanceOf } from 'prop-types'
 
 const caretRight = '"\\25B8"'
 
@@ -43,20 +44,22 @@ export const mdxLayoutStyles = makeStyles(theme => ({
     backgroundColor: red[100],
   },
   li: {
-    '&.spanSimple :before': {
+    '&.spanSimple > span::before': {
       content: caretRight,
-      paddingRight: '4px',
+      paddingRight: theme.spacing(2),
       color: theme.palette.primary.dark,
     },
     '&.spanSimple': {
+      paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
     },
-    '&.spanComplex > span > div :before': {
+    '&.spanComplex > span > div::before': {
       content: caretRight,
-      paddingRight: '4px',
+      paddingRight: theme.spacing(2),
       color: theme.palette.primary.dark,
     },
     '&.spanComplex > span > div': {
+      paddingLeft: theme.spacing(2),
       padding: theme.spacing(0, 2, 0, 0),
     },
   },
@@ -88,7 +91,12 @@ const StyledElem: (
   if (el === 'li') {
     return (p: React.ComponentPropsWithRef<'li'>) => {
       const { children } = p
-      if (typeof children === 'string') {
+      if (
+        typeof children === 'string' ||
+        (children instanceof Array && children.length > 1) ||
+        (typeof children === 'object' &&
+          (children as React.ReactElement).props.originalType === 'a')
+      ) {
         return (
           <ListItemText inset className={classnames(classes.li, 'spanSimple')}>
             {children}

@@ -50,7 +50,7 @@ export const HomeBedBaths: React.FunctionComponent = props => {
       3&nbsp;&nbsp;
       <span>
         <SqftIcon width="20" height="20" viewBox="0 0 130 130" />
-        &nbsp;130
+        &nbsp;140
         <span>
           &nbsp;m<sup>2</sup>
         </span>

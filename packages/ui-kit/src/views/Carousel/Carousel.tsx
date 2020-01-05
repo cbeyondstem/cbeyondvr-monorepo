@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => {
     theme.palette.type === 'light'
       ? theme.palette.primary.light
       : theme.palette.primary.dark
+  const colorSecondary = theme.palette.secondary.dark
   return {
     root: {
       paddingLeft: '0',
@@ -37,6 +38,26 @@ const useStyles = makeStyles(theme => {
       },
       '& div.image-gallery-slide': {
         backgroundColor: `${color} !important`,
+      },
+      '& a.image-gallery-fullscreen-button:hover::before': {
+        color: `${colorSecondary} !important`,
+      },
+      '& a.image-gallery-play-button:hover::before': {
+        color: `${colorSecondary} !important`,
+      },
+      '& a.image-gallery-left-nav:hover::before': {
+        color: `${colorSecondary} !important`,
+      },
+      '& a.image-gallery-right-nav:hover::before': {
+        color: `${colorSecondary} !important`,
+      },
+      '& a.image-gallery-thumbnail.active': {
+        border: `4px solid ${colorSecondary}`,
+      },
+      '@media (max-width: 768px)': {
+        'a.image-gallery-thumbnail.active': {
+          border: `3px solid ${colorSecondary}`,
+        },
       },
     },
     caption: {
@@ -55,9 +76,6 @@ const useStyles = makeStyles(theme => {
       justifyContent: 'center',
       paddingLeft: '0',
       paddingRight: '0',
-      '& .image-gallery-right-nav:hover::before': {
-        color: `${color} !important`,
-      },
     },
     img: {
       maxHeight: '70vh !important',
@@ -81,12 +99,18 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
   const classes = useStyles(props)
   const theme = useTheme()
   const renderImage = (maxWidth: number) => (item: ImageItemProps) => {
-    const sources = isLandscape
-      ? fixItem(item.original.desktop)
-      : fixItem(item.original.mobile)
-    const presWidth = isLandscape
-      ? item.original.desktop.presentationWidth
-      : item.original.mobile.presentationWidth
+    let sources
+    if (item.original.mobile) {
+      sources = isLandscape
+        ? fixItem(item.original.desktop)
+        : fixItem(item.original.mobile)
+    } else {
+      sources = fixItem(item.original.desktop)
+    }
+
+    // const presWidth = isLandscape
+    //   ? item.original.desktop.presentationWidth
+    //   : item.original.mobile.presentationWidth
     return (
       <Container className={classes.imgContainer}>
         <Container>

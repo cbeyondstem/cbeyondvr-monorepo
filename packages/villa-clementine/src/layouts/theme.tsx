@@ -15,7 +15,7 @@ const theme = createMuiTheme({
       // use as the prism code highlighting background
       main: '#c5cae9',
       light: '#f8fdff',
-      dark: '#9499b7',
+      dark: '#616161',
       contrastText: '#3949ab'
     }
   },

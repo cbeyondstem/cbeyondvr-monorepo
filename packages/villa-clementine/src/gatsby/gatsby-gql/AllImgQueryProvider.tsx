@@ -64,19 +64,19 @@ export const AllImgQueryProvider: React.FunctionComponent<ProviderProps> = props
               }
             }
           }
-          mobile: allFile(filter: { sourceInstanceName: { eq: "img_portrait" } }) {
-            edges {
-              node {
-                sourceInstanceName
-                relativePath
-                childImageSharp {
-                  ...ImgResponsiveMobile2
-                }
-              }
-            }
-          }
         }
       `}
+      // mobile: allFile(filter: { sourceInstanceName: { eq: "img_portrait" } }) {
+      //   edges {
+      //     node {
+      //       sourceInstanceName
+      //       relativePath
+      //       childImageSharp {
+      //         ...ImgResponsiveMobile2
+      //       }
+      //     }
+      //   }
+      // }
       render={data => {
         const images: CarouselImgProps[] = []
         data.desktop.edges.forEach((edge: FileEdge) => {
@@ -84,10 +84,12 @@ export const AllImgQueryProvider: React.FunctionComponent<ProviderProps> = props
           const thumb = _.get(edge, 'node.childImageSharp.fixed.src', null)
           const sourceInstanceName = _.get(edge, 'node.sourceInstanceName', '')
           let path = _.get(edge, 'node.relativePath', '')
-          const mobileEdges = data.mobile.edges.filter((e: FileEdge) => path === _.get(e, 'node.relativePath', ''))
           let mobile
-          if (mobileEdges.length > 0) {
-            mobile = _.get(mobileEdges[0], 'node.childImageSharp.fluid', null)
+          if (data.mobile) {
+            const mobileEdges = data.mobile.edges.filter((e: FileEdge) => path === _.get(e, 'node.relativePath', ''))
+            if (mobileEdges.length > 0) {
+              mobile = _.get(mobileEdges[0], 'node.childImageSharp.fluid', null)
+            }
           }
           path = `${sourceInstanceName}/${path}`
           if (desktop) {
