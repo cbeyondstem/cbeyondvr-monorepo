@@ -1,9 +1,7 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import { Typography } from '@material-ui/core'
 
-import { Space } from '@cbeyond/ui-kit'
 import BedsIcon from '../assets/img/bedroomsIcon.comp.svg'
 import BathsIcon from '../assets/img/bathroomIcon.comp.svg'
 import SqftIcon from '../assets/img/sqftIcon.comp.svg'
@@ -13,21 +11,12 @@ const useStyles = makeStyles(theme => ({
     marginTop: '1rem !important',
     display: 'flex',
     alignSelf: 'center',
+    textAlign: 'center',
     flexWrap: 'nowrap',
     justifyContent: 'space-evenly',
     '@media (max-width: 768px)': {
       minWidth: '80vw'
     },
-    // '& > svg': {
-    //   marginLeft: '1px',
-    //   marginRight: '3px'
-    // },
-    // '& > span': {
-    //   whiteSpace: 'nowrap'
-    // },
-    // '& > span > span': {
-    //   fontSize: 'smaller'
-    // }
     '& path': {
       fill: '#fff !important',
       stroke: '#fff !important'

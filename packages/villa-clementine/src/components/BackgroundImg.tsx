@@ -1,13 +1,13 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Typography } from '@material-ui/core'
+import { graphql, StaticQuery } from 'gatsby'
+
+import BackgroundImage from 'gatsby-background-image'
 import { HomeBedBaths } from './HomeBedBaths'
-import BackgroundHeader from '../assets/img/esterel.jpg'
 
 const useStyles = makeStyles(theme => ({
   background: {
-    backgroundImage: `url(${BackgroundHeader})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
     // objectFit:"scale-down",
@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     minHeight: '200px',
     // lineHeight: '200px',
     verticalAlign: 'middle',
+    textAlign: 'center',
     color: '#fff !important',
     position: 'relative',
     '& > div': {
@@ -31,11 +32,35 @@ export const BackgroundImg: React.FunctionComponent = props => {
   const classes = useStyles(props)
 
   return (
-    <Typography align="center" variant="body1" className={classes.background}>
-      <div>
-        Maison de vacances à la Roquette/Siagne (06)
-        <HomeBedBaths />
-      </div>
-    </Typography>
+    <StaticQuery
+      query={graphql`
+        query {
+          desktop: file(relativePath: { eq: "esterel.jpg" }) {
+            childImageSharp {
+              fluid(quality: 90, maxWidth: 1920) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      `}
+      render={data => {
+        // Set ImageData.
+        const imageData = data.desktop.childImageSharp.fluid
+        return (
+          <BackgroundImage
+            Tag="section"
+            className={classes.background}
+            fluid={imageData}
+            // backgroundColor={`#040e18`}
+          >
+            <div>
+              Maison de vacances à la Roquette/Siagne (06)
+              <HomeBedBaths />
+            </div>
+          </BackgroundImage>
+        )
+      }}
+    />
   )
 }

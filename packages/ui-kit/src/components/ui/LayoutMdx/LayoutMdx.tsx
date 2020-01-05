@@ -50,20 +50,24 @@ export const getLayoutMdx: (
         return (
           <Layout location={location} title={title}>
             <Paper className={classes.paper}>
-              <Typography
-                variant="h3"
-                style={{
-                  color: theme.palette.primary.contrastText,
-                  // backgroundColor: theme.palette.primary.dark,
-                  overflowWrap: 'break-word',
-                  textAlign: 'center',
-                  paddingTop: `${theme.spacing(8)}px`,
-                  paddingTop: `${theme.spacing(6)}px`,
-                }}
-              >
-                {title}
-              </Typography>
-              <Box p={1} />
+              {title ? (
+                <>
+                  <Typography
+                    variant="h3"
+                    style={{
+                      color: theme.palette.primary.contrastText,
+                      // backgroundColor: theme.palette.primary.dark,
+                      overflowWrap: 'break-word',
+                      textAlign: 'center',
+                      paddingTop: `${theme.spacing(4)}px`,
+                      paddingBottom: `${theme.spacing(2)}px`,
+                    }}
+                  >
+                    {title}
+                  </Typography>
+                  <Box p={1} />
+                </>
+              ) : null}
               <MDXProvider
                 components={{
                   ...MDXLayoutComponents(mdxClasses),

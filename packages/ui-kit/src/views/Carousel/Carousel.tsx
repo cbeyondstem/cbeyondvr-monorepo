@@ -6,7 +6,10 @@ import { Container, Paper, useTheme, useMediaQuery } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
-import { Carousel as CarouselBase } from '../../components/ui/Carousel'
+import {
+  Carousel as CarouselBase,
+  CarouselImgProps,
+} from '../../components/ui/Carousel'
 
 import { ImageItemProps } from '../../types/interfaces'
 import { AllImgConsumer } from '../../components/content/AllImages'
@@ -154,15 +157,24 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
   return (
     <AllImgConsumer>
       {({ images, maxWidth = 1200 }) => {
-        const viewImages = images.filter(img =>
-          path
-            ? img.path.search(path) > -1
-            : imgList.includes(img.path.split('/').slice(-1)[0])
-        )
+        let sortedViewImages: CarouselImgProps[] = []
+        if (imgList) {
+          imgList.forEach(imgName => {
+            const entry = _.find(
+              images,
+              img => imgName === img.path.split('/').slice(-1)[0]
+            )
+            if (entry) {
+              sortedViewImages.push(entry)
+            }
+          })
+        } else {
+          sortedViewImages = images.filter(img => img.path.search(path) > -1)
+        }
         return (
           <Container className={classes.root}>
             <CarouselBase
-              images={viewImages}
+              images={sortedViewImages}
               renderImage={renderImage(maxWidth)}
               thumb={thumb}
             />
