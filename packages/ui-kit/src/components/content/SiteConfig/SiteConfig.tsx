@@ -13,21 +13,26 @@ export interface SiteConfigProviderProps {
   logo: string
 }
 
-export const { Consumer: SiteConfigConsumer, Provider: SiteConfigProvider } = React.createContext({
+export const {
+  Consumer: SiteConfigConsumer,
+  Provider: SiteConfigProvider,
+} = React.createContext({
   title: ``,
   description: ``,
   siteUrl: ``,
   org: ``,
   contact: ``,
   favicon: ``,
-  logo: ``
+  logo: ``,
 } as SiteConfigProviderProps)
 
 export interface SiteConfigProps {
   children: React.ReactNode
 }
 
-export const GetSvg: (key: string) => React.FunctionComponent<React.SVGProps<SVGSVGElement>> = (key: string) => {
+export const GetSvg: (
+  key: string
+) => React.FunctionComponent<React.SVGProps<SVGSVGElement>> = (key: string) => {
   if (!['faviconSvg', 'logo', 'icon'].includes(key)) {
     return null
   }
@@ -49,7 +54,11 @@ export const GetSvg: (key: string) => React.FunctionComponent<React.SVGProps<SVG
     </SiteConfigConsumer>
   )
 }
-const Get: (key: string) => React.FunctionComponent<React.ComponentPropsWithRef<'span'>> = (key: string) => props => (
+const Get: (
+  key: string
+) => React.FunctionComponent<React.ComponentPropsWithRef<'span'>> = (
+  key: string
+) => props => (
   <SiteConfigConsumer>
     {(cfg: SiteConfigProviderProps) => {
       const text = _.get(cfg, key, `unknown key ${key}`)
@@ -59,14 +68,27 @@ const Get: (key: string) => React.FunctionComponent<React.ComponentPropsWithRef<
     }}
   </SiteConfigConsumer>
 )
-
+const GetContact: (
+  key: string
+) => React.FunctionComponent<React.ComponentPropsWithRef<'span'>> = (
+  key: string
+) => props => (
+  <SiteConfigConsumer>
+    {(cfg: SiteConfigProviderProps) => {
+      const text = _.get(cfg, key, `unknown key ${key}`)
+      // const sp = <Space cnt={1} />
+      // const st = <strong>{text}</strong>
+      return <a href={`mailto:${text}`}>{text}</a>
+    }}
+  </SiteConfigConsumer>
+)
 export const SiteConfig = {
   Org: Get('org'),
   SiteUrl: Get('siteUrl'),
-  Contact: Get('contact'),
+  Contact: GetContact('contact'),
   Title: Get('title'),
   Description: Get('description'),
   Favicon: GetSvg('faviconSvg'),
   Icon: GetSvg('icon'),
-  Logo: GetSvg('logo')
+  Logo: GetSvg('logo'),
 }

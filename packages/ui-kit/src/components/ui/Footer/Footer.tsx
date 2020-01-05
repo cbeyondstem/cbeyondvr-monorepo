@@ -8,14 +8,19 @@ const useStyles = makeStyles(theme => ({
   root: {
     bottom: '0em',
     flexGrow: 1,
+    alignSelf: 'center',
     // position: 'absolute'
   },
-  caption: {
+  footer: {
+    // display: 'inline-flex',
+
     fontSize: '12px !important',
-  },
-  span: {
-    padding: theme.spacing(1.5, 2),
-    marginTop: theme.spacing(1),
+    '& > span': {
+      top: theme.spacing(-2.5),
+      position: 'relative',
+      paddingLeft: theme.spacing(1.5),
+      // verticalAlign: 'middle',
+    },
   },
 }))
 
@@ -32,13 +37,9 @@ export function Footer(props: FooterProps) {
       <Box p={2} />
       <Grid container>
         <Grid item xs={12}>
-          <Typography
-            align="center"
-            variant="body1"
-            className={classes.caption}
-          >
+          <Typography align="center" variant="body1" className={classes.footer}>
             {brand}
-            <span className={classes.span}>
+            <span>
               &copy;
               <Space cnt={1} />
               {new Date().getFullYear()}

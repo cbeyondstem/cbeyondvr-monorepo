@@ -3,7 +3,7 @@ const site = {
   author: `Gerard Laine`,
   description: `Villa Clementine Photos`,
   siteUrl: `https://villa-clementine.fr/`,
-  org: `Villa Clementine`,
+  org: `Villa Clémentine`,
   contact: `infos@laine06.fr`,
   favicon: './src/assets/img/favicon.png',
   faviconSvg: './src/assets/img/favicon.comp.svg',
@@ -21,14 +21,28 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/img`,
-        name: `images`
+        path: `${__dirname}/content/pix_landscape`,
+        name: 'img_landscape'
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/pix_portrait`,
+        name: 'img_portrait'
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/pages`,
+        name: 'pages'
       }
     },
     {
       resolve: require.resolve(`../../node_modules/@cbeyond/ui-kit/plugins/custom-page-creator`),
       options: {
-        path: `${__dirname}/content/img`
+        path: `${__dirname}/src/pages`
       }
     },
     {
@@ -50,8 +64,7 @@ module.exports = {
       options: {
         extensions: ['.mdx', '.md'],
         defaultLayouts: {
-          pages: require.resolve('./src/gatsby/gatsby-tpl/mdx-layout-default.jsx'),
-          blog: require.resolve('./src/gatsby/gatsby-tpl/mdx-layout-default.jsx')
+          default: require.resolve('./src/gatsby/gatsby-tpl/mdx-layout-default.jsx')
         },
         gatsbyRemarkPlugins: [
           {

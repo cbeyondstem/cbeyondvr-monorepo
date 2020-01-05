@@ -7,9 +7,9 @@ const theme = createMuiTheme({
     type: 'dark',
     primary: {
       light: '#d7d7f4',
-      main: '#ffffff',
-      dark: '#2d2d2d'
-      // contrastText: '#2c2ca0'
+      main: '#2d2d2d',
+      dark: '#2d2d2d',
+      contrastText: '#fff'
     },
     secondary: {
       // use as the prism code highlighting background
@@ -17,7 +17,10 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: ['Michroma'].join(',')
+    fontFamily: ['Michroma'].join(','),
+    h1: {
+      color: '#fff'
+    }
   }
 })
 

@@ -4,12 +4,14 @@ import { FeatMap } from './FeatMap'
 import { SvgAtMdxPath } from './Svg'
 import { Toc } from './Toc'
 import { MdxProps } from '../content/AllMdx'
+import { Carousel as CarouselView } from '../../views/Carousel'
 
 export { MDXLayoutComponents, mdxLayoutStyles } from './mdxStyles'
 
 export const MDXGlobalComponents = (m: MdxProps) => ({
   Link,
   FeatMap,
+  CarouselView,
   Svg: SvgAtMdxPath(m),
   Toc: Toc(m),
   Org: SiteConfig.Org,

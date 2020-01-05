@@ -43,7 +43,8 @@ export const allMdxQueryRender: (
   const mdxList = data.allMdx.edges.map((edge: FileEdge) => {
     const excerpt = _.get(edge, 'node.excerpt', null)
     const uid = _.get(edge, 'node.fields.uid', null)
-    const slug = _.get(edge, 'node.fields.slug', null)
+    const slug = _.get(edge, 'node.fields.slug', null).replace('/pages', '')
+
     const category = _.get(edge, 'node.fields.category', null)
     const sourceInstanceName = _.get(
       edge,

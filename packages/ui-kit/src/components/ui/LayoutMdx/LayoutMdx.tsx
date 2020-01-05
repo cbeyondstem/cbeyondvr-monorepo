@@ -53,8 +53,10 @@ export const getLayoutMdx: (
               <Typography
                 variant="h3"
                 style={{
-                  color: theme.palette.primary.main,
+                  color: theme.palette.primary.contrastText,
+                  // backgroundColor: theme.palette.primary.dark,
                   overflowWrap: 'break-word',
+                  textAlign: 'center',
                 }}
               >
                 {title}

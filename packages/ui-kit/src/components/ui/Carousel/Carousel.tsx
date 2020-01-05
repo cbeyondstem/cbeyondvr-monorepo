@@ -18,10 +18,11 @@ export interface CarouselProps {
   images: CarouselImgProps[]
   maxWidth?: number
   renderImage?: (item: ImageItemProps) => React.ReactNode
+  thumb?: boolean
 }
 
 export const Carousel: React.FunctionComponent<CarouselProps> = props => {
-  const { images, renderImage } = props
+  const { images, renderImage, thumb = true } = props
   const [isFullScreen, setFullScreen] = React.useState(false)
   const imgItems: ImageItemProps[] = images.map(
     (item: {
@@ -59,7 +60,7 @@ export const Carousel: React.FunctionComponent<CarouselProps> = props => {
       infinite
       showBullets={false}
       showFullscreenButton={false}
-      showThumbnails
+      showThumbnails={thumb}
       showIndex
       showNav
       showPlayButton

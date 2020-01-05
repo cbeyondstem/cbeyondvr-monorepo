@@ -13,44 +13,57 @@ import { AllImgConsumer } from '../../components/content/AllImages'
 import { ImageSharpFluid } from '../../types/gatsby-graphql-types'
 
 export interface CarouselViewProps {
-  path: string
+  path?: string
+  images?: string[]
+  thumb?: boolean
+  captions?: boolean
 }
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    paddingLeft: '0',
-    paddingRight: '0',
-    '@media (min-width: 1200px)': {
-      maxWidth: '1100px !important',
-    },
-    '& div.MuiContainer-root': {
+const useStyles = makeStyles(theme => {
+  const color =
+    theme.palette.type === 'light'
+      ? theme.palette.primary.light
+      : theme.palette.primary.dark
+  return {
+    root: {
       paddingLeft: '0',
       paddingRight: '0',
+      '@media (min-width: 1200px)': {
+        maxWidth: '1100px !important',
+      },
+      '& div.MuiContainer-root': {
+        paddingLeft: '0',
+        paddingRight: '0',
+      },
+      '& div.image-gallery-slide': {
+        backgroundColor: `${color} !important`,
+      },
     },
-    '& div.image-gallery-slide': {
-      backgroundColor: `${theme.palette.primary.dark} !important`,
+    caption: {
+      fontSize: '10px !important',
     },
-  },
-  caption: {
-    fontSize: '10px !important',
-  },
-  paper: {
-    backgroundColor: `${theme.palette.primary.dark} !important`,
-  },
-  imgContainer: {
-    backgroundColor: `${theme.palette.primary.dark} !important`,
-    color: `${theme.palette.primary.dark} !important`,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingLeft: '0',
-    paddingRight: '0',
-  },
-  img: {
-    maxHeight: '70vh !important',
-  },
-}))
+    paper: {
+      backgroundColor: `${color} !important`,
+      boxShadow: 'none',
+    },
+    imgContainer: {
+      backgroundColor: `${color} !important`,
+      color: `${color} !important`,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingLeft: '0',
+      paddingRight: '0',
+      '& .image-gallery-right-nav:hover::before': {
+        color: `${color} !important`,
+      },
+    },
+    img: {
+      maxHeight: '70vh !important',
+    },
+  }
+})
 
 export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
   const isLandscape = useMediaQuery('(orientation: landscape)')
@@ -64,7 +77,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
     } = img
     return { aspectRatio, src, srcSet, sizes, ...fluid }
   }
-  const { path } = props
+  const { path, images: imgList, thumb = true, captions = false } = props
   const classes = useStyles(props)
   const theme = useTheme()
   const renderImage = (maxWidth: number) => (item: ImageItemProps) => {
@@ -92,22 +105,24 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
             }}
           />
         </Container>
-        <Paper square className={classes.paper}>
-          <Typography align="center" variant="subtitle2">
-            {item.original.path
-              .split('/')
-              .slice(-1)
-              .join('/')
-              .toUpperCase()}
-          </Typography>
-          <Typography
-            align="center"
-            variant="caption"
-            className={classes.caption}
-          >
-            {item.original.path}
-          </Typography>
-        </Paper>{' '}
+        {captions ? (
+          <Paper square className={classes.paper}>
+            <Typography align="center" variant="subtitle2">
+              {item.original.path
+                .split('/')
+                .slice(-1)
+                .join('/')
+                .toUpperCase()}
+            </Typography>
+            <Typography
+              align="center"
+              variant="caption"
+              className={classes.caption}
+            >
+              {item.original.path}
+            </Typography>
+          </Paper>
+        ) : null}
       </Container>
     )
   }
@@ -115,12 +130,17 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
   return (
     <AllImgConsumer>
       {({ images, maxWidth = 1200 }) => {
-        const viewImages = images.filter(img => img.path.search(path) > -1)
+        const viewImages = images.filter(img =>
+          path
+            ? img.path.search(path) > -1
+            : imgList.includes(img.path.split('/').slice(-1)[0])
+        )
         return (
           <Container className={classes.root}>
             <CarouselBase
               images={viewImages}
               renderImage={renderImage(maxWidth)}
+              thumb={thumb}
             />
           </Container>
         )

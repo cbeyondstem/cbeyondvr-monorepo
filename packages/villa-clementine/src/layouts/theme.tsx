@@ -1,25 +1,29 @@
 // import { red } from '@material-ui/core/colors'
 import { createMuiTheme, createStyles } from '@material-ui/core/styles'
 import { gatsbyHighlight, gatsbyHighlightLanguageBadges } from '@cbeyond/ui-kit'
-
+// consult https://material.io/resources/color to create the color palette
 const theme = createMuiTheme({
   palette: {
     type: 'light',
     primary: {
-      light: '#d7d7f4',
-      main: '#2c2ca0'
-      // contrastText: '#2c2ca0'
+      light: '#ffffff',
+      dark: '#ccb9bc',
+      main: '#ccb9bc', // '#f3e5f5',
+      contrastText: '#616161'
     },
     secondary: {
       // use as the prism code highlighting background
-      main: '#f5f2f0'
+      main: '#c5cae9',
+      light: '#f8fdff',
+      dark: '#9499b7',
+      contrastText: '#3949ab'
     }
   },
   typography: {
-    fontFamily: ['Roboto'].join(',')
-    // h1: {
-    //   color: '#2c2ca0'
-    // }
+    fontFamily: ['Roboto'].join(','),
+    h1: {
+      color: '#616161'
+    }
   }
 })
 

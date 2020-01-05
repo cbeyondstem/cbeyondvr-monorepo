@@ -1,0 +1,16 @@
+<svg version="1.1" viewBox="0 0 24 24.007" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <style>.a{fill:none;stroke-linecap:round;stroke-linejoin:round;}</style>
+ </defs>
+ <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <polyline class="a" transform="translate(5e-5)" points="19.473 4.5 21.5 4.5 23.5 16.5 0.5 16.5 2.5 4.5 4.778 4.5"/>
+  <path class="a" d="m23.5 16.5v4.5a1.5 1.5 0 0 1-1.5 1.5h-20a1.5 1.5 0 0 1-1.5-1.5v-4.5"/>
+  <line class="a" x1="1.833" x2="22.167" y1="8.5" y2="8.5"/>
+  <path class="a" d="m10.552 6.01a0.5 0.5 0 0 1-0.5 0.49h-4.978a0.5 0.5 0 0 1-0.5-0.569l0.278-2a0.5 0.5 0 0 1 0.5-0.431h4.742a0.5 0.5 0 0 1 0.5 0.51z"/>
+  <path class="a" d="m13.7 6.01a0.5 0.5 0 0 0 0.5 0.49h4.977a0.5 0.5 0 0 0 0.5-0.569l-0.278-2a0.5 0.5 0 0 0-0.499-0.431h-4.743a0.5 0.5 0 0 0-0.5 0.51z"/>
+  <path class="a" d="m2.5 4.5v-2.5a1.5 1.5 0 0 1 1.5-1.5h16a1.5 1.5 0 0 1 1.5 1.5v2.5"/>
+  <line class="a" x1="3.5001" x2="3.5001" y1="22.5" y2="23.5"/>
+  <line class="a" x1="20.5" x2="20.5" y1="22.5" y2="23.5"/>
+  <line class="a" x1="10.605" x2="13.647" y1="4.614" y2="4.614"/>
+ </g>
+</svg>

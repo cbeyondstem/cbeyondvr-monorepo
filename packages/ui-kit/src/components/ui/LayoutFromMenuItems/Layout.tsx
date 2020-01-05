@@ -21,14 +21,16 @@ export const getLayout: (
   Brand: React.FunctionComponent<BrandProps>,
   Org: React.FunctionComponent,
   menuItems: MenuItem[],
-  withPrefix: (p: string) => string
+  withPrefix: (p: string) => string,
+  Prolog?: React.FunctionComponent
 ) => React.FunctionComponent<LayoutProps> = (
   Link,
   SEO,
   Brand,
   Org,
   menuItems,
-  withPrefix
+  withPrefix,
+  Prolog
 ) => {
   const HeaderLinks = getHeaderLinks(Link, menuItems, withPrefix)
   return (props: LayoutProps) => {
@@ -49,6 +51,7 @@ export const getLayout: (
         <CssBaseline />
         <Header
           brand={BrandButton}
+          prolog={Prolog ? <Prolog /> : null}
           rightLinks={<HeaderLinks location={location} />}
         />
         <Box p={0.5} />

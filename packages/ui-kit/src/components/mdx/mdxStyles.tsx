@@ -35,7 +35,8 @@ export const mdxLayoutStyles = makeStyles(theme => ({
     },
   },
   header: {
-    color: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+    // backgroundColor: theme.palette.primary.dark,
     overflowWrap: 'break-word',
   },
   em: {
@@ -44,16 +45,16 @@ export const mdxLayoutStyles = makeStyles(theme => ({
   li: {
     '&.spanSimple :before': {
       content: caretRight,
-      paddingRight: '8px',
-      color: theme.palette.primary.light,
+      paddingRight: '4px',
+      color: theme.palette.primary.dark,
     },
     '&.spanSimple': {
       paddingRight: theme.spacing(2),
     },
     '&.spanComplex > span > div :before': {
       content: caretRight,
-      paddingRight: '8px',
-      color: theme.palette.primary.light,
+      paddingRight: '4px',
+      color: theme.palette.primary.dark,
     },
     '&.spanComplex > span > div': {
       padding: theme.spacing(0, 2, 0, 0),

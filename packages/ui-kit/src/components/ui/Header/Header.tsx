@@ -11,10 +11,10 @@ import headerStyle from './headerStyle'
 import headerLinksStyle from './headerLinksStyle'
 
 const colors = (theme: Theme) => {
-  const color =
-    theme.palette.type === 'light'
-      ? theme.palette.primary.light
-      : theme.palette.primary.dark
+  const color = theme.palette.primary.main
+  // theme.palette.type === 'light'
+  //   ? theme.palette.primary.light
+  //   : theme.palette.primary.dark
   return createStyles({
     colors: {
       color: theme.typography.h1.color,
@@ -42,6 +42,7 @@ export interface HeaderProps {
   rightLinks?: React.ReactNode
   leftLinks?: React.ReactNode
   brand: React.ReactNode
+  prolog?: React.ReactNode
 }
 export const Header = (props: HeaderProps) => {
   const classes = useStyles(props)
@@ -51,63 +52,66 @@ export const Header = (props: HeaderProps) => {
     setMobileOpen(!mobileOpen)
   }
 
-  const { rightLinks, leftLinks, brand } = props
+  const { rightLinks, leftLinks, brand, prolog } = props
   return (
-    <AppBar
-      position="sticky"
-      className={classNames(classes.appBar, classes.colors)}
-    >
-      <Toolbar className={classes.container} variant="dense" disableGutters>
-        {leftLinks !== undefined ? brand : null}
-        <div className={classes.flex}>
-          {leftLinks !== undefined ? (
-            <Hidden smDown implementation="css">
-              {leftLinks}
-            </Hidden>
-          ) : (
-            brand
-          )}
-        </div>
-        <Hidden smDown implementation="css">
-          {rightLinks}
-        </Hidden>
-        <Hidden mdUp>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerToggle}
-          >
-            <Menu />
-          </IconButton>
-        </Hidden>
-      </Toolbar>
-      <Hidden mdUp implementation="js">
-        <Drawer
-          variant="temporary"
-          anchor="right"
-          open={mobileOpen}
-          classes={{
-            paper: classNames(classes.drawerPaper, classes.colors),
-          }}
-          onClose={handleDrawerToggle}
-        >
-          <div className={classes.appResponsive}>
-            <div className={classes.listItem}>
-              <IconButton
-                className={classes.navLink}
-                size="medium"
-                color="inherit"
-                aria-label="close drawer"
-                onClick={handleDrawerToggle}
-              >
-                <ChevronRightIcon />
-              </IconButton>
-            </div>
-            {leftLinks}
-            {rightLinks}
+    <>
+      {prolog}
+      <AppBar
+        position="sticky"
+        className={classNames(classes.appBar, classes.colors)}
+      >
+        <Toolbar className={classes.container} variant="dense" disableGutters>
+          {leftLinks !== undefined ? brand : null}
+          <div className={classes.flex}>
+            {leftLinks !== undefined ? (
+              <Hidden smDown implementation="css">
+                {leftLinks}
+              </Hidden>
+            ) : (
+              brand
+            )}
           </div>
-        </Drawer>
-      </Hidden>
-    </AppBar>
+          <Hidden smDown implementation="css">
+            {rightLinks}
+          </Hidden>
+          <Hidden mdUp>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerToggle}
+            >
+              <Menu />
+            </IconButton>
+          </Hidden>
+        </Toolbar>
+        <Hidden mdUp implementation="js">
+          <Drawer
+            variant="temporary"
+            anchor="right"
+            open={mobileOpen}
+            classes={{
+              paper: classNames(classes.drawerPaper, classes.colors),
+            }}
+            onClose={handleDrawerToggle}
+          >
+            <div className={classes.appResponsive}>
+              <div className={classes.listItem}>
+                <IconButton
+                  className={classes.navLink}
+                  size="medium"
+                  color="inherit"
+                  aria-label="close drawer"
+                  onClick={handleDrawerToggle}
+                >
+                  <ChevronRightIcon />
+                </IconButton>
+              </div>
+              {leftLinks}
+              {rightLinks}
+            </div>
+          </Drawer>
+        </Hidden>
+      </AppBar>
+    </>
   )
 }
