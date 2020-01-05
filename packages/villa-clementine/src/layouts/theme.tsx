@@ -5,24 +5,24 @@ import { gatsbyHighlight, gatsbyHighlightLanguageBadges } from '@cbeyond/ui-kit'
 const theme = createMuiTheme({
   palette: {
     type: 'light',
-    primary: {
+    secondary: {
       light: '#ffffff',
       dark: '#ccb9bc',
       main: '#ccb9bc', // '#f3e5f5',
       contrastText: '#616161'
     },
-    secondary: {
+    primary: {
       // use as the prism code highlighting background
-      main: '#c5cae9',
+      main: '#cfd8dc',
       light: '#f8fdff',
-      dark: '#616161',
-      contrastText: '#3949ab'
+      dark: '#cfd8dc',
+      contrastText: '#616161'
     }
   },
   typography: {
     fontFamily: ['Roboto'].join(','),
     h1: {
-      color: '#616161'
+      color: '#000'
     }
   }
 })

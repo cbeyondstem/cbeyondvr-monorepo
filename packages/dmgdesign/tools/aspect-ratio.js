@@ -18,7 +18,7 @@ async function iterateDir(dir, callback) {
     }
   })
 }
-async function buildIncremental() {
+async function transformImages() {
   const rootDir = path.join(__dirname, '..', 'content', 'pix')
   // console.log(rootDir)
   await iterateDir(rootDir, async (dir, f) => {
@@ -122,5 +122,5 @@ async function buildIncremental() {
   })
 }
 if (require.main === module) {
-  buildIncremental()
+  transformImages()
 }

@@ -13,15 +13,17 @@ const useStyles = makeStyles((theme: Theme) =>
       '& svg': {
         // marginBottom: theme.spacing(-2),
         paddingRight: theme.spacing(0.5),
-        top: '0.125em',
+        top: '0em',
         position: 'relative'
+      },
+      '& div': {
+        verticalAlign: 'middle',
+        lineHeight: `${theme.spacing(8)}px`
+        // position: 'relative',
+        // top: '0',
+        // // left: '50%',
+        // transform: 'translateY(25%)'
       }
-      // "& p": {
-      //   position: "absolute",
-      //   top: "50%",
-      //   left: "50%",
-      //   transform: "translate(-50%, -50%)"
-      // }
       // '& >svg:nth-child(3)': {
       //   fill: '#fcfcfc !important',
       //   stroke: 'transparent !important',
@@ -38,12 +40,12 @@ export const Brand = (props: BrandProps) => {
 
   return type === 'header' ? (
     <div className={classes.brand}>
-      <SiteConfig.Icon width={theme.spacing(6)} height={theme.spacing(6)} />
-      <p>Villa Clémentine</p>
+      <SiteConfig.Icon width={theme.spacing(8)} height={theme.spacing(8)} />
+      <div>Villa Clémentine</div>
     </div>
   ) : (
     <div className={classes.brand}>
-      <SiteConfig.Icon width={theme.spacing(6)} height={theme.spacing(6)} />
+      <SiteConfig.Icon width={theme.spacing(8)} height={theme.spacing(8)} />
     </div>
   )
 }

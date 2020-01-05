@@ -57,6 +57,8 @@ export const getLayoutMdx: (
                   // backgroundColor: theme.palette.primary.dark,
                   overflowWrap: 'break-word',
                   textAlign: 'center',
+                  paddingTop: `${theme.spacing(8)}px`,
+                  paddingTop: `${theme.spacing(6)}px`,
                 }}
               >
                 {title}

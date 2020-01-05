@@ -5,7 +5,7 @@ const site = {
   siteUrl: `https://villa-clementine.fr/`,
   org: `Villa Clémentine`,
   contact: `infos@laine06.fr`,
-  favicon: './src/assets/img/favicon.png',
+  favicon: './src/assets/img/favicon.comp.png',
   faviconSvg: './src/assets/img/favicon.comp.svg',
   logo: './src/assets/img/favicon.comp.svg',
   icon: './src/assets/img/favicon.comp.svg'
