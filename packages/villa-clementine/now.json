@@ -1,0 +1,9 @@
+{
+  "type": "static",
+  "alias": "villa-clementine",
+  "static": {
+    "public": "qa.villa-clementine.com"
+  },
+  "public": true,
+  "version": 1
+}
