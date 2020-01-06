@@ -13,6 +13,8 @@ export interface CarouselImgProps {
   desktop: ImageSharpFluid
   mobile?: ImageSharpFluid
   thumb: string
+  title?: string
+  caption?: string
 }
 export interface CarouselProps {
   images: CarouselImgProps[]

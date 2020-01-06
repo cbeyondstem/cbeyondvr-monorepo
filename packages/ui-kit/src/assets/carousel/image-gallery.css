@@ -136,7 +136,7 @@
 .image-gallery-fullscreen-button,
 .image-gallery-play-button {
   bottom: 0;
-  transform: translateY(-70%);
+  transform: translateY(100%);
 }
 .image-gallery-fullscreen-button::before,
 .image-gallery-play-button::before {

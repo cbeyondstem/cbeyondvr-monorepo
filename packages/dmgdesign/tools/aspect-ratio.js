@@ -5,6 +5,8 @@ const fs = require('fs-extra')
 const slash = require('slash')
 const sharp = require('sharp')
 
+const src = 'pix'
+const dest = 'pix'
 async function iterateDir(dir, callback) {
   const items = fs.readdirSync(dir)
   await items.forEach(async f => {
@@ -19,7 +21,7 @@ async function iterateDir(dir, callback) {
   })
 }
 async function transformImages() {
-  const rootDir = path.join(__dirname, '..', 'content', 'pix')
+  const rootDir = path.join(__dirname, '..', 'content', src)
   // console.log(rootDir)
   await iterateDir(rootDir, async (dir, f) => {
     // console.log(dir, f)
@@ -29,8 +31,8 @@ async function transformImages() {
       .reduce((_path, curr) => {
         let newPath = _path
         if (_path === '') {
-          if (curr === 'pix') {
-            newPath = 'pix2_landscape'
+          if (curr === src) {
+            newPath = `${dest}_landscape`
           }
         } else {
           newPath = `${_path}/${curr}`
@@ -41,7 +43,7 @@ async function transformImages() {
     const source = await sharp(path.join(dir, f))
     const paths = [__dirname, '..', 'content', ...subdir]
     const landscape = paths.join('/')
-    const portrait = landscape.replace('pix2_landscape', 'pix2_portrait')
+    const portrait = landscape.replace(`${dest}_landscape`, `${dest}_portrait`)
     fs.mkdirSync(landscape, { recursive: true })
     fs.mkdirSync(portrait, { recursive: true })
     const { width, height } = await source.metadata()
@@ -55,7 +57,8 @@ async function transformImages() {
             fit: 'cover'
           })
           .jpeg()
-          .toFile(path.join(landscape, `${fname}_3x2.jpg`))
+          .withMetadata()
+          .toFile(path.join(landscape, `${fname}.jpg`))
         await source
           .resize(width, Math.floor((width * 2) / 3), {
             withoutEnlargement: true,
@@ -67,7 +70,8 @@ async function transformImages() {
             background: '#2d2d2d'
           })
           .jpeg()
-          .toFile(path.join(portrait, `${fname}_3x2.jpg`))
+          .withMetadata()
+          .toFile(path.join(portrait, `${fname}.jpg`))
       } else {
         // height < (width * 2) / 3) - very wide pix
         const widened = await source.resize(width * 2, height * 2, {
@@ -86,7 +90,10 @@ async function transformImages() {
         })
         // const { widthW, heightW } = await widened.toFormat('jpeg').metadata()
         console.log(`widened ${fname} to ${width2}x${height2}`)
-        resized.jpeg().toFile(path.join(landscape, `${fname}_3x2.jpg`))
+        resized
+          .jpeg()
+          .withMetadata()
+          .toFile(path.join(landscape, `${fname}.jpg`))
         await resized
           .resize(Math.floor((height * 5) / 7), height, {
             withoutEnlargement: true,
@@ -94,10 +101,11 @@ async function transformImages() {
             background: '#2d2d2d'
           })
           .jpeg()
-          .toFile(path.join(portrait, `${fname}_3x2.jpg`))
+          .withMetadata()
+          .toFile(path.join(portrait, `${fname}.jpg`))
       }
     } else {
-      paths.push(`${fname}_5x7.jpg`)
+      paths.push(`${fname}.jpg`)
       // portrait - crop to 5:7
       await source
         .resize(width, Math.floor((width * 7) / 5), {
@@ -105,7 +113,8 @@ async function transformImages() {
           fit: 'cover'
         })
         .jpeg()
-        .toFile(path.join(portrait, `${fname}_5x7.jpg`))
+        .withMetadata()
+        .toFile(path.join(portrait, `${fname}.jpg`))
       await source
         .resize(width, Math.floor((width * 7) / 5), {
           withoutEnlargement: true,
@@ -117,7 +126,8 @@ async function transformImages() {
           background: '#2d2d2d'
         })
         .jpeg()
-        .toFile(path.join(landscape, `${fname}_5x7.jpg`))
+        .withMetadata()
+        .toFile(path.join(landscape, `${fname}.jpg`))
     }
   })
 }

@@ -42,6 +42,10 @@ const useStyles = makeStyles(theme => {
       '& div.image-gallery-slide': {
         backgroundColor: `${color} !important`,
       },
+      '& button.image-gallery-play-button': {
+        bottom: props => (props.captions ? theme.spacing(8) : 0),
+        transform: 'none', // 'translateY(-70%)',
+      },
       '& a.image-gallery-fullscreen-button:hover::before': {
         color: `${colorSecondary} !important`,
       },
@@ -65,10 +69,14 @@ const useStyles = makeStyles(theme => {
     },
     caption: {
       fontSize: '10px !important',
+      textAlign: 'center',
     },
     paper: {
       backgroundColor: `${color} !important`,
+      color: theme.palette.primary.contrastText,
       boxShadow: 'none',
+      paddingTop: theme.spacing(1),
+      paddingBottom: theme.spacing(2),
     },
     imgContainer: {
       backgroundColor: `${color} !important`,
@@ -120,7 +128,8 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
           <Img
             className={classes.img}
             fluid={sources}
-            title={item.original.path}
+            title={item.original.title || item.original.path}
+            alt={item.original.title || item.original.path}
             backgroundColor={
               theme.palette.type === 'light'
                 ? theme.palette.primary.light
@@ -133,22 +142,19 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
           />
         </Container>
         {captions ? (
-          <Paper square className={classes.paper}>
+          <div className={classes.paper}>
             <Typography align="center" variant="subtitle2">
-              {item.original.path
-                .split('/')
-                .slice(-1)
-                .join('/')
-                .toUpperCase()}
+              {item.original.title ||
+                item.original.path
+                  .split('/')
+                  .slice(-1)
+                  .join('/')
+                  .toUpperCase()}
             </Typography>
-            <Typography
-              align="center"
-              variant="caption"
-              className={classes.caption}
-            >
-              {item.original.path}
-            </Typography>
-          </Paper>
+            <p className={classes.caption}>
+              {item.original.caption || item.original.path}
+            </p>
+          </div>
         ) : null}
       </Container>
     )
@@ -157,11 +163,17 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
   return (
     <AllImgConsumer>
       {({ images, maxWidth = 1200 }) => {
+        let selectedImages: CarouselImgProps[]
+        if (path) {
+          selectedImages = images.filter(img => img.path.search(path) > -1)
+        } else {
+          selectedImages = images
+        }
         let sortedViewImages: CarouselImgProps[] = []
         if (imgList) {
           imgList.forEach(imgName => {
             const entry = _.find(
-              images,
+              selectedImages,
               img => imgName === img.path.split('/').slice(-1)[0]
             )
             if (entry) {
@@ -169,7 +181,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
             }
           })
         } else {
-          sortedViewImages = images.filter(img => img.path.search(path) > -1)
+          sortedViewImages = selectedImages
         }
         return (
           <Container className={classes.root}>

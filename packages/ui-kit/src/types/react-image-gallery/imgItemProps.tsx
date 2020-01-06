@@ -14,6 +14,8 @@ export interface ImageItemProps {
     desktop: ImageSharpFluid
     mobile?: ImageSharpFluid
     thumb: string
+    title?: string
+    caption?: string
   }
   originalTitle?: string
   description?: string

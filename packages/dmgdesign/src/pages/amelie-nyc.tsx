@@ -6,7 +6,7 @@ export const MyPage = (props: PageProps) => {
   const { location } = props
   return (
     <Layout location={location} title="ARCHITECTURE">
-      <CarouselView path="amelie-nyc" />
+      <CarouselView path="amelie-nyc" captions />
     </Layout>
   )
 }

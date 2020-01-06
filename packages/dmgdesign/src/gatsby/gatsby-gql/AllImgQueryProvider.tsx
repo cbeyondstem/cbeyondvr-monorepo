@@ -3,6 +3,7 @@ import * as React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import { FileEdge } from '@cbeyond/ui-kit/dist/types/gatsby-graphql-types'
 import { ProviderProps, CarouselImgProps, AllImgProvider } from '@cbeyond/ui-kit'
+import { imageInfoDict } from '../../../tools/image-list'
 
 export const query = graphql`
   fragment ImgResponsiveDesktop on ImageSharp {
@@ -83,15 +84,24 @@ export const AllImgQueryProvider: React.FunctionComponent<ProviderProps> = props
           const desktop = _.get(edge, 'node.childImageSharp.fluid', null)
           const thumb = _.get(edge, 'node.childImageSharp.fixed.src', null)
           const sourceInstanceName = _.get(edge, 'node.sourceInstanceName', '')
-          let path = _.get(edge, 'node.relativePath', '')
+          const fname = _.get(edge, 'node.relativePath', '')
           const mobileEdges = data.mobile.edges.filter((e: FileEdge) => path === _.get(e, 'node.relativePath', ''))
           let mobile
           if (mobileEdges.length > 0) {
             mobile = _.get(mobileEdges[0], 'node.childImageSharp.fluid', null)
           }
-          path = `${sourceInstanceName}/${path}`
+          const path = `${sourceInstanceName}/${fname}`
+          const [category, imgName] = fname.split('/')
+          const imagesInPath = _.get(imageInfoDict, category, {})
+          const imageInfo = (imgName && _.get(imagesInPath, imgName.split('.')[0], null)) || null
+          let title
+          let caption
+          if (imageInfo) {
+            title = _.get(imageInfo, 'title', null)
+            caption = _.get(imageInfo, 'location.address', null) // we use the address as caption
+          }
           if (desktop) {
-            images.push({ path, desktop, mobile, thumb })
+            images.push({ path, desktop, mobile, thumb, title, caption })
           }
         })
         return (
