@@ -8,7 +8,7 @@ export const MyPage = (props: PageProps) => {
   const { location } = props
   return (
     <Layout location={location} title="FURNITURE/LIGHTS">
-      <CarouselView path="furniture" images={_.get(orderedImages, 'furniture', null)} />
+      <CarouselView path="furniture" images={_.get(orderedImages, 'furniture', null)} captions />
     </Layout>
   )
 }
