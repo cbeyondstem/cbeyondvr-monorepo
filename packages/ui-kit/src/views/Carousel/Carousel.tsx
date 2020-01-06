@@ -43,7 +43,8 @@ const useStyles = makeStyles(theme => {
         backgroundColor: `${color} !important`,
       },
       '& button.image-gallery-play-button': {
-        bottom: props => (props.captions ? theme.spacing(8) : 0),
+        bottom: (props: CarouselViewProps) =>
+          props.captions ? theme.spacing(8) : 0,
         transform: 'none', // 'translateY(-70%)',
       },
       '& a.image-gallery-fullscreen-button:hover::before': {
