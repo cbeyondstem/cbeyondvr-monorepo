@@ -3,7 +3,7 @@ import * as _ from 'lodash'
 import * as React from 'react'
 import { uid } from 'react-uid'
 import { makeStyles } from '@material-ui/core/styles'
-import { Container, Typography, Paper, Box, Grid } from '@material-ui/core'
+import { Container, Typography, CardMedia, Box, Grid } from '@material-ui/core'
 
 const education = [
   {
@@ -185,8 +185,20 @@ export const About: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> 
             heritage with modernity is fundamental element of his own aesthetic. His partnership with talented
             contractors, wood and metal craftsmen, allows him to complete challenging remodeling projects.
           </Typography>
+          <Box py={1} />
+          <CardMedia
+            component="iframe"
+            title="DMG Design SF - Project Portfolio"
+            image="https://player.vimeo.com/video/139663778"
+            width="640"
+            height="360"
+            frameBorder="0"
+            allow="autoplay; fullscreen"
+            allowFullScreen
+          />{' '}
         </Container>
       </Box>
+
       <Box py={1} />
       <Typography variant="h5">EXHIBITIONS</Typography>
       <Box py={2} />

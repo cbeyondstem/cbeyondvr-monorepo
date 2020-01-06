@@ -5,10 +5,10 @@ const site = {
   siteUrl: `https://dmgdesignsf.com/`,
   org: `DMG Design SF`,
   contact: `hello@dmgdesignsf.com`,
-  favicon: './src/assets/img/dmg-favicon.png',
-  faviconSvg: './src/assets/img/favicon.comp.svg',
+  favicon: './src/assets/img/dmg-favicon2.png',
+  faviconSvg: './src/assets/img/dmg-icon2-transparent.comp.svg',
   logo: './src/assets/img/dmg-brand.comp.svg',
-  icon: './src/assets/img/dmg-icon-color.comp.svg',
+  icon: './src/assets/img/dmg-icon2-transparent.comp.svg',
 
   // @cbeyond mdx-kit configuration: mdx folder and authors
   // dictionary describing the mdx folder hierarchy (for blog/stories content)

@@ -85,7 +85,7 @@ export const AllImgQueryProvider: React.FunctionComponent<ProviderProps> = props
           const thumb = _.get(edge, 'node.childImageSharp.fixed.src', null)
           const sourceInstanceName = _.get(edge, 'node.sourceInstanceName', '')
           const fname = _.get(edge, 'node.relativePath', '')
-          const mobileEdges = data.mobile.edges.filter((e: FileEdge) => path === _.get(e, 'node.relativePath', ''))
+          const mobileEdges = data.mobile.edges.filter((e: FileEdge) => fname === _.get(e, 'node.relativePath', ''))
           let mobile
           if (mobileEdges.length > 0) {
             mobile = _.get(mobileEdges[0], 'node.childImageSharp.fluid', null)

@@ -14,7 +14,7 @@ const theme = createMuiTheme({
     secondary: {
       // use as the prism code highlighting background
       main: '#f5f2f0',
-      dark: '#cf0000'
+      dark: '#bdbdbd' // '#cf0000'
     }
   },
   typography: {
