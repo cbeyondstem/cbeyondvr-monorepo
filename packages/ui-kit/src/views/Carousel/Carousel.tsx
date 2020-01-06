@@ -70,7 +70,6 @@ const useStyles = makeStyles(theme => {
     },
     caption: {
       fontSize: '10px !important',
-      textAlign: 'center',
     },
     paper: {
       backgroundColor: `${color} !important`,
@@ -78,6 +77,9 @@ const useStyles = makeStyles(theme => {
       boxShadow: 'none',
       paddingTop: theme.spacing(1),
       paddingBottom: theme.spacing(2),
+      maxWidth: '90vw',
+      whiteSpace: 'normal',
+      textAlign: 'center',
     },
     imgContainer: {
       backgroundColor: `${color} !important`,
@@ -152,9 +154,13 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
                   .join('/')
                   .toUpperCase()}
             </Typography>
-            <p className={classes.caption}>
+            <Typography
+              align="center"
+              variant="caption"
+              className={classes.caption}
+            >
               {item.original.caption || item.original.path}
-            </p>
+            </Typography>
           </div>
         ) : null}
       </Container>
