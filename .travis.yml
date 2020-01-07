@@ -19,7 +19,7 @@ cache:
     - node_modules/
     - $PACKAGE_LOCATION/.cache
 
-script:
+before_deploy:
   - cd packages/ui-kit
   - yarn build
   - cd ../../$PACKAGE_LOCATION
