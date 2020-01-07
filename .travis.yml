@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "12.13.1"
+  - "13.1.0"
 
 cache: yarn
 
@@ -14,11 +14,12 @@ matrix:
       env: PACKAGE_LOCATION=packages/villa-clementine PACKAGE_NAME=cbeyondvr-monorepo
 
 cache:
+  yarn: true
   directories:
     - node_modules/
     - $PACKAGE_LOCATION/.cache
 
-before_deploy:
+script:
   - cd packages/ui-kit
   - yarn build
   - cd ../../$PACKAGE_LOCATION

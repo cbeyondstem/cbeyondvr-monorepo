@@ -20,7 +20,7 @@
     "test": ""
   },
   "engines": {
-    "node": "^12.13.1"
+    "node": "^13.1.0"
   },
   "private": true,
   "workspaces": {
