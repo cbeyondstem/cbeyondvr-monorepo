@@ -23,7 +23,6 @@ before_deploy:
   - yarn build
   - cd ../../$PACKAGE_LOCATION
   - yarn build
-#  - yarn test
 
 # script: now --token=$NOW_TOKEN --target staging
 deploy:

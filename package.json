@@ -17,7 +17,7 @@
     "run:blog": "cd packages/blog && yarn develop",
     "run:shop": "cd packages/shop && yarn develop",
     "run:all": "npm-run-all --parallel run:blog run:shop",
-    "test": "jest test"
+    "test": ""
   },
   "engines": {
     "node": "^12.13.1"
