@@ -32,6 +32,8 @@ deploy:
   auth: $NETLIFY_AUTH
   edge: true # opt in to dpl v2
   local_dir: "public/"
+  on:
+    all_branches: true
 
 branches:
   only:
