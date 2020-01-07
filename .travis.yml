@@ -31,7 +31,7 @@ deploy:
   site: $NETLIFY_VILLA_CLEMENTINE
   auth: $NETLIFY_AUTH
   edge: true # opt in to dpl v2
-  local_dir: "public/"
+  local_dir: ./public
   on:
     all_branches: true
 
