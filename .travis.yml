@@ -11,7 +11,7 @@ install:
 matrix:
   include:
     - name: villa-clementine Pipeline
-      env: PACKAGE_LOCATION=packages/villa-clementine PACKAGE_NAME=cbeyondvr-monorepo
+      env: PACKAGE_LOCATION=packages/villa-clementine PACKAGE_NAME=cbeyondvr-monorepo DEPLOY_MOVE_TO=.netlify/build
 
 cache:
   yarn: true

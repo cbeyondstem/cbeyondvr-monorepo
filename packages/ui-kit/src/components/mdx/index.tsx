@@ -5,6 +5,7 @@ import { SvgAtMdxPath } from './Svg'
 import { Toc } from './Toc'
 import { MdxProps } from '../content/AllMdx'
 import { Carousel as CarouselView } from '../../views/Carousel'
+import { ContactUs } from '../ui/ContactUs/ContactUs'
 
 export { MDXLayoutComponents, mdxLayoutStyles } from './mdxStyles'
 
@@ -16,7 +17,7 @@ export const MDXGlobalComponents = (m: MdxProps) => ({
   Toc: Toc(m),
   Org: SiteConfig.Org,
   SiteUrl: SiteConfig.SiteUrl,
-  Contact: SiteConfig.Contact,
+  Contact: ContactUs,
   OrgTitle: SiteConfig.Title,
   OrgDesc: SiteConfig.Description,
   OrgFavicon: SiteConfig.Favicon,
