@@ -26,6 +26,7 @@
     "@storybook/react": "^5.2.6",
     "classnames": "^2.2.6",
     "csx": "^10.0.0",
+    "fs-extra": "^8.1.0",
     "gatsby": "^2.17.11",
     "gatsby-image": "^2.2.33",
     "lodash": "^4.17.15",
