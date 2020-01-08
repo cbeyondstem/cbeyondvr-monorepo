@@ -28,12 +28,10 @@ deploy:
   provider: netlify
   site: $NETLIFY_VILLA_CLEMENTINE
   auth: $NETLIFY_AUTH
+  prod: true
   edge: true # opt in to dpl v2
   on:
     all_branches: true
-
-after_deploy:
-  - netlify deploy --prod
 
 branches:
   only:
