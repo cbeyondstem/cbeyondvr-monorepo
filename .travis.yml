@@ -23,7 +23,7 @@ before_deploy:
   - cd ../../$PACKAGE_LOCATION
   - yarn build
 
-# script: now --token=$NOW_TOKEN --target staging
+#deploy to netlify
 deploy:
   provider: netlify
   site: $NETLIFY_VILLA_CLEMENTINE
