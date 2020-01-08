@@ -10,30 +10,31 @@ install:
 
 matrix:
   include:
+    - name: dmgdesign Pipeline
+      env: PACKAGE_LOCATION=packages/dmgdesign PACKAGE_NAME=cbeyondvr-monorepo DEPLOY_TO=dmgdesignsf
     - name: villa-clementine Pipeline
-      env: PACKAGE_LOCATION=packages/villa-clementine PACKAGE_NAME=cbeyondvr-monorepo DEPLOY_MOVE_TO=.netlify/build
+      env: PACKAGE_LOCATION=packages/villa-clementine PACKAGE_NAME=cbeyondvr-monorepo  DEPLOY_TO=villa-clementine
 
 cache:
-  yarn: true
   directories:
     - node_modules/
     - $PACKAGE_LOCATION/.cache
 
-before_deploy:
+script:
   - cd packages/ui-kit
   - yarn build
   - cd ../../$PACKAGE_LOCATION
   - yarn build
+#  - yarn test
 
 # script: now --token=$NOW_TOKEN --target staging
 deploy:
-  provider: netlify
-  site: $NETLIFY_VILLA_CLEMENTINE
-  auth: $NETLIFY_AUTH
-  edge: true # opt in to dpl v2
+  provider: script
+  script: yarn run now ./$DEPLOY_TO_PREFIX$DEPLOY_TO --token=$NOW_TOKEN --target production
+  skip_cleanup: true
+  app: $PACKAGE_NAME
   on:
     all_branches: true
-
 branches:
   only:
-    - netlify-villa-clementine
+    - master
