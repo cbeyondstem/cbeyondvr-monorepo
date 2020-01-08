@@ -2,8 +2,6 @@ language: node_js
 node_js:
   - "12.13.1"
 
-cache: yarn
-
 install:
   - yarn global add lerna jest now
   - lerna bootstrap
@@ -16,6 +14,7 @@ matrix:
       env: PACKAGE_LOCATION=packages/villa-clementine PACKAGE_NAME=cbeyondvr-monorepo  DEPLOY_TO=villa-clementine
 
 cache:
+  yarn: true
   directories:
     - node_modules/
     - $PACKAGE_LOCATION/.cache
