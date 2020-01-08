@@ -33,9 +33,14 @@ export const ContactUs: React.FunctionComponent = props => {
       Click for contact info
     </Button>
   );
-  return (
+  const isSSR = typeof window === "undefined"
+  return(
+    <>
+    {!isSSR && (
     <React.Suspense fallback={<div>loading...</div>}>
       <div>{emailComp}</div>
     </React.Suspense>
-  );
-};
+    )}
+    </>)
+
+}
