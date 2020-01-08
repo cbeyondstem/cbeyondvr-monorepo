@@ -11,7 +11,11 @@
     "sharp": "0.23.2",
     "favicons/**/sharp": "0.23.2",
     "favicons/**/react": "^16.2.0",
-    "vfile/**/vfile-message": "^2.0.2"
+    "vfile": "^4.0.2",
+    "remark/**/vfile": "^4.0.2",
+    "retext/**/vfile": "^4.0.2",
+    "unified/**/vfile": "^4.0.2",
+    "@types/vfile": "^4.0.0"
   },
   "license": "MIT",
   "scripts": {
