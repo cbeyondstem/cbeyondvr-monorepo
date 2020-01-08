@@ -23,7 +23,11 @@ before_deploy:
   - cd ../../$PACKAGE_LOCATION
   - yarn build
 
+<<<<<<< HEAD
 # script: now --token=$NOW_TOKEN --target staging
+=======
+# development deploys on zeit now
+>>>>>>> master
 deploy:
   provider: netlify
   site: $NETLIFY_VILLA_CLEMENTINE
