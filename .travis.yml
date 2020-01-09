@@ -3,7 +3,7 @@ node_js:
   - "12.13.1"
 
 install:
-  - yarn global add lerna jest now
+  - yarn global add lerna jest
   - lerna bootstrap
 
 matrix:
@@ -29,7 +29,7 @@ script:
 # development flow: deploys on zeit now
 deploy:
   provider: script
-  script: yarn run now ./$DEPLOY_TO_PREFIX$DEPLOY_TO --token=$NOW_TOKEN --target production
+  script: yarn run now ./$DEPLOY_TO_PREFIX$DEPLOY_TO --prod --token=$NOW_TOKEN
   skip_cleanup: true
   app: $PACKAGE_NAME
   on:
