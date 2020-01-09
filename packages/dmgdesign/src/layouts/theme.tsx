@@ -46,6 +46,7 @@ const scroll = createStyles({
       marginRight: 'auto',
       marginLeft: 'auto',
       width: '100%',
+      minHeight: '80vh',
       '@media (min-width: 576px)': {
         maxWidth: '576px'
       },

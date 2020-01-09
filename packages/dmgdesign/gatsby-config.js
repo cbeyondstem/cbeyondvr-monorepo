@@ -4,12 +4,16 @@ const site = {
   description: `Architecture and Interior Design`,
   siteUrl: `https://dmgdesignsf.com/`,
   org: `DMG Design SF`,
-  contact: `hello@dmgdesignsf.com`,
+  contact: `maxime@dmgdesignsf.com`,
   favicon: './src/assets/img/dmg-favicon2.png',
   faviconSvg: './src/assets/img/dmg-icon2-transparent.comp.svg',
   logo: './src/assets/img/dmg-brand.comp.svg',
   icon: './src/assets/img/dmg-icon2-transparent.comp.svg',
 
+  // original name servers:
+  // https://my.ionos.com/domain-nameserver/dmgdesignsf.com?__lf=HomeFlow&linkId=ct.tab.domainlist.nameserver&from=subdomains%2Fdmgdesignsf.com
+  // - ns57.1and1.com
+  // - ns58.1and1.com
   // @cbeyond mdx-kit configuration: mdx folder and authors
   // dictionary describing the mdx folder hierarchy (for blog/stories content)
   // mdx: {
