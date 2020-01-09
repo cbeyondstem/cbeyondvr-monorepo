@@ -59,6 +59,9 @@ export { Carousel as CarouselView } from './views/Carousel'
 
 export { Link } from './components/ui/Link'
 export { Space } from './components/ui/Space'
+export { ContactUs } from './components/ui/ContactUs'
+export { ContactUs as ContactUs2 } from './components/ui/ContactUs2'
+
 export {
   Header,
   getHeaderLinks,
