@@ -66,6 +66,7 @@
     "lodash": "^4.17.15",
     "mdx-utils": "^0.2.0",
     "mobx-react-form": "^2.0.8",
+    "now": "^16.4.4",
     "p-iteration": "^1.1.8",
     "paths.macro": "^2.0.2",
     "prismjs": "^1.17.1",

@@ -1,9 +1,5 @@
 {
-  "type": "static",
-  "alias": "dmgdesignsf",
-  "static": {
-    "public": "qa.dmgdesignsf.com"
-  },
+  "alias": ["qa-dmgdesignsf.now.sh"],
   "public": true,
-  "version": 1
+  "version": 2
 }

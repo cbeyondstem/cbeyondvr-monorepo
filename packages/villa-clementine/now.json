@@ -1,9 +1,5 @@
 {
-  "type": "static",
-  "alias": "villa-clementine",
-  "static": {
-    "public": "qa.villa-clementine.com"
-  },
+  "alias": ["qa-villa-clementine.now.sh"],
   "public": true,
-  "version": 1
+  "version": 2
 }
