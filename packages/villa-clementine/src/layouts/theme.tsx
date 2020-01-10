@@ -20,7 +20,7 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: ['Roboto'].join(','),
+    fontFamily: ['Poppins'].join(','),
     h1: {
       color: '#000'
     }

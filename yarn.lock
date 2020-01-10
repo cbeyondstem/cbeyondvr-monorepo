@@ -3637,6 +3637,7 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/vfile-message/-/vfile-message-2.0.0.tgz#690e46af0fdfc1f9faae00cd049cc888957927d5"
   integrity sha512-GpTIuDpb9u4zIO165fUy9+fXcULdD8HFRNli04GehoMVbeNq7D6OBnqSmg3lxZnC+UvgUhEWKxdKiwYUkGltIw==
+
   dependencies:
     vfile-message "*"
 
@@ -23174,6 +23175,11 @@ typeface-michroma@^0.0.72:
   version "0.0.72"
   resolved "https://registry.yarnpkg.com/typeface-michroma/-/typeface-michroma-0.0.72.tgz#2d40cdc4bc7507d4dc9ad5e7937a604a92fb33f7"
   integrity sha512-K4lsVdc27CPpTZ0rpIowZ8syJNoSMYkr+rUEssZPC0dOZIZzPulNgnH55tiZLPI8HA+PONjjrF815wS5QGH1hA==
+
+typeface-poppins@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-poppins/-/typeface-poppins-0.0.72.tgz#3262d6533dea2e99a5cafb3be7d8fa876e105206"
+  integrity sha512-FgzdU4XfGYc4aTq6WZD9FC+le4Foz6cyzjdjDvVnQePTQSUD0dkrXiVaTK/cyNVXQrEl2ykV39PxeKeFqqkrTA==
 
 typeface-roboto@^0.0.75:
   version "0.0.75"
