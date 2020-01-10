@@ -13,9 +13,6 @@ matrix:
 
 cache:
   yarn: true
-  directories:
-    - node_modules/
-    - $PACKAGE_LOCATION/.cache
 
 before_deploy:
   - cd packages/ui-kit
