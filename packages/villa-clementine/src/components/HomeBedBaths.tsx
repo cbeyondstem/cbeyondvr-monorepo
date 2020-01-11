@@ -1,7 +1,7 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-
+import { Box } from '@material-ui/core'
 import BedsIcon from '../assets/img/bedroomsIcon.comp.svg'
 import BathsIcon from '../assets/img/bathroomIcon.comp.svg'
 import SqftIcon from '../assets/img/sqftIcon.comp.svg'
@@ -13,7 +13,13 @@ const useStyles = makeStyles(theme => ({
     alignSelf: 'center',
     textAlign: 'center',
     flexWrap: 'nowrap',
-    justifyContent: 'space-evenly',
+    '@supports not (-ms-ime-align:auto)': {
+      justifyContent: 'space-evenly'
+    },
+    '@supports (-ms-ime-align:auto)': {
+      /* Edge only as space-evenly is not supported by Microsoft Edge*/
+      justifyContent: 'space-around'
+    },
     '@media (max-width: 768px)': {
       minWidth: '80vw'
     },

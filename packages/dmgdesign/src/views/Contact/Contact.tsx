@@ -2,7 +2,7 @@ import * as React from 'react'
 import Button from '@material-ui/core/Button'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { ContactUs2 } from '@cbeyond/ui-kit'
+import { ContactUs } from '@cbeyond/ui-kit'
 // import BrandIcon from 'assets/img/dmg-icon-color.comp.svg'
 import CallIcon from '@material-ui/icons/Call'
 
@@ -47,7 +47,7 @@ export const Contact: React.FunctionComponent<React.ComponentPropsWithRef<'div'>
         </Button>
       </div>
       <div>
-        or Email us <ContactUs2 title="Maxime Genauzeau" />
+        or Email us <ContactUs title="Maxime Genauzeau" />
       </div>
     </div>
   )

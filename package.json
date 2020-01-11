@@ -5,7 +5,8 @@
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
   "dependencies": {
     "lerna": "^3.18.3",
-    "react": "^16.2.0"
+    "react": "^16.2.0",
+    "unified": "^8.4.2"
   },
   "resolutions": {
     "sharp": "0.23.2",
@@ -14,6 +15,7 @@
     "vfile": "^4.0.2",
     "remark/**/vfile": "^4.0.2",
     "retext/**/vfile": "^4.0.2",
+    "unified": "^8.4.2",
     "unified/**/vfile": "^4.0.2",
     "@types/vfile": "^4.0.0"
   },
@@ -44,6 +46,6 @@
     ]
   },
   "devDependencies": {
-    "now": "^16.4.4"
+    "now": "^16.7.3"
   }
 }

@@ -10,7 +10,7 @@ import { SiteConfigQueryProvider } from '../gatsby/gatsby-gql/SiteConfigQueryPro
 import theme from './theme'
 
 // custom typefaces
-import 'typeface-roboto'
+import 'typeface-poppins'
 import '@cbeyond/ui-kit/dist/assets/prismjs/prism_clear.css'
 import '@cbeyond/ui-kit/dist/assets/carousel/image-gallery.css'
 

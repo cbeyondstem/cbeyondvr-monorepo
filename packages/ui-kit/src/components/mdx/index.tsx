@@ -6,6 +6,7 @@ import { Toc } from './Toc'
 import { MdxProps } from '../content/AllMdx'
 import { Carousel as CarouselView } from '../../views/Carousel'
 import { ContactUs } from '../ui/ContactUs/ContactUs'
+import { ContactUs as ContactUs2 } from '../ui/ContactUs2/ContactUs'
 
 export { MDXLayoutComponents, mdxLayoutStyles } from './mdxStyles'
 
@@ -18,6 +19,7 @@ export const MDXGlobalComponents = (m: MdxProps) => ({
   Org: SiteConfig.Org,
   SiteUrl: SiteConfig.SiteUrl,
   Contact: ContactUs,
+  Contact2: ContactUs2,
   OrgTitle: SiteConfig.Title,
   OrgDesc: SiteConfig.Description,
   OrgFavicon: SiteConfig.Favicon,
