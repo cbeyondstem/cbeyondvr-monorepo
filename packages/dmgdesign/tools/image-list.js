@@ -11,7 +11,7 @@
 // }
 const amelienyc = {
   date: '2012',
-  address: 'Amélie Wine Bar, 22 W 8th St, New York',
+  address: 'Amélie Wine Bar, New York - West Village',
   city: 'New York City',
   state: 'NY',
   GPSLatitude: '40 43 57.9',
@@ -21,7 +21,7 @@ const amelienyc = {
 }
 const petiteamelienyc = {
   date: '2018',
-  address: 'Petite Amélie Wine Bar, 566 Amsterdam Ave, New York',
+  address: 'Petite Amélie Wine Bar, New York - Upper West side',
   city: 'New York City',
   state: 'NY',
   GPSLatitude: '40 47 20.2',
@@ -31,7 +31,7 @@ const petiteamelienyc = {
 }
 const chouquet = {
   date: '2012',
-  address: "Chouquet's Restaurant, 2500 Washington St, San Francisco",
+  address: "Chouquet's Restaurant, San Francisco",
   city: 'San Francisco',
   state: 'CA',
   GPSLatitude: '37 47 31.0',
@@ -41,7 +41,7 @@ const chouquet = {
 }
 const nextworld = {
   date: '2012',
-  address: 'Next World Capital, 836 Montgomery Street, San Francisco',
+  address: 'Next World Capital, San Francisco',
   city: 'San Francisco',
   state: 'CA',
   GPSLatitude: '37 47 50.2',
@@ -51,7 +51,7 @@ const nextworld = {
 }
 const bateau = {
   date: '2013',
-  address: 'Bateau Hair Salon, 2 Townsend Street, Suite 4B, San Francisco',
+  address: 'Bateau Hair Salon, San Francisco',
   city: 'San Francisco',
   state: 'CA',
   GPSLatitude: '37 46 57.5',
@@ -61,7 +61,7 @@ const bateau = {
 }
 const garcon = {
   date: '2005',
-  address: 'Garcon Restaurant, 1101 Valencia St, San Francisco',
+  address: 'Garcon Restaurant, San Francisco',
   city: 'San Francisco',
   state: 'CA',
   GPSLatitude: '37 45 19.4',
@@ -71,7 +71,17 @@ const garcon = {
 }
 const coleValley = {
   date: '2009',
-  address: 'Private Home, Cole Valley, San Francisco',
+  address: 'Private Home, San Francisco',
+  city: 'San Francisco',
+  state: 'CA',
+  GPSLatitude: '37 45 56.2',
+  GPSLatitudeRef: 'N',
+  GPSLongitude: '122 27 05.1',
+  GPSLongitudeRef: 'W'
+}
+const coleValley2 = {
+  date: '2009',
+  address: 'Wall Installation - Private Home, San Francisco',
   city: 'San Francisco',
   state: 'CA',
   GPSLatitude: '37 45 56.2',
@@ -81,7 +91,7 @@ const coleValley = {
 }
 const sonora = {
   date: '2013',
-  address: '16901 Buckhorn Road, Sonora',
+  address: 'Private Home, Sonora',
   city: 'Sonora',
   state: 'CA',
   GPSLatitude: '37 57 16.9',
@@ -234,6 +244,11 @@ const images = {
       title: 'Bottles LED lights Wall',
       location: petiteamelienyc
     },
+    WallPanorama: {
+      title: 'Wall installation - Private interior, San Francisco',
+      location: coleValley2,
+      exclude: true // exclude from interior view
+    },
     _PP_5269: {
       title: 'Low Partition Divider',
       location: petiteamelienyc
@@ -361,7 +376,10 @@ function getOrderedListByCat() {
       if (!(cat in orderedImages)) {
         orderedImages[cat] = []
       }
-      orderedImages[cat].push(`${img}.jpg`)
+      const imgDict = images[cat][img]
+      if (typeof imgDict.exclude === `undefined` || imgDict.exclude === false) {
+        orderedImages[cat].push(`${img}.jpg`)
+      }
     })
   })
   return orderedImages

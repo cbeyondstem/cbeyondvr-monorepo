@@ -159,7 +159,11 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
               variant="caption"
               className={classes.caption}
             >
-              {item.original.caption || item.original.path}
+              {(item.original.caption || item.original.path)
+                .split(',')
+                .map(t => (
+                  <div>{t}</div>
+                ))}
             </Typography>
           </div>
         ) : null}

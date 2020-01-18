@@ -16,12 +16,12 @@ import { useSpring, a } from 'react-spring/three'
 extend({ OrbitControls })
 extend({ Fog })
 
-const Controls: React.FunctionComponent<
-  React.ComponentPropsWithRef<'orbitControls'>
-> = props => {
+const Controls: React.FunctionComponent<React.ComponentPropsWithRef<
+  'orbitControls'
+>> = props => {
   const orbitRef = React.useRef<OrbitControls>(null)
   const { camera, gl } = useThree()
-  const { ref, args, ...others } = props
+  const { ...others } = props
   const myFrameCallback: RenderCallback = (
     state: CanvasContext,
     delta: number
@@ -35,9 +35,9 @@ const Controls: React.FunctionComponent<
     <orbitControls ref={orbitRef} args={[camera, gl.domElement]} {...others} />
   )
 }
-const Plane: React.FunctionComponent<
-  React.ComponentPropsWithRef<'div'>
-> = props => (
+const Plane: React.FunctionComponent<React.ComponentPropsWithRef<
+  'div'
+>> = props => (
   <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]} receiveShadow>
     <planeBufferGeometry attach="geometry" args={[100, 100]} />
     <meshPhysicalMaterial
@@ -52,9 +52,9 @@ export interface ThingWithControlProps {
   box?: React.ComponentPropsWithRef<'boxBufferGeometry'>
   control?: React.ComponentPropsWithRef<'orbitControls'>
 }
-export const Box: React.FunctionComponent<
-  React.ComponentPropsWithRef<'boxBufferGeometry'>
-> = props => {
+export const Box: React.FunctionComponent<React.ComponentPropsWithRef<
+  'boxBufferGeometry'
+>> = props => {
   const [hovered, setHovered] = React.useState(false)
   const [active, setActive] = React.useState(false)
   const springProps = useSpring({
@@ -95,9 +95,7 @@ export const Box: React.FunctionComponent<
   )
 }
 
-export const ThingWithControl: React.FunctionComponent<
-  ThingWithControlProps
-> = props => {
+export const ThingWithControl: React.FunctionComponent<ThingWithControlProps> = props => {
   const { box, control } = props
   return (
     <>

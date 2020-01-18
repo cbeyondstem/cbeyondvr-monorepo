@@ -3,11 +3,12 @@ import * as _ from 'lodash'
 import * as React from 'react'
 import { uid } from 'react-uid'
 import { makeStyles } from '@material-ui/core/styles'
-import { Container, Typography, CardMedia, Box, Grid } from '@material-ui/core'
+import { Container, Typography, Box, Grid, useMediaQuery } from '@material-ui/core'
+import { Designer } from '../../components/Designer'
 
 const education = [
   {
-    date: 'Aug. 1989',
+    date: 'August 1989',
     where: 'GEORGIA TECH UNIVERSITY, ATLANTA, GA, USA.',
     what: 'ARCHITECTURAL SEMINAR about "American cities"'
   },
@@ -29,12 +30,12 @@ const education = [
 ]
 const exhibitions = [
   {
-    date: 'Oct. 2000',
+    date: 'October 2000',
     where: 'WILKES BASHFORD, 375 Sutter Street, San Francisco.',
     what: '"RENCONTRES No1" - Series of 6 paintings, ink and graphite on vellum, 21"x 34"'
   },
   {
-    date: 'Nov. 1999',
+    date: 'November 1999',
     where: 'SKYBAR, HOTEL MONDRIAN, 8440 Sunset Blvd, Los Angeles',
     what:
       '"RENCONTRES No2" - Series of 6 paintings, ink and graphite on vellum, 21"x 34"' +
@@ -47,7 +48,7 @@ const exhibitions = [
     what: '"PASTIS...IS CETERA" - Series of 6 paintings, acrylic on canvas, 18"x 18"'
   },
   {
-    date: 'Oct. 1999',
+    date: 'October 1999',
     where: 'FRINGALE RESTAURANT, 570 4TH Street, San Francisco.',
     what: '"3, BETWEEN 2 STARS" - Series of 5 paintings, ink and graphite on vellum, 26"x 32"'
   }
@@ -91,6 +92,9 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '0 !important',
     paddingRight: '0 !important'
   },
+  about: {
+    paddingLeft: '0 !important'
+  },
   activity: {
     paddingLeft: '0 !important',
     paddingRight: '0 !important',
@@ -109,7 +113,7 @@ const useStyles = makeStyles(theme => ({
     // overflowWrap: 'break-word'
   },
   where: {
-    fontSize: '12px !important'
+    fontSize: '14px !important'
     // overflowWrap: 'break-word'
   },
   what: {
@@ -128,24 +132,22 @@ const useStyles = makeStyles(theme => ({
 const Activity: React.FunctionComponent<ActivityProps> = props => {
   const classes = useStyles(props)
   const { date, where, what } = props
+  const md = useMediaQuery((t: Theme) => t.breakpoints.up('md'))
   return (
     <Container>
       <Grid className={classes.activity} container direction="row" spacing={3}>
-        <Grid item xs={4}>
-          <Grid container direction="column" spacing={3} className="left">
-            <Grid item xs={12} className="left">
-              <Typography variant="body1">{date}</Typography>
-            </Grid>
-            <Grid item xs={12} className="left">
-              <Typography variant="caption" className={classes.where}>
-                {where}
-              </Typography>
-            </Grid>
-          </Grid>
+        <Grid item xs={12} sm={2} className="left">
+          <Typography align="left" variant="body1">
+            {date}
+          </Typography>
         </Grid>
-        <Grid item xs={8} className="right">
+        <Grid item xs={12} sm={10} className="right">
           <Typography variant="body1" className={classes.what}>
             {what}
+          </Typography>
+          <Box py={1} />
+          <Typography variant="body1" className={classes.where}>
+            {where}
           </Typography>
         </Grid>
       </Grid>
@@ -176,7 +178,8 @@ export const About: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> 
       <Box py={2} />
       <Typography variant="h5">ABOUT</Typography>
       <Box py={1} my={2}>
-        <Container>
+        <Container className={classes.about}>
+          <Designer />
           <Typography variant="body1" className={classes.bio}>
             Dominique Maxime Genauzeau was born in La Rochelle/France, currently lives and works in San Francisco. He is
             the Designer for DMG Design's Interiors, commercial and private, translating conceptual designs into very
@@ -186,16 +189,6 @@ export const About: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> 
             contractors, wood and metal craftsmen, allows him to complete challenging remodeling projects.
           </Typography>
           <Box py={1} />
-          <CardMedia
-            component="iframe"
-            title="DMG Design SF - Project Portfolio"
-            image="https://player.vimeo.com/video/139663778"
-            width="640"
-            height="360"
-            frameBorder="0"
-            allow="autoplay; fullscreen"
-            allowFullScreen
-          />{' '}
         </Container>
       </Box>
 

@@ -13,3 +13,4 @@ tsconfig.build.tsbuildinfo
 
 # Local Netlify folder
 .netlify
+**/.keep

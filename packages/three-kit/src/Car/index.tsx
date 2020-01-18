@@ -1,1 +1,1 @@
-export { ThingWithControl } from './Car'
+export { CarWithControl } from './Car'

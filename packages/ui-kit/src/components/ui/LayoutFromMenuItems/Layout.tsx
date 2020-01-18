@@ -3,6 +3,7 @@ import * as React from 'react'
 
 // import { createStyles, Theme, makeStyles } from '@material-ui/core/styles'
 import { Box, Button, CssBaseline, Container } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 
 import { Header, getHeaderLinks } from '../Header'
 import { Footer } from '../Footer'
@@ -14,6 +15,12 @@ import {
   LinkProps,
   BrandProps,
 } from '../../../types/interfaces'
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    maxWidth: '100vw !important',
+  },
+}))
 
 export const getLayout: (
   Link: React.FunctionComponent<LinkProps>,
@@ -34,9 +41,9 @@ export const getLayout: (
 ) => {
   const HeaderLinks = getHeaderLinks(Link, menuItems, withPrefix)
   return (props: LayoutProps) => {
+    const classes = useStyles(props)
     const { children, location, title: pageTitle, ...seoProps } = props
     // const { pathname } = location
-    // const classes = useStyles(props)
 
     const BrandButton = (
       <Link underline="none" to="/">
