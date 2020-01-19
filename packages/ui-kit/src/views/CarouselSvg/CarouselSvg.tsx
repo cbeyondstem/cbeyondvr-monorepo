@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { getThemeProps } from '@material-ui/styles'
+import { AspectRatio } from '@material-ui/icons'
 import {
   Carousel as CarouselBase,
   CarouselImgProps,
@@ -139,19 +140,35 @@ export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => 
   const theme = useTheme()
   const wsize = useWindowSize()
   const renderImage = (maxWidth: number) => (item: ImageItemProps) => {
-    const { Svg: SvgRaw } = item.original.desktop as SvgProps
+    const { Svg: SvgRaw, viewBox } = item.original.desktop as SvgProps
+    const [s, e, w, h] = viewBox.match(/[\d.]+/g).map(Number)
+    const aspectRatio = w / h
+    const boxw = wsize.width * (isLandscape ? 0.7 : 0.95)
+    const boxh = boxw / 1.6
+    let svgw = boxw
+    if (aspectRatio < 1.6) {
+      svgw = (boxw * aspectRatio * 0.95) / 1.6
+    } else {
+      svgw = boxw * 0.95
+    }
     // const presWidth = isLandscape
     //   ? item.original.desktop.presentationWidth
     //   : item.original.mobile.presentationWidth
     return (
       <Container className={classes.imgContainer}>
-        {isLandscape ? null : <Box height={(wsize.width * 0.9) / 1.4 / 2} />}
+        {isLandscape ? null : <Box height={(wsize.width * 0.9) / 1.6 / 2} />}
         <Box
           className={classes.flex}
-          width={wsize.width * (isLandscape ? 0.7 : 0.9)}
-          height={(wsize.width * (isLandscape ? 0.7 : 0.9)) / 1.4}
+          width={boxw}
+          height={boxh}
+          justifyContent="center"
+          alignItems="center"
         >
-          <SvgRaw />
+          <SvgRaw
+            width={svgw}
+            height={svgw / aspectRatio}
+            // style={{ border: '1px solid black' }}
+          />
         </Box>
         {captions ? (
           <div className={classes.paper}>

@@ -10,6 +10,7 @@
   },
   "resolutions": {
     "sharp": "0.23.2",
+    "gatsby-image": "^2.2.39",
     "favicons/**/sharp": "0.23.2",
     "favicons/**/react": "^16.2.0",
     "vfile": "^4.0.2",

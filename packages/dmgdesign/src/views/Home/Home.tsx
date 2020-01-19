@@ -23,14 +23,6 @@ const useStyles = makeStyles(theme => ({
   grid: {
     paddingLeft: '0 !important',
     paddingRight: '0 !important'
-    // '& div.left': {
-    //   paddingLeft: '0 !important',
-    //   paddingRight: '0.5rem !important'
-    // },
-    // '& div.right': {
-    //   paddingLeft: '0.5rem !important',
-    //   paddingRight: '0 !important'
-    // }
   },
   title: {
     paddingBottom: '0.5rem',
@@ -42,21 +34,6 @@ const useStyles = makeStyles(theme => ({
     wordSpacing: `${theme.spacing(0.8)}px`,
     fontSize: '125%'
     // overflowWrap: 'break-word'
-  },
-  where: {
-    fontSize: '14px !important'
-    // overflowWrap: 'break-word'
-  },
-  what: {
-    fontSize: '14px !important'
-    // overflowWrap: 'break-word'
-  },
-  paper: {
-    backgroundColor: `${theme.palette.primary} !important`
-    // backgroundColor: `#000 !important`
-  },
-  divider: {
-    backgroundColor: '#787878 !important'
   }
 }))
 
@@ -85,14 +62,14 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
         return (
           <Container className={classes.root}>
             <Grid className={classes.grid} container alignItems="center" justify="center" direction="row" spacing={2}>
-              <Grid item xs={11} md={4} className="left">
+              <Grid item xs={11} md={4}>
                 <Typography variant="body1" align="left" className={classes.bio}>
                   DMG Design craftsmanship mixes classical heritage with modernity, taking inspiration from the ocean
                   fluidity and organic forms. DMGDesign unique aesthetic creates unique interiors with custom pieces of
                   furniture, light fixtures and art installations.
                 </Typography>
               </Grid>
-              <Grid item xs={12} md={8} className="right">
+              <Grid item xs={12} md={8}>
                 <CardMedia
                   component="iframe"
                   className={classes.iframe}
@@ -106,12 +83,11 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
                 />{' '}
               </Grid>
             </Grid>
-            <Box py={2} />
             {[
               ['home/_0002_lit2.jpg', 'home/_0005_lit.jpg'],
               ['interiors/_PP_5178.jpg', 'interiors/_0001_lit-copy-4'],
               ['interiors/WallPanorama.jpg']
-            ].map(pathList => {
+            ].map((pathList, pathIdx) => {
               const selectedImages: CarouselImgProps[] = []
               pathList.forEach(path => {
                 const item = images.filter(img => img.path.search(path) > -1)
@@ -121,17 +97,24 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
               })
 
               return (
-                <Grid className={classes.grid} container alignItems="center" direction="row" spacing={3}>
-                  <Grid item xs={12} lg={selectedImages.length > 1 ? 6 : 12} className="left">
+                <Grid
+                  key={uid(pathList, pathIdx)}
+                  className={classes.grid}
+                  container
+                  alignItems="center"
+                  direction="row"
+                  spacing={3}
+                >
+                  <Grid item xs={12} lg={selectedImages.length > 1 ? 6 : 12}>
                     {selectedImages[0].caption ? (
                       <Typography className={classes.title} align="left" variant="body1">
-                        {selectedImages[0].caption.split(',').map(t => (
-                          <div>{t}</div>
+                        {selectedImages[0].caption.split(',').map((t, idx) => (
+                          <div key={uid(t, idx)}>{t}</div>
                         ))}
                       </Typography>
                     ) : null}
                     <Img
-                      fluid={fixItem(selectedImages[0].desktop)}
+                      fluid={fixItem(selectedImages[0].desktop as ImageSharpFluid)}
                       title={selectedImages[0].title}
                       alt={selectedImages[0].title}
                       backgroundColor={
@@ -144,16 +127,16 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
                     />
                   </Grid>
                   {selectedImages.length > 1 ? (
-                    <Grid item xs={12} lg={6} className="right">
+                    <Grid item xs={12} lg={6}>
                       {selectedImages[1].caption ? (
                         <Typography className={classes.title} align="left" variant="body1">
-                          {selectedImages[1].caption.split(',').map(t => (
-                            <div>{t}</div>
+                          {selectedImages[1].caption.split(',').map((t, idx) => (
+                            <div key={uid(t, idx)}>{t}</div>
                           ))}
                         </Typography>
                       ) : null}
                       <Img
-                        fluid={fixItem(selectedImages[1].desktop)}
+                        fluid={fixItem(selectedImages[1].desktop as ImageSharpFluid)}
                         title={selectedImages[1].title}
                         alt={selectedImages[1].title}
                         backgroundColor={

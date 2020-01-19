@@ -59,16 +59,16 @@ const bateau = {
   GPSLongitude: '122 23 18.9',
   GPSLongitudeRef: 'W'
 }
-const garcon = {
-  date: '2005',
-  address: 'Garcon Restaurant, San Francisco',
-  city: 'San Francisco',
-  state: 'CA',
-  GPSLatitude: '37 45 19.4',
-  GPSLatitudeRef: 'N',
-  GPSLongitude: '122 25 14.7',
-  GPSLongitudeRef: 'W'
-}
+// const garcon = {
+//   date: '2005',
+//   address: 'Garcon Restaurant, San Francisco',
+//   city: 'San Francisco',
+//   state: 'CA',
+//   GPSLatitude: '37 45 19.4',
+//   GPSLatitudeRef: 'N',
+//   GPSLongitude: '122 25 14.7',
+//   GPSLongitudeRef: 'W'
+// }
 const coleValley = {
   date: '2009',
   address: 'Private Home, San Francisco',

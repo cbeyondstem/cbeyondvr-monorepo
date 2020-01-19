@@ -40,6 +40,9 @@ const scroll = createStyles({
       backgroundColor: theme.palette.secondary.dark,
       outline: '1px solid slategrey'
     },
+    // 'img, video': {
+    //   aspectRatio: 'attr(width) / attr(height)'
+    // },
     '.container-fluid': {
       paddingRight: '15px',
       paddingLeft: '15px',

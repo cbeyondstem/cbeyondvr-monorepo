@@ -136,12 +136,12 @@ const Activity: React.FunctionComponent<ActivityProps> = props => {
   return (
     <Container>
       <Grid className={classes.activity} container direction="row" spacing={3}>
-        <Grid item xs={12} sm={2} className="left">
+        <Grid item xs={12} sm={2}>
           <Typography align="left" variant="body1">
             {date}
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={10} className="right">
+        <Grid item xs={12} sm={10}>
           <Typography variant="body1" className={classes.what}>
             {what}
           </Typography>
