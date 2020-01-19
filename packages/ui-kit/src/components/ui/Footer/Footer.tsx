@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Box, Grid, Typography, useMediaQuery } from '@material-ui/core'
+import { Box, Grid, Typography, useMediaQuery, Theme } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Space } from '../Space'
 
