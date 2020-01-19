@@ -220,26 +220,26 @@ const images = {
       title: 'INTERIOR/Restaurant',
       location: chouquet
     },
-    _MG_6373: {
-      title: 'INTERIOR/Bistrot',
-      location: garcon
-    },
-    _MG_6317: {
-      title: 'INTERIOR/Bistrot',
-      location: garcon
-    },
-    _MG_6381: {
-      title: 'INTERIOR/Bistrot',
-      location: garcon
-    },
-    _MG_6327: {
-      title: 'INTERIOR/Bistrot/Detail',
-      location: garcon
-    },
-    _MG_6355: {
-      title: 'INTERIOR/Bistrot',
-      location: garcon
-    },
+    // _MG_6373: {
+    //   title: 'INTERIOR/Bistrot',
+    //   location: garcon
+    // },
+    // _MG_6317: {
+    //   title: 'INTERIOR/Bistrot',
+    //   location: garcon
+    // },
+    // _MG_6381: {
+    //   title: 'INTERIOR/Bistrot',
+    //   location: garcon
+    // },
+    // _MG_6327: {
+    //   title: 'INTERIOR/Bistrot/Detail',
+    //   location: garcon
+    // },
+    // _MG_6355: {
+    //   title: 'INTERIOR/Bistrot',
+    //   location: garcon
+    // },
     '_0001_lit-copy-4': {
       title: 'INTERIOR/Hair Salon',
       location: bateau
