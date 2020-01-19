@@ -158,11 +158,19 @@ const images = {
     }
   },
   architecture: {
-    markhoupin2: {
+    '1767 North Point-Color Interior Elevation.svg': {
+      title: 'Interior Remodel',
+      location: coleValley2
+    },
+    'DMG Nuz Staircase A2 1 1-2 Scale 4-19-2019.svg': {
+      title: 'Custom Staircase',
+      location: coleValley2
+    },
+    'Mark Houpin S2 1-2-14-Fog.svg': {
       title: 'Geodesic Dome House/Extension',
       location: sonora
     },
-    markhoupin1: {
+    'Marc Houpin S1 4-1-14-Fog.svg': {
       title: 'Geodesic Dome House/Extension',
       location: sonora
     }
@@ -378,7 +386,11 @@ function getOrderedListByCat() {
       }
       const imgDict = images[cat][img]
       if (typeof imgDict.exclude === `undefined` || imgDict.exclude === false) {
-        orderedImages[cat].push(`${img}.jpg`)
+        let ext = ''
+        if (img.search('.svg') === -1) {
+          ext = '.jpg'
+        }
+        orderedImages[cat].push(`${img}${ext}`)
       }
     })
   })

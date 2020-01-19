@@ -1,0 +1,1 @@
+export { CarouselSvg } from './CarouselSvg'

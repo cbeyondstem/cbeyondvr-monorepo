@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Box, Grid, Typography } from '@material-ui/core'
+import { Box, Grid, Typography, useMediaQuery } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Space } from '../Space'
 
@@ -31,6 +31,8 @@ export interface FooterProps {
 
 export function Footer(props: FooterProps) {
   const classes = useStyles(props)
+  const xs = useMediaQuery((t: Theme) => t.breakpoints.down('xs'))
+
   const { brand, org } = props
   return (
     <div className={classes.root}>
@@ -45,9 +47,19 @@ export function Footer(props: FooterProps) {
               {new Date().getFullYear()}
               <Space cnt={1} />
               {org}.
-              <Space cnt={1} />
-              All rights reserved.
+              {xs ? null : (
+                <>
+                  <Space cnt={1} />
+                  All rights reserved.
+                </>
+              )}
             </span>
+            {xs ? (
+              <>
+                <br />
+                <span>All rights reserved.</span>
+              </>
+            ) : null}{' '}
           </Typography>
         </Grid>
       </Grid>

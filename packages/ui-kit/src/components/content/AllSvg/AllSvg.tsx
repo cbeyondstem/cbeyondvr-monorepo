@@ -11,6 +11,8 @@ export interface SvgProps {
   path: string
   sourceInstanceName: string
   viewBox: string
+  title?: string
+  caption?: string
   Svg: (p: React.SVGProps<SVGSVGElement>) => JSX.Element
 }
 export interface AllSvgProps {
@@ -72,8 +74,9 @@ const hastParse = (elems: HASTElementProps[]) => {
 }
 
 export const allSvgQueryRender: (
-  children: React.ReactNode
-) => (data: Query) => React.ReactNode = children => data => {
+  children: React.ReactNode,
+  svgTitleByPath?: { [path: string]: { title?: string; caption?: string } }
+) => (data: Query) => React.ReactNode = (children, svgTitleByPath) => data => {
   const svgByPath: { [path: string]: SvgProps } = {}
   data.allSvg.edges.forEach((edge: FileEdge) => {
     const id = _.get(edge, 'node.id', null)
@@ -84,7 +87,9 @@ export const allSvgQueryRender: (
     const path = _.get(edge, 'node.path', ':').slice(1)
     const content = _.get(edge, 'node.content', '')
     const sourceInstanceName = _.get(edge, 'node.sourceInstanceName', '')
-
+    const svgInfo = _.get(svgTitleByPath, path, {})
+    const title = _.get(svgInfo, 'title', undefined)
+    const caption = _.get(svgInfo, 'caption', undefined)
     const hast: HASTElementProps = svgParse(content)
     const { viewBox } = hast.children[0].properties
     const Svg = (p: React.SVGProps<SVGSVGElement>) => {
@@ -102,6 +107,8 @@ export const allSvgQueryRender: (
       sourceInstanceName,
       viewBox,
       Svg,
+      title,
+      caption,
     }
   })
   return (

@@ -1,27 +1,31 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 import { uid } from 'react-uid'
-import Img, { FluidObject } from 'gatsby-image'
-
-import { Container, Paper, useTheme, useMediaQuery } from '@material-ui/core'
+import { Container, Box, useTheme, useMediaQuery } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
+import { getThemeProps } from '@material-ui/styles'
 import {
   Carousel as CarouselBase,
   CarouselImgProps,
 } from '../../components/ui/Carousel'
 
 import { ImageItemProps } from '../../types/interfaces'
-import { AllImgConsumer } from '../../components/content/AllImages'
-import { ImageSharpFluid } from '../../types/gatsby-graphql-types'
+import {
+  AllSvgConsumer,
+  AllSvgProps,
+  SvgProps,
+} from '../../components/content/AllSvg'
 
 export interface CarouselViewProps {
   path?: string
   images?: string[]
   thumb?: boolean
   captions?: boolean
+  backgroundColor?: string
 }
+const { useState, useEffect } = React
 
 const useStyles = makeStyles(theme => {
   const color =
@@ -95,56 +99,60 @@ const useStyles = makeStyles(theme => {
     img: {
       maxHeight: '70vh !important',
     },
+    flex: {
+      display: 'flex',
+      backgroundColor: (props: CarouselViewProps) => props.backgroundColor,
+      '& svg': {
+        width: '100%',
+      },
+    },
   }
 })
+// Hook
+function useWindowSize() {
+  const isClient = typeof window === 'object'
 
-export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
-  const isLandscape = useMediaQuery('(orientation: landscape)')
-  const fixItem: (img: ImageSharpFluid) => FluidObject = img => {
-    const {
-      aspectRatio = 1.5,
-      src = '',
-      srcSet = '',
-      sizes = '',
-      ...fluid
-    } = img
-    return { aspectRatio, src, srcSet, sizes, ...fluid }
+  function getSize() {
+    return {
+      width: isClient ? window.innerWidth : undefined,
+      height: isClient ? window.innerHeight : undefined,
+    }
   }
-  const { path, images: imgList, thumb = true, captions = false } = props
+  const [windowSize, setWindowSize] = useState(getSize)
+  useEffect(() => {
+    if (!isClient) {
+      return null
+    }
+    function handleResize() {
+      setWindowSize(getSize())
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, []) // Empty array ensures that effect is only run on mount and unmount
+
+  return windowSize
+}
+export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => {
+  const isLandscape = useMediaQuery('(orientation: landscape)')
+  const { path, images: imgList, thumb = false, captions = false } = props
   const classes = useStyles(props)
   const theme = useTheme()
+  const wsize = useWindowSize()
   const renderImage = (maxWidth: number) => (item: ImageItemProps) => {
-    let sources
-    if (item.original.mobile) {
-      sources = isLandscape
-        ? fixItem(item.original.desktop)
-        : fixItem(item.original.mobile)
-    } else {
-      sources = fixItem(item.original.desktop)
-    }
-
+    const { Svg: SvgRaw } = item.original.desktop as SvgProps
     // const presWidth = isLandscape
     //   ? item.original.desktop.presentationWidth
     //   : item.original.mobile.presentationWidth
     return (
       <Container className={classes.imgContainer}>
-        <Container>
-          <Img
-            className={classes.img}
-            fluid={sources}
-            title={item.original.title || item.original.path}
-            alt={item.original.title || item.original.path}
-            backgroundColor={
-              theme.palette.type === 'light'
-                ? theme.palette.primary.light
-                : theme.palette.primary.dark
-            }
-            style={{
-              maxWidth,
-              margin: '0 auto', // Used to center the image
-            }}
-          />
-        </Container>
+        {isLandscape ? null : <Box height={(wsize.width * 0.9) / 1.4 / 2} />}
+        <Box
+          className={classes.flex}
+          width={wsize.width * (isLandscape ? 0.7 : 0.9)}
+          height={(wsize.width * (isLandscape ? 0.7 : 0.9)) / 1.4}
+        >
+          <SvgRaw />
+        </Box>
         {captions ? (
           <div className={classes.paper}>
             <Typography align="center" variant="subtitle2">
@@ -162,7 +170,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
             >
               {(item.original.caption || item.original.path)
                 .split(',')
-                .map((t, idx) => (
+                .map((t: string, idx: number) => (
                   <div key={uid(t, idx)}>{t}</div>
                 ))}
             </Typography>
@@ -171,40 +179,51 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
       </Container>
     )
   }
-
   return (
-    <AllImgConsumer>
-      {({ images, maxWidth = 1200 }) => {
-        let selectedImages: CarouselImgProps[]
+    <AllSvgConsumer>
+      {({ svgByPath }: AllSvgProps) => {
+        let selectedSvgList: SvgProps[]
+        const svgList = Object.values(svgByPath)
         if (path) {
-          selectedImages = images.filter(img => img.path.search(path) > -1)
+          selectedSvgList = svgList.filter(
+            (svg: SvgProps) => svg.path.search(path) > -1
+          )
         } else {
-          selectedImages = images
+          selectedSvgList = svgList
         }
-        let sortedViewImages: CarouselImgProps[] = []
+        let sortedViewSvgList: SvgProps[] = []
         if (imgList) {
           imgList.forEach(imgName => {
             const entry = _.find(
-              selectedImages,
-              img => imgName === img.path.split('/').slice(-1)[0]
+              selectedSvgList,
+              svg => imgName === svg.path.split('/').slice(-1)[0]
             )
             if (entry) {
-              sortedViewImages.push(entry)
+              sortedViewSvgList.push(entry)
             }
           })
         } else {
-          sortedViewImages = selectedImages
+          sortedViewSvgList = selectedSvgList
         }
         return (
           <Container className={classes.root}>
             <CarouselBase
-              images={sortedViewImages}
-              renderImage={renderImage(maxWidth)}
-              thumb={thumb}
+              thumb={false}
+              images={sortedViewSvgList.map(
+                s =>
+                  ({
+                    desktop: s,
+                    thumb: null,
+                    path: s.path,
+                    title: s.title,
+                    caption: s.caption,
+                  } as CarouselImgProps)
+              )}
+              renderImage={renderImage(1200)}
             />
           </Container>
         )
       }}
-    </AllImgConsumer>
+    </AllSvgConsumer>
   )
 }

@@ -54,6 +54,7 @@ export { getLayoutFromMenuItems } from './components/ui/LayoutFromMenuItems'
 // reusable View components
 export { BlogIndex } from './views/BlogIndex'
 export { Carousel as CarouselView } from './views/Carousel'
+export { CarouselSvg as CarouselSvgView } from './views/CarouselSvg'
 
 // Reusable material-ui UX components
 
