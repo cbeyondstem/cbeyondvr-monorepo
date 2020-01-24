@@ -98,7 +98,7 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
 
               return (
                 <Grid
-                  key={uid(pathList, pathIdx)}
+                  key={uid(pathList[0], pathIdx)}
                   className={classes.grid}
                   container
                   alignItems="center"
@@ -107,7 +107,7 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
                 >
                   <Grid item xs={12} lg={selectedImages.length > 1 ? 6 : 12}>
                     {selectedImages[0].caption ? (
-                      <Typography className={classes.title} align="left" variant="body1">
+                      <Typography className={classes.title} align="left" variant="subtitle1">
                         {selectedImages[0].caption.split(',').map((t, idx) => (
                           <div key={uid(t, idx)}>{t}</div>
                         ))}
@@ -129,7 +129,7 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
                   {selectedImages.length > 1 ? (
                     <Grid item xs={12} lg={6}>
                       {selectedImages[1].caption ? (
-                        <Typography className={classes.title} align="left" variant="body1">
+                        <Typography className={classes.title} align="left" variant="subtitle1">
                           {selectedImages[1].caption.split(',').map((t, idx) => (
                             <div key={uid(t, idx)}>{t}</div>
                           ))}
