@@ -1,14 +1,14 @@
 const site = {
-  title: `DMG Design SF`,
+  title: `Courouble Design & Engineering`,
   author: `Armelle Laine`,
-  description: `Architecture and Interior Design`,
-  siteUrl: `https://dmgdesignsf.com/`,
-  org: `DMG Design SF`,
-  contact: `maxime@dmgdesignsf.com`,
-  favicon: './src/assets/img/dmg-favicon2.png',
-  faviconSvg: './src/assets/img/dmg-icon2-transparent.comp.svg',
-  logo: './src/assets/img/dmg-brand.comp.svg',
-  icon: './src/assets/img/dmg-icon2-transparent.comp.svg',
+  description: `Composite Structure Design`,
+  siteUrl: `https://couroubledesign.com/`,
+  org: `Courouble Design & Engineering`,
+  contact: `fred@couroubledesign.com`,
+  favicon: './src/assets/img/courouble-design-favicon.png',
+  faviconSvg: './src/assets/img/courouble-design-circle.comp.svg',
+  logo: './src/assets/img/courouble-design-logo.comp.svg',
+  icon: './src/assets/img/courouble-design-logo.comp.svg',
 
   // original name servers:
   // https://my.ionos.com/domain-nameserver/dmgdesignsf.com?__lf=HomeFlow&linkId=ct.tab.domainlist.nameserver&from=subdomains%2Fdmgdesignsf.com
@@ -22,8 +22,8 @@ const site = {
   //   'content/assets': 'assets'
   // }
   mdx: {
-    'content/projects': 'projects',
-    'content/pages': 'pages'
+    'content/projects': 'projects'
+    // 'content/pages': 'pages'
   },
 
   // set authors to true if blog authors attributes are defined in a json file

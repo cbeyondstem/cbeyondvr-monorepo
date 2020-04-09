@@ -181,18 +181,24 @@ export const About: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> 
         <Container className={classes.about}>
           <Designer />
           <Typography variant="body1" className={classes.bio}>
-            Dominique Maxime Genauzeau was born in La Rochelle/France, currently lives and works in San Francisco. He is
-            the Designer for DMG Design's Interiors, commercial and private, translating conceptual designs into very
-            detailed realizations, extending his creativity into furniture, light fixtures and art installations. His
-            passion for the ocean, fluidity, organic forms, translate into his compositions. Mixing his classical
-            heritage with modernity is fundamental element of his own aesthetic. His partnership with talented
-            contractors, wood and metal craftsmen, allows him to complete challenging remodeling projects.
+            Frederick Courouble, yacht designer and aerospace engineer, graduated with a Bachelors Degree in Naval
+            Architecture from Southampton University in England. Continued research in the field of aeronautical
+            engineering led him to obtain a Master of Science in Aerospace Engineering from California State University
+            Long Beach with an “Outstanding Masters Thesis” award for his research on the America’s Cup in 2007. A novel
+            optimization method in the America’s cup based on constructive Neural Network analysis from the on board
+            telemetry database. In Europe, Frederick consulted on design work for 2 IMOCA 60 campaigns and joined the
+            German Frers office in Milan during the prada America s cup campaign 2000. After relocating to the USA in
+            2000, he collaborated with 2 california designers, before opening his own design office and Engineering firm
+            in 2011. Today, Frederick is based in Lakewood, California, and is the founder of Courouble Design &
+            Engineering Inc. As a structural engineer, he is responsible for composite structural analysis and design
+            for rocket launch vehicle at Vector launch Corporation. Primarily specializing in design and performance
+            optimization of racing yachts.
           </Typography>
           <Box py={1} />
         </Container>
       </Box>
 
-      <Box py={1} />
+      {/* <Box py={1} />
       <Typography variant="h5">EXHIBITIONS</Typography>
       <Box py={2} />
       {Exhibitions}
@@ -204,7 +210,7 @@ export const About: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> 
       <Typography variant="h5">EDUCATION</Typography>
       <Box py={2} />
       {Education}
-      <Box py={2} />
+      <Box py={2} /> */}
     </Container>
   )
 }

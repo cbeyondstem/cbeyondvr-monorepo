@@ -39,15 +39,15 @@ export const Contact: React.FunctionComponent<React.ComponentPropsWithRef<'div'>
           variant="contained"
           color="primary"
           onClick={() => {
-            window.location.href = `tel:+14158108704`
+            window.location.href = `tel:+15628330209`
           }}
           startIcon={<CallIcon />}
         >
-          +1 415 810 8704
+          +1 562 833 0209
         </Button>
       </div>
       <div>
-        or Email us <ContactUs title="Maxime Genauzeau" />
+        or Email us <ContactUs title="Frederick Courouble" />
       </div>
     </div>
   )

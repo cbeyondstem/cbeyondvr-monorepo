@@ -12,13 +12,13 @@ export const Designer: React.FunctionComponent<React.ComponentPropsWithRef<'div'
     const { aspectRatio = 1.5, src = '', srcSet = '', sizes = '', ...fluid } = img
     return { aspectRatio, src, srcSet, sizes, ...fluid }
   }
-  const designer = 'Dominique Maxime Genauzeau'
+  const designer = 'Frederick Courouble'
   const md = useMediaQuery((t: Theme) => t.breakpoints.up('md'))
   return (
     <StaticQuery
       query={graphql`
         query {
-          desktop: file(relativePath: { eq: "Maxime.png" }) {
+          desktop: file(relativePath: { eq: "Frederick_Courouble2.jpg" }) {
             childImageSharp {
               fluid(quality: 90, maxWidth: 800, fit: CONTAIN) {
                 ...GatsbyImageSharpFluid_withWebp

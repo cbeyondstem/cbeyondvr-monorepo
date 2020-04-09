@@ -64,9 +64,10 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
             <Grid className={classes.grid} container alignItems="center" justify="center" direction="row" spacing={2}>
               <Grid item xs={11} md={4}>
                 <Typography variant="body1" align="left" className={classes.bio}>
-                  DMG Design craftsmanship mixes classical heritage with modernity, taking inspiration from the ocean
-                  fluidity and organic forms. DMGDesign unique aesthetic creates unique interiors with custom pieces of
-                  furniture, light fixtures and art installations.
+                  Courouble Design & Engineering craftsmanship specializes in composite structural design in the
+                  aerospace and naval domain. Track record of innovative design and engineering in a wide-range of
+                  advanced composite structures from rocket launch vehicles to racing yachts and bleeding edge
+                  equitation saddles.
                 </Typography>
               </Grid>
               <Grid item xs={12} md={8}>
