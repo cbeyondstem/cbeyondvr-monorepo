@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/camelcase */
 
 const images = {
-  home: {},
+  home: {
+    title: 'home',
+    images: {}
+  },
   concepts: {
     title: 'concepts',
     copyright: 'design by Courouble Design & Engineering',
@@ -23,6 +26,7 @@ const images = {
       gf42_2014_3: {},
       gf42_concept_1: {},
       gf42_concept_2: {},
+      gf42_concept_3: {},
       gf42_fluidanalysis_1: 'Computational Fluid Dynamics with CFDMax LLC.',
       gf42_fluidanalysis_2: {},
       gf42_fluidanalysis_3: {}
@@ -32,10 +36,12 @@ const images = {
     title: '44′ IRC RACER',
     title2: '2010 winner Bug Boat Series - class 2 / 2009 Overall Winner Ullman series',
     copyright: 'design by Courouble Design & Engineering',
-    racer44_1: {},
-    racer44_2: {},
-    racer44_3: {},
-    racer44_4: {}
+    images: {
+      racer44_1: {},
+      racer44_2: {},
+      racer44_3: {},
+      racer44_4: {}
+    }
   },
   surfboard: {
     title: 'Largest surfboard in the world',
@@ -84,15 +90,18 @@ function getOrderedListByCat() {
         orderedImages[cat] = []
       }
       const imgDict = images[cat].images[img]
-      if (typeof imgDict.exclude === `undefined` || imgDict.exclude === false) {
-        let ext = ''
-        if (img.search('.svg') === -1) {
-          ext = '.jpg'
+      if (imgDict !== null) {
+        if (typeof imgDict.exclude === `undefined` || imgDict.exclude === false) {
+          let ext = ''
+          if (img.search('.svg') === -1) {
+            ext = '.jpg'
+          }
+          orderedImages[cat].push(`${img}${ext}`)
         }
-        orderedImages[cat].push(`${img}${ext}`)
       }
     })
   })
+  // console.log(JSON.stringify(orderedImages))
   return orderedImages
 }
 

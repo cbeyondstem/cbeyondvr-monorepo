@@ -31,7 +31,6 @@ const location = {
 }
 const today = new Date().toISOString().slice(0, 10)
 
-
 function getTags(description, title, copyright) {
   const authorTags = {
     Artist: creator,
@@ -53,7 +52,7 @@ function getTags(description, title, copyright) {
     //   CiEmailWork: 'maxime@dmgdesignsf.com',
     //   CiUrlWork: 'www.dmgdesignsf.com'
     // }
-  },
+  }
   return {
     ...authorTags,
     Title: title,
@@ -67,10 +66,10 @@ function getTags(description, title, copyright) {
     'Province-State': location.state,
     LocationName: location.address,
     ContentLocationName: location.address,
-    GPSLatitude:location.GPSLatitude,
-    GPSLatitudeRef:location.GPSLatitudeRef,
-    GPSLongitude:location.GPSLongitude,
-    GPSLongitudeRef:location.GPSLongitudeRef,
+    GPSLatitude: location.GPSLatitude,
+    GPSLatitudeRef: location.GPSLatitudeRef,
+    GPSLongitude: location.GPSLongitude,
+    GPSLongitudeRef: location.GPSLongitudeRef,
     DateCreated: `${today}`
     // CreateDate: `${date}-01-01`
   }
@@ -128,10 +127,10 @@ async function addMetadata() {
     if (!(category in imageInfoDict)) {
       throw TypeError(`${category} not part of imageInfoDict`)
     }
-    if (!(fname in imageInfoDict[category])) {
+    if (!(fname in imageInfoDict[category].images)) {
       throw TypeError(`${category}/${fname} not part of imageInfoDict`)
     }
-    const {title, copyright, images} = imageInfoDict[category]
+    const { title, copyright, images } = imageInfoDict[category]
     //   .split('/')
     // const paths = [__dirname, '..', 'content', ...subdir]
     // fs.mkdirSync(paths.join('/'), { recursive: true })
