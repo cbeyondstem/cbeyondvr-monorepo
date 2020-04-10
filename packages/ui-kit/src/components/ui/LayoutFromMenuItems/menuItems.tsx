@@ -1,46 +1,46 @@
 import { MenuItem } from '../../../types/interfaces'
 
 export const menuItems: MenuItem[] = [
-  { name: '', path: '/', icon: 'HomeLogo' },
+  { name: '', path: '/', Icon: 'HomeLogo' },
   { name: 'Buy', path: '/' },
   { name: 'Own', _path: '/own' },
   { name: 'Sell', _path: '/sell' },
   {
     name: 'How It Works',
-    icon: 'HowItWorks',
+    Icon: 'HowItWorks',
     path: '/how-it-works',
     popup: true,
   },
 
   {
     name: 'User',
-    icon: 'sign-in',
+    Icon: 'sign-in',
     only: 'authenticated',
     dropdown: [
       {
         name: 'Favorites',
         path: '/favorites',
-        icon: 'heart outline',
+        Icon: 'heart outline',
       },
       {
         name: 'Recommended',
         path: '/recommended',
-        icon: 'thumbs up outline',
+        Icon: 'thumbs up outline',
       },
       {
         name: 'Calendar',
         path: '/calendar',
-        icon: 'calendar alternate outline',
+        Icon: 'calendar alternate outline',
       },
       {
         name: 'OpenHouse Log',
         path: '/openhouselog',
-        icon: 'Reviews',
+        Icon: 'Reviews',
       },
       {
         name: 'Messages',
         _path: '/messages',
-        icon: 'mail outline',
+        Icon: 'mail outline',
       },
       { name: 'Subscriptions', _path: '/subscriptions' },
       { name: 'Saved Searches', _path: '/saved-searches' },
@@ -49,9 +49,9 @@ export const menuItems: MenuItem[] = [
         _path: '/account',
         divider: false,
       },
-      { name: 'Sign Out', icon: 'sign-out' },
+      { name: 'Sign Out', Icon: 'sign-out' },
     ],
   },
-  { name: 'Log In', only: 'unauthenticated', icon: 'sign-in' },
+  { name: 'Log In', only: 'unauthenticated', Icon: 'sign-in' },
   // { name: "Sign Up", only: "unauthenticated" },
 ]
