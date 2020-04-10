@@ -14,7 +14,13 @@ export const ContactUsHref: React.FunctionComponent = props => {
         // const st = <strong>{text}</strong>
         return (
           <div>
-            <a href={`mailto:${text}`}>{text}</a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`mailto:${text}`}
+            >
+              {text}
+            </a>
           </div>
         )
       }}

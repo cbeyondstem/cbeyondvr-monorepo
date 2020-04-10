@@ -5,11 +5,11 @@ const site = {
   siteUrl: `https://couroubledesign.com/`,
   org: `Courouble Design & Engineering`,
   contact: `fred@couroubledesign.com`,
-  favicon: './src/assets/img/courouble-design-favicon.png',
-  faviconSvg: './src/assets/img/courouble-design-circle.comp.svg',
-  logo: './src/assets/img/courouble-design-logo.comp.svg',
-  icon: './src/assets/img/courouble-design-logo.comp.svg',
-
+  favicon: './src/assets/img/favicon.png',
+  faviconSvg: './src/assets/img/icon.comp.svg',
+  logo: './src/assets/img/logo.comp.svg',
+  icon: './src/assets/img/icon.comp.svg',
+  map: 'https://goo.gl/maps/CDtXQLbgvJ2jfBSFA',
   // original name servers:
   // https://my.ionos.com/domain-nameserver/dmgdesignsf.com?__lf=HomeFlow&linkId=ct.tab.domainlist.nameserver&from=subdomains%2Fdmgdesignsf.com
   // - ns57.1and1.com

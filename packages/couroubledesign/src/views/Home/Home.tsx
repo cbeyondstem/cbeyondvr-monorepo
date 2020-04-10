@@ -5,7 +5,7 @@ import { uid } from 'react-uid'
 
 import Img, { FluidObject } from 'gatsby-image'
 import { makeStyles, useTheme, Theme } from '@material-ui/core/styles'
-import { Container, Typography, CardMedia, Box, Grid, useMediaQuery } from '@material-ui/core'
+import { Container, Typography, CardMedia, Grid, useMediaQuery } from '@material-ui/core'
 import { AllImgConsumer, CarouselImgProps } from '@cbeyond/ui-kit'
 import { ImageSharpFluid } from '../../types/gatsby-graphql-types'
 
@@ -36,6 +36,12 @@ const useStyles = makeStyles(theme => ({
     // overflowWrap: 'break-word'
   }
 }))
+
+const renderHTML = (rawHTML: string, key?: string) =>
+  React.createElement('div', {
+    key,
+    dangerouslySetInnerHTML: { __html: rawHTML }
+  })
 
 export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> = props => {
   const classes = useStyles(props)
@@ -85,9 +91,9 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
               </Grid>
             </Grid>
             {[
-              ['home/_0002_lit2.jpg', 'home/_0005_lit.jpg'],
-              ['interiors/_PP_5178.jpg', 'interiors/_0001_lit-copy-4'],
-              ['interiors/WallPanorama.jpg']
+              ['gf42/gf42_2014_1.jpg', 'offshore47/offshore47_1.jpg'],
+              ['nanosat/nanosat_1.jpg', 'vectorlaunch/vectorlaunch_2.jpg'],
+              ['surfboard/surfboard_0.jpg']
             ].map((pathList, pathIdx) => {
               const selectedImages: CarouselImgProps[] = []
               pathList.forEach(path => {
@@ -103,15 +109,14 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
                   className={classes.grid}
                   container
                   alignItems="center"
+                  justify="center"
                   direction="row"
                   spacing={3}
                 >
-                  <Grid item xs={12} lg={selectedImages.length > 1 ? 6 : 12}>
-                    {selectedImages[0].caption ? (
+                  <Grid item xs={12} lg={selectedImages.length > 1 ? 6 : 6}>
+                    {selectedImages[0].title ? (
                       <Typography className={classes.title} align="left" variant="subtitle1">
-                        {selectedImages[0].caption.split(',').map((t, idx) => (
-                          <div key={uid(t, idx)}>{t}</div>
-                        ))}
+                        {selectedImages[0].title.split(',').map((t, idx) => renderHTML(t, uid(t, idx)))}
                       </Typography>
                     ) : null}
                     <Img
@@ -121,19 +126,16 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
                       backgroundColor={
                         theme.palette.type === 'light' ? theme.palette.primary.light : theme.palette.primary.dark
                       }
-                      style={{
-                        margin: '0 auto', // Used to center the image
-                        maxWidth: '1200'
+                      imgStyle={{
+                        margin: '0 auto' // Used to center the image
                       }}
                     />
                   </Grid>
                   {selectedImages.length > 1 ? (
                     <Grid item xs={12} lg={6}>
-                      {selectedImages[1].caption ? (
+                      {selectedImages[1].title ? (
                         <Typography className={classes.title} align="left" variant="subtitle1">
-                          {selectedImages[1].caption.split(',').map((t, idx) => (
-                            <div key={uid(t, idx)}>{t}</div>
-                          ))}
+                          {selectedImages[1].title.split(',').map((t, idx) => renderHTML(t, uid(t, idx)))}
                         </Typography>
                       ) : null}
                       <Img

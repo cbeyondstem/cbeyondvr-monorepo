@@ -65,7 +65,7 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
               <Grid item xs={11} md={4}>
                 <Typography variant="body1" align="left" className={classes.bio}>
                   DMG Design craftsmanship mixes classical heritage with modernity, taking inspiration from the ocean
-                  fluidity and organic forms. DMGDesign unique aesthetic creates unique interiors with custom pieces of
+                  fluidity and organic forms. DMGDesign aesthetic creates unique interiors with custom pieces of
                   furniture, light fixtures and art installations.
                 </Typography>
               </Grid>

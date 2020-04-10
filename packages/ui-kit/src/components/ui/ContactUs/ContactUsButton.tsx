@@ -20,9 +20,7 @@ export interface ContactUsProps {
   title: React.ReactNode | string
 }
 
-export const ContactUsButton: React.FunctionComponent<
-  ContactUsProps
-> = props => {
+export const ContactUsButton: React.FunctionComponent<ContactUsProps> = props => {
   const classes = useStyles(props)
   const { title } = props
   return (
@@ -34,7 +32,11 @@ export const ContactUsButton: React.FunctionComponent<
             variant="contained"
             color="primary"
             onClick={() => {
-              window.location.href = `mailto:${text}`
+              // window.location.href = `mailto:${text}`
+              window.open(
+                `mailto:${text}`,
+                '_blank' // open in a new window.
+              )
             }}
             startIcon={<MailOutlineIcon />}
             className={classes.button}

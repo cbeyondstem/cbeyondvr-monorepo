@@ -31,11 +31,11 @@ const location = {
 }
 const today = new Date().toISOString().slice(0, 10)
 
-function getTags(description, title, copyright) {
+function getTags(imgProps) {
   const authorTags = {
     Artist: creator,
-    Copyright: copyright || copyright_default,
-    CopyrightNotice: copyright || copyright_default,
+    Copyright: imgProps.copyright || copyright_default,
+    CopyrightNotice: imgProps.copyright || copyright_default,
     CopyrightFlag: 'true',
     // URL_List: ['http://www.dmgdesignsf.com/'],
     // WebStatement: 'TBD', // 'http://creativecommons.org/licenses/by-nc-sa/3.0/at/',
@@ -44,7 +44,7 @@ function getTags(description, title, copyright) {
     // Country: 'United States',
     // CountryCode: 'US',
     Creator: [creator],
-    Rights: copyright || copyright_default
+    Rights: imgProps.copyright || copyright_default
     // UsageTerms: 'TBD' // Creative Commons - by-nc-sa/3.0/at/
     // CreatorContactInfo: {
     //   CiAdrCity: 'San Francisco',
@@ -55,8 +55,8 @@ function getTags(description, title, copyright) {
   }
   return {
     ...authorTags,
-    Title: title,
-    ImageDescription: title,
+    Title: imgProps.title,
+    ImageDescription: imgProps.title,
     // Caption: caption,
     // Subtitle: caption,
     City: location.city,
@@ -127,14 +127,13 @@ async function addMetadata() {
     if (!(category in imageInfoDict)) {
       throw TypeError(`${category} not part of imageInfoDict`)
     }
-    if (!(fname in imageInfoDict[category].images)) {
+    if (!(fname in imageInfoDict[category])) {
       throw TypeError(`${category}/${fname} not part of imageInfoDict`)
     }
-    const { title, copyright, images } = imageInfoDict[category]
     //   .split('/')
     // const paths = [__dirname, '..', 'content', ...subdir]
     // fs.mkdirSync(paths.join('/'), { recursive: true })
-    const tags = getTags(images[fname], title, copyright)
+    const tags = getTags(imageInfoDict[category])
     await exiftool.write(path.join(dir, f), tags).catch(err => console.log(`${path.join(dir, f)} error: ${err}`))
     console.log(`${category}/${fname} metadata update done!`)
     // const readtags = await exiftool.read(path.join(dir, f))

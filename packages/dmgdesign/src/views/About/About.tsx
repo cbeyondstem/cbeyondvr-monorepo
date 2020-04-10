@@ -197,7 +197,7 @@ export const About: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> 
       <Box py={2} />
       {Exhibitions}
       <Box py={2} />
-      <Typography variant="h5">COMMiSSIONED ART / INSTALLATIONS</Typography>
+      <Typography variant="h5">COMMISSIONED ART / INSTALLATIONS</Typography>
       <Box py={2} />
       {Commissioned}
       <Box py={2} />

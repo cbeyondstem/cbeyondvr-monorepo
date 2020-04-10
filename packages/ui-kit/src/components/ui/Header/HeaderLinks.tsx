@@ -6,7 +6,7 @@ import { uid } from 'react-uid'
 // @material-ui/core components
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles'
 import { List, ListItem, Button, IconButton } from '@material-ui/core'
-import { LinkProps, PageProps, MenuItem } from '../../../types/interfaces'
+import { LinkProps, HeaderLinkProps, MenuItem } from '../../../types/interfaces'
 // style
 import styles from './headerLinksStyle'
 
@@ -27,10 +27,13 @@ export const getHeaderLinks: (
   Link: React.FunctionComponent<LinkProps>,
   menuItems: MenuItem[],
   withPrefix: (p: string) => string
-) => React.FunctionComponent<PageProps> = (Link, menuItems, withPrefix) => (
-  props: PageProps
-) => {
+) => React.FunctionComponent<HeaderLinkProps> = (
+  Link,
+  menuItems,
+  withPrefix
+) => (props: HeaderLinkProps) => {
   const classes = useStyles(props)
+  const { onClick } = props
   // const { location } = props
   // let { pathname } = location
   // pathname = `/${pathname.replace(withPrefix('/'), '')}`
@@ -38,23 +41,39 @@ export const getHeaderLinks: (
   return (
     <List className={classes.list}>
       {menuItems.map((m, idx) =>
-        m.icon ? (
+        m.Icon ? (
           <ListItem key={uid(m, idx)} className={classes.listItem}>
             <Link to={m.path}>
-              <IconButton
-                className={classes.navLink}
-                size="medium"
-                color="inherit"
-                aria-label={m.name}
-              >
-                <Button className={classes.navLink}>{m.name}</Button>
-              </IconButton>
+              {m.name ? (
+                <Button
+                  className={classes.navLink}
+                  startIcon={React.createElement(m.Icon)}
+                  aria-label={m.name}
+                  onClick={onClick}
+                >
+                  {m.name}
+                </Button>
+              ) : (
+                <IconButton
+                  className={classes.navLink}
+                  size="medium"
+                  color="inherit"
+                  aria-label={m.name}
+                  onClick={onClick}
+                >
+                  {React.createElement(m.Icon)}
+                </IconButton>
+              )}
             </Link>
           </ListItem>
         ) : (
           <ListItem key={uid(m, idx)} className={classes.listItem}>
             <Link to={m.path}>
-              <Button className={classes.navLink} aria-label={m.name}>
+              <Button
+                className={classes.navLink}
+                aria-label={m.name}
+                onClick={onClick}
+              >
                 {m.name}
               </Button>
             </Link>{' '}

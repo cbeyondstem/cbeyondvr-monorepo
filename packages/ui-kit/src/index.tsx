@@ -21,6 +21,7 @@ export {
   MDXLayoutComponents,
   MDXGlobalComponents,
   mdxLayoutStyles,
+  Svg,
 } from './components/mdx'
 
 // reusable content sourcing components - provider/consumer pattern
@@ -62,6 +63,7 @@ export { Link } from './components/ui/Link'
 export { Space } from './components/ui/Space'
 export { ContactUs } from './components/ui/ContactUs'
 export { ContactUs as ContactUs2 } from './components/ui/ContactUs2'
+export { VisitUs } from './components/ui/VisitUs'
 
 export {
   Header,

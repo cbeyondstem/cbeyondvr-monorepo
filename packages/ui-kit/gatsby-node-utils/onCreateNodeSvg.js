@@ -3,7 +3,13 @@ const SVGO = require('svgo')
 
 const systemPath = require(`path`)
 
-async function onCreateNode({ node, actions, loadNodeContent, createNodeId, createContentDigest }) {
+async function onCreateNode({
+  node,
+  actions,
+  loadNodeContent,
+  createNodeId,
+  createContentDigest,
+}) {
   const { createNode, createParentChildLink } = actions
 
   // Filter out non-pdf content
@@ -21,8 +27,8 @@ async function onCreateNode({ node, actions, loadNodeContent, createNodeId, crea
     children: [],
     parent: node.id,
     internal: {
-      type: `svg`
-    }
+      type: `svg`,
+    },
   }
   const svgo = new SVGO({
     multipass: true,
@@ -34,7 +40,7 @@ async function onCreateNode({ node, actions, loadNodeContent, createNodeId, crea
       { removeMetadata: true },
       { removeXMLNS: true },
       { removeEditorsNSData: true },
-      { cleanupAttrs: true }
+      { cleanupAttrs: true },
       // { inlineStyles: true },
       // { minifyStyles: true },
       // { convertStyleToAttrs: true },
@@ -75,7 +81,7 @@ async function onCreateNode({ node, actions, loadNodeContent, createNodeId, crea
       // { addAttributesToSVGElement: false },
       // { removeOffCanvasPaths: true },
       // { reusePaths: true }
-    ]
+    ],
   })
   const { data: optimizedSVG } = await svgo.optimize(content)
   svgNode.content = optimizedSVG

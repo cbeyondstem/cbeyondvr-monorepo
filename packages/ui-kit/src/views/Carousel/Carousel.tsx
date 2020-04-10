@@ -98,6 +98,12 @@ const useStyles = makeStyles(theme => {
   }
 })
 
+const renderHTML = (rawHTML: string, key?: string) =>
+  React.createElement('div', {
+    key,
+    dangerouslySetInnerHTML: { __html: rawHTML },
+  })
+
 export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
   const isLandscape = useMediaQuery('(orientation: landscape)')
   const fixItem: (img: ImageSharpFluid) => FluidObject = img => {
@@ -148,12 +154,14 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
         {captions ? (
           <div className={classes.paper}>
             <Typography align="center" variant="subtitle2">
-              {item.original.title ||
-                item.original.path
-                  .split('/')
-                  .slice(-1)
-                  .join('/')
-                  .toUpperCase()}
+              {renderHTML(
+                item.original.title ||
+                  item.original.path
+                    .split('/')
+                    .slice(-1)
+                    .join('/')
+                    .toUpperCase()
+              )}
             </Typography>
             <Typography
               align="center"
@@ -162,9 +170,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
             >
               {(item.original.caption || item.original.path)
                 .split(',')
-                .map((t, idx) => (
-                  <div key={uid(t, idx)}>{t}</div>
-                ))}
+                .map((t, idx) => renderHTML(t, uid(t, idx)))}
             </Typography>
           </div>
         ) : null}

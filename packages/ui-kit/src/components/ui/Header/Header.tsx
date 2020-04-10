@@ -7,6 +7,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { Hidden, Drawer, Toolbar, AppBar, IconButton } from '@material-ui/core'
 import { Menu } from '@material-ui/icons'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
+import { PageProps, HeaderLinkProps } from '../../../types/interfaces'
 import headerStyle from './headerStyle'
 import headerLinksStyle from './headerLinksStyle'
 
@@ -38,9 +39,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   ...headerLinksStyle(theme),
 }))
 
-export interface HeaderProps {
-  rightLinks?: React.ReactNode
-  leftLinks?: React.ReactNode
+export interface HeaderProps extends PageProps {
+  RightLinks?: React.FunctionComponent<HeaderLinkProps>
+  LeftLinks?: React.FunctionComponent<HeaderLinkProps>
   brand: React.ReactNode
   prolog?: React.ReactNode
 }
@@ -52,7 +53,7 @@ export const Header = (props: HeaderProps) => {
     setMobileOpen(!mobileOpen)
   }
 
-  const { rightLinks, leftLinks, brand, prolog } = props
+  const { RightLinks, LeftLinks, brand, prolog, location } = props
   return (
     <>
       {prolog}
@@ -61,18 +62,18 @@ export const Header = (props: HeaderProps) => {
         className={classNames(classes.appBar, classes.colors)}
       >
         <Toolbar className={classes.container} variant="dense" disableGutters>
-          {leftLinks !== undefined ? brand : null}
+          {LeftLinks ? brand : null}
           <div className={classes.flex}>
-            {leftLinks !== undefined ? (
+            {LeftLinks ? (
               <Hidden smDown implementation="css">
-                {leftLinks}
+                <LeftLinks location={location} />
               </Hidden>
             ) : (
               brand
             )}
           </div>
           <Hidden smDown implementation="css">
-            {rightLinks}
+            {RightLinks ? <RightLinks location={location} /> : null}
           </Hidden>
           <Hidden mdUp>
             <IconButton
@@ -106,8 +107,12 @@ export const Header = (props: HeaderProps) => {
                   <ChevronRightIcon />
                 </IconButton>
               </div>
-              {leftLinks}
-              {rightLinks}
+              {LeftLinks ? (
+                <LeftLinks location={location} onClick={handleDrawerToggle} />
+              ) : null}
+              {RightLinks ? (
+                <RightLinks location={location} onClick={handleDrawerToggle} />
+              ) : null}
             </div>
           </Drawer>
         </Hidden>

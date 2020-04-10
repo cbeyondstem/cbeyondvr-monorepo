@@ -93,7 +93,7 @@ export const AllImgQueryProvider: React.FunctionComponent<ProviderProps> = props
           let caption
           if (imageInfo) {
             title = _.get(imageInfo, 'title', null)
-            caption = _.get(imageInfo, 'location.address', null) // we use the address as caption
+            caption = _.get(imageInfo, 'copyright', null) // we use the address as caption
           }
           if (desktop) {
             images.push({ path, desktop, mobile, thumb, title, caption })

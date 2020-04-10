@@ -65,7 +65,7 @@ const hastParse = (elems: HASTElementProps[]) => {
         )
       )
     } else if (el.type === 'text') {
-      hastElems.push(el.value)
+      hastElems.push(el.value.replace('&amp;', '&'))
     } else {
       hastElems.push(<em>svg hast parser unknowm element type {el.type}</em>)
     }

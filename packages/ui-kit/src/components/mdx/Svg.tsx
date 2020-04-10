@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
   },
 }))
 export interface SvgProps {
-  className: string
+  className?: string
   src: string
   width: string
   height: string

@@ -9,7 +9,7 @@ import { ContactUs } from '../ui/ContactUs/ContactUs'
 import { ContactUs as ContactUs2 } from '../ui/ContactUs2/ContactUs'
 
 export { MDXLayoutComponents, mdxLayoutStyles } from './mdxStyles'
-
+export { Svg } from './Svg'
 export const MDXGlobalComponents = (m: MdxProps) => ({
   Link,
   FeatMap,

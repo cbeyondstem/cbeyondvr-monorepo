@@ -11,6 +11,7 @@ export interface SiteConfigProviderProps {
   contact: string
   favicon: string
   logo: string
+  map: string
 }
 
 export const {
@@ -24,6 +25,7 @@ export const {
   contact: ``,
   favicon: ``,
   logo: ``,
+  map: ``,
 } as SiteConfigProviderProps)
 
 export interface SiteConfigProps {
@@ -91,4 +93,5 @@ export const SiteConfig = {
   Favicon: GetSvg('faviconSvg'),
   Icon: GetSvg('icon'),
   Logo: GetSvg('logo'),
+  Map: Get('map'),
 }

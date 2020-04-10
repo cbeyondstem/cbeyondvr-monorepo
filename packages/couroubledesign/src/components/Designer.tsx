@@ -18,7 +18,7 @@ export const Designer: React.FunctionComponent<React.ComponentPropsWithRef<'div'
     <StaticQuery
       query={graphql`
         query {
-          desktop: file(relativePath: { eq: "Frederick_Courouble2.jpg" }) {
+          desktop: file(relativePath: { eq: "Frederick_Courouble_border.jpg" }) {
             childImageSharp {
               fluid(quality: 90, maxWidth: 800, fit: CONTAIN) {
                 ...GatsbyImageSharpFluid_withWebp

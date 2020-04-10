@@ -27,12 +27,15 @@ export interface PageProps {
 }
 export interface LayoutProps extends SEOProps, PageProps {}
 
+export interface HeaderLinkProps extends PageProps {
+  onClick?: () => void
+}
 export interface MenuItem {
-  name: string
+  name?: string
   path?: string
   path_ext?: string
   _path?: string // used to disable the path temporarily
-  icon?: string
+  Icon?: string | React.FunctionComponent
   iconClass?: string
   dropdown?: MenuItem[]
   only?: 'authenticated' | 'unauthenticated'

@@ -45,7 +45,7 @@ export const getLayout: (
     const { children, location, title: pageTitle, ...seoProps } = props
     // const { pathname } = location
 
-    const BrandButton = (
+    const brandButton = (
       <Link underline="none" to="/">
         <Button>
           <Brand type="header" />
@@ -57,9 +57,10 @@ export const getLayout: (
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Header
-          brand={BrandButton}
+          brand={brandButton}
           prolog={Prolog ? <Prolog /> : null}
-          rightLinks={<HeaderLinks location={location} />}
+          location={location}
+          RightLinks={HeaderLinks}
         />
         <Box p={0.5} />
         <Container className="container-fluid">
