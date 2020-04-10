@@ -12,6 +12,8 @@ matrix:
       env: PACKAGE_LOCATION=packages/dmgdesign PACKAGE_NAME=cbeyondvr-monorepo DEPLOY_TO=dmgdesignsf
     - name: villa-clementine Pipeline
       env: PACKAGE_LOCATION=packages/villa-clementine PACKAGE_NAME=cbeyondvr-monorepo  DEPLOY_TO=villa-clementine
+    - name: couroubledesign Pipeline
+      env: PACKAGE_LOCATION=packages/couroubledesign PACKAGE_NAME=cbeyondvr-monorepo  DEPLOY_TO=couroubledesign
 
 cache:
   yarn: true
