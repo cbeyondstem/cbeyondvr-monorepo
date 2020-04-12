@@ -1,6 +1,5 @@
 #!/bin/sh -l
 
-yarn global add lerna now
 lerna bootstrap
 cd packages/ui-kit
 yarn build

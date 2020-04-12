@@ -1,13 +1,11 @@
 FROM node:13.12-stretch-slim
 
-# COPY ${GITHUB_WORKSPACE} .
-# COPY ../../../package.json .
-# COPY ../../../tsconfig.build.json .
-# COPY ../../../packages packages
+RUN \
+    apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y git && \
+    yarn global add lerna now
 
-# RUN \
-#   yarn global add lerna now && \
-#   lerna bootstrap
 COPY . .
 
 RUN chmod +x /entrypoint.sh
