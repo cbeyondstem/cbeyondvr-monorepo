@@ -7,6 +7,7 @@ export const menuItems: MenuItem[] = [
   { name: 'AEROSPACE', path: '/aerospace' },
   { name: 'YACHTING', path: '/yachting' },
   { name: 'CONSUMER', path: '/consumer' },
+  { name: 'ART', path: '/art' },
   { name: 'ABOUT', path: '/about' },
   { name: 'CONTACT', path: '/contact' }
 ]

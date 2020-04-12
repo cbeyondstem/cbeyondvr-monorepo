@@ -95,7 +95,7 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
             <Grid className={classes.grid} container alignItems="center" justify="center" direction="row" spacing={2}>
               <Grid item xs={11} md={4}>
                 <Typography variant="body1" align="left" className={classes.bio}>
-                  <span style={{ fontFamily: primaryFont }}>Courouble Design & Engineering</span> craftsmanship
+                  <span style={{ fontFamily: primaryFont }}>Courouble Design & Engineering</span>
                   specializes in composite structural design in the aerospace and naval domain. Track record of
                   innovative design and engineering in a wide-range of advanced composite structures from rocket launch
                   vehicles to racing yachts and bleeding edge equitation saddles.
@@ -106,8 +106,8 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
                   component="iframe"
                   className={classes.iframe}
                   title="Courouble Design & Engineering - Project Portfolio"
-                  // image="https://player.vimeo.com/video/139663778?byline=false&portrait=false&title=false&fun=false&texttrack=false&autoplay=true&muted=true&loop=1"
-                  image="https://www.youtube.com/embed/LwC4qEdEPLY?&autoplay=1&iv_load_policy=3&modestbranding=1&loop=1&mute=1"
+                  image="https://player.vimeo.com/video/139663778?byline=false&portrait=false&title=false&fun=false&texttrack=false&autoplay=true&muted=true&loop=1"
+                  // image="https://player.vimeo.com/video/194116968?byline=false&portrait=false&title=false&fun=false&texttrack=false&autoplay=true&muted=true&loop=1"
                   width={width}
                   height={height}
                   frameBorder="0"

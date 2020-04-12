@@ -16,5 +16,5 @@ export const renderHtml = (rawHTML: string, idx?: number, key?: string) =>
   React.createElement('div', {
     key,
     dangerouslySetInnerHTML: { __html: rawHTML },
-    style: idx > 0 ? { fontFamily: secondaryFont } : null
+    style: idx > 0 ? { fontFamily: secondaryFont, fontSize: '150%' } : null
   })

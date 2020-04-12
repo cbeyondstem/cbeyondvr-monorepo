@@ -77,6 +77,7 @@ export function Footer(props: FooterProps) {
       display="flex"
       flexDirection="column"
       alignItems="center"
+      pt={6}
     >
       <Box
         display="flex"

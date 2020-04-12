@@ -21,7 +21,11 @@ export interface CarouselViewProps {
   images?: string[]
   thumb?: boolean
   captions?: boolean
-  renderHtml?: (rawHTML: string, idx?: number, key?: string) => React.ReactNode
+  renderHtml?: (
+    rawHTML: string | React.ReactNode,
+    idx?: number,
+    key?: string
+  ) => React.ReactNode
   imgOrientation?: 'Responsive' | 'Landscape' | 'Portrait'
 }
 
@@ -100,11 +104,19 @@ const useStyles = makeStyles(theme => {
   }
 })
 
-const renderHtmlDefault = (rawHTML: string, idx?: number, key?: string) =>
-  React.createElement('div', {
-    key,
-    dangerouslySetInnerHTML: { __html: rawHTML },
-  })
+const renderHtmlDefault = (
+  rawHTML: string | React.ReactNode,
+  idx?: number,
+  key?: string
+) =>
+  rawHTML instanceof String ? (
+    React.createElement('div', {
+      key,
+      dangerouslySetInnerHTML: { __html: rawHTML },
+    })
+  ) : (
+    <div key={key}>{rawHTML}</div>
+  )
 
 export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
   let isLandscape = useMediaQuery('(orientation: landscape)')
@@ -181,7 +193,10 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
               variant="caption"
               className={classes.caption}
             >
-              {(item.original.caption || item.original.path)
+              {(item.original.caption === 'undefined'
+                ? item.original.path
+                : item.original.caption
+              )
                 .split(',')
                 .map((t, idx) => renderHtml(t, idx + 1, uid(t, idx)))}
             </Typography>
