@@ -9,7 +9,7 @@ const site = {
   faviconSvg: './src/assets/img/dmg-icon2-transparent.comp.svg',
   logo: './src/assets/img/dmg-brand.comp.svg',
   icon: './src/assets/img/dmg-icon2-transparent.comp.svg',
-
+  map: 'https://goo.gl/maps/vD6YezBaLx7u2UwK7',
   // original name servers:
   // https://my.ionos.com/domain-nameserver/dmgdesignsf.com?__lf=HomeFlow&linkId=ct.tab.domainlist.nameserver&from=subdomains%2Fdmgdesignsf.com
   // - ns57.1and1.com

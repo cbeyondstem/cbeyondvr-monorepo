@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Container, Button, Grid } from '@material-ui/core'
+import { Button, Grid } from '@material-ui/core'
 
 import { makeStyles } from '@material-ui/core/styles'
 import { ContactUs, VisitUs } from '@cbeyond/ui-kit'

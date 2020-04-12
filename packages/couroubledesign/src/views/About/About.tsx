@@ -188,7 +188,7 @@ export const About: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> 
             state-of-the-art composite structure design and manufacturing services. The firm's track record of
             successful innovative designs spanning across many industrial domains (aerospace, racing yachts, race cars,
             underwater sculptures, sports goods, electric vehicles) speaks for itself. This versatility dear to
-            Frederick is also at the core of his unique approach, allowing to integrate cross-cutting bleeding-edge
+            Frederick is at the core of his unique approach, allowing to integrate cross-cutting bleeding-edge
             techniques for ever more performant and light-weight designs: Deep Learning AI methods, Finite Elements
             analysis or 3D-printing molding.
           </Typography>

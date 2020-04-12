@@ -18,6 +18,7 @@ export const SiteConfigQueryProvider: React.FunctionComponent<SiteConfigProps> =
               faviconSvg
               logo
               icon
+              map
             }
           }
         }

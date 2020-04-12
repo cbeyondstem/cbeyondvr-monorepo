@@ -20,9 +20,9 @@ const useStyles = makeStyles((theme: Theme) =>
       }
     },
     footer: {
-      '& >svg:first-child': {
-        marginBottom: theme.spacing(-1)
-      }
+      // '& >svg:first-child': {
+      //   marginBottom: theme.spacing(-1)
+      // }
     }
   })
 )
@@ -37,8 +37,6 @@ export const Brand = (props: BrandProps) => {
       <SiteConfig.Logo viewBox="0 0 253.19 15.663" width="200" height="12" />
     </span>
   ) : (
-    <span className={classes.footer}>
-      <SiteConfig.Icon width={theme.spacing(3)} height={theme.spacing(3)} />
-    </span>
+    <SiteConfig.Icon width={theme.spacing(3)} height={theme.spacing(3)} />
   )
 }
