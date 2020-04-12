@@ -21,6 +21,8 @@ export interface CarouselViewProps {
   images?: string[]
   thumb?: boolean
   captions?: boolean
+  renderHtml?: (rawHTML: string, idx?: number, key?: string) => React.ReactNode
+  imgOrientation?: 'Responsive' | 'Landscape' | 'Portrait'
 }
 
 const useStyles = makeStyles(theme => {
@@ -98,14 +100,14 @@ const useStyles = makeStyles(theme => {
   }
 })
 
-const renderHTML = (rawHTML: string, key?: string) =>
+const renderHtmlDefault = (rawHTML: string, idx?: number, key?: string) =>
   React.createElement('div', {
     key,
     dangerouslySetInnerHTML: { __html: rawHTML },
   })
 
 export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
-  const isLandscape = useMediaQuery('(orientation: landscape)')
+  let isLandscape = useMediaQuery('(orientation: landscape)')
   const fixItem: (img: ImageSharpFluid) => FluidObject = img => {
     const {
       aspectRatio = 1.5,
@@ -116,9 +118,20 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
     } = img
     return { aspectRatio, src, srcSet, sizes, ...fluid }
   }
-  const { path, images: imgList, thumb = true, captions = false } = props
+  const {
+    path,
+    images: imgList,
+    thumb = true,
+    captions = false,
+    renderHtml = renderHtmlDefault,
+    imgOrientation = 'Responsive',
+  } = props
   const classes = useStyles(props)
   const theme = useTheme()
+  if (imgOrientation !== 'Responsive') {
+    isLandscape = imgOrientation === 'Landscape'
+  }
+
   const renderImage = (maxWidth: number) => (item: ImageItemProps) => {
     let sources
     if (item.original.mobile) {
@@ -154,7 +167,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
         {captions ? (
           <div className={classes.paper}>
             <Typography align="center" variant="subtitle2">
-              {renderHTML(
+              {renderHtml(
                 item.original.title ||
                   item.original.path
                     .split('/')
@@ -170,7 +183,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
             >
               {(item.original.caption || item.original.path)
                 .split(',')
-                .map((t, idx) => renderHTML(t, uid(t, idx)))}
+                .map((t, idx) => renderHtml(t, idx + 1, uid(t, idx)))}
             </Typography>
           </div>
         ) : null}

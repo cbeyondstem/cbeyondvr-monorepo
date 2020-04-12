@@ -9,7 +9,10 @@ export const MyPage = (props: PageProps) => {
   const { location } = props
   return (
     <Layout location={location} title="YACHTING">
-      <ActivityUnified categories={['gf42', 'racer44', 'offshore47', 'surfboard', 'concepts']} />
+      <ActivityUnified
+        categories={['gf42', 'racer44', 'offshore47', 'surfboard', 'concepts']}
+        imgOrientation="Landscape"
+      />
     </Layout>
   )
 }

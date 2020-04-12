@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core'
 import { CarouselView } from '@cbeyond/ui-kit'
 import { orderedImages } from '../../../tools/image-list'
+import { renderHtml } from '../../layouts'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,15 +28,21 @@ const useStyles = makeStyles(theme => ({
 
 export interface ActivityDomainProps extends React.ComponentPropsWithRef<'div'> {
   categories: string[]
+  imgOrientation?: 'Responsive' | 'Landscape' | 'Portrait'
 }
 export const ActivityDomain: React.FunctionComponent<ActivityDomainProps> = props => {
   const classes = useStyles(props)
-  const { categories } = props
+  const { categories, imgOrientation } = props
   return (
     <Grid className={classes.root} container alignItems="center" justify="center" direction="row" spacing={3}>
       {categories.map((cat, catIdx) => (
         <Grid item xs={12} lg={6} key={uid(cat, catIdx)}>
-          <CarouselView images={_.get(orderedImages, cat, null)} captions />
+          <CarouselView
+            images={_.get(orderedImages, cat, null)}
+            renderHtml={renderHtml}
+            imgOrientation={imgOrientation}
+            captions
+          />
         </Grid>
       ))}
     </Grid>
@@ -43,11 +50,11 @@ export const ActivityDomain: React.FunctionComponent<ActivityDomainProps> = prop
 }
 export const ActivityUnified: React.FunctionComponent<ActivityDomainProps> = props => {
   const classes = useStyles(props)
-  const { categories } = props
+  const { categories, imgOrientation } = props
   let images: string[] = []
   categories.forEach(cat => {
     const img = _.get(orderedImages, cat, [])
     images = images.concat(img)
   })
-  return <CarouselView images={images} captions />
+  return <CarouselView images={images} renderHtml={renderHtml} imgOrientation={imgOrientation} captions />
 }

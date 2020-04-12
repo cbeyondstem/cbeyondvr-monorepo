@@ -10,6 +10,7 @@ function with_copyright(images, copyright_) {
   })
   return res
 }
+
 const images = {
   concepts: with_copyright({
     concept_cat52: 'Passenger Cruising Sailing Catamaran 52’',
@@ -52,20 +53,20 @@ const images = {
   }),
   vectorlaunch: with_copyright(
     {
-      vectorlaunch_1:
-        'Vector Launch Rocket (Space Launch Inc. &trade;), Entirely fabricated and engineered in carbon fiber',
-      vectorlaunch_2:
-        'Vector Launch Rocket (Space Launch Inc. &trade;), Carbon-fiber thrust structure by Courouble Design',
-      vectorlaunch_3: 'Vector Launch Rocket, on launch pad for static fire test'
+      vectorlaunch_1: `Vector Launch Rocket (Space Launch Inc. &trade;),
+        Entirely fabricated and engineered in carbon fiber`,
+      vectorlaunch_2: `Vector Launch Rocket (Space Launch Inc. &trade;),
+        Carbon-fiber thrust structure by Courouble Design`,
+      vectorlaunch_3: `Vector Launch Rocket, on launch pad for static fire test`
     },
     'Rocket by Space Launch Inc., thrust structure by Courouble Design & Engineering'
   ),
   nanosat: with_copyright(
     {
-      nanosat_1:
-        'Nanosat Launch Vehicle (CSult & Garvey Spacecraft &trade;), First multi engine aerospike propulsion system ever made',
-      nanosat_2:
-        'Nanosat Launch Vehicle (CSult & Garvey Spacecraft &trade;), Innovative rocket entirely fabricated in carbon composite'
+      nanosat_1: `Nanosat Launch Vehicle (CSult & Garvey Spacecraft &trade;),
+        First multi engine aerospike propulsion system ever made`,
+      nanosat_2: `Nanosat Launch Vehicle (CSult & Garvey Spacecraft &trade;),
+        Innovative rocket entirely fabricated in carbon composite`
     },
     'collaboration CSult & Garvey Spacecraft Corp. & Courouble Design & Engineering'
   )

@@ -29,7 +29,7 @@ export interface FooterProps {
   org: React.ReactNode
 }
 
-export function Footer(props: FooterProps) {
+export function Footer0(props: FooterProps) {
   const classes = useStyles(props)
   const xs = useMediaQuery((t: Theme) => t.breakpoints.down('xs'))
 
@@ -46,23 +46,74 @@ export function Footer(props: FooterProps) {
               <Space cnt={1} />
               {new Date().getFullYear()}
               <Space cnt={1} />
-              {org}.
+              {org} &bull;
               {xs ? null : (
                 <>
                   <Space cnt={1} />
-                  All rights reserved.
+                  All rights reserved &bull;
                 </>
               )}
             </span>
             {xs ? (
               <>
                 <br />
-                <span>All rights reserved.</span>
+                <span>All rights reserved &bull;</span>
               </>
             ) : null}{' '}
           </Typography>
         </Grid>
       </Grid>
     </div>
+  )
+}
+export function Footer(props: FooterProps) {
+  const classes = useStyles(props)
+  const xs = useMediaQuery((t: Theme) => t.breakpoints.down('xs'))
+
+  const { brand, org } = props
+  return (
+    <Box
+      className={classes.root}
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+    >
+      <Box
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Box className={classes.footer} px={1}>
+          {brand}
+        </Box>
+        <Box p={0}>&copy;{new Date().getFullYear()}</Box>
+        <Box className={classes.footer} px={1}>
+          {org}
+        </Box>
+        {xs ? null : (
+          <>
+            <Box className={classes.footer} px={0}>
+              &bull;
+            </Box>
+            <Box className={classes.footer} px={1}>
+              All rights reserved
+            </Box>
+          </>
+        )}
+      </Box>
+      {xs ? (
+        <Box
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Box className={classes.footer} px={1}>
+            All rights reserved
+          </Box>
+        </Box>
+      ) : null}
+    </Box>
   )
 }

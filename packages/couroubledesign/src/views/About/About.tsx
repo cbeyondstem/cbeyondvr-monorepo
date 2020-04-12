@@ -2,30 +2,27 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 import { uid } from 'react-uid'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, Theme } from '@material-ui/core/styles'
 import { Container, Typography, Box, Grid, useMediaQuery } from '@material-ui/core'
 import { Designer } from '../../components/Designer'
+import { primaryFont, secondaryFont, renderHtml } from '../../layouts'
 
 const education = [
   {
-    date: 'August 1989',
-    where: 'GEORGIA TECH UNIVERSITY, ATLANTA, GA, USA.',
-    what: 'ARCHITECTURAL SEMINAR about "American cities"'
+    date: '2007',
+    where: 'awarded by the College of Aeropsace Engineering',
+    what: renderHtml(`&ldquo;Outstanding Master’s Thesis&rdquo; Award:
+      Deep Learning optimization methods for America’s Cup racing yacht`)
   },
   {
-    date: '1987',
-    where: 'UNIVERSITY OF CALIFORNIA, BERKELEY, CA, USA.',
-    what: 'SUMMER SESSION, "Architecture, photography, english and litterature about movies: American comedy"'
+    date: '2002-2007',
+    where: 'California State University Long Beach (CSULB)',
+    what: `Master of Science in Aerospace Engineering`
   },
   {
-    date: '1979 to 1985',
-    where: 'SCHOOL OF ARCHITECTURE SCHOOL, BORDEAUX, FRANCE.',
-    what: 'MASTER IN ARCHITECTURE (DPLG)'
-  },
-  {
-    date: '1978',
-    where: 'LYCEE BELLEVUE, SAINTES, FRANCE.',
-    what: <>HIGH-SCHOOL DEGREE, mathematics & physics</>
+    date: '1992-1995',
+    where: 'Solent University, (Southampton, England)',
+    what: 'Bachelor of Science in Engineering'
   }
 ]
 const exhibitions = [
@@ -109,15 +106,19 @@ const useStyles = makeStyles(theme => ({
   },
   bio: {
     paddingBottom: '1rem',
-    paddingTop: '1rem'
+    paddingTop: '1rem',
+    fontFamily: secondaryFont,
+    fontSize: '135%'
     // overflowWrap: 'break-word'
   },
   where: {
-    fontSize: '14px !important'
+    fontFamily: secondaryFont,
+    fontSize: '125%'
     // overflowWrap: 'break-word'
   },
   what: {
-    fontSize: '14px !important'
+    fontFamily: secondaryFont,
+    fontSize: '125%'
     // overflowWrap: 'break-word'
   },
   paper: {
@@ -181,23 +182,23 @@ export const About: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> 
         <Container className={classes.about}>
           <Designer />
           <Typography variant="body1" className={classes.bio}>
-            Frederick Courouble, yacht designer and aerospace engineer, graduated with a Bachelors Degree in Naval
-            Architecture from Southampton University in England. Continued research in the field of aeronautical
-            engineering led him to obtain a Master of Science in Aerospace Engineering from California State University
-            Long Beach with an “Outstanding Masters Thesis” award for his research on the America’s Cup in 2007. A novel
-            optimization method in the America’s cup based on constructive Neural Network analysis from the on board
-            telemetry database. In Europe, Frederick consulted on design work for 2 IMOCA 60 campaigns and joined the
-            German Frers office in Milan during the prada America s cup campaign 2000. After relocating to the USA in
-            2000, he collaborated with 2 california designers, before opening his own design office and Engineering firm
-            in 2011. Today, Frederick is based in Lakewood, California, and is the founder of Courouble Design &
-            Engineering Inc. As a structural engineer, he is responsible for composite structural analysis and design
-            for rocket launch vehicle at Vector launch Corporation. Primarily specializing in design and performance
-            optimization of racing yachts.
+            <span style={{ fontFamily: primaryFont }}>Frederick Courouble</span> was born in France, currently lives and
+            works in Los Angeles. <br /> He is the founder of{' '}
+            <span style={{ fontFamily: primaryFont }}> Courouble Design & Engineering </span> offering since 2011,
+            state-of-the-art composite structure design and manufacturing services. The firm's track record of
+            successful innovative designs spanning across many industrial domains (aerospace, racing yachts, race cars,
+            underwater sculptures, sports goods, electric vehicles) speaks for itself. This versatility dear to
+            Frederick is also at the core of his unique approach, allowing to integrate cross-cutting bleeding-edge
+            techniques for ever more performant and light-weight designs: Deep Learning AI methods, Finite Elements
+            analysis or 3D-printing molding.
           </Typography>
           <Box py={1} />
         </Container>
       </Box>
-
+      <Typography variant="h5">EDUCATION</Typography>
+      <Box py={2} />
+      {Education}
+      <Box py={2} />
       {/* <Box py={1} />
       <Typography variant="h5">EXHIBITIONS</Typography>
       <Box py={2} />

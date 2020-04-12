@@ -8,6 +8,36 @@ import { makeStyles, useTheme, Theme } from '@material-ui/core/styles'
 import { Container, Typography, CardMedia, Grid, useMediaQuery } from '@material-ui/core'
 import { AllImgConsumer, CarouselImgProps } from '@cbeyond/ui-kit'
 import { ImageSharpFluid } from '../../types/gatsby-graphql-types'
+import { primaryFont, secondaryFont, renderHtml } from '../../layouts'
+
+const services = [
+  {
+    title: 'Design & Structural Analysis',
+    details: `Light weight composite design, structural analysis,
+      material selection with fabrication methods.
+      Implementing all numerical analysis method for optimized structural design and engineering,
+      construction process and assembly.
+      Integration of emerging 3D printing technologies applied to complex carbon tooling
+      fabrication for very high performance and ultra light carbon fiber parts.
+      (aerospace, racing yachts, race cars, underwater sculptures, sports good, electric vehicles).`
+  },
+  {
+    title: 'Aerodynamic & Hydrodynamic',
+    details: `Numerical flow modeling and CFD analysis and validation: inviscid (panel method)
+      and viscous flow (potential flow).
+      modeling process: racing yachts, foiling vessels.`
+  },
+  {
+    title: 'Aerodynamic & Hydrodynamic',
+    details: `Numerical flow modeling and CFD analysis and validation: inviscid (panel method)
+      and viscous flow (potential flow). modeling process: racing yachts, foiling vessels.`
+  },
+  {
+    title: 'Design & Naval Architecture',
+    details: `Racing yacht and powerboat, performance prediction, resistance and propulsion, hydrostatics calculation,
+     3D modeling, full structural design and construction, project management.`
+  }
+]
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,16 +62,11 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: '1rem',
     paddingTop: '1rem',
     wordSpacing: `${theme.spacing(0.8)}px`,
-    fontSize: '125%'
+    fontSize: '125%',
+    fontFamily: secondaryFont
     // overflowWrap: 'break-word'
   }
 }))
-
-const renderHTML = (rawHTML: string, key?: string) =>
-  React.createElement('div', {
-    key,
-    dangerouslySetInnerHTML: { __html: rawHTML }
-  })
 
 export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> = props => {
   const classes = useStyles(props)
@@ -64,24 +89,25 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
   }
   return (
     <AllImgConsumer>
-      {({ images, maxWidth = 1200 }) => {
+      {({ images }) => {
         return (
           <Container className={classes.root}>
             <Grid className={classes.grid} container alignItems="center" justify="center" direction="row" spacing={2}>
               <Grid item xs={11} md={4}>
                 <Typography variant="body1" align="left" className={classes.bio}>
-                  Courouble Design & Engineering craftsmanship specializes in composite structural design in the
-                  aerospace and naval domain. Track record of innovative design and engineering in a wide-range of
-                  advanced composite structures from rocket launch vehicles to racing yachts and bleeding edge
-                  equitation saddles.
+                  <span style={{ fontFamily: primaryFont }}>Courouble Design & Engineering</span> craftsmanship
+                  specializes in composite structural design in the aerospace and naval domain. Track record of
+                  innovative design and engineering in a wide-range of advanced composite structures from rocket launch
+                  vehicles to racing yachts and bleeding edge equitation saddles.
                 </Typography>
               </Grid>
               <Grid item xs={12} md={8}>
                 <CardMedia
                   component="iframe"
                   className={classes.iframe}
-                  title="DMG Design SF - Project Portfolio"
-                  image="https://player.vimeo.com/video/139663778?byline=false&portrait=false&title=false&fun=false&texttrack=false&autoplay=true&muted=true&loop=1"
+                  title="Courouble Design & Engineering - Project Portfolio"
+                  // image="https://player.vimeo.com/video/139663778?byline=false&portrait=false&title=false&fun=false&texttrack=false&autoplay=true&muted=true&loop=1"
+                  image="https://www.youtube.com/embed/LwC4qEdEPLY?&autoplay=1&iv_load_policy=3&modestbranding=1&loop=1&mute=1"
                   width={width}
                   height={height}
                   frameBorder="0"
@@ -116,7 +142,7 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
                   <Grid item xs={12} lg={selectedImages.length > 1 ? 6 : 6}>
                     {selectedImages[0].title ? (
                       <Typography className={classes.title} align="left" variant="subtitle1">
-                        {selectedImages[0].title.split(',').map((t, idx) => renderHTML(t, uid(t, idx)))}
+                        {selectedImages[0].title.split(',').map((t, idx) => renderHtml(t, idx, uid(t, idx)))}
                       </Typography>
                     ) : null}
                     <Img
@@ -135,7 +161,7 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
                     <Grid item xs={12} lg={6}>
                       {selectedImages[1].title ? (
                         <Typography className={classes.title} align="left" variant="subtitle1">
-                          {selectedImages[1].title.split(',').map((t, idx) => renderHTML(t, uid(t, idx)))}
+                          {selectedImages[1].title.split(',').map((t, idx) => renderHtml(t, idx, uid(t, idx)))}
                         </Typography>
                       ) : null}
                       <Img

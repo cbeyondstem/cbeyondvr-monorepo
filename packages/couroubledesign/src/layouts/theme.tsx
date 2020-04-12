@@ -18,7 +18,7 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: ['Michroma'].join(','),
+    fontFamily: ['Michroma', 'Roboto'].join(','),
     h1: {
       color: '#fff'
     }
