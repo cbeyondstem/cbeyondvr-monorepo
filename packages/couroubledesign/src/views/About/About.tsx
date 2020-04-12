@@ -10,7 +10,7 @@ import { primaryFont, secondaryFont, renderHtml } from '../../layouts'
 const education = [
   {
     date: '2007',
-    where: 'awarded by the College of Aeropsace Engineering',
+    where: 'awarded by the College of Aerospace Engineering',
     what: renderHtml(`&ldquo;Outstanding Master’s Thesis&rdquo; Award:
       Deep Learning optimization methods for America’s Cup racing yacht`)
   },
