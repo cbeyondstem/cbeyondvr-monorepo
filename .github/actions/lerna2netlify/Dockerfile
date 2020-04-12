@@ -1,9 +1,6 @@
 FROM node:13.12-stretch-slim
 
 COPY . .
-COPY ../../../package.json .
-COPY ../../../tsconfig.build.json .
-COPY ../../../packages packages
 
 RUN \
   yarn global add lerna jest && \
