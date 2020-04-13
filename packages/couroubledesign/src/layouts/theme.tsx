@@ -14,13 +14,18 @@ const theme = createMuiTheme({
     secondary: {
       // use as the prism code highlighting background
       main: '#f5f2f0',
-      dark: '#a62e3ff0' // '#cf0000'
+      dark: '#bdbdbd',
+      contrastText: '#a62e3ff0' // '#cf0000'
     }
   },
   typography: {
-    fontFamily: ['Michroma', 'Roboto'].join(','),
+    fontFamily: ['Michroma', 'Montserrat'].join(','),
     h1: {
       color: '#efefef'
+    },
+    h2: {
+      color: '#efefef',
+      fontWeight: '600'
     },
     body1: {
       color: '#efefef'
@@ -70,6 +75,9 @@ const scroll = createStyles({
       },
       '@media (min-width: 1200px)': {
         maxWidth: '1200px'
+      },
+      '@media (min-width: 1600px)': {
+        maxWidth: '1600px'
       }
     }
   }

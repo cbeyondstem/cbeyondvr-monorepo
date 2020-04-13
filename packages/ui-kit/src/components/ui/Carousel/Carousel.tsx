@@ -23,10 +23,17 @@ export interface CarouselProps {
   renderImage?: (item: ImageItemProps) => React.ReactNode
   thumb?: boolean
   showPlayButton?: boolean
+  autoplay?: boolean
 }
 
 export const Carousel: React.FunctionComponent<CarouselProps> = props => {
-  const { images, renderImage, thumb = true, showPlayButton = true } = props
+  const {
+    images,
+    renderImage,
+    thumb = true,
+    showPlayButton = true,
+    autoplay = true,
+  } = props
   const [isFullScreen, setFullScreen] = React.useState(false)
   const imgItems: ImageItemProps[] = images.map(
     (item: {
@@ -54,6 +61,7 @@ export const Carousel: React.FunctionComponent<CarouselProps> = props => {
       // ref={i => this._imageGallery = i}
       items={imgItems}
       renderItem={renderImage}
+      autoPlay={autoplay}
       // renderThumbInner={renderImage}
       // lazyLoad
       // onClick={this._onImageClick.bind(this)}
