@@ -1,8 +1,7 @@
 import * as React from 'react'
 
-import { Box, Grid, Typography, useMediaQuery, Theme } from '@material-ui/core'
+import { Box, Hidden } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { Space } from '../Space'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,8 +19,6 @@ export interface FooterProps {
 
 export function Footer(props: FooterProps) {
   const classes = useStyles(props)
-  const xs = useMediaQuery((t: Theme) => t.breakpoints.down('xs'))
-
   const { brand, org } = props
   return (
     <Box
@@ -40,14 +37,12 @@ export function Footer(props: FooterProps) {
         <Box px={1}>{brand}</Box>
         <Box p={0}>&copy;{new Date().getFullYear()}</Box>
         <Box px={1}>{org}</Box>
-        {xs ? null : (
-          <>
-            <Box px={0}>&bull;</Box>
-            <Box px={1}>All rights reserved</Box>
-          </>
-        )}
+        <Hidden xsDown>
+          <Box px={0}>&bull;</Box>
+          <Box px={1}>All rights reserved</Box>
+        </Hidden>
       </Box>
-      {xs ? (
+      <Hidden smUp>
         <Box
           display="flex"
           flexDirection="row"
@@ -58,7 +53,7 @@ export function Footer(props: FooterProps) {
             All rights reserved
           </Box>
         </Box>
-      ) : null}
+      </Hidden>
     </Box>
   )
 }
