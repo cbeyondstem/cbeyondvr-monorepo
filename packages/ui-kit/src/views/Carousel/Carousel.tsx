@@ -137,7 +137,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
     images: imgList,
     thumb = true,
     showPlayButton = true,
-    autoplay = true,
+    autoplay = false,
     captions = false,
     renderHtml = renderHtmlDefault,
     imgOrientation = 'Responsive',
