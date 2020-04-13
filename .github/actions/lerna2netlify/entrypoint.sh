@@ -5,4 +5,4 @@ cd packages/ui-kit
 yarn build
 cd ../../$INPUT_PACKAGE_LOCATION
 yarn build
-yarn run now --prod --token=$SECRET_NETLIFY_TOKEN
+yarn run netlify --prod --auth=$SECRET_NETLIFY_AUTH --site=$SECRET_NETLIFY_SITE_ID --dir=.netlify/build
