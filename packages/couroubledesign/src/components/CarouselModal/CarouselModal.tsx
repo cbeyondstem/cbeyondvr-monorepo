@@ -44,8 +44,9 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export interface CarouselModelProps {
-  title: string | React.ReactNode
+export interface CarouselModelProps extends React.ComponentPropsWithRef<'div'> {
+  title: string
+  titleNode?: React.ReactNode
   images: string[]
   imgOrientation?: 'Responsive' | 'Landscape' | 'Portrait'
 }
@@ -53,7 +54,7 @@ export interface CarouselModelProps {
 export function CarouselModal(props: CarouselModelProps) {
   const classes = useStyles(props)
   const [open, setOpen] = React.useState(false)
-  const { title, images, imgOrientation } = props
+  const { title, titleNode, images, imgOrientation } = props
   const handleOpen = () => {
     setOpen(true)
   }
@@ -64,13 +65,7 @@ export function CarouselModal(props: CarouselModelProps) {
 
   return (
     <div>
-      <IconButton
-        size="small"
-        className={classes.button}
-        onClick={handleOpen}
-        aria-expanded={open}
-        aria-label="show more"
-      >
+      <IconButton className={classes.button} onClick={handleOpen} aria-expanded={open} aria-label="show more">
         <PlayArrowRoundedIcon titleAccess={`play ${title}`} />
       </IconButton>{' '}
       <Modal
@@ -87,7 +82,7 @@ export function CarouselModal(props: CarouselModelProps) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">{title}</h2>
+            <h2 id="transition-modal-title">{titleNode || title}</h2>
             <CarouselView
               images={images}
               renderHtml={renderHtml}

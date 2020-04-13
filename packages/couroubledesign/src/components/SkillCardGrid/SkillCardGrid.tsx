@@ -55,28 +55,16 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '20vh',
       display: 'block'
     },
-    expand: {
-      marginLeft: 'auto',
-      '&:hover': {
-        backgroundColor: theme.palette.secondary.contrastText,
-        opacity: '80%'
-      },
-      // transform: 'rotate(0deg)',
-      // transition: theme.transitions.create('transform', {
-      //   duration: theme.transitions.duration.shortest
-      // },
-      // )
-      '& span': {
-        backgroundColor: `transparent`,
-        fill: theme.palette.primary.contrastText
-      }
-    },
-    // expandOpen: {
-    //   transform: 'rotate(180deg)'
-    // },
     avatar: {
       backgroundColor: theme.palette.secondary.contrastText,
       color: theme.palette.primary.contrastText
+    },
+    modal: {
+      // align: 'right',
+      display: 'flex',
+      '& div': {
+        marginLeft: 'auto'
+      }
     }
   })
 )
@@ -99,11 +87,8 @@ export function SkillCard(props: SkillCardProps) {
   const theme = useTheme()
   const md = useMediaQuery((t: Theme) => t.breakpoints.up('md'))
   const lg = useMediaQuery((t: Theme) => t.breakpoints.up('lg'))
-  const [expanded, setExpanded] = React.useState(false)
   const { title, imageItem, avatar, details, carousel, imgOrientation } = props
-  const handleExpandClick = () => {
-    setExpanded(!expanded)
-  }
+
   const fixItem: (img: ImageSharpFluid) => FluidObject = img => {
     const { aspectRatio = 1.5, src = '', srcSet = '', sizes = '', ...fluid } = img
     return { aspectRatio, src, srcSet, sizes, ...fluid }
@@ -148,29 +133,9 @@ export function SkillCard(props: SkillCardProps) {
           {renderHtml(details)}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
-        <IconButton
-          className={classes.expand}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <CarouselModal title={cardHeader} images={carousel} imgOrientation="Landscape" />{' '}
-        </IconButton>
+      <CardActions disableSpacing className={classes.modal}>
+        <CarouselModal title={title} titleNode={cardHeader} images={carousel} imgOrientation="Landscape" />{' '}
       </CardActions>
-      {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <CarouselView
-            images={carousel}
-            renderHtml={renderHtml}
-            imgOrientation="Landscape"
-            showPlayButton={false}
-            thumb={false}
-            captions
-            autoplay
-          />
-        </CardContent>
-      </Collapse> */}
     </Card>
   )
 }
