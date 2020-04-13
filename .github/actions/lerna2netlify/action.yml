@@ -10,13 +10,13 @@ inputs:
   PACKAGE_NAME:
     description: 'netlify registered application name'
     default: 'cbeyondvr-monorepo'
-  DEPLOY_MOVE_TO:
-    description: 'netlify expected output directory'
-    default: '.netlify/build'
+  # DEPLOY_MOVE_TO:
+  #   description: 'netlify expected output directory'
+  #   default: '.netlify/build'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.PACKAGE_LOCATION }}
     - ${{ inputs.PACKAGE_NAME }}
-    - ${{ inputs.DEPLOY_MOVE_TO }}
+    # - ${{ inputs.DEPLOY_MOVE_TO }}
