@@ -20,6 +20,7 @@ export interface CarouselViewProps {
   path?: string
   images?: string[]
   thumb?: boolean
+  showPlayButton?: boolean
   captions?: boolean
   renderHtml?: (
     rawHTML: string | React.ReactNode,
@@ -134,6 +135,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
     path,
     images: imgList,
     thumb = true,
+    showPlayButton = true,
     captions = false,
     renderHtml = renderHtmlDefault,
     imgOrientation = 'Responsive',
@@ -239,6 +241,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
               images={sortedViewImages}
               renderImage={renderImage(maxWidth)}
               thumb={thumb}
+              showPlayButton={showPlayButton}
             />
           </Container>
         )

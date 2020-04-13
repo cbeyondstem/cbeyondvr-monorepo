@@ -43,7 +43,7 @@ const images = {
       racer44_1: 'Winner Bug Boat Series 2010 / Ullman series 2009',
       racer44_2: 'Winner Bug Boat Series 2010 / Ullman series 2009',
       racer44_3: 'Winner Bug Boat Series 2010 / Ullman series 2009',
-      racer44_4: 'Winner Bug Boat Series 2010 / Ullman series 2009'
+      racer44_4: ''
     },
     '44′ IRC Racer'
   ),

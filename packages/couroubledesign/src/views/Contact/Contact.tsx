@@ -33,7 +33,7 @@ export const Contact: React.FunctionComponent<React.ComponentPropsWithRef<'div'>
 
   return (
     <Grid container justify="center" alignItems="center" className={classes.root} spacing={1}>
-      <Grid item xs={12} spacing={4}>
+      <Grid item xs={12}>
         <Grid className={classes.grid} container spacing={1} alignItems="center" justify="center" direction="row">
           <Grid item xs={3} md={3}>
             Call Us

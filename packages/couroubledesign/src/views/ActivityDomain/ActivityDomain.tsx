@@ -57,7 +57,7 @@ export const ActivityDomain: React.FunctionComponent<ActivityDomainProps> = prop
         const imagesInPath = _.get(imageInfoDict, cat, {})
         return (
           <Grid item xs={12} lg={12} key={uid(cat, catIdx)}>
-            <Typography variant="body1" align="left" className={classes.title}>
+            <Typography variant="body1" align="left" className={classes.title} component="div">
               {renderHtml(Object.values(imagesInPath)[0].title)}
             </Typography>
             {cat === 'art_aitken' ? (

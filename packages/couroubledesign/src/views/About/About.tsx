@@ -138,16 +138,16 @@ const Activity: React.FunctionComponent<ActivityProps> = props => {
     <Container>
       <Grid className={classes.activity} container direction="row" spacing={3}>
         <Grid item xs={12} sm={2}>
-          <Typography align="left" variant="body1">
+          <Typography align="left" variant="body1" component="div">
             {date}
           </Typography>
         </Grid>
         <Grid item xs={12} sm={10}>
-          <Typography variant="body1" className={classes.what}>
+          <Typography variant="body1" className={classes.what} component="div">
             {what}
           </Typography>
           <Box py={1} />
-          <Typography variant="body1" className={classes.where}>
+          <Typography variant="body1" className={classes.where} component="div">
             {where}
           </Typography>
         </Grid>
@@ -188,9 +188,9 @@ export const About: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> 
             state-of-the-art composite structure design and manufacturing services. The firm's track record of
             successful innovative designs spanning across many industrial domains (aerospace, racing yachts, race cars,
             underwater sculptures, sports goods, electric vehicles) speaks for itself. This versatility dear to
-            Frederick is at the core of his unique approach, allowing to integrate cross-cutting bleeding-edge
-            techniques for ever more performant and light-weight designs: Deep Learning AI methods, Finite Elements
-            analysis or 3D-printing molding.
+            Frederick is at the core of his unique approach, allowing to integrate cross-cutting leading-edge techniques
+            for ever more performant and light-weight designs: Deep Learning AI methods, Finite Elements analysis or
+            3D-printing molding.
           </Typography>
           <Box py={1} />
         </Container>

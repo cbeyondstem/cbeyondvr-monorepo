@@ -9,18 +9,27 @@ const theme = createMuiTheme({
       light: '#d7d7f4',
       main: '#2d2d2d',
       dark: '#2d2d2d',
-      contrastText: '#fff'
+      contrastText: '#efefef'
     },
     secondary: {
       // use as the prism code highlighting background
       main: '#f5f2f0',
-      dark: '#bdbdbd' // '#cf0000'
+      dark: '#a62e3ff0' // '#cf0000'
     }
   },
   typography: {
     fontFamily: ['Michroma', 'Roboto'].join(','),
     h1: {
-      color: '#fff'
+      color: '#efefef'
+    },
+    body1: {
+      color: '#efefef'
+    },
+    body2: {
+      color: '#efefef'
+    },
+    caption: {
+      color: '#efefef'
     }
   }
 })
