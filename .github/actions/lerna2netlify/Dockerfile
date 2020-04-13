@@ -1,10 +1,12 @@
 FROM node:13.12-stretch-slim
 
-COPY . .
-
 RUN \
-  yarn global add lerna netlify-cli && \
-  lerna bootstrap
+    apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y git libglu1 libxi6 libgconf-2-4 && \
+    yarn global add lerna now
+
+COPY . .
 
 RUN chmod +x /entrypoint.sh
 

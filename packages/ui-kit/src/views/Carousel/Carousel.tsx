@@ -3,7 +3,7 @@ import * as React from 'react'
 import { uid } from 'react-uid'
 import Img, { FluidObject } from 'gatsby-image'
 
-import { Container, Paper, useTheme, useMediaQuery } from '@material-ui/core'
+import { Container, useTheme, useMediaQuery } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -153,7 +153,13 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
     } else {
       sources = fixItem(item.original.desktop)
     }
-
+    let captionText: string = null
+    if (captions) {
+      captionText =
+        item.original.caption === ''
+          ? null
+          : item.original.caption || item.original.path
+    }
     // const presWidth = isLandscape
     //   ? item.original.desktop.presentationWidth
     //   : item.original.mobile.presentationWidth
@@ -188,24 +194,22 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
                     .toUpperCase()
               )}
             </Typography>
-            <Typography
-              align="center"
-              variant="caption"
-              className={classes.caption}
-            >
-              {(item.original.caption === 'undefined'
-                ? item.original.path
-                : item.original.caption
-              )
-                .split(',')
-                .map((t, idx) => renderHtml(t, idx + 1, uid(t, idx)))}
-            </Typography>
+            {captionText ? (
+              <Typography
+                align="center"
+                variant="caption"
+                className={classes.caption}
+              >
+                {captionText
+                  .split(',')
+                  .map((t, idx) => renderHtml(t, idx + 1, uid(t, idx)))}
+              </Typography>
+            ) : null}
           </div>
         ) : null}
       </Container>
     )
   }
-
   return (
     <AllImgConsumer>
       {({ images, maxWidth = 1200 }) => {

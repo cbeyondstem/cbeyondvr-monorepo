@@ -28,11 +28,6 @@ const services = [
       modeling process: racing yachts, foiling vessels.`
   },
   {
-    title: 'Aerodynamic & Hydrodynamic',
-    details: `Numerical flow modeling and CFD analysis and validation: inviscid (panel method)
-      and viscous flow (potential flow). modeling process: racing yachts, foiling vessels.`
-  },
-  {
     title: 'Design & Naval Architecture',
     details: `Racing yacht and powerboat, performance prediction, resistance and propulsion, hydrostatics calculation,
      3D modeling, full structural design and construction, project management.`

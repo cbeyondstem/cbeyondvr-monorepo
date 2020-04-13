@@ -5,8 +5,6 @@ import { Container, Box, useTheme, useMediaQuery } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
-import { getThemeProps } from '@material-ui/styles'
-import { AspectRatio } from '@material-ui/icons'
 import {
   Carousel as CarouselBase,
   CarouselImgProps,
@@ -25,6 +23,12 @@ export interface CarouselViewProps {
   thumb?: boolean
   captions?: boolean
   backgroundColor?: string
+  renderHtml?: (
+    rawHTML: string | React.ReactNode,
+    idx?: number,
+    key?: string
+  ) => React.ReactNode
+  imgOrientation?: 'Responsive' | 'Landscape' | 'Portrait'
 }
 const { useState, useEffect } = React
 
@@ -109,6 +113,19 @@ const useStyles = makeStyles(theme => {
     },
   }
 })
+const renderHtmlDefault = (
+  rawHTML: string | React.ReactNode,
+  idx?: number,
+  key?: string
+) =>
+  rawHTML instanceof String ? (
+    React.createElement('div', {
+      key,
+      dangerouslySetInnerHTML: { __html: rawHTML },
+    })
+  ) : (
+    <div key={key}>{rawHTML}</div>
+  )
 // Hook
 function useWindowSize() {
   const isClient = typeof window === 'object'
@@ -134,11 +151,22 @@ function useWindowSize() {
   return windowSize
 }
 export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => {
-  const isLandscape = useMediaQuery('(orientation: landscape)')
-  const { path, images: imgList, thumb = false, captions = false } = props
+  let isLandscape = useMediaQuery('(orientation: landscape)')
+  const {
+    path,
+    images: imgList,
+    thumb = false,
+    captions = false,
+    renderHtml = renderHtmlDefault,
+    imgOrientation = 'Responsive',
+  } = props
   const classes = useStyles(props)
   const theme = useTheme()
   const wsize = useWindowSize()
+  if (imgOrientation !== 'Responsive') {
+    isLandscape = imgOrientation === 'Landscape'
+  }
+
   const renderImage = (maxWidth: number) => (item: ImageItemProps) => {
     const { Svg: SvgRaw, viewBox } = item.original.desktop as SvgProps
     const [s, e, w, h] = viewBox.match(/[\d.]+/g).map(Number)
@@ -150,6 +178,13 @@ export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => 
       svgw = (boxw * aspectRatio * 0.95) / 1.6
     } else {
       svgw = boxw * 0.95
+    }
+    let captionText: string = null
+    if (captions) {
+      captionText =
+        item.original.caption === ''
+          ? null
+          : item.original.caption || item.original.path
     }
     // const presWidth = isLandscape
     //   ? item.original.desktop.presentationWidth
@@ -173,24 +208,26 @@ export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => 
         {captions ? (
           <div className={classes.paper}>
             <Typography align="center" variant="subtitle2">
-              {item.original.title ||
-                item.original.path
-                  .split('/')
-                  .slice(-1)
-                  .join('/')
-                  .toUpperCase()}
+              {renderHtml(
+                item.original.title ||
+                  item.original.path
+                    .split('/')
+                    .slice(-1)
+                    .join('/')
+                    .toUpperCase()
+              )}
             </Typography>
-            <Typography
-              align="center"
-              variant="caption"
-              className={classes.caption}
-            >
-              {(item.original.caption || item.original.path)
-                .split(',')
-                .map((t: string, idx: number) => (
-                  <div key={uid(t, idx)}>{t}</div>
-                ))}
-            </Typography>
+            {captionText ? (
+              <Typography
+                align="center"
+                variant="caption"
+                className={classes.caption}
+              >
+                {captionText
+                  .split(',')
+                  .map((t, idx) => renderHtml(t, idx + 1, uid(t, idx)))}
+              </Typography>
+            ) : null}
           </div>
         ) : null}
       </Container>

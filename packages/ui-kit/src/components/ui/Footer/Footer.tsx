@@ -54,7 +54,9 @@ export function Footer(props: FooterProps) {
           alignItems="center"
           justifyContent="center"
         >
-          <Box px={1}>All rights reserved</Box>
+          <Box px={1} pb={2}>
+            All rights reserved
+          </Box>
         </Box>
       ) : null}
     </Box>

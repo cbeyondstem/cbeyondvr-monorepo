@@ -1,6 +1,6 @@
 # note: requires SECRET_NOW_TOKEN env variable to be set by the workflow
 name: 'Lerna Package to Netlify'
-description: 'Build and Deploy a lerna package to zeit now'
+description: 'Build and Deploy a lerna package to Netlfiy'
 author: 'armelle@cbebondvr.com'
 inputs:
   PACKAGE_LOCATION:
@@ -8,20 +8,15 @@ inputs:
     default: 'packages/site-starter'
     required: true
   PACKAGE_NAME:
-    description: 'now registered application name'
+    description: 'netlify registered application name'
     default: 'cbeyondvr-monorepo'
-  DEPLOY_TO:
-    description: 'now deployment subdomain name'
-    default: 'cbeyondvr-starter'
-    required: true
-  DEPLOY_TO_PREFIX:
-    description: 'now deployment subdomain name prefix'
-    default: 'qa-'
+  DEPLOY_MOVE_TO:
+    description: 'netlify expected output directory'
+    default: '.netlify/build'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.PACKAGE_LOCATION }}
     - ${{ inputs.PACKAGE_NAME }}
-    - ${{ inputs.DEPLOY_TO }}
-    - ${{ inputs.DEPLOY_TO_PREFIX }}
+    - ${{ inputs.DEPLOY_MOVE_TO }}
