@@ -25,7 +25,7 @@ const services: SkillCardRawProps[] = [
     carousel: ['robot arm rohit.jpg', 'vectorlaunch_2.jpg']
   },
   {
-    title: 'End-to-end Engineering',
+    title: 'Naval Engineering',
     image: 'gf42_concept_1.jpg',
     avatar: 'E',
     details: `Racing yacht and powerboat, performance prediction, resistance and propulsion, hydrostatics calculation,
