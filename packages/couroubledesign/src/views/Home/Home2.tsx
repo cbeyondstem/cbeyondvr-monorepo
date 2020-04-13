@@ -86,7 +86,7 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
           <span style={{ fontFamily: primaryFont }}>Courouble Design & Engineering</span> offers since 2011,
           state-of-the-art composite structure design and manufacturing services. Strong of a track record of designs
           across many industrial domains (aerospace, racing yachts, race cars, consumer goods and art), we put these
-          skills at your service, whether you need advanced structural analysis for light-weight composite struture or
+          skills at your service. Whether you need advanced structural analysis for light-weight composite struture or
           complete end-to-end engineering project management, we are here to help!
         </Typography>
       </Box>
