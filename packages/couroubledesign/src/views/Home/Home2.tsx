@@ -22,7 +22,7 @@ const services: SkillCardRawProps[] = [
     avatar: 'M',
     details: `Integration of emerging 3D printing technologies applied to complex carbon tooling
       fabrication for very high performance and ultra light carbon fiber parts.`,
-    carousel: ['vectorlaunch_2.jpg', 'gf42_2014_2.jpg', 'racer44_4.jpg', 'DougAitken3.jpg']
+    carousel: ['robot arm rohit.jpg', 'vectorlaunch_2.jpg']
   },
   {
     title: 'End-to-end Engineering',
@@ -39,7 +39,7 @@ const services: SkillCardRawProps[] = [
     details: `Numerical flow modeling and CFD analysis and validation: inviscid (panel method)
       and viscous flow (potential flow).
       modeling process: racing yachts, foiling vessels.`,
-    carousel: ['gf42_fluidanalysis_2.jpg', 'gf42_fluidanalysis_3.jpg']
+    carousel: ['monohull_research.jpg', 'gf42_fluidanalysis_2.jpg', 'gf42_fluidanalysis_3.jpg']
   }
 ]
 

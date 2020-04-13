@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
       minHeight: '70vh',
       // outline: 'none',
       '&:focus': {
-        outline: `2px solid ${theme.palette.secondary.contrastText}`
+        outline: `none` // `2px solid ${theme.palette.secondary.contrastText}`
       }
     },
     button: {

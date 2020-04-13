@@ -9,7 +9,7 @@ export const MyPage = (props: PageProps) => {
   const { location } = props
   return (
     <Layout location={location} title="CONSUMER">
-      <ActivityUnified categories={['concepts']} />
+      <ActivityUnified categories={['nike']} />
     </Layout>
   )
 }

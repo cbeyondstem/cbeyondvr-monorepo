@@ -21,7 +21,8 @@ const images = {
       concept_racer41_1: 'Racer Cruiser 41′ – ORR',
       concept_racer41_2: 'Racer Cruiser 41′ – ORR',
       concept_racer41_3: 'Racer Cruiser 41′ – ORR',
-      concept_class40: 'Class 40 Fiberglass'
+      concept_class40: 'Class 40 Fiberglass',
+      monohull_research: 'monohull research b 2 CFD'
     },
     `Yachting Concepts`
   ),
@@ -33,8 +34,15 @@ const images = {
       gf42_concept_1: 'Concept',
       gf42_concept_2: 'Concept',
       gf42_concept_3: 'Concept',
+      gf42_fluidanalysis_1: null, // DONTDISPLAY!! 'Computational Fluid Dynamics with CFDMax LLC.',
       gf42_fluidanalysis_2: 'Computational Fluid Dynamics with CFDMax LLC.',
       gf42_fluidanalysis_3: 'Computational Fluid Dynamics with CFDMax LLC.'
+    },
+    '42′ Racer Trimaran'
+  ),
+  gf42_keep: with_copyright(
+    {
+      gf42_fluidanalysis_1: 'Computational Fluid Dynamics with CFDMax LLC.'
     },
     '42′ Racer Trimaran'
   ),
@@ -51,13 +59,15 @@ const images = {
     {
       surfboard_0: '42 ft long - supporting a crew weight of 12600 lb!',
       surfboard_1: 'Shaped by Nev Hyman - Firewire Surfboard',
-      surfboard_2: 'Compared to a normal size longboard!',
+      surfboard_2: null, // 'Compared to a normal size longboard!'
+      surfboard_5: 'Compared to a normal size longboard!',
       surfboard_3: 'Guinness world record beaten, congrats to the team!',
       surfboard_4: 'in the Firewire Surfboard shop...'
     },
     `Largest surfboard in the world`,
     'Designed by Courouble Design & Engineering, Shaped by Nev Hyman - Firewire Surfboard'
   ),
+
   offshore47: with_copyright(
     {
       offshore47_1: 'Construction Pre-preg carbon Nomex',
@@ -82,6 +92,12 @@ const images = {
     'Nanosat Launch Vehicle (CSult & Garvey Spacecraft &trade;)',
     'copyright CSult & Garvey Spacecraft Corp. / propulsion design by Courouble Design & Engineering'
   ),
+  nike: with_copyright(
+    {
+      nike_chair_1: ''
+    },
+    `Nike&trade; NBA player chair prototype`
+  ),
   art_aitken: with_copyright(
     {
       'DDDB 707 Aitken pavilions sm': '',
@@ -102,6 +118,10 @@ const images = {
     },
     'San Diego Airport Arches',
     'copyright TBD, structutal design by Courouble Design & Engineering'
+  ),
+  workshop: with_copyright(
+    { 'robot arm rohit': 'Robot arm Rohit for precise carbon cutting' },
+    `Courouble Design & Engineering Workshop`
   )
 }
 function getOrderedListByCat() {
