@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
-import { Modal, Backdrop, Fade, IconButton } from '@material-ui/core'
+import { Modal, Backdrop, Fade, IconButton, Box } from '@material-ui/core'
 import { CarouselView } from '@cbeyond/ui-kit'
 import PlayArrowRoundedIcon from '@material-ui/icons/PlayArrowRounded'
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded'
 import { renderHtml } from '../../layouts'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -11,15 +12,27 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      minWidth: 0
+      minWidth: 0,
+      [theme.breakpoints.down('sm')]: {
+        alignItems: 'flex-end'
+      }
+    },
+    title: {
+      [theme.breakpoints.down('sm')]: {
+        fontSize: '95%'
+      }
     },
     paper: {
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: theme.palette.primary.main,
       // border: '2px solid #000',
       // boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
       minWidth: '70vw',
       minHeight: '70vh',
+      [theme.breakpoints.down('sm')]: {
+        minWidth: '100vw',
+        minHeight: '88vh'
+      },
       // outline: 'none',
       '&:focus': {
         outline: `none` // `2px solid ${theme.palette.secondary.contrastText}`
@@ -69,8 +82,8 @@ export function CarouselModal(props: CarouselModelProps) {
         <PlayArrowRoundedIcon titleAccess={`play ${title}`} />
       </IconButton>{' '}
       <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
+        aria-labelledby="carousel-modal-title"
+        aria-describedby="carousel-modal-description"
         className={classes.modal}
         open={open}
         onClose={handleClose}
@@ -81,8 +94,16 @@ export function CarouselModal(props: CarouselModelProps) {
         }}
       >
         <Fade in={open}>
-          <div className={classes.paper}>
-            <h2 id="transition-modal-title">{titleNode || title}</h2>
+          <Box
+            display="flex"
+            className={classes.paper}
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <h2 id="carousel-modal-title" className={classes.title}>
+              {titleNode || title}
+            </h2>
             <CarouselView
               images={images}
               renderHtml={renderHtml}
@@ -92,7 +113,10 @@ export function CarouselModal(props: CarouselModelProps) {
               captions
               autoplay
             />{' '}
-          </div>
+            <IconButton className={classes.button} onClick={handleClose} aria-expanded={open} aria-label="show more">
+              <CloseRoundedIcon titleAccess={`close modal ${title}`} />
+            </IconButton>{' '}
+          </Box>
         </Fade>
       </Modal>
     </div>
