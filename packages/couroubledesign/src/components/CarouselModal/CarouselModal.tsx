@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.primary.main,
       // border: '2px solid #000',
       // boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
+      padding: theme.spacing(2, 4, 5),
       minWidth: '70vw',
       minHeight: '70vh',
       [theme.breakpoints.down('sm')]: {
