@@ -12,7 +12,12 @@ export const query = graphql`
     }
   }
   fragment ImgResponsiveDesktop2 on ImageSharp {
-    fluid(quality: 100, fit: COVER, srcSetBreakpoints: [600, 800, 1200], sizes: "(max-width: 1200px) 100vw, 1200px") {
+    fluid(
+      quality: 100
+      fit: COVER
+      srcSetBreakpoints: [200, 370, 600, 800, 1200]
+      sizes: "(max-width: 1200px) 100vw, 1200px"
+    ) {
       ...GatsbyImageSharpFluid_withWebp
       presentationWidth
     }

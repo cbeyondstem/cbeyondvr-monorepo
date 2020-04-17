@@ -10,8 +10,8 @@ import { SiteConfigQueryProvider } from '../gatsby/gatsby-gql/SiteConfigQueryPro
 import theme from './theme'
 
 // custom typefaces
-import 'typeface-michroma'
-import 'typeface-montserrat'
+// import 'typeface-michroma'
+// import 'typeface-montserrat'
 import '@cbeyond/ui-kit/dist/assets/prismjs/prism_clear.css'
 import '@cbeyond/ui-kit/dist/assets/carousel/image-gallery.css'
 

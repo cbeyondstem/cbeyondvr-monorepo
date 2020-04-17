@@ -195,6 +195,12 @@ module.exports = {
     // gatsby plugin layout sticks a layout (by default located under ./src/layout)
     'gatsby-plugin-layout',
     'gatsby-plugin-typescript',
-    'gatsby-plugin-material-ui'
+    'gatsby-plugin-material-ui',
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/`]
+      }
+    }
   ]
 }

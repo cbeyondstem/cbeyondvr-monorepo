@@ -14,12 +14,10 @@ import {
   CardHeader,
   CardContent,
   CardActions,
-  Collapse,
-  Avatar,
-  IconButton
+  Avatar
 } from '@material-ui/core'
 
-import { CarouselImgProps, CarouselView, AllImgConsumer } from '@cbeyond/ui-kit'
+import { CarouselImgProps, AllImgConsumer } from '@cbeyond/ui-kit'
 import Img, { FluidObject } from 'gatsby-image'
 import { ImageSharpFluid } from '../../types/gatsby-graphql-types'
 import { secondaryFont, renderHtml } from '../../layouts'
@@ -88,6 +86,8 @@ export function SkillCard(props: SkillCardProps) {
   const md = useMediaQuery((t: Theme) => t.breakpoints.up('md'))
   const lg = useMediaQuery((t: Theme) => t.breakpoints.up('lg'))
   const { title, imageItem, avatar, details, carousel, imgOrientation } = props
+  const CardMediaImage = React.lazy(() => import('../LazyCardMedia/CardMediaImage'))
+  const isSSR = typeof window === 'undefined'
 
   const fixItem: (img: ImageSharpFluid) => FluidObject = img => {
     const { aspectRatio = 1.5, src = '', srcSet = '', sizes = '', ...fluid } = img
@@ -109,18 +109,11 @@ export function SkillCard(props: SkillCardProps) {
   return (
     <Card className={classes.root}>
       {cardHeader}
-      <CardMedia
-        component={Img}
-        className={classes.media}
-        src={(imageItem.desktop as ImageSharpFluid).src}
-        fluid={fixItem(imageItem.desktop as ImageSharpFluid)}
-        title={title}
-        alt={title}
-        backgroundColor={theme.palette.type === 'light' ? theme.palette.primary.light : theme.palette.primary.dark}
-        style={{
-          margin: '0 auto' // Used to center the image
-        }}
-      />
+      {!isSSR && (
+        <React.Suspense fallback={<div>loading...</div>}>
+          <CardMediaImage className={classes.media} image={imageItem.desktop as ImageSharpFluid} title={title} />
+        </React.Suspense>
+      )}
       <CardContent>
         <Typography
           className={classNames(classes.details, {
