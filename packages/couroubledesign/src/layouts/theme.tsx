@@ -19,13 +19,13 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: ['Michroma', 'Montserrat'].join(','),
+    fontFamily: ['Michroma', 'Montserrat', 'sans-serif'].join(','),
     h1: {
       color: '#efefef'
     },
     h2: {
       color: '#efefef',
-      fontWeight: '600'
+      fontWeight: 600
     },
     body1: {
       color: '#efefef'
