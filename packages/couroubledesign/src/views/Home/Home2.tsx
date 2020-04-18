@@ -80,7 +80,7 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
   const lg = useMediaQuery((t: Theme) => t.breakpoints.up('lg'))
   const CardMediaVimeo = React.lazy(() => import('../../components/LazyCardMedia/CardMediaVimeo'))
   const isSSR = typeof window === 'undefined'
-  let padding = 2
+  let padding
   if (md) {
     padding = 4
   } else if (lg) {

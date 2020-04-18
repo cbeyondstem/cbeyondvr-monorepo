@@ -46,6 +46,8 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
   }
   const sm = useMediaQuery((t: Theme) => t.breakpoints.up('sm'))
   const md = useMediaQuery((t: Theme) => t.breakpoints.up('md'))
+  const CardMediaVimeo = React.lazy(() => import('../../components/LazyCardMedia/CardMediaVimeo'))
+  const isSSR = typeof window === 'undefined'
   let width = 600
   let height = 260
 
@@ -70,17 +72,11 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
                 </Typography>
               </Grid>
               <Grid item xs={12} md={8}>
-                <CardMedia
-                  component="iframe"
-                  className={classes.iframe}
-                  title="DMG Design SF - Project Portfolio"
-                  image="https://player.vimeo.com/video/139663778?byline=false&portrait=false&title=false&fun=false&texttrack=false&autoplay=true&muted=true&loop=1"
-                  width={width}
-                  height={height}
-                  frameBorder="0"
-                  allow="autoplay; fullscreen"
-                  allowFullScreen
-                />{' '}
+                {!isSSR && (
+                  <React.Suspense fallback={<div>loading...</div>}>
+                    <CardMediaVimeo className={classes.iframe} width={width} height={height} />
+                  </React.Suspense>
+                )}
               </Grid>
             </Grid>
             {[
