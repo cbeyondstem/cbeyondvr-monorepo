@@ -1,1 +1,1 @@
-require('typeface-michroma')
+require('./src/assets/fonts/typeface-michroma/index.css')

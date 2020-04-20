@@ -11,7 +11,7 @@ import theme from './theme'
 
 // custom typefaces
 // import 'typeface-michroma'
-import '@cbeyond/ui-kit/dist/assets/prismjs/prism_clear.css'
+// import '@cbeyond/ui-kit/dist/assets/prismjs/prism_clear.css'
 import '@cbeyond/ui-kit/dist/assets/carousel/image-gallery.css'
 
 // import 'prismjs/plugins/command-line/prism-command-line.css'
