@@ -8,15 +8,14 @@
 
 const path = require('path')
 const fs = require('fs-extra')
-const slash = require('slash')
 const sharp = require('sharp')
 const { forEach } = require('p-iteration') // awesome library for promise iteration with async/await!
 const exiftoolVendored = require('exiftool-vendored')
 
 const { exiftool } = exiftoolVendored
-const imageList = require('./image-list')
 
-const { imageInfoDict } = imageList
+const { services, projects, images } = require('../src/assets/image-list')
+
 const creator = 'Frederick Corouble'
 const copyright_default = '(c) 2020 Courouble Design & Engineering (http://www.couroubledesign.com/) - Rights reserved'
 const location = {
@@ -31,20 +30,20 @@ const location = {
 }
 const today = new Date().toISOString().slice(0, 10)
 
-function getTags(imgProps) {
+function getTags(projectProps, imgProps) {
   const authorTags = {
     Artist: creator,
-    Copyright: imgProps.copyright || copyright_default,
-    CopyrightNotice: imgProps.copyright || copyright_default,
+    Copyright: projectProps.copyright || copyright_default,
+    CopyrightNotice: projectProps.copyright || copyright_default,
     CopyrightFlag: 'true',
     // URL_List: ['http://www.dmgdesignsf.com/'],
     // WebStatement: 'TBD', // 'http://creativecommons.org/licenses/by-nc-sa/3.0/at/',
-    Credit: creator,
+    Credit: projectProps.company || creator,
     // City: 'San Francisco',
     // Country: 'United States',
     // CountryCode: 'US',
-    Creator: [creator],
-    Rights: imgProps.copyright || copyright_default
+    Creator: [projectProps.company || creator],
+    Rights: projectProps.copyright || copyright_default
     // UsageTerms: 'TBD' // Creative Commons - by-nc-sa/3.0/at/
     // CreatorContactInfo: {
     //   CiAdrCity: 'San Francisco',
@@ -55,9 +54,9 @@ function getTags(imgProps) {
   }
   return {
     ...authorTags,
-    Title: imgProps.title,
-    ImageDescription: imgProps.title,
-    // Caption: caption,
+    Title: imgProps.title || projectProps.project,
+    ImageDescription: imgProps.title || projectProps.project,
+    // Caption: imgProps.caption,
     // Subtitle: caption,
     City: location.city,
     City2: location.city,
@@ -88,65 +87,60 @@ async function addMetadata0() {
 
 const src = 'pix'
 
-async function iterateDir(dir, callback) {
+async function getFiles(dir) {
   const items = fs.readdirSync(dir)
+  const files = []
   await forEach(items, async f => {
     const dirPath = path.join(dir, f)
     const isDirectory = fs.statSync(dirPath).isDirectory()
     // console.log(dirPath)
     if (!isDirectory) {
-      await callback(dir, f).catch(err => console.log(err.message))
-    } else {
-      await iterateDir(dirPath, callback)
+      files.push(f)
     }
   })
+  return files
 }
+
 async function addMetadata() {
   const rootDir = path.join(__dirname, '..', 'content', src)
   // console.log(rootDir)
-  await iterateDir(rootDir, async (dir, f) => {
+  const allprojects = projects.concat(services)
+  await forEach(allprojects, async p => {
+    const dir = `${rootDir}/${p.folder}`
+    const stored = await getFiles(dir)
     // console.log(dir, f)
-    const fname = f.split('.')[0]
-    if (f.search('_original') > -1) {
-      return
-    }
-    const category = slash(dir)
-      .split('/')
-      .reduce((_path, curr) => {
-        let newPath = _path
-        if (_path === '') {
-          if (curr === src) {
-            newPath = `${src}`
-          }
-        } else {
-          newPath = `${_path}/${curr}`
-        }
-        return newPath
-      }, '')
-      .split('/')[1]
-    if (!(category in imageInfoDict)) {
-      throw TypeError(`${category} not part of imageInfoDict`)
-    }
-    if (!(fname in imageInfoDict[category])) {
-      throw TypeError(`${category}/${fname} not part of imageInfoDict`)
-    }
-    //   .split('/')
-    // const paths = [__dirname, '..', 'content', ...subdir]
-    // fs.mkdirSync(paths.join('/'), { recursive: true })
-    const tags = getTags(imageInfoDict[category])
-    await exiftool.write(path.join(dir, f), tags).catch(err => console.log(`${path.join(dir, f)} error: ${err}`))
-    console.log(`${category}/${fname} metadata update done!`)
-    // const readtags = await exiftool.read(path.join(dir, f))
-    // console.log(`tags = ${JSON.stringify(readtags, null, 2)}`)
+    await forEach(stored, async f => {
+      const fname = f.split('.')[0]
+      if (f.search('_original') > -1) {
+        return
+      }
+      const imgProps = images.filter(img => img.name === fname)
+      if (imgProps.length === 0) {
+        console.error(`[ERROR]\t${p.folder}/${fname} is not part of the images list`)
+        return
+      }
+      if (imgProps.length > 1) {
+        console.error(`[WARNING]\t${p.folder}/${fname} defined multiple times in images list`)
+      }
+      const tags = getTags(p, imgProps[0])
+      await exiftool.write(path.join(dir, f), tags).catch(err => console.log(`${path.join(dir, f)} error: ${err}`))
+      console.log(`${p.folder}/${fname} metadata update done!`)
+      // const readtags = await exiftool.read(path.join(dir, f))
+      // console.log(`tags = ${JSON.stringify(readtags, null, 2)}`)
+    })
   })
   await exiftool.end()
-  // then clean the exiftool generated files
-  await iterateDir(rootDir, async (dir, f) => {
-    // console.log(dir, f)
-    const fext = f.split('.')[1]
-    if (fext.search('_original') > -1) {
-      fs.removeSync(path.join(dir, f))
-    }
+  await forEach(allprojects, async p => {
+    const dir = `${rootDir}/${p.folder}`
+    const stored = await getFiles(dir)
+    // then clean the exiftool generated files
+    await forEach(stored, async f => {
+      // console.log(dir, f)
+      const fext = f.split('.')[1]
+      if (fext.search('_original') > -1) {
+        fs.removeSync(path.join(dir, f))
+      }
+    })
   })
 }
 async function addMetadataTop() {

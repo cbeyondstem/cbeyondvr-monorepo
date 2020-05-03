@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as _ from 'lodash'
 import { graphql, StaticQuery } from 'gatsby'
 import { SvgProviderProps, allSvgQueryRender } from '@cbeyond/ui-kit'
-import { imageInfoDict } from '../../../tools/image-list'
+import { imageInfoDict } from '../../assets/image-list'
 
 export const query = graphql`
   fragment SvgInfo on svgEdge {

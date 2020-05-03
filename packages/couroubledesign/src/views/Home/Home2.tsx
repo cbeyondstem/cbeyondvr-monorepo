@@ -6,42 +6,56 @@ import { makeStyles, Theme } from '@material-ui/core/styles'
 import { Container, Typography, Grid, CardMedia, useMediaQuery } from '@material-ui/core'
 import { primaryFont, secondaryFont } from '../../layouts'
 import { SkillCardRawProps, SkillCardGrid } from '../../components/SkillCardGrid'
+import { orderedImages, services as servicesRaw } from '../../assets/image-list'
 
-const services: SkillCardRawProps[] = [
-  {
-    title: 'Structural Analysis',
-    image: 'SD airport 1.jpg',
-    avatar: 'S',
-    details: `Light weight composite design, numerical analysis method for
-      optimized structural design and engineering, construction process and assembly.`,
-    carousel: ['vectorlaunch_2.jpg', 'gf42_2014_2.jpg', 'racer44_4.jpg', 'DougAitken3.jpg']
-  },
-  {
-    title: 'Manufacturing & Prototyping',
-    image: 'vectorlaunch_2.jpg',
-    avatar: 'M',
-    details: `Integration of emerging 3D printing technologies applied to complex carbon tooling
-      fabrication for very high performance and ultra light carbon fiber parts.`,
-    carousel: ['robot arm rohit.jpg', 'vectorlaunch_2.jpg']
-  },
-  {
-    title: 'Naval Engineering',
-    image: 'gf42_concept_1.jpg',
-    avatar: 'E',
-    details: `Racing yacht and powerboat, performance prediction, resistance and propulsion, hydrostatics calculation,
-     3D modeling, full structural design and construction, project management.`,
-    carousel: ['gf42_2014_1.jpg', 'offshore47_1.jpg', 'racer44_1.jpg']
-  },
-  {
-    title: 'Aerodynamic & Hydrodynamic',
-    image: 'gf42_fluidanalysis_2.jpg',
-    avatar: 'D',
-    details: `Numerical flow modeling and CFD analysis and validation: inviscid (panel method)
-      and viscous flow (potential flow).
-      modeling process: racing yachts, foiling vessels.`,
-    carousel: ['monohull_research.jpg', 'gf42_fluidanalysis_2.jpg', 'gf42_fluidanalysis_3.jpg']
+//   {
+//     folder: `service_M`,
+//     service: `M`,
+//     title: `MANUFACTURING & PROTOTYPING`,
+//     details: `Carbon Composite Manufacturing,
+// Prototype fabrication with Integration of 3D printing technologies
+// to complex carbon tooling fabrication for very high performance carbon fiber parts.
+//     `,
+//     images: [`vector6`, `vector3`, `office1`, `office5`, `office2`, `fusion4`, `office4`]
+//   },
+
+const services: SkillCardRawProps[] = servicesRaw.map(service => {
+  const serviceImages = orderedImages[service.folder]
+  return {
+    title: service.title,
+    image: serviceImages[0],
+    avatar: service.service,
+    details: service.details,
+    carousel: serviceImages // _.slice(serviceImages, 1, serviceImages.length)
   }
-]
+})
+
+//   {
+//     title: 'Manufacturing & Prototyping',
+//     image: 'vectorlaunch_2.jpg',
+//     avatar: 'M',
+//     details: `Integration of emerging 3D printing technologies applied to complex carbon tooling
+//       fabrication for very high performance and ultra light carbon fiber parts.`,
+//     carousel: ['robot arm rohit.jpg', 'vectorlaunch_2.jpg']
+//   },
+//   {
+//     title: 'Naval Engineering',
+//     image: 'gf42_concept_1.jpg',
+//     avatar: 'E',
+//     details: `Racing yacht and powerboat, performance prediction, resistance and propulsion, hydrostatics calculation,
+//      3D modeling, full structural design and construction, project management.`,
+//     carousel: ['gf42_2014_1.jpg', 'offshore47_1.jpg', 'racer44_1.jpg']
+//   },
+//   {
+//     title: 'Aerodynamic & Hydrodynamic',
+//     image: 'gf42_fluidanalysis_2.jpg',
+//     avatar: 'D',
+//     details: `Numerical flow modeling and CFD analysis and validation: inviscid (panel method)
+//       and viscous flow (potential flow).
+//       modeling process: racing yachts, foiling vessels.`,
+//     carousel: ['monohull_research.jpg', 'gf42_fluidanalysis_2.jpg', 'gf42_fluidanalysis_3.jpg']
+//   }
+// ]
 
 const useStyles = makeStyles(theme => ({
   root: {

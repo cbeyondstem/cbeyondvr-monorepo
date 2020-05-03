@@ -3,13 +3,14 @@ import * as React from 'react'
 import { PageProps } from '@cbeyond/ui-kit'
 
 import { Layout } from '../layouts'
-import { ActivityUnified } from '../views/ActivityDomain'
+import { ActivityDomain } from '../views/ActivityDomain'
 
 export const MyPage = (props: PageProps) => {
   const { location } = props
+  const page = 'CONSUMER'
   return (
-    <Layout location={location} title="CONSUMER">
-      <ActivityUnified categories={['nike']} />
+    <Layout location={location} title={page}>
+      <ActivityDomain category={page} />
     </Layout>
   )
 }

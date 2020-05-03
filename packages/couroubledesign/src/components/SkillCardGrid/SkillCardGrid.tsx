@@ -162,7 +162,7 @@ export function SkillCardGrid(props: SkillCardGridProps) {
               return null
             }
             return (
-              <Grid item xs={12} md={3} lg={3} align="center" component="div" key={uid(card, cardIdx)}>
+              <Grid item xs={12} md={4} lg={4} align="center" component="div" key={uid(card, cardIdx)}>
                 <SkillCard imageItem={selectedImages[0]} {...card} />
               </Grid>
             )

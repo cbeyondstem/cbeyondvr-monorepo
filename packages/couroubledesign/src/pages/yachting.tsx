@@ -7,12 +7,10 @@ import { ActivityDomain } from '../views/ActivityDomain'
 
 export const MyPage = (props: PageProps) => {
   const { location } = props
+  const page = 'YACHTING'
   return (
-    <Layout location={location} title="YACHTING">
-      <ActivityDomain
-        categories={['gf42', 'racer44', 'offshore47', 'surfboard', 'concepts']}
-        imgOrientation="Landscape"
-      />
+    <Layout location={location} title={page}>
+      <ActivityDomain category={page} imgOrientation="Landscape" />
     </Layout>
   )
 }

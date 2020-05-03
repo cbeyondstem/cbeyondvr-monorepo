@@ -3,7 +3,7 @@ import * as React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import { FileEdge } from '@cbeyond/ui-kit/dist/types/gatsby-graphql-types'
 import { ProviderProps, CarouselImgProps, AllImgProvider } from '@cbeyond/ui-kit'
-import { imageInfoDict } from '../../../tools/image-list'
+import { imageInfoDict, projects, services } from '../../assets/image-list'
 
 export const query = graphql`
   fragment ImgResponsiveDesktop on ImageSharp {
@@ -49,6 +49,7 @@ export const query = graphql`
 
 export const AllImgQueryProvider: React.FunctionComponent<ProviderProps> = props => {
   const { children } = props
+  const allProjects = projects.concat(services)
   return (
     <StaticQuery
       query={graphql`
@@ -93,12 +94,24 @@ export const AllImgQueryProvider: React.FunctionComponent<ProviderProps> = props
           const path = `${sourceInstanceName}/${fname}`
           const [category, imgName] = fname.split('/')
           const imagesInPath = _.get(imageInfoDict, category, {})
-          const imageInfo = (imgName && _.get(imagesInPath, imgName.split('.')[0], null)) || null
+          let imageInfo
+          if (imgName) {
+            const imgBasename = imgName.split('.')[0]
+            imageInfo = _.get(imagesInPath, imgBasename, null)
+          }
           let title
           let caption
           if (imageInfo) {
             title = _.get(imageInfo, 'title', null)
-            caption = _.get(imageInfo, 'caption', null)
+            caption = _.get(imageInfo, 'caption', null) || title
+          }
+          if (!title) {
+            const projectInfo = allProjects.filter(p => p.folder === category)[0]
+            if (!projectInfo) {
+              window.alert(`project ${category} not found`)
+              return null
+            }
+            title = projectInfo.project || projectInfo.details
           }
           if (caption !== null && desktop) {
             images.push({ path, desktop, mobile, thumb, title, caption })
