@@ -1,3 +1,15 @@
+# netlify deploy
+
+https://docs.netlify.com/cli/get-started/#manual-deploys
+
+```
+> netlify login
+> cd packages/couroubledesign
+> netlify deploy --prod --dir public
+```
+
+if new site, it will ask a few questions and create the new site for you
+
 # partition cbeyond sdk in plug-and-play packages
 
 ## learn lerna

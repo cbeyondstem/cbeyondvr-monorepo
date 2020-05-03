@@ -348,7 +348,7 @@ const images = [
   },
   {
     name: 'View3',
-    title: 'racer - dynamic lift analysis ',
+    title: 'racer - dynamic bow entry analysis ',
     caption: 'Inviscid flow'
   },
   {
