@@ -8,7 +8,6 @@ import {
   useTheme,
   Grid,
   Typography,
-  CardMedia,
   useMediaQuery,
   Card,
   CardHeader,
@@ -18,7 +17,7 @@ import {
 } from '@material-ui/core'
 
 import { CarouselImgProps, AllImgConsumer } from '@cbeyond/ui-kit'
-import Img, { FluidObject } from 'gatsby-image'
+import { FluidObject } from 'gatsby-image'
 import { ImageSharpFluid } from '../../types/gatsby-graphql-types'
 import { secondaryFont, renderHtml } from '../../layouts'
 import { CarouselModal } from '../CarouselModal'
@@ -46,11 +45,11 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: '125%'
     },
     detailsLg: {
-      height: '16vh',
+      height: '10vh',
       display: 'block'
     },
     detailsMd: {
-      height: '20vh',
+      height: '14vh',
       display: 'block'
     },
     avatar: {

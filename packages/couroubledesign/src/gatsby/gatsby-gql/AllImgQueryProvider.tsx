@@ -103,7 +103,7 @@ export const AllImgQueryProvider: React.FunctionComponent<ProviderProps> = props
           let caption
           if (imageInfo) {
             title = _.get(imageInfo, 'title', null)
-            caption = _.get(imageInfo, 'caption', null) || title
+            caption = _.get(imageInfo, 'caption', ``)
           }
           if (!title) {
             const projectInfo = allProjects.filter(p => p.folder === category)[0]

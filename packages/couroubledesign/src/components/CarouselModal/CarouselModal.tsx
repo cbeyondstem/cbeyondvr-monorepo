@@ -111,7 +111,7 @@ export function CarouselModal(props: CarouselModelProps) {
               // showPlayButton={false}
               thumb={false}
               captions
-              autoplay
+              // autoplay
             />{' '}
             <IconButton className={classes.button} onClick={handleClose} aria-expanded={open} aria-label="show more">
               <CloseRoundedIcon titleAccess={`close modal ${title}`} />

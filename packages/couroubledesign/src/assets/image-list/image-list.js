@@ -34,16 +34,6 @@ full structural design and engineering, construction drawings.
     images: [`GF1`, `47-1`, `47-4`, `sprit3`, `kimono1`, `wasabi0`, `39-5`]
   },
   {
-    folder: `service_D`,
-    service: `D`,
-    title: `HYDRODYNAMIC & AERODYNAMIC`,
-    details: `Numerical tools,
-Numerical tool of flow modeling analysis and optimzation:
-inviscid (panel method) and viscous flow (potential flow).
-`,
-    images: [`View5`, `View1`, `CFDWL`, `NS1`, `NS5`, `CFD1`, `CFD3`, `CFD5`, `View3`]
-  },
-  {
     folder: `service_P`,
     service: `P`,
     title: `3D PRINTING TOOLING`,
@@ -52,7 +42,17 @@ inviscid (panel method) and viscous flow (potential flow).
  large 3D printing parts or molds in
  carbon fiber for oven cure tooling.
 `,
-    images: [`fusion1`, `fusion3`, `fusion6`, `fusion2`]
+    images: [`fusion1`, `fusion6`, `fusion2`, `fusion3`]
+  },
+  {
+    folder: `service_D`,
+    service: `D`,
+    title: `HYDRODYNAMIC & AERODYNAMIC`,
+    details: `Numerical tools,
+Numerical tool of flow modeling analysis and optimzation:
+inviscid (panel method) and viscous flow (potential flow).
+`,
+    images: [`CFD1`, `CFD3`, `CFD5`, `View5`, `View1`, `View3`, `CFDWL`, `NS1`, `NS5`]
   }
 ]
 const categories = [
@@ -160,23 +160,27 @@ const projects = [
   {
     folder: `piaggio`,
     project: `cargo-carrying robotic vehicle`,
-    details: `Carbon fiber Structural Engineering by Courouble Design & Engineering, Inc.`,
+    details: `Carbon fiber Structural Engineering by Courouble Design & Engineering, Inc.<br/>
+Collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
     year: `2017`,
     location: `Boston`,
     company: `Piaggio Fast Forward&trade;`,
     copyright: `Piaggio Fast Forward&trade;
-    / Carbon fiber Structural Engineering by Courouble Design & Engineering, Inc.`,
+    / Carbon fiber Structural Engineering by Courouble Design & Engineering, Inc. /
+collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
     images: [`gita2`, `gita5`, `gita3`, `gita0`]
   },
   {
     folder: `nike`,
     project: `Micro climate chair concept - Milano expo`,
-    details: `Carbon dyneema frame by Courouble Design & Engineering, Inc.`,
+    details: `Carbon dyneema frame by Courouble Design & Engineering, Inc.<br/>
+Collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
     year: `2016`,
     location: `Milano, Italy`,
     company: `Nike&trade;`,
     copyright: `Nike&trade;
-    / Carbon dyneema frame by Courouble Design & Engineering, Inc.`,
+    / Carbon dyneema frame by Courouble Design & Engineering, Inc. /
+Collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
     images: [`Nike21`, `Nike0`, `nike1`]
   },
   {
@@ -240,10 +244,6 @@ const images = [
     title: 'Structural layout design concept'
   },
   {
-    name: '47-4',
-    title: 'Structural layout design concept'
-  },
-  {
     name: '6a',
     caption: 'Carbon structure designed by Courouble Design'
   },
@@ -257,15 +257,18 @@ const images = [
   },
   {
     name: 'CFD1',
-    title: 'Sail plan / foils  balance analysis'
+    title: `Racing Trimaran Foiling Performance Optimisation`,
+    caption: 'Sail plan / foils  balance analysis'
   },
   {
     name: 'CFD3',
-    title: 'Sail plan analysis'
+    title: `Racing Trimaran Foiling Performance Optimisation`,
+    caption: 'Sail plan analysis'
   },
   {
     name: 'CFD5',
-    title: 'Sail plan - rotating mast section analysis '
+    title: `Racing Trimaran Foiling Performance Optimisation`,
+    caption: 'Sail plan - rotating mast section analysis '
   },
   {
     name: 'CFDWL',
@@ -279,10 +282,12 @@ const images = [
   },
   {
     name: 'GF22',
+    title: 'Racing trimaran',
     caption: 'Carbon structure designed by Courouble Design'
   },
   {
     name: 'GF4',
+    title: 'Racing trimaran',
     caption: 'Thrust structure by Courouble Design'
   },
   {
@@ -310,10 +315,6 @@ const images = [
   },
   {
     name: 'Nike0',
-    caption: 'Carbon structure designed by Courouble Design'
-  },
-  {
-    name: 'Nike21',
     caption: 'Carbon structure designed by Courouble Design'
   },
   {
@@ -364,16 +365,12 @@ const images = [
     caption: 'Carbon structure designed by Courouble Design'
   },
   {
-    name: 'airport1',
-    caption: 'Carbon structure designed by Courouble Design'
-  },
-  {
     name: 'airport3',
     caption: 'Carbon structure designed by Courouble Design'
   },
   {
     name: 'board0',
-    title: 'Guiness record surfboard - Hungtington beach',
+    title: 'Guiness record surfboard',
     caption: 'Full structural engineering'
   },
   {
@@ -409,43 +406,34 @@ const images = [
     caption: 'Carbon structure designed by Courouble Design'
   },
   {
-    name: 'catalina5',
-    caption: 'Carbon structure designed by Courouble Design'
-  },
-  {
-    name: 'figaro3-1',
-    title: 'racing yacht "figaro 3" optimsation',
-    caption: 'carbon design new part'
-  },
-  {
     name: 'figaro3-1',
     title: 'racing yacht "figaro 3" optimsation',
     caption: 'carbon design new part'
   },
   {
     name: 'fusion1',
-    title: '3D printed carbon tooling for composite fabrication',
-    caption: 'by FUSION FORMATICS, Inc.'
+    caption: `collaboration with ${href('//http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
+    title: '3D printed carbon tooling for composite fabrication'
   },
   {
     name: 'fusion2',
-    title: 'Printed female mold in carbon',
-    caption: 'FUSIONS FORMATICS'
+    caption: `collaboration with ${href('//http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
+    title: 'Printed female mold in carbon'
   },
   {
     name: 'fusion3',
-    title: 'very large printing machine',
-    caption: 'FUSIONS FORMATICS / German RepRap printer'
+    caption: `collaboration with ${href('//http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
+    title: `3D printer (${href('https://www.germanreprap.com/', 'German RepRap&trade;')})  for carbon composite tooling`
   },
   {
     name: 'fusion4',
-    title: 'Large 3D print for carbon composite tooling',
-    caption: 'by FUSION FORMATICS, Inc.'
+    caption: `collaboration with ${href('//http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
+    title: `3D printer (${href('https://www.germanreprap.com/', 'German RepRap&trade;')})  for carbon composite tooling`
   },
   {
     name: 'fusion6',
-    title: 'Printed female mold in PLA',
-    caption: 'FUSIONS FORMATICS'
+    caption: `collaboration with ${href('//http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
+    title: 'Printed female mold in PLA'
   },
   {
     name: 'gita0',
@@ -458,11 +446,6 @@ const images = [
   {
     name: 'gita3',
     caption: 'Carbon structure designed by Courouble Design'
-  },
-  {
-    name: 'gita5',
-    title: 'Piaggio Fast Forward - Robotic vehicle "Gita"',
-    caption: 'Designed structure in Carbon fiber'
   },
   {
     name: 'gita5',
@@ -485,11 +468,13 @@ const images = [
   },
   {
     name: 'office2',
-    title: 'pre preg fabrication process'
+    title: 'pre preg fabrication process',
+    caption: ``
   },
   {
     name: 'office4',
-    title: 'Design office'
+    title: 'Design office',
+    caption: ``
   },
   {
     name: 'office5',
@@ -499,11 +484,6 @@ const images = [
   {
     name: 'sprit1',
     caption: 'Carbon structure designed by Courouble Design'
-  },
-  {
-    name: 'sprit3',
-    title: 'bowsprit removable for cruising or racing  ',
-    caption: 'Stainless steel / carbon'
   },
   {
     name: 'sprit3',
@@ -522,25 +502,23 @@ const images = [
   },
   {
     name: 'vector3',
-    title: 'pre-preg carbon part'
+    title: `Pre-preg carbon part`,
+    caption: ''
   },
   {
     name: 'vector4',
     title: 'Vector Launch - Engine installed',
-    caption: 'Thrust structure fabricated by Courouble Design'
+    caption: 'Thrust structure by Courouble Design'
   },
   {
     name: 'vector6',
-    title: 'Design office'
+    title: 'Vector Launch - Engine installed',
+    caption: 'Thrust structure by Courouble Design'
   },
   {
     name: 'vector7',
     title: 'Vector Launch - static pad for fire test',
     caption: 'Thrust structure by Courouble Design'
-  },
-  {
-    name: 'wasabi0',
-    caption: 'Carbon structure designed by Courouble Design'
   },
   {
     name: 'wasabi0',
