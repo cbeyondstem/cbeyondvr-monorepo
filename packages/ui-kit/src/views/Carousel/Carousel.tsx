@@ -53,14 +53,14 @@ const useStyles = makeStyles(theme => {
         backgroundColor: `${color} !important`,
       },
       '& button.image-gallery-left-nav': {
-        paddingTop: `0px`,
-        paddingBottom: `0px`,
+        // paddingTop: `0px`,
+        // paddingBottom: `0px`,
         top: '50%',
         bottom: 'auto',
       },
       '& button.image-gallery-right-nav': {
-        paddingTop: `0px`,
-        paddingBottom: `0px`,
+        // paddingTop: `0px`,
+        // paddingBottom: `0px`,
         bottom: 'auto',
         top: '50%',
       },
