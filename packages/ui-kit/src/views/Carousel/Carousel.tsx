@@ -7,6 +7,7 @@ import { Container, useTheme, useMediaQuery } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
+import { calc } from 'csx'
 import {
   Carousel as CarouselBase,
   CarouselImgProps,
@@ -51,12 +52,32 @@ const useStyles = makeStyles(theme => {
       '& div.image-gallery-slide': {
         backgroundColor: `${color} !important`,
       },
+      '& button.image-gallery-left-nav': {
+        paddingTop: `0px`,
+        paddingBottom: `0px`,
+        top: '50%',
+        bottom: 'auto',
+      },
+      '& button.image-gallery-right-nav': {
+        paddingTop: `0px`,
+        paddingBottom: `0px`,
+        bottom: 'auto',
+        top: '50%',
+      },
       '& button.image-gallery-play-button': {
-        bottom: (props: CarouselViewProps) =>
-          props.captions ? theme.spacing(8) : 0,
+        top: '80%', // calc('100vh/2'),
+        bottom: 'auto',
         transform: 'none', // 'translateY(-70%)',
-        right: 0,
+        right: '0px',
         left: 'auto',
+        paddingLeft: `0px`,
+        paddingRight: `0px`,
+      },
+      '& button.image-gallery-play-button::before': {
+        paddingTop: `0px`,
+        paddingBottom: `0px`,
+        paddingLeft: `15px`,
+        paddingRight: `15px`,
       },
       '& a.image-gallery-fullscreen-button:hover::before': {
         color: `${colorSecondary} !important`,

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
-import { Modal, Backdrop, Fade, IconButton, Button, Box, Typography } from '@material-ui/core'
+import { Modal, Backdrop, Fade, IconButton, Box, Typography } from '@material-ui/core'
 import { CarouselView } from '@cbeyond/ui-kit'
 // import PlayArrowRoundedIcon from '@material-ui/icons/PlayArrowRounded'
 import OpenWithIcon from '@material-ui/icons/OpenWith'
@@ -97,15 +97,14 @@ export function CarouselModal(props: CarouselModelProps) {
   const classes = useStyles(props)
   const { title, titleNode, desc, descNode, images, imgOrientation, open: openExternal, onClose } = props
   const [open, setOpen] = React.useState(false)
-  const [close, setClose] = React.useState(false)
-  React.useEffect(() => {
-    setClose(false)
-  }, [openExternal])
+  // React.useEffect(() => {
+  //   setClose(false)
+  // }, [openExternal])
   const handleOpen = () => {
     setOpen(true)
   }
   const handleClose = () => {
-    setClose(true)
+    setOpen(false)
     onClose()
   }
   const renderHtmlCarousel = (rawHTML: string, idx?: number, key?: string) =>
@@ -115,7 +114,7 @@ export function CarouselModal(props: CarouselModelProps) {
       className: classes.carousel,
       style: idx > 0 ? { fontFamily: secondaryFont } : { fontFamily: primaryFont, fontWeight: 300 }
     })
-  const combinedOpen = close ? false : open || openExternal
+  const combinedOpen = open || openExternal
   console.log(`Modal open=${combinedOpen}`)
   return (
     <>
