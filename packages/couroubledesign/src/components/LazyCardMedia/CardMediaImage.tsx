@@ -16,11 +16,12 @@ const CardMediaImage: React.FunctionComponent<CardMediaImageProps> = props => {
     return { aspectRatio, src, srcSet, sizes, ...fluid }
   }
   const theme = useTheme()
+  const { src } = image
   return (
     <CardMedia
       component={Img}
       className={className}
-      src={null}
+      src={src}
       fluid={fixItem(image)}
       title={title}
       alt={title}

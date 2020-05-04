@@ -55,6 +55,8 @@ const useStyles = makeStyles(theme => {
         bottom: (props: CarouselViewProps) =>
           props.captions ? theme.spacing(8) : 0,
         transform: 'none', // 'translateY(-70%)',
+        right: 0,
+        left: 'auto',
       },
       '& a.image-gallery-fullscreen-button:hover::before': {
         color: `${colorSecondary} !important`,
@@ -78,7 +80,8 @@ const useStyles = makeStyles(theme => {
       },
     },
     caption: {
-      fontSize: '10px !important',
+      fontSize: '14px !important',
+      minHeight: theme.spacing(16),
     },
     paper: {
       backgroundColor: `${color} !important`,
@@ -142,8 +145,10 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
     renderHtml = renderHtmlDefault,
     imgOrientation = 'Responsive',
   } = props
-  const classes = useStyles(props)
+
   const theme = useTheme()
+  const classes = useStyles(props)
+
   if (imgOrientation !== 'Responsive') {
     isLandscape = imgOrientation === 'Landscape'
   }
@@ -164,6 +169,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
           ? null
           : item.original.caption || item.original.path
     }
+
     // const presWidth = isLandscape
     //   ? item.original.desktop.presentationWidth
     //   : item.original.mobile.presentationWidth
@@ -204,9 +210,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
                 variant="caption"
                 className={classes.caption}
               >
-                {captionText
-                  .split(',')
-                  .map((t, idx) => renderHtml(t, idx + 1, uid(t, idx)))}
+                {renderHtml(captionText, 1)}
               </Typography>
             ) : null}
           </div>

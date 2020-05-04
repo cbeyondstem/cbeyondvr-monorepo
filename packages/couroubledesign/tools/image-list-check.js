@@ -4,7 +4,7 @@ const _ = require('lodash')
 const { forEach } = require('p-iteration') // awesome library for promise iteration with async/await!
 const path = require('path')
 const fs = require('fs-extra')
-const { services, projects, images } = require('../src/assets/image-list')
+const { services, projects, images } = require('../src/assets/image-list/image-list')
 
 const src = 'pix'
 

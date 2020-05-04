@@ -5,7 +5,7 @@ const fs = require('fs-extra')
 const slash = require('slash')
 const sharp = require('sharp')
 const { forEach } = require('p-iteration') // awesome library for promise iteration with async/await!
-const { services, projects } = require('../src/assets/image-list')
+const { services, projects } = require('../src/assets/image-list/image-list')
 
 const src = 'pix'
 const dest = 'pix'

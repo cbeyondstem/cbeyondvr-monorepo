@@ -10,7 +10,7 @@ export const MyPage = (props: PageProps) => {
   const page = 'CONSUMER'
   return (
     <Layout location={location} title={page}>
-      <ActivityDomain category={page} />
+      <ActivityDomain category={page} imgOrientation="Landscape" />
     </Layout>
   )
 }

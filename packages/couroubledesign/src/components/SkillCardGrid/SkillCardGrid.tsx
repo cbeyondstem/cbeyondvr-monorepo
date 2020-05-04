@@ -5,7 +5,6 @@ import classNames from 'classnames'
 import { uid } from 'react-uid'
 
 import {
-  useTheme,
   Grid,
   Typography,
   useMediaQuery,
@@ -13,11 +12,11 @@ import {
   CardHeader,
   CardContent,
   CardActions,
-  Avatar
+  Avatar,
+  ButtonBase
 } from '@material-ui/core'
 
 import { CarouselImgProps, AllImgConsumer } from '@cbeyond/ui-kit'
-import { FluidObject } from 'gatsby-image'
 import { ImageSharpFluid } from '../../types/gatsby-graphql-types'
 import { secondaryFont, renderHtml } from '../../layouts'
 import { CarouselModal } from '../CarouselModal'
@@ -38,6 +37,9 @@ const useStyles = makeStyles((theme: Theme) =>
       textTransform: 'uppercase',
       '& span': {
         fontSize: '100%'
+      },
+      [theme.breakpoints.up('lg')]: {
+        wordSpacing: theme.spacing(0.9)
       }
     },
     details: {
@@ -62,6 +64,12 @@ const useStyles = makeStyles((theme: Theme) =>
       '& div': {
         marginLeft: 'auto'
       }
+    },
+    cardAction: {
+      display: 'block',
+      textAlign: 'initial',
+      width: '100%',
+      height: '100%'
     }
   })
 )
@@ -81,16 +89,17 @@ export interface SkillCardProps extends SkillCardRawProps {
 
 export function SkillCard(props: SkillCardProps) {
   const classes = useStyles(props)
-  const theme = useTheme()
   const md = useMediaQuery((t: Theme) => t.breakpoints.up('md'))
   const lg = useMediaQuery((t: Theme) => t.breakpoints.up('lg'))
   const { title, imageItem, avatar, details, carousel, imgOrientation } = props
-  const CardMediaImage = React.lazy(() => import('../LazyCardMedia/CardMediaImage'))
+  const CardMediaImageLazy = React.lazy(() => import('../LazyCardMedia/CardMediaImage'))
   const isSSR = typeof window === 'undefined'
-
-  const fixItem: (img: ImageSharpFluid) => FluidObject = img => {
-    const { aspectRatio = 1.5, src = '', srcSet = '', sizes = '', ...fluid } = img
-    return { aspectRatio, src, srcSet, sizes, ...fluid }
+  const [open, setOpen] = React.useState(false)
+  const handleOpen = () => {
+    setOpen(true)
+  }
+  const handleClose = () => {
+    setOpen(false)
   }
   const cardHeader = (
     <CardHeader
@@ -105,28 +114,41 @@ export function SkillCard(props: SkillCardProps) {
       // subheader
     />
   )
+  const cardDesc = (
+    <Typography
+      className={classNames(classes.details, {
+        [classes.detailsMd]: md && !lg,
+        [classes.detailsLg]: lg
+      })}
+      variant="body2"
+      component="div"
+    >
+      {renderHtml(details)}
+    </Typography>
+  )
+  const cardImage = isSSR ? null : (
+    <React.Suspense fallback={<div>loading...</div>}>
+      <CardMediaImageLazy className={classes.media} image={imageItem.desktop as ImageSharpFluid} title={title} />
+    </React.Suspense>
+  )
+  // const descNode = lg ? renderHtml(details) : null
   return (
     <Card className={classes.root}>
       {cardHeader}
-      {!isSSR && (
-        <React.Suspense fallback={<div>loading...</div>}>
-          <CardMediaImage className={classes.media} image={imageItem.desktop as ImageSharpFluid} title={title} />
-        </React.Suspense>
-      )}
-      <CardContent>
-        <Typography
-          className={classNames(classes.details, {
-            [classes.detailsMd]: md && !lg,
-            [classes.detailsLg]: lg
-          })}
-          variant="body2"
-          component="div"
-        >
-          {renderHtml(details)}
-        </Typography>
-      </CardContent>
+      <ButtonBase className={classes.cardAction} onClick={handleOpen}>
+        {cardImage}
+      </ButtonBase>
+      <CardContent>{cardDesc}</CardContent>
       <CardActions disableSpacing className={classes.modal}>
-        <CarouselModal title={title} titleNode={cardHeader} images={carousel} imgOrientation="Landscape" />{' '}
+        <CarouselModal
+          title={title}
+          titleNode={cardHeader}
+          // descNode={descNode}
+          images={carousel}
+          imgOrientation="Landscape"
+          open={open}
+          onClose={handleClose}
+        />{' '}
       </CardActions>
     </Card>
   )
@@ -161,7 +183,7 @@ export function SkillCardGrid(props: SkillCardGridProps) {
               return null
             }
             return (
-              <Grid item xs={12} md={4} lg={4} align="center" component="div" key={uid(card, cardIdx)}>
+              <Grid item xs={12} md={4} lg={4} component="div" key={uid(card, cardIdx)}>
                 <SkillCard imageItem={selectedImages[0]} {...card} />
               </Grid>
             )

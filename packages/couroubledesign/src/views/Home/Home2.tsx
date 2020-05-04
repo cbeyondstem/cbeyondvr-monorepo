@@ -79,7 +79,7 @@ const useStyles = makeStyles(theme => ({
   bio: {
     wordSpacing: `${theme.spacing(0.8)}px`,
     fontFamily: secondaryFont,
-    fontSize: '150%',
+    fontSize: '140%',
     [theme.breakpoints.down('sm')]: {
       fontSize: '120%'
     }

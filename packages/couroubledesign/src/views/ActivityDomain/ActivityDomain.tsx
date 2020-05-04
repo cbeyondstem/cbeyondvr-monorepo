@@ -4,10 +4,10 @@ import * as React from 'react'
 import { uid } from 'react-uid'
 
 import { makeStyles, Theme } from '@material-ui/core/styles'
-import { Grid, Typography, CardMedia, useMediaQuery, Button } from '@material-ui/core'
+import { Grid, Typography, CardMedia, useMediaQuery } from '@material-ui/core'
 import { CarouselView } from '@cbeyond/ui-kit'
-import { orderedImages, imageInfoDict, categories, projects } from '../../assets/image-list'
-import { renderHtml } from '../../layouts'
+import { orderedImages, categories, projects } from '../../assets/image-list'
+import { primaryFont, secondaryFont } from '../../layouts'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,8 +28,15 @@ const useStyles = makeStyles(theme => ({
   title: {
     paddingBottom: '2rem',
     paddingTop: '2rem',
-    '& .MuiTypography-button': {
-      fontSize: '130%'
+    '& .MuiTypography-caption': {
+      fontSize: '14px !important'
+    }
+  },
+  htmlrender: {
+    fontSize: '140%',
+    textAlign: 'left',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '115%'
     }
   }
 }))
@@ -54,6 +61,14 @@ export const ActivityDomain: React.FunctionComponent<ActivityDomainProps> = prop
     width = 640
     height = 320
   }
+  const renderHtml = (rawHTML: string, idx?: number, key?: string) =>
+    React.createElement('div', {
+      key,
+      dangerouslySetInnerHTML: { __html: rawHTML },
+      className: classes.htmlrender,
+      style: idx > 0 ? { fontFamily: secondaryFont } : { fontFamily: primaryFont, fontWeight: 300 }
+    })
+
   return (
     <Grid className={classes.root} container alignItems="center" justify="center" direction="row" spacing={3}>
       {activity.projects.map((project: string, projectIdx: number) => {
@@ -63,7 +78,7 @@ export const ActivityDomain: React.FunctionComponent<ActivityDomainProps> = prop
           window.alert(`project ${project} not found`)
           return null
         }
-        const title = projectInfo.company ? `${projectInfo.project} (${projectInfo.company})` : projectInfo.project
+        const title = projectInfo.company ? `${projectInfo.project}<br/>(${projectInfo.company})` : projectInfo.project
         const caption: string = projectInfo.details
         return (
           <Grid item xs={12} lg={12} key={uid(project, projectIdx)}>
@@ -101,6 +116,13 @@ export const ActivityUnified: React.FunctionComponent<ActivityDomainProps> = pro
   const { category, imgOrientation } = props
   const activity = categories.filter(c => c.category === category)[0]
   let images: string[] = []
+  const renderHtml = (rawHTML: string, idx?: number, key?: string) =>
+    React.createElement('div', {
+      key,
+      dangerouslySetInnerHTML: { __html: rawHTML },
+      className: classes.htmlrender,
+      style: idx > 0 ? { fontFamily: secondaryFont } : { fontFamily: primaryFont, fontWeight: 300 }
+    })
   activity.projects.forEach((project: string) => {
     const img = _.get(orderedImages, project, [])
     images = images.concat(img)

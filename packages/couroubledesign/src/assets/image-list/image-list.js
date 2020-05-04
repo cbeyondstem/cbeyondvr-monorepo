@@ -7,51 +7,40 @@ const services = [
     service: `S`,
     title: `STRUCTURAL ANALYSIS`,
     details: `Light weight composite design,
-Structural analysis and engineering Calculation for optimized design,
-construction drawings & concept.
-    `,
-    images: [`gita5`, `airport1`, `Nike21`, `catalina5`, `board0`, `P10-1`, `Hermes1`, `vector2`, `figaro3-1`, `keel1`]
+numerical analysis method for optimized structural design and engineering,
+construction process and assembly.`,
+    images: [`gita5`, `airport1`, `Nike21`, `catalina5`, `board4`, `P10-1`, `vector2`, `Hermes1`, `figaro3-1`, `keel1`]
   },
   {
     folder: `service_M`,
     service: `M`,
     title: `MANUFACTURING & PROTOTYPING`,
-    details: `Carbon Composite Manufacturing,
-Prototype fabrication with Integration of 3D printing technologies
-to complex carbon tooling fabrication for very high performance carbon fiber parts.
-    `,
+    details: `High performance carbon composite manufacturing,
+prototype fabrication in carbon fiber using complex 3D-printed carbon tooling.`,
     images: [`vector6`, `vector3`, `office1`, `office5`, `office2`, `fusion4`, `office4`]
   },
   {
     folder: `service_N`,
     service: `N`,
     title: `NAVAL ARCHITECTURE`,
-    details: `Yacht Design,
-Racing yacht and powerboat, performance prediction,
-resistance and propulsion optimization,
-full structural design and engineering, construction drawings.
-    `,
+    details: `Racing yacht and powerboat design, resistance optimization.
+Full engineering with end-to-end project management.`,
     images: [`GF1`, `47-1`, `47-4`, `sprit3`, `kimono1`, `wasabi0`, `39-5`]
   },
   {
     folder: `service_P`,
     service: `P`,
     title: `3D PRINTING TOOLING`,
-    details: `Numerical tools,
- Additive manufacturing capabilies,
- large 3D printing parts or molds in
- carbon fiber for oven cure tooling.
-`,
+    details: `Additive manufacturing capabilities,
+ large 3D printing parts or molds in carbon fiber for oven cure tooling.`,
     images: [`fusion1`, `fusion6`, `fusion2`, `fusion3`]
   },
   {
     folder: `service_D`,
     service: `D`,
     title: `HYDRODYNAMIC & AERODYNAMIC`,
-    details: `Numerical tools,
-Numerical tool of flow modeling analysis and optimzation:
-inviscid (panel method) and viscous flow (potential flow).
-`,
+    details: `Numerical flow modeling and CFD analysis and validation:
+inviscid (panel method) and viscous flow (potential flow).`,
     images: [`CFD1`, `CFD3`, `CFD5`, `View5`, `View1`, `View3`, `CFDWL`, `NS1`, `NS5`]
   }
 ]
@@ -80,12 +69,12 @@ const categories = [
 const projects = [
   {
     folder: `vectorlaunch`,
-    project: `VECTOR-R - Vector Launch Rocket`,
+    project: `VECTOR-R Rocket`,
     details: `Carbon fiber Thrust Structure by Courouble Design & Engineering, Inc.`,
     year: `2019`,
     location: `Huntington beach, CA`,
-    company: `Space Launch Inc. &trade;`,
-    copyright: `Space Launch Inc. &trade;
+    company: `Vector Launch Inc. &trade;`,
+    copyright: `Vector Launch Inc. &trade;
       / Carbon fiber Thrust Structure by Courouble Design & Engineering, Inc.`,
     images: [`vector1`, `vector4`, `vector7`]
   },
@@ -129,7 +118,7 @@ const projects = [
   },
   {
     folder: `surfboard`,
-    project: `Guinness record - largest SurfBoard `,
+    project: `Guinness record - largest SurfBoard in the World`,
     details: `World Record for City of Huntington Beach, contract with city of Huntington Beach`,
     year: undefined,
     location: `Huntington beach, CA`,
@@ -212,19 +201,19 @@ const images = [
   },
   {
     name: '44-0',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: '44-1',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: '44-2',
-    caption: 'Thrust structure by Courouble Design'
+    caption: 'Thrust structure by Courouble Design & Engineering, Inc.'
   },
   {
     name: '44-3',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: '47-1',
@@ -233,11 +222,11 @@ const images = [
   },
   {
     name: '47-2',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: '47-3',
-    caption: 'Thrust structure by Courouble Design'
+    caption: 'Thrust structure by Courouble Design & Engineering, Inc.'
   },
   {
     name: '47-4',
@@ -245,15 +234,15 @@ const images = [
   },
   {
     name: '6a',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: '7a',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: '8a',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'CFD1',
@@ -283,25 +272,26 @@ const images = [
   {
     name: 'GF22',
     title: 'Racing trimaran',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'GF4',
     title: 'Racing trimaran',
-    caption: 'Thrust structure by Courouble Design'
+    caption: 'Thrust structure by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'GF5',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'GF6',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'Hermes1',
-    title: 'Horse Saddle - Prototype',
-    caption: 'full composite chassis'
+    title: 'English Horse Jumping Saddle - Prototype',
+    caption: `Full composite chassis satisfying lightweight and controlled dynamic
+    deflection constraints for leading-edge saddles used in Equestrian Horse Jumping Grand-Prix`
   },
   {
     name: 'NS1',
@@ -315,31 +305,31 @@ const images = [
   },
   {
     name: 'Nike0',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Innovative structure of Carbon and Dyneema mixed fibers for a stiff lightweight comfort chair'
   },
   {
     name: 'Nike21',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Innovative structure of Carbon and Dyneema mixed fibers for a stiff lightweight comfort chair'
   },
   {
     name: 'P10-1',
-    title: 'Prospector 10 - Garvey spacecratf corporation',
-    caption: 'full carbon structure rocket - aerospike engine'
+    title: 'Prospector 10 (CSult & Garvey Spacecraft Corp.&trade;)',
+    caption: 'First full carbon structure for a rocket propelled by aerospike multiengine'
   },
   {
     name: 'P10-2',
-    title: 'liquid propelled rocket - Multi aerospkie Engine',
-    caption: 'Carbon structure designed by Courouble Design'
+    title: 'Liquid propelled rocket - multi-aerospike Engine',
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'P10-3',
     title: 'Prospector 10 - fire test',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'P10-4',
     title: 'Carbon frame rocket - Aerospike engines',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'View1',
@@ -358,15 +348,15 @@ const images = [
   },
   {
     name: 'airport0',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Extremely thin curved fiberglass structure.'
   },
   {
     name: 'airport1',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Extremely thin curved fiberglass structure.'
   },
   {
     name: 'airport3',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Extremely thin curved fiberglass structure.'
   },
   {
     name: 'board0',
@@ -375,82 +365,89 @@ const images = [
   },
   {
     name: 'board00',
-    caption: 'Thrust structure by Courouble Design'
+    caption: 'Thrust structure by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'board2',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'board3',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
+  },
+  {
+    name: 'board4',
+    title: `Largest SurfBoard in the World`,
+    caption: `Surfboard fiberglass structure engineered to support 70 surfers (6 tons)<br/>
+    shaped by Firewire Surfboard&trade; / "Largest Surfboard" 2015 Guinness World Record!`
   },
   {
     name: 'bulb0',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'catalina0',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Fiberglass sandwich buoyant structure capable to resisting strong ocean current'
   },
   {
     name: 'catalina10',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Fiberglass sandwich buoyant structure capable to resisting strong ocean current'
   },
   {
     name: 'catalina3',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Ffiberglass sandwich buoyant structure capable to resisting strong ocean current'
   },
   {
     name: 'catalina5',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Fiberglass sandwich buoyant structure capable to resisting strong ocean current'
   },
   {
     name: 'figaro3-1',
-    title: 'racing yacht "figaro 3" optimsation',
-    caption: 'carbon design new part'
+    title: 'racing yacht "Figaro 3" optimisation',
+    caption: `Design and manufacturing of new carbon fiber parts for weight savings:<br/>
+    bowsprit, chainplate, rudders, deck gear, structural stiffeners`
   },
   {
     name: 'fusion1',
-    caption: `collaboration with ${href('//http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
+    caption: `collaboration with ${href('http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
     title: '3D printed carbon tooling for composite fabrication'
   },
   {
     name: 'fusion2',
-    caption: `collaboration with ${href('//http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
+    caption: `collaboration with ${href('http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
     title: 'Printed female mold in carbon'
   },
   {
     name: 'fusion3',
-    caption: `collaboration with ${href('//http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
+    caption: `collaboration with ${href('http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
     title: `3D printer (${href('https://www.germanreprap.com/', 'German RepRap&trade;')})  for carbon composite tooling`
   },
   {
     name: 'fusion4',
-    caption: `collaboration with ${href('//http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
+    caption: `collaboration with ${href('http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
     title: `3D printer (${href('https://www.germanreprap.com/', 'German RepRap&trade;')})  for carbon composite tooling`
   },
   {
     name: 'fusion6',
-    caption: `collaboration with ${href('//http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
+    caption: `collaboration with ${href('http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
     title: 'Printed female mold in PLA'
   },
   {
     name: 'gita0',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'lightweight carbon structure with marginal deflection supporting heavy luggages'
   },
   {
     name: 'gita2',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'lightweight carbon structure with marginal deflection supporting heavy luggages'
   },
   {
     name: 'gita3',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'lightweight carbon structure with marginal deflection supporting heavy luggages'
   },
   {
     name: 'gita5',
-    title: 'Piaggio Fast Forward - Robotic vehicle "Gita"',
-    caption: 'Designed structure in Carbon fiber'
+    title: 'Robotic vehicle "Gita" (Piaggio Fast Forward&trade;)',
+    caption: 'Lightweight carbon structure with marginal deflection supporting heavy luggages'
   },
   {
     name: 'keel1',
@@ -459,7 +456,7 @@ const images = [
   },
   {
     name: 'nike1',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'office1',
@@ -479,11 +476,11 @@ const images = [
   {
     name: 'office5',
     title: 'Composite Manufacturing room',
-    caption: 'Air controled temperature and humidity'
+    caption: 'Air controlled temperature and humidity'
   },
   {
     name: 'sprit1',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'sprit3',
@@ -492,13 +489,14 @@ const images = [
   },
   {
     name: 'vector1',
-    title: 'Vector Launch - assembly',
-    caption: 'Thrust structure designed by Courouble Design'
+    title: 'Vector-R rocket assembly',
+    caption: 'Thrust structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'vector2',
-    title: 'vector launch - launch vehicle for constellation satellite',
-    caption: 'full carbon rocket structure'
+    title: 'Vector-R rocket (Vector Launch Inc. &trade;)',
+    caption: `design and manufacturing of the thrust structure satisfying complex engineering constraints
+    of weight, strength and dynamic stability`
   },
   {
     name: 'vector3',
@@ -508,21 +506,21 @@ const images = [
   {
     name: 'vector4',
     title: 'Vector Launch - Engine installed',
-    caption: 'Thrust structure by Courouble Design'
+    caption: 'Thrust structure by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'vector6',
     title: 'Vector Launch - Engine installed',
-    caption: 'Thrust structure by Courouble Design'
+    caption: 'Thrust structure by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'vector7',
     title: 'Vector Launch - static pad for fire test',
-    caption: 'Thrust structure by Courouble Design'
+    caption: 'Thrust structure by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'wasabi0',
-    caption: 'Carbon structure designed by Courouble Design'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   }
 ]
 

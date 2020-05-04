@@ -14,7 +14,7 @@ const exiftoolVendored = require('exiftool-vendored')
 
 const { exiftool } = exiftoolVendored
 
-const { services, projects, images } = require('../src/assets/image-list')
+const { services, projects, images } = require('../src/assets/image-list/image-list')
 
 const creator = 'Frederick Corouble'
 const copyright_default = '(c) 2020 Courouble Design & Engineering (http://www.couroubledesign.com/) - Rights reserved'

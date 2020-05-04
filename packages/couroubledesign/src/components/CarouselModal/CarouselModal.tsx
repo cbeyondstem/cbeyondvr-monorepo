@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
-import { Modal, Backdrop, Fade, IconButton, Box } from '@material-ui/core'
+import { Modal, Backdrop, Fade, IconButton, Button, Box, Typography } from '@material-ui/core'
 import { CarouselView } from '@cbeyond/ui-kit'
-import PlayArrowRoundedIcon from '@material-ui/icons/PlayArrowRounded'
+// import PlayArrowRoundedIcon from '@material-ui/icons/PlayArrowRounded'
+import OpenWithIcon from '@material-ui/icons/OpenWith'
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded'
-import { renderHtml } from '../../layouts'
+import { primaryFont, secondaryFont } from '../../layouts'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,22 +21,46 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       [theme.breakpoints.down('sm')]: {
         fontSize: '95%'
+      },
+      [theme.breakpoints.up('lg')]: {
+        paddingTop: theme.spacing(4),
+        wordSpacing: theme.spacing(0.9)
+        // paddingBottom: theme.spacing(2)
       }
+    },
+    desc: {
+      // [theme.breakpoints.down('sm')]: {
+      //   fontSize: '95%'
+      // },
+      fontFamily: secondaryFont,
+      // fontSize: '20px',
+      [theme.breakpoints.up('lg')]: {
+        maxWidth: '60%'
+      },
+      paddingBottom: theme.spacing(4)
     },
     paper: {
       backgroundColor: theme.palette.primary.main,
       // border: '2px solid #000',
       // boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 5),
-      minWidth: '70vw',
-      minHeight: '70vh',
+      minWidth: '60vw',
+      minHeight: '60vh',
       [theme.breakpoints.down('sm')]: {
         minWidth: '100vw',
-        minHeight: '88vh'
+        minHeight: '88vh',
+        padding: theme.spacing(2, 2, 3)
       },
       // outline: 'none',
       '&:focus': {
         outline: `none` // `2px solid ${theme.palette.secondary.contrastText}`
+      }
+    },
+    carousel: {
+      fontSize: '140%',
+      textAlign: 'left',
+      [theme.breakpoints.down('sm')]: {
+        fontSize: '110%'
       }
     },
     button: {
@@ -59,33 +84,54 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export interface CarouselModelProps extends React.ComponentPropsWithRef<'div'> {
   title: string
+  open: boolean
+  onClose: () => void
   titleNode?: React.ReactNode
+  desc?: string
+  descNode?: React.ReactNode
   images: string[]
   imgOrientation?: 'Responsive' | 'Landscape' | 'Portrait'
 }
 
 export function CarouselModal(props: CarouselModelProps) {
   const classes = useStyles(props)
+  const { title, titleNode, desc, descNode, images, imgOrientation, open: openExternal, onClose } = props
   const [open, setOpen] = React.useState(false)
-  const { title, titleNode, images, imgOrientation } = props
+  const [close, setClose] = React.useState(false)
+  React.useEffect(() => {
+    setClose(false)
+  }, [openExternal])
   const handleOpen = () => {
     setOpen(true)
   }
-
   const handleClose = () => {
-    setOpen(false)
+    setClose(true)
+    onClose()
   }
-
+  const renderHtmlCarousel = (rawHTML: string, idx?: number, key?: string) =>
+    React.createElement('div', {
+      key,
+      dangerouslySetInnerHTML: { __html: rawHTML },
+      className: classes.carousel,
+      style: idx > 0 ? { fontFamily: secondaryFont } : { fontFamily: primaryFont, fontWeight: 300 }
+    })
+  const combinedOpen = close ? false : open || openExternal
+  console.log(`Modal open=${combinedOpen}`)
   return (
-    <div>
-      <IconButton className={classes.button} onClick={handleOpen} aria-expanded={open} aria-label="show more">
-        <PlayArrowRoundedIcon titleAccess={`play ${title}`} />
-      </IconButton>{' '}
+    <>
+      <IconButton
+        className={classes.button}
+        onClick={handleOpen}
+        aria-expanded={combinedOpen}
+        aria-label="expand modal"
+      >
+        <OpenWithIcon titleAccess={`Expand ${title}`} />
+      </IconButton>
       <Modal
         aria-labelledby="carousel-modal-title"
         aria-describedby="carousel-modal-description"
         className={classes.modal}
-        open={open}
+        open={combinedOpen}
         onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -93,7 +139,7 @@ export function CarouselModal(props: CarouselModelProps) {
           timeout: 500
         }}
       >
-        <Fade in={open}>
+        <Fade in={combinedOpen}>
           <Box
             display="flex"
             className={classes.paper}
@@ -101,24 +147,32 @@ export function CarouselModal(props: CarouselModelProps) {
             alignItems="center"
             justifyContent="space-between"
           >
-            <h2 id="carousel-modal-title" className={classes.title}>
+            <Typography variant="subtitle1" id="carousel-modal-title" className={classes.title}>
               {titleNode || title}
-            </h2>
+            </Typography>
+            <Typography variant="subtitle1" className={classes.desc}>
+              {descNode || desc}
+            </Typography>
             <CarouselView
               images={images}
-              renderHtml={renderHtml}
+              renderHtml={renderHtmlCarousel}
               imgOrientation={imgOrientation}
-              // showPlayButton={false}
+              showPlayButton={false}
               thumb={false}
               captions
               // autoplay
             />{' '}
-            <IconButton className={classes.button} onClick={handleClose} aria-expanded={open} aria-label="show more">
+            <IconButton
+              className={classes.button}
+              onClick={handleClose}
+              aria-expanded={combinedOpen}
+              aria-label="show more"
+            >
               <CloseRoundedIcon titleAccess={`close modal ${title}`} />
             </IconButton>{' '}
           </Box>
         </Fade>
       </Modal>
-    </div>
+    </>
   )
 }
