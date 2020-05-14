@@ -5,7 +5,7 @@ import { uid } from 'react-uid'
 
 import Img, { FluidObject } from 'gatsby-image'
 import { makeStyles, useTheme, Theme } from '@material-ui/core/styles'
-import { Container, Typography, CardMedia, Box, Grid, useMediaQuery } from '@material-ui/core'
+import { Container, Typography, Grid, useMediaQuery } from '@material-ui/core'
 import { AllImgConsumer, CarouselImgProps } from '@cbeyond/ui-kit'
 import { ImageSharpFluid } from '../../types/gatsby-graphql-types'
 
@@ -67,7 +67,7 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
               <Grid item xs={11} md={4}>
                 <Typography variant="body1" align="left" className={classes.bio}>
                   DMG Design craftsmanship mixes classical heritage with modernity, taking inspiration from the ocean
-                  fluidity and organic forms. DMGDesign aesthetic creates unique interiors with custom pieces of
+                  fluidity and organic forms. DMG Design aesthetic creates unique interiors with custom pieces of
                   furniture, light fixtures and art installations.
                 </Typography>
               </Grid>

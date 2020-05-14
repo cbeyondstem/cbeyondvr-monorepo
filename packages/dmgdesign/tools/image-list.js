@@ -29,6 +29,16 @@ const petiteamelienyc = {
   GPSLongitude: '73 58 28.3',
   GPSLongitudeRef: 'W'
 }
+const petiteamelienyc2 = {
+  date: '2018',
+  address: 'Lights Wall Art - Petite Amélie Wine Bar, New York - Upper West side',
+  city: 'New York City',
+  state: 'NY',
+  GPSLatitude: '40 47 20.2',
+  GPSLatitudeRef: 'N',
+  GPSLongitude: '73 58 28.3',
+  GPSLongitudeRef: 'W'
+}
 const chouquet = {
   date: '2012',
   address: "Chouquet's Restaurant, San Francisco",
@@ -253,8 +263,8 @@ const images = {
       location: petiteamelienyc
     },
     WallPanorama: {
-      title: 'Wall installation - Private interior, San Francisco',
-      location: coleValley2,
+      title: 'Lights Wall Art - Petite Amélie Wine Bar',
+      location: petiteamelienyc2,
       exclude: true // exclude from interior view
     },
     _PP_5269: {

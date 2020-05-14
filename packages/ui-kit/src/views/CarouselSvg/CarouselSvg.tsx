@@ -20,7 +20,8 @@ import {
 export interface CarouselViewProps {
   path?: string
   images?: string[]
-  thumb?: boolean
+  showPlayButton?: boolean
+  autoplay?: boolean
   captions?: boolean
   backgroundColor?: string
   renderHtml?: (
@@ -52,10 +53,33 @@ const useStyles = makeStyles(theme => {
       '& div.image-gallery-slide': {
         backgroundColor: `${color} !important`,
       },
+      '& button.image-gallery-left-nav': {
+        // paddingTop: `0px`,
+        // paddingBottom: `0px`,
+        top: '50%',
+        bottom: 'auto',
+      },
+      '& button.image-gallery-right-nav': {
+        // paddingTop: `0px`,
+        // paddingBottom: `0px`,
+        bottom: 'auto',
+        top: '50%',
+      },
+
       '& button.image-gallery-play-button': {
-        bottom: (props: CarouselViewProps) =>
-          props.captions ? theme.spacing(8) : 0,
+        top: '80%', // calc('100vh/2'),
+        bottom: 'auto',
         transform: 'none', // 'translateY(-70%)',
+        right: '0px',
+        left: 'auto',
+        paddingLeft: `0px`,
+        paddingRight: `0px`,
+      },
+      '& button.image-gallery-play-button::before': {
+        paddingTop: `0px`,
+        paddingBottom: `0px`,
+        paddingLeft: `15px`,
+        paddingRight: `15px`,
       },
       '& a.image-gallery-fullscreen-button:hover::before': {
         color: `${colorSecondary} !important`,
@@ -79,7 +103,8 @@ const useStyles = makeStyles(theme => {
       },
     },
     caption: {
-      fontSize: '10px !important',
+      fontSize: '14px !important',
+      minHeight: theme.spacing(16),
     },
     paper: {
       backgroundColor: `${color} !important`,
@@ -113,6 +138,7 @@ const useStyles = makeStyles(theme => {
     },
   }
 })
+
 const renderHtmlDefault = (
   rawHTML: string | React.ReactNode,
   idx?: number,
@@ -156,12 +182,15 @@ export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => 
     path,
     images: imgList,
     thumb = false,
+    showPlayButton = true,
+    autoplay = false,
     captions = false,
     renderHtml = renderHtmlDefault,
     imgOrientation = 'Responsive',
   } = props
-  const classes = useStyles(props)
+
   const theme = useTheme()
+  const classes = useStyles(props)
   const wsize = useWindowSize()
   if (imgOrientation !== 'Responsive') {
     isLandscape = imgOrientation === 'Landscape'
@@ -171,13 +200,13 @@ export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => 
     const { Svg: SvgRaw, viewBox } = item.original.desktop as SvgProps
     const [s, e, w, h] = viewBox.match(/[\d.]+/g).map(Number)
     const aspectRatio = w / h
-    const boxw = wsize.width * (isLandscape ? 0.7 : 0.95)
+    const boxw = wsize.width * (isLandscape ? 0.7 : 0.8)
     const boxh = boxw / 1.6
     let svgw = boxw
     if (aspectRatio < 1.6) {
-      svgw = (boxw * aspectRatio * 0.95) / 1.6
+      svgw = (boxw * aspectRatio * 0.8) / 1.6
     } else {
-      svgw = boxw * 0.95
+      svgw = boxw * 0.8
     }
     let captionText: string = null
     if (captions) {
@@ -223,9 +252,7 @@ export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => 
                 variant="caption"
                 className={classes.caption}
               >
-                {captionText
-                  .split(',')
-                  .map((t, idx) => renderHtml(t, idx + 1, uid(t, idx)))}
+                {renderHtml(captionText, 1)}
               </Typography>
             ) : null}
           </div>
@@ -262,7 +289,6 @@ export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => 
         return (
           <Container className={classes.root}>
             <CarouselBase
-              thumb={false}
               images={sortedViewSvgList.map(
                 s =>
                   ({
@@ -274,6 +300,9 @@ export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => 
                   } as CarouselImgProps)
               )}
               renderImage={renderImage(1200)}
+              showPlayButton={showPlayButton}
+              autoplay={autoplay}
+              thumb={false}
             />
           </Container>
         )
