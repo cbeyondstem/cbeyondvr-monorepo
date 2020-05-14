@@ -17,6 +17,7 @@ env:
 jobs:
   courouble-prod:
     # The type of runner that the job will run on
+    if: "contains(github.event.ref, 'courouble')"
     runs-on: ubuntu-latest
     env:
       SECRET_NETLIFY_SITE_ID: ${{ secrets.NETLIFY_COUROUBLE }}
@@ -29,6 +30,7 @@ jobs:
           PACKAGE_LOCATION: packages/couroubledesign
   villa-clementine-prod:
     # The type of runner that the job will run on
+    if: "contains(github.event.ref, 'villa-clementine')"
     runs-on: ubuntu-latest
     env:
       SECRET_NETLIFY_SITE_ID: ${{ secrets.NETLIFY_VILLA_CLEMENTINE }}
@@ -41,6 +43,7 @@ jobs:
           PACKAGE_LOCATION: packages/villa-clementine
   dmgdesign-prod:
     # The type of runner that the job will run on
+    if: "contains(github.event.ref, 'dmgdesign')"
     runs-on: ubuntu-latest
     env:
       SECRET_NETLIFY_SITE_ID: ${{ secrets.NETLIFY_DMGDESIGN }}
