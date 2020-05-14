@@ -181,7 +181,6 @@ export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => 
   const {
     path,
     images: imgList,
-    thumb = false,
     showPlayButton = true,
     autoplay = false,
     captions = false,
