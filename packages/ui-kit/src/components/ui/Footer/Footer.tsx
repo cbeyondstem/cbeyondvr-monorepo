@@ -4,7 +4,7 @@ import { Box, Hidden } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  footer: {
     bottom: '0em',
     flexGrow: 1,
     alignSelf: 'center',
@@ -22,11 +22,11 @@ export function Footer(props: FooterProps) {
   const { brand, org } = props
   return (
     <Box
-      className={classes.root}
+      className={classes.footer}
       display="flex"
       flexDirection="column"
       alignItems="center"
-      pt={6}
+      pt={0}
     >
       <Box
         display="flex"

@@ -2,7 +2,6 @@ import * as _ from 'lodash'
 import * as React from 'react'
 import { PageProps, CarouselView } from '@cbeyond/ui-kit'
 import { makeStyles } from '@material-ui/core/styles'
-import { Box, Typography, Table, TableCell, TableRow } from '@material-ui/core'
 
 import { orderedImages } from '../../tools/image-list'
 import { Layout } from '../layouts'

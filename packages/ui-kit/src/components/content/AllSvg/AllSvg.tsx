@@ -14,6 +14,7 @@ export interface SvgProps {
   title?: string
   caption?: string
   Svg: (p: React.SVGProps<SVGSVGElement>) => JSX.Element
+  content: string
 }
 export interface AllSvgProps {
   svgByPath: { [path: string]: SvgProps }
@@ -109,6 +110,7 @@ export const allSvgQueryRender: (
       Svg,
       title,
       caption,
+      content,
     }
   })
   return (

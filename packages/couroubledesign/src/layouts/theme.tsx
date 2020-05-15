@@ -60,6 +60,7 @@ const scroll = createStyles({
     '.container-fluid': {
       paddingRight: '15px',
       paddingLeft: '15px',
+      paddingBottom: '45px',
       marginRight: 'auto',
       marginLeft: 'auto',
       width: '100%',

@@ -46,21 +46,19 @@ const scroll = createStyles({
     '.container-fluid': {
       paddingRight: '15px',
       paddingLeft: '15px',
+      paddingBottom: '45px',
       marginRight: 'auto',
       marginLeft: 'auto',
       width: '100%',
       minHeight: '80vh',
-      '@media (min-width: 576px)': {
-        maxWidth: '576px'
+      '@media (min-width: 600px)': {
+        maxWidth: '600px'
       },
-      '@media (min-width: 768px)': {
-        maxWidth: '768px'
+      '@media (min-width: 960px)': {
+        maxWidth: '960px'
       },
-      '@media (min-width: 992px)': {
-        maxWidth: '992px'
-      },
-      '@media (min-width: 1200px)': {
-        maxWidth: '1200px'
+      '@media (min-width: 1280px)': {
+        maxWidth: '1280px'
       }
     }
   }

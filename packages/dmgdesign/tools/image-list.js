@@ -89,16 +89,16 @@ const coleValley = {
   GPSLongitude: '122 27 05.1',
   GPSLongitudeRef: 'W'
 }
-const coleValley2 = {
-  date: '2009',
-  address: 'Wall Installation - Private Home, San Francisco',
-  city: 'San Francisco',
-  state: 'CA',
-  GPSLatitude: '37 45 56.2',
-  GPSLatitudeRef: 'N',
-  GPSLongitude: '122 27 05.1',
-  GPSLongitudeRef: 'W'
-}
+// const coleValley2 = {
+//   date: '2009',
+//   address: 'Wall Installation - Private Home, San Francisco',
+//   city: 'San Francisco',
+//   state: 'CA',
+//   GPSLatitude: '37 45 56.2',
+//   GPSLatitudeRef: 'N',
+//   GPSLongitude: '122 27 05.1',
+//   GPSLongitudeRef: 'W'
+// }
 const sonora = {
   date: '2013',
   address: 'Private Home, Sonora',
@@ -170,11 +170,11 @@ const images = {
   architecture: {
     '1767 North Point-Color Interior Elevation.svg': {
       title: 'Interior Remodel',
-      location: coleValley2
+      location: coleValley
     },
     'DMG Nuz Staircase A2 1 1-2 Scale 4-19-2019.svg': {
-      title: 'Custom Staircase',
-      location: coleValley2
+      title: 'Staircase Study',
+      location: coleValley
     },
     'Mark Houpin S2 1-2-14-Fog.svg': {
       title: 'Geodesic Dome House/Extension',

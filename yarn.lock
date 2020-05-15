@@ -20017,6 +20017,14 @@ react-spring@^8.0.27:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
 
+react-svg-pan-zoom@^3.8.0:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/react-svg-pan-zoom/-/react-svg-pan-zoom-3.8.0.tgz#5724c71d257a07233c9cc511a5c6498d80bb397a"
+  integrity sha512-s92QDFJuRrp784aQZKX8qxukMY/85IpOXO5Bjbn1G/CoNapdHCRVAHynPP6Ea9cyMmycSmu6paPqUIAW3i5s9Q==
+  dependencies:
+    prop-types "^15.7.2"
+    transformation-matrix "^2.2.0"
+
 react-swipeable@^5.2.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/react-swipeable/-/react-swipeable-5.5.0.tgz#083300d27ffea96f27b49cee04925151515ae9ba"
@@ -23092,6 +23100,11 @@ tr46@~0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=
+
+transformation-matrix@^2.2.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/transformation-matrix/-/transformation-matrix-2.3.0.tgz#568a0be8698c204efbfc799516b8714a6e4708de"
+  integrity sha512-iXgfTkswsqHyG3SzL04mfniI4z6/XUDBiWmMv/+YSDFIjoF4Ugy3AwkoL8ed+cCak1uLfb70wQbIkATNS6fgPA==
 
 traverse@0.6.6:
   version "0.6.6"
