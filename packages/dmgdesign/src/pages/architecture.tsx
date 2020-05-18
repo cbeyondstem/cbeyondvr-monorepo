@@ -11,7 +11,7 @@ export const MyPage = (props: PageProps) => {
       <CarouselSvgView
         path="architecture"
         images={_.get(orderedImages, 'architecture', null)}
-        backgroundColor="#fff"
+        // backgroundColor="#fff"
         captions
       />
     </Layout>

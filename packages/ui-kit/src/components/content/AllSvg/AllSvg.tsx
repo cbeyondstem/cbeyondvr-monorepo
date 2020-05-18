@@ -31,7 +31,7 @@ export interface SvgProviderProps {
   children: React.ReactNode
 }
 
-const hastParse = (elems: HASTElementProps[]) => {
+export const hastParse = (elems: HASTElementProps[]) => {
   const hastElems: React.ReactNode[] = []
   elems.forEach(el => {
     const { children: hastChildren = [], properties = {} } = el

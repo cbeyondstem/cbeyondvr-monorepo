@@ -1,26 +1,30 @@
 import * as _ from 'lodash'
 import * as React from 'react'
+import { uid } from 'react-uid'
 import {
   Container,
   Box,
   useTheme,
   useMediaQuery,
   Theme,
+  IconButton,
 } from '@material-ui/core'
-import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import { UncontrolledReactSVGPanZoom } from 'react-svg-pan-zoom'
-import {
-  Carousel as CarouselBase,
-  CarouselImgProps,
-} from '../../components/ui/Carousel'
 
-import { ImageItemProps } from '../../types/interfaces'
+// import { Carousel as CarouselBase } from '../../components/ui/Carousel/Carousel2'
+import { Carousel as CarouselBase } from 'react-responsive-carousel'
+import classNames from 'classnames'
+import PauseIcon from '@material-ui/icons/Pause'
+import PlayArrowIcon from '@material-ui/icons/PlayArrow'
+
+import { useTimeout } from '../../hooks/timeout'
 import {
   AllSvgConsumer,
   AllSvgProps,
   SvgProps,
+  hastParse,
 } from '../../components/content/AllSvg'
+import { SvgLazy } from './SvgLazy'
 
 const { useState, useEffect } = React
 
@@ -64,20 +68,17 @@ function useWindowSize() {
 }
 function useWidth(theme: Theme) {
   const keys = [...theme.breakpoints.keys].reverse()
-  const currentKey =
-    keys.reduce((output, key) => {
-      const matches = useMediaQuery(theme.breakpoints.up(key))
-      return !output && matches ? key : output
-    }, null) || 'xs'
-
+  const currentKey = keys.reduce((output, key) => {
+    const matches = useMediaQuery(theme.breakpoints.up(key))
+    return !output && matches ? key : output
+  }, null)
+  if (currentKey === null) {
+    return null
+  }
+  // console.log(`useWidth ${currentKey} ${theme.breakpoints.values[currentKey]}`)
   return theme.breakpoints.values[currentKey]
 }
 const useStyles = makeStyles(theme => {
-  const color =
-    theme.palette.type === 'light'
-      ? theme.palette.primary.light
-      : theme.palette.primary.dark
-  const colorSecondary = theme.palette.secondary.dark
   return {
     root: {
       paddingLeft: '0',
@@ -86,88 +87,48 @@ const useStyles = makeStyles(theme => {
         paddingLeft: '0',
         paddingRight: '0',
       },
-      '& div.image-gallery-slide': {
-        backgroundColor: `${color} !important`,
+      '& div.carousel .carousel-status': {
+        fontSize: '12px',
       },
-      '& button.image-gallery-left-nav': {
-        // paddingTop: `0px`,
-        // paddingBottom: `0px`,
-        top: '50%',
-        bottom: 'auto',
+      '& button.control-arrow:before': {
+        borderTop: 'none', // '12px solid transparent',
+        borderBottom: 'none', // '12px solid transparent',
+        color: '#fff',
+        fontSize: '30px',
+        width: 'auto',
+        height: 'auto',
       },
-      '& button.image-gallery-right-nav': {
-        // paddingTop: `0px`,
-        // paddingBottom: `0px`,
-        bottom: 'auto',
-        top: '50%',
+      '& button.control-next.control-arrow:before': {
+        borderLeft: 'none', // '12px solid #fff',
+        content: '"\\232a"',
+        margin: '0 -15px 0 7px',
       },
-
-      '& button.image-gallery-play-button': {
-        top: '80%', // calc('100vh/2'),
-        bottom: 'auto',
-        transform: 'none', // 'translateY(-70%)',
-        right: '0px',
-        left: 'auto',
-        paddingLeft: `0px`,
-        paddingRight: `0px`,
+      '& button.control-prev.control-arrow:before': {
+        borderRight: 'none', // '12px solid #fff',
+        content: '"\\2329"',
+        margin: '0 7px 0 -15px',
       },
-      '& button.image-gallery-play-button::before': {
-        paddingTop: `0px`,
-        paddingBottom: `0px`,
-        paddingLeft: `15px`,
-        paddingRight: `15px`,
+      '& button.control-arrow.play-button': {
+        top: 'auto',
+        bottom: '3%',
+        right: '40px',
       },
-      '& a.image-gallery-fullscreen-button:hover::before': {
-        color: `${colorSecondary} !important`,
+      '& button.control-arrow.play-button:before': {
+        margin: '0',
       },
-      '& a.image-gallery-play-button:hover::before': {
-        color: `${colorSecondary} !important`,
-      },
-      '& a.image-gallery-left-nav:hover::before': {
-        color: `${colorSecondary} !important`,
-      },
-      '& a.image-gallery-right-nav:hover::before': {
-        color: `${colorSecondary} !important`,
-      },
-      '& a.image-gallery-thumbnail.active': {
-        border: `4px solid ${colorSecondary}`,
-      },
-      '@media (max-width: 768px)': {
-        'a.image-gallery-thumbnail.active': {
-          border: `3px solid ${colorSecondary}`,
-        },
-      },
-    },
-    caption: {
-      fontSize: '14px !important',
-      minHeight: theme.spacing(16),
-    },
-    paper: {
-      backgroundColor: `${color} !important`,
-      color: theme.palette.primary.contrastText,
-      boxShadow: 'none',
-      paddingTop: theme.spacing(1),
-      paddingBottom: theme.spacing(2),
-      // maxWidth: '90vw',
-      whiteSpace: 'normal',
-      textAlign: 'center',
-    },
-    imgContainer: {
-      backgroundColor: `${color} !important`,
-      color: `${color} !important`,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingLeft: '0',
-      paddingRight: '0',
-    },
-    img: {
-      maxHeight: '70vh !important',
-    },
-    flex: {
-      display: 'flex',
-      backgroundColor: (props: CarouselViewProps) => props.backgroundColor,
+      // '& button.control-arrow.pause-button': {
+      //   top: 'auto',
+      //   bottom: '3%',
+      //   right: '3%',
+      // },
+      // '& button.control-arrow.play-button:before': {
+      //   content: '"\\25B6"',
+      //   margin: '0 7px',
+      // },
+      // '& button.control-arrow.pause-button:before': {
+      //   content: '"\\23F8\\FE0F"',
+      //   margin: '0 7px',
+      // },
     },
   }
 })
@@ -187,7 +148,7 @@ const renderHtmlDefault = (
   )
 
 export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => {
-  let isLandscape = useMediaQuery('(orientation: landscape)')
+  // let isLandscape = useMediaQuery('(orientation: landscape)')
   const {
     path,
     images: imgList,
@@ -195,82 +156,67 @@ export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => 
     autoplay = false,
     captions = false,
     renderHtml = renderHtmlDefault,
-    imgOrientation = 'Responsive',
+    // imgOrientation = 'Responsive',
   } = props
   const theme = useTheme()
-  let boxw = useWidth(theme) - 30
+  const mediaWidth = useWidth(theme)
   const { width } = useWindowSize()
-  if (boxw < 0) {
+  let boxw: number
+  if (mediaWidth === null) {
+    boxw = 0
+  } else if (mediaWidth === 0) {
     boxw = width - 30
+  } else {
+    boxw = mediaWidth - 30
   }
   const classes = useStyles(props)
-  if (imgOrientation !== 'Responsive') {
-    isLandscape = imgOrientation === 'Landscape'
-  }
 
-  const renderImage = () => (item: ImageItemProps) => {
-    const { Svg: SvgRaw, viewBox } = item.original.desktop as SvgProps
-    const [s, e, w, h] = viewBox.match(/[\d.]+/g).map(Number)
-    const aspectRatio = w / h
-    const containerAspectRatio = 1.5
-    const boxh = boxw / containerAspectRatio
-    let svgw
-    let svgh
-    if (aspectRatio < containerAspectRatio) {
-      svgh = boxh
-      svgw = Math.floor(svgh * aspectRatio)
-    } else {
-      svgw = boxw
-      svgh = Math.floor(svgw / aspectRatio)
-    }
-    let captionText: string = null
-    if (captions) {
-      captionText =
-        item.original.caption === ''
-          ? null
-          : item.original.caption || item.original.path
-    }
-    // const presWidth = isLandscape
-    //   ? item.original.desktop.presentationWidth
-    //   : item.original.mobile.presentationWidth
-    return (
-      <Container className={classes.imgContainer}>
-        <Box
-          className={classes.flex}
-          minWidth={boxw}
-          height={boxh}
-          justifyContent="center"
-          alignItems="center"
+  const noop = () => null as React.ReactChild[]
+  const [playing, togglePlaying] = React.useState(autoplay)
+  const [slideIndex, setSlideIndex] = React.useState(0)
+  const [slideLoads, setSlideLoads] = React.useState({ 0: true, 1: true })
+
+  const onPlayButton = () => {
+    togglePlaying(!playing)
+  }
+  const onChange = (index: number, item: React.ReactNode) => {
+    setSlideIndex(index)
+    setSlideLoads({ ...slideLoads, [index + 1]: true })
+    // console.log(`onChange ${index} ${JSON.stringify(slideLoads)}`)
+  }
+  const renderArrowNext = (
+    onClickHandler: () => void,
+    hasNext: boolean,
+    label: string
+  ) => (
+    <>
+      <button
+        type="button"
+        aria-label={label}
+        className={classNames({
+          'control-arrow control-next': true,
+          'control-disabled': !hasNext,
+        })}
+        onClick={onClickHandler}
+      />
+      {showPlayButton ? (
+        <IconButton
+          aria-label={playing ? 'pause autoplay' : 'start autoplay'}
+          edge="end"
+          className={classNames('control-arrow', 'play-button')}
+          onClick={onPlayButton}
         >
-          <UncontrolledReactSVGPanZoom width={svgw} height={svgh}>
-            <SvgRaw width={svgw} height={svgh} />
-          </UncontrolledReactSVGPanZoom>
-        </Box>
-        {captions ? (
-          <div className={classes.paper}>
-            <Typography align="center" variant="subtitle2">
-              {renderHtml(
-                item.original.title ||
-                  item.original.path
-                    .split('/')
-                    .slice(-1)
-                    .join('/')
-                    .toUpperCase()
-              )}
-            </Typography>
-            {captionText ? (
-              <Typography
-                align="center"
-                variant="caption"
-                className={classes.caption}
-              >
-                {renderHtml(captionText, 1)}
-              </Typography>
-            ) : null}
-          </div>
-        ) : null}
-      </Container>
-    )
+          {playing ? <PauseIcon /> : <PlayArrowIcon />}
+        </IconButton>
+      ) : null}
+    </>
+  )
+  if (showPlayButton || autoplay) {
+    useTimeout(() => {
+      if (playing) {
+        setSlideIndex(slideIndex + 1)
+      }
+    }, 2000)
   }
   return (
     <AllSvgConsumer>
@@ -300,25 +246,54 @@ export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => 
         }
         return (
           <Container className={classes.root}>
-            <CarouselBase
-              images={sortedViewSvgList.map(
-                s =>
-                  ({
-                    desktop: s,
-                    thumb: null,
-                    path: s.path,
-                    title: s.title,
-                    caption: s.caption,
-                  } as CarouselImgProps)
-              )}
-              renderImage={renderImage()}
-              showPlayButton={showPlayButton}
-              autoplay={autoplay}
-              thumb={false}
-            />
+            {mediaWidth !== null ? (
+              <CarouselBase
+                // renderThumbs={thumb ? renderThumbs : noop}
+                renderIndicator={noop}
+                renderArrowNext={renderArrowNext}
+                swipeable={false}
+                showThumbs={false}
+                interval={2000}
+                transitionTime={350}
+                onChange={onChange}
+                selectedItem={slideIndex}
+                infiniteLoop
+              >
+                {sortedViewSvgList.map((image: SvgProps, idx) => (
+                  <SvgLazy
+                    key={uid(image.id)}
+                    boxw={boxw}
+                    captions={captions}
+                    renderHtml={renderHtml}
+                    load={_.get(slideLoads, idx, false)}
+                    // eslint-disable-next-line react/jsx-props-no-spreading
+                    {...image}
+                  />
+                ))}
+              </CarouselBase>
+            ) : (
+              <div />
+            )}
           </Container>
         )
       }}
     </AllSvgConsumer>
   )
 }
+
+// <CarouselBase
+//   images={sortedViewSvgList.map(
+//     s =>
+//       ({
+//         desktop: s,
+//         thumb: null,
+//         path: s.path,
+//         title: s.title,
+//         caption: s.caption,
+//       } as CarouselImgProps)
+//   )}
+//   renderImage={renderImage}
+//   showPlayButton={showPlayButton}
+//   autoplay={autoplay}
+//   thumb={false}
+// />

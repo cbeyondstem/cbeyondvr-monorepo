@@ -1,8 +1,48 @@
+import * as _ from 'lodash'
 import * as React from 'react'
 import { UncontrolledReactSVGPanZoom } from 'react-svg-pan-zoom'
 import { PageProps, AllSvgConsumer, AllSvgProps, SvgProps } from '@cbeyond/ui-kit'
+import { parse as svgParse, HASTElementProps } from 'svg-parser'
+import { uid } from 'react-uid'
 
 const { useRef, useEffect } = React
+
+const hastParse = (elems: HASTElementProps[]) => {
+  const hastElems: React.ReactNode[] = []
+  elems.forEach(el => {
+    const { children: hastChildren = [], properties = {} } = el
+    const hastChildElems: React.ReactNode[] = []
+    hastChildren.forEach(c => hastChildElems.push(hastParse([c])))
+    const { style, ...others } = properties
+    const styleObj: { [prop: string]: string } = {}
+    if (style) {
+      // console.log(`${el.tagName} ${style}`)
+      style.split(';').forEach(styleProps => {
+        const keyvalue = styleProps.split(':')
+        const obj = JSON.parse(`{"${_.camelCase(keyvalue[0])}":"${keyvalue[1]}"}`)
+        Object.assign(styleObj, obj)
+      })
+    }
+    const renamed = {}
+    _.mapKeys(others, (v, k) => {
+      let nk = _.camelCase(k)
+      if (nk === 'class') {
+        nk = 'className'
+      }
+      _.assign(renamed, { [nk]: v })
+    })
+    if (el.type === 'element') {
+      hastElems.push(
+        React.createElement(el.tagName, { key: uid(el, hastElems.length), style: styleObj, ...renamed }, hastChildElems)
+      )
+    } else if (el.type === 'text') {
+      hastElems.push(el.value.replace('&amp;', '&'))
+    } else {
+      hastElems.push(<em>svg hast parser unknowm element type {el.type}</em>)
+    }
+  })
+  return hastElems
+}
 
 export const MyPage = (props: PageProps) => {
   const Viewer = useRef(null)
@@ -14,11 +54,13 @@ export const MyPage = (props: PageProps) => {
       {({ svgByPath }: AllSvgProps) => {
         const svgList = Object.values(svgByPath)
         const selectedSvgList = svgList.filter((svg: SvgProps) => svg.path.search('architecture') > -1)
-        const { Svg: SvgRaw, viewBox } = selectedSvgList[0] as SvgProps
+        const { Svg: SvgRaw, viewBox, content } = selectedSvgList[0] as SvgProps
         const [s, e, w, h] = viewBox.match(/[\d.]+/g).map(Number)
+        const hast: HASTElementProps = svgParse(content)
+        const hastElems = hastParse(hast.children[0].children)
         return (
           <div>
-            <UncontrolledReactSVGPanZoom
+            {/* <UncontrolledReactSVGPanZoom
               width={500}
               height={500}
               ref={Viewer}
@@ -33,15 +75,17 @@ export const MyPage = (props: PageProps) => {
                 </g>
               </svg>
             </UncontrolledReactSVGPanZoom>
-            <hr />
+            <hr /> */}
             <UncontrolledReactSVGPanZoom
               width={w / 2}
               height={h / 2}
               ref={Viewer}
               // onClick={event => console.log('click', event.x, event.y, event.originalEvent)}
             >
-              <SvgRaw width={w / 2} height={h / 2} />
-            </UncontrolledReactSVGPanZoom>{' '}
+              <svg viewBox={viewBox} width={w / 2} height={h / 2}>
+                {hastElems}
+              </svg>
+            </UncontrolledReactSVGPanZoom>
           </div>
         )
       }}

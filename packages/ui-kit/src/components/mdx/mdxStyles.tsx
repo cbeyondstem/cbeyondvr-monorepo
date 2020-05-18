@@ -10,8 +10,7 @@ import {
 } from '@material-ui/core'
 import { red } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles'
-import * as classnames from 'classnames'
-import { instanceOf } from 'prop-types'
+import classnames from 'classnames'
 
 const caretRight = '"\\25B8"'
 

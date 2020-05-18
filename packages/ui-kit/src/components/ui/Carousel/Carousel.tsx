@@ -24,6 +24,7 @@ export interface CarouselProps {
   thumb?: boolean
   showPlayButton?: boolean
   autoplay?: boolean
+  onSlide?: () => void
 }
 
 export const Carousel: React.FunctionComponent<CarouselProps> = props => {
@@ -33,6 +34,7 @@ export const Carousel: React.FunctionComponent<CarouselProps> = props => {
     thumb = true,
     showPlayButton = true,
     autoplay = true,
+    onSlide,
   } = props
   const [isFullScreen, setFullScreen] = React.useState(false)
   const imgItems: ImageItemProps[] = images.map(
@@ -66,7 +68,8 @@ export const Carousel: React.FunctionComponent<CarouselProps> = props => {
       // lazyLoad
       // onClick={this._onImageClick.bind(this)}
       // onImageLoad={this._onImageLoad}
-      // onSlide={this._onSlide.bind(this)}
+      onSlide={onSlide}
+      // onImageLoad={onSlide}
       // onPause={this._onPause.bind(this)}
       onScreenChange={onScreenChange}
       infinite

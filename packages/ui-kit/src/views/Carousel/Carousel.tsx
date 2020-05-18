@@ -7,7 +7,6 @@ import { Container, useTheme, useMediaQuery } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
-import { calc } from 'csx'
 import {
   Carousel as CarouselBase,
   CarouselImgProps,
@@ -49,6 +48,54 @@ const useStyles = makeStyles(theme => {
         paddingLeft: '0',
         paddingRight: '0',
       },
+      // '& div.carousel .carousel-status': {
+      //   fontSize: '12px',
+      // },
+      // '& div.carousel .thumb': {
+      //   border: 'none',
+      // },
+      // '& ul.thumbs': {
+      //   padding: '0px',
+      // },
+      // // '& button.control-arrow': {
+      // //   height: '20%',
+      // // },
+      // '& button.control-arrow:before': {
+      //   borderTop: 'none', // '12px solid transparent',
+      //   borderBottom: 'none', // '12px solid transparent',
+      //   color: '#fff',
+      //   fontSize: '30px',
+      //   width: 'auto',
+      //   height: 'auto',
+      // },
+      // '& button.control-next.control-arrow:before': {
+      //   borderLeft: 'none', // '12px solid #fff',
+      //   content: '"\\232a"',
+      //   margin: '0 -15px 0 7px',
+      // },
+      // '& button.control-prev.control-arrow:before': {
+      //   borderRight: 'none', // '12px solid #fff',
+      //   content: '"\\2329"',
+      //   margin: '0 7px 0 -15px',
+      // },
+      // '& button.control-arrow.play-button': {
+      //   top: 'auto',
+      //   bottom: '10px',
+      //   right: '3%',
+      // },
+      // '& button.control-arrow.pause-button': {
+      //   top: 'auto',
+      //   bottom: '10px',
+      //   right: '3%',
+      // },
+      // '& button.control-arrow.play-button:before': {
+      //   content: '"\\25B6"',
+      //   margin: '0 7px',
+      // },
+      // '& button.control-arrow.pause-button:before': {
+      //   content: '"\\23F8\\FE0F"',
+      //   margin: '0 7px',
+      // },
       '& div.image-gallery-slide': {
         backgroundColor: `${color} !important`,
       },
@@ -195,7 +242,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
     //   ? item.original.desktop.presentationWidth
     //   : item.original.mobile.presentationWidth
     return (
-      <Container className={classes.imgContainer}>
+      <Container className={classes.imgContainer} key={uid(item.original)}>
         <Container>
           <Img
             className={classes.img}

@@ -7,7 +7,6 @@ export interface ImageItemProps {
   thumbnailClass?: string
   renderItem?: () => React.ReactNode
   renderThumbInner?: () => React.ReactNode
-  bulletOnClick?: () => void
   bulletClass?: string
   original?: {
     path: string
@@ -17,6 +16,8 @@ export interface ImageItemProps {
     title?: string
     caption?: string
   }
+  onSlide?: () => void
   originalTitle?: string
   description?: string
+  key?: string
 }
