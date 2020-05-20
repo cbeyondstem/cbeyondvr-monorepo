@@ -116,6 +116,14 @@ const useStyles = makeStyles(theme => {
       '& button.control-arrow.play-button:before': {
         margin: '0',
       },
+      '& div[role="toolbar"]': {
+        bottom: '-35px !important',
+        left: 'calc(100% - 70px) !important',
+      },
+      '& div[role="navigation"]': {
+        bottom: '-100px !important',
+        left: '0px !important',
+      },
       // '& button.control-arrow.pause-button': {
       //   top: 'auto',
       //   bottom: '3%',

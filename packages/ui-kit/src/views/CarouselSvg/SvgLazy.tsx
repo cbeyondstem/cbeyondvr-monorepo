@@ -1,10 +1,11 @@
 import * as _ from 'lodash'
 import * as React from 'react'
-import { Container, Box, useMediaQuery } from '@material-ui/core'
+import { Container, Box, useMediaQuery, useTheme } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { parse as svgParse, HASTElementProps } from 'svg-parser'
+import { ToolType, PositionType } from 'react-svg-pan-zoom'
 import { UncontrolledSVGPanZoom } from './UncontrolledSvgPanZoom'
 import { useHtmlAST } from '../../services'
 import { SvgProps, hastParse } from '../../components/content/AllSvg'
@@ -66,7 +67,9 @@ const SVGPanZoom: React.FunctionComponent<SVGPanZoomProps> = props => {
   const { boxw, boxh, boxar, load, svg: svgp } = props
   const { viewBox } = svgp
   const [s, e, w, h] = viewBox.match(/[\d.]+/g).map(Number)
-
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.up('md'))
+  const lg = matches && 'lg'
   // const hastElems = React.useMemo(() => {
   //   return hastParse(svgp.hast.children[0].children)
   // }, [svgp.hast])
@@ -75,10 +78,10 @@ const SVGPanZoom: React.FunctionComponent<SVGPanZoomProps> = props => {
   let svgw: number
   let svgh: number
   if (aspectRatio < boxar) {
-    svgh = boxh - 50
+    svgh = boxh - 65
     svgw = Math.floor(svgh * aspectRatio)
   } else {
-    svgw = boxw - 50
+    svgw = boxw - 65
     svgh = Math.floor(svgw / aspectRatio)
   }
   const Viewer = useRef(null)
@@ -97,7 +100,23 @@ const SVGPanZoom: React.FunctionComponent<SVGPanZoomProps> = props => {
   // console.log(`re-render viewer ${boxw} ${boxh} ${svgw} ${svgh} ${svgw / w}`)
   if (load && hastElems) {
     return (
-      <UncontrolledSVGPanZoom width={svgw} height={svgh} ref={Viewer}>
+      <UncontrolledSVGPanZoom
+        width={svgw}
+        height={svgh}
+        ref={Viewer}
+        tool={'pan' as ToolType} // ToolType.TOOL_PAN
+        miniatureProps={{
+          position: lg ? ('bottom' as PositionType) : ('none' as PositionType),
+          height: 120,
+          width: 120 * aspectRatio,
+        }}
+        toolbarProps={{
+          position: 'bottom' as PositionType, // PositionType.POSITION_RIGHT,
+          // SVGAlignX: 'right' as SVGAlignXType, // SVGAlignXType.ALIGN_RIGHT,
+          // SVGAlignY: 'bottom' as SVGAlignYType, // SVGAlignYType.ALIGN_BOTTOM,
+          activeToolColor: '#cc3f3f',
+        }}
+      >
         <svg viewBox={viewBox}>{hastElems}</svg>
       </UncontrolledSVGPanZoom>
     )
@@ -145,6 +164,7 @@ const CustomSvg: React.FunctionComponent<CustomSvgProps> = props => {
       {captions ? (
         <div className={classes.paper}>
           <Typography align="center" variant="subtitle2">
+            <br />
             {renderHtml(
               title ||
                 path

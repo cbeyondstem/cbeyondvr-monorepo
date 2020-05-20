@@ -3,21 +3,21 @@ import * as React from 'react'
 import {
   ReactSVGPanZoomProps,
   ReactSVGPanZoom,
-  TOOL_NONE,
+  ToolType,
 } from 'react-svg-pan-zoom'
 
 const { useState, useEffect } = React
 
 export const UncontrolledSVGPanZoom = React.forwardRef(
   (props: ReactSVGPanZoomProps, ref: React.RefObject<ReactSVGPanZoom>) => {
-    const { width, height, ...others } = props
+    const { width, height, tool, ...others } = props
     const [state, setState] = useState({
       value: { viewerWidth: width, viewerHeight: height },
-      tool: TOOL_NONE,
+      tool,
     })
     const Viewer = ref
-    const changeTool = (tool: string) => {
-      setState({ value: state.value, tool })
+    const changeTool = (t: ToolType) => {
+      setState({ value: state.value, tool: t })
     }
 
     const changeValue = (value: { [name: string]: number }) => {
