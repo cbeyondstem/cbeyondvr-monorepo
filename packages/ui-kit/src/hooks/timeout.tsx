@@ -22,7 +22,9 @@ export const useTimeout = (
 
   useEffect(
     () => {
-      timeoutId = setTimeout(callback, timeout)
+      if (timeout !== null) {
+        timeoutId = setTimeout(callback, timeout)
+      }
       return cancel
     },
     persistRenders ? [] : [callback, timeout]

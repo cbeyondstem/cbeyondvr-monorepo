@@ -4,51 +4,23 @@ import { Container, Box, useMediaQuery } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
-import { UncontrolledReactSVGPanZoom } from 'react-svg-pan-zoom'
 import { parse as svgParse, HASTElementProps } from 'svg-parser'
+import { UncontrolledSVGPanZoom } from './UncontrolledSvgPanZoom'
+import { useHtmlAST } from '../../services'
 import { SvgProps, hastParse } from '../../components/content/AllSvg'
+import { useTimeout } from '../../hooks/timeout'
+
+import svgLoading from './spinning-circles'
 
 interface SVGPanZoomProps {
-  content: string
-  viewBox: string
   boxw: number
   boxh: number
   boxar: number
   load: boolean
+  svg: SvgProps
 }
 
-const svgLoading = (
-  <svg
-    version="1.1"
-    id="L3"
-    x="0px"
-    y="0px"
-    viewBox="0 0 100 100"
-    enableBackground="new 0 0 0 0"
-  >
-    <circle
-      fill="none"
-      stroke="#fff"
-      strokeWidth="4"
-      cx="50"
-      cy="50"
-      r="44"
-      style={{ opacity: 0.5 }}
-    />
-    {/* <circle fill="#fff" stroke="#e74c3c" strokeWidth="3" cx="8" cy="54" r="6">
-      <animateTransform
-        attributeName="transform"
-        dur="2s"
-        type="rotate"
-        from="0 50 48"
-        to="360 50 52"
-        repeatCount="indefinite"
-      />
-    </circle> */}
-  </svg>
-)
-
-const { useRef, useEffect } = React
+const { useRef, useState, useEffect } = React
 
 const useStyles = makeStyles(theme => {
   const color =
@@ -91,18 +63,14 @@ const useStyles = makeStyles(theme => {
   }
 })
 const SVGPanZoom: React.FunctionComponent<SVGPanZoomProps> = props => {
-  const { content, viewBox, boxw, boxh, boxar, load } = props
+  const { boxw, boxh, boxar, load, svg: svgp } = props
+  const { viewBox } = svgp
   const [s, e, w, h] = viewBox.match(/[\d.]+/g).map(Number)
 
-  let hastElems = null
-  if (load) {
-    // hastElems = React.useMemo(() => {
-    //   const hast: HASTElementProps = svgParse(content)
-    //   return hastParse(hast.children[0].children)
-    // }, [content])
-    const hast: HASTElementProps = svgParse(content)
-    hastElems = hastParse(hast.children[0].children)
-  }
+  // const hastElems = React.useMemo(() => {
+  //   return hastParse(svgp.hast.children[0].children)
+  // }, [svgp.hast])
+  const [hastElems, fetch] = useHtmlAST(svgp)
   const aspectRatio = w / h
   let svgw: number
   let svgh: number
@@ -115,22 +83,26 @@ const SVGPanZoom: React.FunctionComponent<SVGPanZoomProps> = props => {
   }
   const Viewer = useRef(null)
   useEffect(() => {
-    console.log(`fit to viewer ${boxw} ${boxh} ${svgw} ${svgh}`)
     if (Viewer.current) {
+      // console.log(`fit to viewer ${boxw} ${boxh} ${svgw} ${svgh} ${svgw / w}`)
       Viewer.current.fitToViewer('center', 'center')
     }
-  }, [boxw, load])
-  return (
-    <div>
-      {load ? (
-        <UncontrolledReactSVGPanZoom width={svgw} height={svgh} ref={Viewer}>
-          <svg viewBox={viewBox} width={svgw} height={svgh}>
-            {hastElems}
-          </svg>
-        </UncontrolledReactSVGPanZoom>
-      ) : null}
-    </div>
-  )
+  }, [svgw, hastElems, load])
+
+  useEffect(() => {
+    if (load) {
+      fetch()
+    }
+  }, [load])
+  // console.log(`re-render viewer ${boxw} ${boxh} ${svgw} ${svgh} ${svgw / w}`)
+  if (load && hastElems) {
+    return (
+      <UncontrolledSVGPanZoom width={svgw} height={svgh} ref={Viewer}>
+        <svg viewBox={viewBox}>{hastElems}</svg>
+      </UncontrolledSVGPanZoom>
+    )
+  }
+  return svgLoading
 }
 interface CustomSvgProps extends SvgProps {
   boxw: number
@@ -144,17 +116,7 @@ interface CustomSvgProps extends SvgProps {
 }
 const CustomSvg: React.FunctionComponent<CustomSvgProps> = props => {
   const containerAspectRatio = 1.5
-  const {
-    boxw,
-    captions,
-    renderHtml,
-    load,
-    caption,
-    title,
-    path,
-    content,
-    viewBox,
-  } = props
+  const { boxw, captions, renderHtml, load, caption, title, path } = props
   const boxh = Math.floor(boxw / containerAspectRatio)
   let captionText: string = null
   if (captions) {
@@ -167,7 +129,7 @@ const CustomSvg: React.FunctionComponent<CustomSvgProps> = props => {
     <Container className={classes.imgContainer}>
       <Box
         className={classes.flex}
-        minWidth={boxw}
+        width={boxw}
         height={boxh}
         justifyContent="center"
         alignItems="center"
@@ -176,9 +138,8 @@ const CustomSvg: React.FunctionComponent<CustomSvgProps> = props => {
           boxw={boxw}
           boxh={boxh}
           boxar={containerAspectRatio}
-          content={content}
-          viewBox={viewBox}
           load={load}
+          svg={props as SvgProps}
         />
       </Box>
       {captions ? (
@@ -216,7 +177,9 @@ function imagePropsAreEqual(
     prevProps.path === nextProps.path &&
     prevProps.boxw === nextProps.boxw &&
     prevProps.load === nextProps.load
-  // console.log(`imagePropsAreEqual ${nextProps.path} res=${res}`)
+  // if (!res) {
+  //   console.log(`imagePropsAre NOT Equal ${nextProps.path} res=${res}`)
+  // }
   return res
 }
 export const SvgLazy = React.memo(CustomSvg, imagePropsAreEqual)

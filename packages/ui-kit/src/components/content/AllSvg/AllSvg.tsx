@@ -14,7 +14,8 @@ export interface SvgProps {
   title?: string
   caption?: string
   Svg: (p: React.SVGProps<SVGSVGElement>) => JSX.Element
-  content: string
+  hast: HASTElementProps
+  hastElems: React.ReactNode
 }
 export interface AllSvgProps {
   svgByPath: { [path: string]: SvgProps }
@@ -110,7 +111,8 @@ export const allSvgQueryRender: (
       Svg,
       title,
       caption,
-      content,
+      hast,
+      hastElems: null, // hastParse(hast.children[0].children),
     }
   })
   return (

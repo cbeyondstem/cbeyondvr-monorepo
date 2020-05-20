@@ -83,3 +83,5 @@ export {
   LazyImageProps,
   LazyImage,
 } from './components/ui/LazyImage'
+
+export { UseAllSvgResponse, useAllSvgService } from './services'

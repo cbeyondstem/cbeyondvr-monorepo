@@ -174,11 +174,18 @@ export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => 
   const noop = () => null as React.ReactChild[]
   const [playing, togglePlaying] = React.useState(autoplay)
   const [slideIndex, setSlideIndex] = React.useState(0)
-  const [slideLoads, setSlideLoads] = React.useState({ 0: true, 1: true })
+  const [slideLoads, setSlideLoads] = React.useState({})
 
   const onPlayButton = () => {
     togglePlaying(!playing)
   }
+
+  // load first two slides after first render
+  useTimeout(
+    () => setSlideLoads({ ...slideLoads, 0: true, 1: true }),
+    _.get(slideLoads, 0, false) ? null : 50
+  )
+
   const onChange = (index: number, item: React.ReactNode) => {
     setSlideIndex(index)
     setSlideLoads({ ...slideLoads, [index + 1]: true })
