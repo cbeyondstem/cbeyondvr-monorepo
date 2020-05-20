@@ -18,12 +18,8 @@ import PauseIcon from '@material-ui/icons/Pause'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 
 import { useTimeout } from '../../hooks/timeout'
-import {
-  AllSvgConsumer,
-  AllSvgProps,
-  SvgProps,
-  hastParse,
-} from '../../components/content/AllSvg'
+import { SvgProps } from '../../components/content/AllSvg'
+import { useAllSvgService } from '../../services'
 import { SvgLazy } from './SvgLazy'
 
 const { useState, useEffect } = React
@@ -233,66 +229,61 @@ export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => 
       }
     }, 2000)
   }
+  const [svgByPath] = useAllSvgService()
+  let selectedSvgList: SvgProps[]
+  const svgList = svgByPath ? Object.values(svgByPath) : []
+  if (path) {
+    selectedSvgList = svgList.filter(
+      (svg: SvgProps) => svg.path.search(path) > -1
+    )
+  } else {
+    selectedSvgList = svgList
+  }
+  let sortedViewSvgList: SvgProps[] = []
+  if (imgList) {
+    imgList.forEach(imgName => {
+      const entry = _.find(
+        selectedSvgList,
+        svg => imgName === svg.path.split('/').slice(-1)[0]
+      )
+      if (entry) {
+        sortedViewSvgList.push(entry)
+      }
+    })
+  } else {
+    sortedViewSvgList = selectedSvgList
+  }
   return (
-    <AllSvgConsumer>
-      {({ svgByPath }: AllSvgProps) => {
-        let selectedSvgList: SvgProps[]
-        const svgList = Object.values(svgByPath)
-        if (path) {
-          selectedSvgList = svgList.filter(
-            (svg: SvgProps) => svg.path.search(path) > -1
-          )
-        } else {
-          selectedSvgList = svgList
-        }
-        let sortedViewSvgList: SvgProps[] = []
-        if (imgList) {
-          imgList.forEach(imgName => {
-            const entry = _.find(
-              selectedSvgList,
-              svg => imgName === svg.path.split('/').slice(-1)[0]
-            )
-            if (entry) {
-              sortedViewSvgList.push(entry)
-            }
-          })
-        } else {
-          sortedViewSvgList = selectedSvgList
-        }
-        return (
-          <Container className={classes.root}>
-            {mediaWidth !== null ? (
-              <CarouselBase
-                // renderThumbs={thumb ? renderThumbs : noop}
-                renderIndicator={noop}
-                renderArrowNext={renderArrowNext}
-                swipeable={false}
-                showThumbs={false}
-                interval={2000}
-                transitionTime={350}
-                onChange={onChange}
-                selectedItem={slideIndex}
-                infiniteLoop
-              >
-                {sortedViewSvgList.map((image: SvgProps, idx) => (
-                  <SvgLazy
-                    key={uid(image.id)}
-                    boxw={boxw}
-                    captions={captions}
-                    renderHtml={renderHtml}
-                    load={_.get(slideLoads, idx, false)}
-                    // eslint-disable-next-line react/jsx-props-no-spreading
-                    {...image}
-                  />
-                ))}
-              </CarouselBase>
-            ) : (
-              <div />
-            )}
-          </Container>
-        )
-      }}
-    </AllSvgConsumer>
+    <Container className={classes.root}>
+      {mediaWidth !== null ? (
+        <CarouselBase
+          // renderThumbs={thumb ? renderThumbs : noop}
+          renderIndicator={noop}
+          renderArrowNext={renderArrowNext}
+          swipeable={false}
+          showThumbs={false}
+          interval={2000}
+          transitionTime={350}
+          onChange={onChange}
+          selectedItem={slideIndex}
+          infiniteLoop
+        >
+          {sortedViewSvgList.map((image: SvgProps, idx) => (
+            <SvgLazy
+              key={uid(image.id)}
+              boxw={boxw}
+              captions={captions}
+              renderHtml={renderHtml}
+              load={_.get(slideLoads, idx, false)}
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...image}
+            />
+          ))}
+        </CarouselBase>
+      ) : (
+        <div />
+      )}
+    </Container>
   )
 }
 

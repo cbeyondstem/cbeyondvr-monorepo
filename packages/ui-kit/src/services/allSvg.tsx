@@ -38,10 +38,11 @@ export type SvgTitleByPath = {
 export class AllSvgClass {
   private svgByPath = new BehaviorSubject<SvgByPath>({})
 
+  private currentSvgByPath: SvgByPath = {}
+
   public svgByPath$ = this.svgByPath.asObservable()
 
   setQuery(query: Query, svgTitleByPath: SvgTitleByPath) {
-    const svgByPath: SvgByPath = {}
     query.allSvg.edges.forEach((edge: FileEdge) => {
       const id = _.get(edge, 'node.id', null)
       // note on the path field:
@@ -65,7 +66,7 @@ export class AllSvgClass {
           </svg>
         )
       }
-      svgByPath[`${sourceInstanceName}/${path}`] = {
+      this.currentSvgByPath[`${sourceInstanceName}/${path}`] = {
         id,
         path,
         sourceInstanceName,
@@ -77,6 +78,6 @@ export class AllSvgClass {
         hastElems: null,
       }
     })
-    this.svgByPath.next(svgByPath)
+    this.svgByPath.next(this.currentSvgByPath)
   }
 }

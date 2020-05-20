@@ -4,7 +4,9 @@ import * as _ from 'lodash'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import { useAllSvgService } from '@cbeyond/ui-kit'
+import { source } from 'react-uid/dist/es5/context'
 import { imageInfoDict } from '../../../tools/image-list'
+import { Query } from '../../types/gatsby-graphql-types'
 
 export const query = graphql`
   fragment SvgInfo on svgEdge {
@@ -17,20 +19,11 @@ export const query = graphql`
   }
 `
 
-export function useAllSvgQuery() {
+export function useAllSvgQuery(data: Query) {
   const [ready, setReady] = React.useState(false)
   const [svgByPath, setQueryResult] = useAllSvgService()
 
   const doFetch = React.useCallback(() => {
-    const data = useStaticQuery(graphql`
-      query {
-        allSvg {
-          edges {
-            ...SvgInfo
-          }
-        }
-      }
-    `)
     setReady(true)
     const svgTitleByPath: { [path: string]: { title?: string; caption?: string } } = {}
     _.forIn(imageInfoDict, (imgDict, category) => {
@@ -47,10 +40,26 @@ export function useAllSvgQuery() {
   }, [])
 
   React.useEffect(() => {
-    if (!ready) {
+    if (!ready && data) {
       doFetch()
     }
   }, [ready])
 
   return [svgByPath]
+}
+
+export const AllSvgQuery: React.FunctionComponent = () => {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        allSvg {
+          edges {
+            ...SvgInfo
+          }
+        }
+      }
+    `
+  )
+  useAllSvgQuery(data)
+  return null
 }

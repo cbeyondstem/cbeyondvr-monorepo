@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react'
 import * as _ from 'lodash'
-import { AllSvgConsumer } from '../AllSvg'
+import { useAllSvgService } from '../../../services'
 
 export interface SiteConfigProviderProps {
   title: string
@@ -38,23 +38,22 @@ export const GetSvg: (
   if (!['faviconSvg', 'logo', 'icon'].includes(key)) {
     return null
   }
-  return props => (
-    <SiteConfigConsumer>
-      {(cfg: SiteConfigProviderProps) => (
-        <AllSvgConsumer>
-          {({ svgByPath }) => {
-            let src = _.get(cfg, key, `unknown key ${key}`)
-            src = src.replace('./', '').replace('src/', '')
-            if (!(src in svgByPath)) {
-              return <em>{`<Svg src=${src}/> not found`}</em>
-            }
-            const { Svg: SvgRaw } = svgByPath[src]
-            return <SvgRaw {...props} />
-          }}
-        </AllSvgConsumer>
-      )}
-    </SiteConfigConsumer>
-  )
+  return props => {
+    const [svgByPath = {}] = useAllSvgService()
+    return (
+      <SiteConfigConsumer>
+        {(cfg: SiteConfigProviderProps) => {
+          let src = _.get(cfg, key, `unknown key ${key}`)
+          src = src.replace('./', '').replace('src/', '')
+          if (!(src in svgByPath)) {
+            return <em>{`<Svg src=${src}/> not found`}</em>
+          }
+          const { Svg: SvgRaw } = svgByPath[src]
+          return <SvgRaw {...props} />
+        }}
+      </SiteConfigConsumer>
+    )
+  }
 }
 const Get: (
   key: string

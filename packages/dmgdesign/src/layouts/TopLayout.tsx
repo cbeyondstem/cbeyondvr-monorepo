@@ -3,8 +3,8 @@
 import * as React from 'react'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { AllMdxQueryProvider } from '../gatsby/gatsby-gql/AllMdxQueryProvider'
-import { AllSvgQueryProvider } from '../gatsby/gatsby-gql/AllSvgQueryProvider'
 import { AllImgQueryProvider } from '../gatsby/gatsby-gql/AllImgQueryProvider'
+import { AllSvgQuery } from '../gatsby/gatsby-gql/AllSvgQuery'
 
 import { SiteConfigQueryProvider } from '../gatsby/gatsby-gql/SiteConfigQueryProvider'
 import theme from './theme'
@@ -34,11 +34,10 @@ export const TopLayout = (props: TopLayoutProps) => {
   const { children } = props
   return (
     <ThemeProvider theme={theme}>
+      <AllSvgQuery />
       <SiteConfigQueryProvider>
         <AllMdxQueryProvider>
-          <AllSvgQueryProvider>
-            <AllImgQueryProvider>{children}</AllImgQueryProvider>
-          </AllSvgQueryProvider>
+          <AllImgQueryProvider>{children}</AllImgQueryProvider>
         </AllMdxQueryProvider>
       </SiteConfigQueryProvider>
     </ThemeProvider>

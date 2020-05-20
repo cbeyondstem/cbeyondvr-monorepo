@@ -4,7 +4,7 @@ import { PageProps, CarouselSvgView } from '@cbeyond/ui-kit'
 import { Layout } from '../layouts'
 import { orderedImages } from '../../tools/image-list'
 
-export const MyPage = (props: PageProps) => {
+export const MyPage: React.FunctionComponent<PageProps> = props => {
   const { location } = props
   return (
     <Layout location={location} title="ARCHITECTURE">
