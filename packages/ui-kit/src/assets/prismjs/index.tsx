@@ -1,5 +1,5 @@
 // import { grey, red } from '@material-ui/core/colors'
-import { createStyles, Theme } from '@material-ui/core/styles'
+import { Theme } from '@material-ui/core/styles'
 
 const prismTheme = (t: Theme) => ({
   fontWeights: {
@@ -30,7 +30,7 @@ const prismTheme = (t: Theme) => ({
 
 export const prismToken = (t: Theme) => {
   const p = prismTheme(t)
-  return createStyles({
+  return {
     // PrismJS syntax highlighting token styles
     // https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/
     '@global': {
@@ -82,12 +82,12 @@ export const prismToken = (t: Theme) => {
         color: p.colors.invisibles,
       },
     },
-  })
+  }
 }
 
 export const gatsbyHighlightLanguageBadges = (t: Theme) => {
   const p = prismTheme(t)
-  return createStyles({
+  return {
     '@global': {
       ".gatsby-highlight pre[class*='language-']": {
         border: 0,
@@ -198,12 +198,12 @@ export const gatsbyHighlightLanguageBadges = (t: Theme) => {
         background: `#E8BD36`,
       },
     },
-  })
+  }
 }
 
 export const gatsbyHighlight = (t: Theme) => {
   const p = prismTheme(t)
-  return createStyles({
+  return {
     '@global': {
       // gatsby-remark-prismjs styles
       '.gatsby-highlight': {
@@ -231,5 +231,5 @@ export const gatsbyHighlight = (t: Theme) => {
         display: `block`,
       },
     },
-  })
+  }
 }

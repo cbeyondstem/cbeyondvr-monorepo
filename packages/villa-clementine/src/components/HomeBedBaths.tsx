@@ -73,7 +73,7 @@ export const HomeBedBaths: React.FunctionComponent = props => {
       </div>
       <div className={classes.svgWithText}>
         <SqftIcon width={iconSize} height={iconSize} viewBox="0 0 130 130" />
-        <span>140m</span>
+        <span>144m</span>
         <sup>2</sup>
       </div>
     </div>

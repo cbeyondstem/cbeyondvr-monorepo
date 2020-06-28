@@ -3,14 +3,14 @@
 import * as React from 'react'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { AllMdxQueryProvider } from '../gatsby/gatsby-gql/AllMdxQueryProvider'
-import { AllSvgQueryProvider } from '../gatsby/gatsby-gql/AllSvgQueryProvider'
+import { AllSvgQuery } from '../gatsby/gatsby-gql/AllSvgQuery'
 import { AllImgQueryProvider } from '../gatsby/gatsby-gql/AllImgQueryProvider'
 
 import { SiteConfigQueryProvider } from '../gatsby/gatsby-gql/SiteConfigQueryProvider'
 import theme from './theme'
 
 // custom typefaces
-import 'typeface-roboto'
+// import 'typeface-roboto'
 import '@cbeyond/ui-kit/dist/assets/prismjs/prism_clear.css'
 import '@cbeyond/ui-kit/dist/assets/carousel/image-gallery.css'
 
@@ -33,11 +33,10 @@ export const TopLayout = (props: TopLayoutProps) => {
   const { children } = props
   return (
     <ThemeProvider theme={theme}>
+      <AllSvgQuery />
       <SiteConfigQueryProvider>
         <AllMdxQueryProvider>
-          <AllSvgQueryProvider>
-            <AllImgQueryProvider>{children}</AllImgQueryProvider>
-          </AllSvgQueryProvider>
+          <AllImgQueryProvider>{children}</AllImgQueryProvider>
         </AllMdxQueryProvider>
       </SiteConfigQueryProvider>
     </ThemeProvider>

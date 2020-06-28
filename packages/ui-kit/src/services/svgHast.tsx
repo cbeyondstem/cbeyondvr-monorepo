@@ -62,7 +62,7 @@ const hastGenerate = (svg: SvgProps) => {
  *
  * The BehaviorSubject stores the more recent, last emitted value...
  * We also use `useObservable(service.name$)` hook to watch
- * for new 'name' values
+ * for new 'hast' values
  *
  * BTW - this is called a 'push-based' API
  */

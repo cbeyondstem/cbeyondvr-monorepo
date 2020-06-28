@@ -42,6 +42,10 @@ export const mdxLayoutStyles = makeStyles(theme => ({
   em: {
     backgroundColor: red[100],
   },
+  hr: {
+    marginTop: '1rem',
+    marginBottom: '1rem',
+  },
   li: {
     '&.spanSimple > span::before': {
       content: caretRight,
@@ -66,7 +70,7 @@ export const mdxLayoutStyles = makeStyles(theme => ({
 
 const StyledElem: (
   classes: Record<
-    'gridList' | 'table' | 'paper' | 'header' | 'em' | 'li',
+    'gridList' | 'table' | 'paper' | 'header' | 'em' | 'li' | 'hr',
     string
   >,
   el: React.ElementType,
@@ -131,6 +135,9 @@ const StyledElem: (
       <em className={classes.em}>{p.children}</em>
     )
   }
+  if (el === 'hr') {
+    return () => <hr className={classes.hr} />
+  }
   if (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(`${el}`)) {
     return (p: React.ComponentPropsWithRef<'h1'>) => (
       <Box p={2} id={_.kebabCase(`${p.children}`) + bookmarkIdx}>
@@ -148,7 +155,7 @@ const StyledElem: (
 
 export const MDXLayoutComponents = (
   classes: Record<
-    'gridList' | 'table' | 'paper' | 'header' | 'em' | 'li',
+    'gridList' | 'table' | 'paper' | 'header' | 'em' | 'li' | 'hr',
     string
   >
 ) => ({
@@ -162,6 +169,7 @@ export const MDXLayoutComponents = (
   ol: StyledElem(classes, 'ol'),
   ul: StyledElem(classes, 'ul'),
   li: StyledElem(classes, 'li'),
+  hr: StyledElem(classes, 'hr'),
   pre: StyledElem(classes, 'pre'),
   em: StyledElem(classes, 'em'),
 

@@ -25,7 +25,7 @@ const theme = createMuiTheme({
 
 const gh = gatsbyHighlight(theme)
 const gl = gatsbyHighlightLanguageBadges(theme)
-const scroll = createStyles({
+const scroll = {
   '@global': {
     '*::-webkit-scrollbar': {
       width: theme.spacing(1),
@@ -62,7 +62,7 @@ const scroll = createStyles({
       }
     }
   }
-})
+}
 
 const themeFinal = createMuiTheme({
   ...theme,

@@ -79,6 +79,16 @@ const bateau = {
 //   GPSLongitude: '122 25 14.7',
 //   GPSLongitudeRef: 'W'
 // }
+const coleValley2 = {
+  date: '2009',
+  address: `9'x30' Wall Installation - Private Home, San Francisco`,
+  city: 'San Francisco',
+  state: 'CA',
+  GPSLatitude: '37 45 56.2',
+  GPSLatitudeRef: 'N',
+  GPSLongitude: '122 27 05.1',
+  GPSLongitudeRef: 'W'
+}
 const coleValley = {
   date: '2009',
   address: 'Private Home, San Francisco',
@@ -165,6 +175,14 @@ const images = {
     _0003_lit: {
       title: 'RECEPTION DESK',
       location: nextworld
+    },
+    Wall: {
+      title: `9'x30' Wall Installation`,
+      location: coleValley2
+    },
+    Wall_orig: {
+      title: `9'x30' Wall Installation`,
+      location: coleValley2
     }
   },
   architecture: {

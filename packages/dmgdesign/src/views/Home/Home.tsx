@@ -82,7 +82,7 @@ export const Home: React.FunctionComponent<React.ComponentPropsWithRef<'div'>> =
             {[
               ['home/_0002_lit2.jpg', 'home/_0005_lit.jpg'],
               ['interiors/_PP_5178.jpg', 'interiors/_0001_lit-copy-4'],
-              ['interiors/WallPanorama.jpg']
+              ['home/Wall_orig.jpg']
             ].map((pathList, pathIdx) => {
               const selectedImages: CarouselImgProps[] = []
               pathList.forEach(path => {

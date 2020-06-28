@@ -55,7 +55,9 @@ export const BackgroundImg: React.FunctionComponent = props => {
             // backgroundColor={`#040e18`}
           >
             <div>
-              Maison de vacances à la Roquette/Siagne (06)
+              <div>Villa à vendre 145m2 sur terrain de 1000 m²</div>
+              <div>Séjour, Salon, 3 chambres et studio indépendant</div>
+              <div>La Roquette sur Siagne</div>
               <HomeBedBaths />
             </div>
           </BackgroundImage>

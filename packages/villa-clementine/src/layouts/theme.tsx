@@ -1,5 +1,5 @@
 // import { red } from '@material-ui/core/colors'
-import { createMuiTheme, createStyles } from '@material-ui/core/styles'
+import { createMuiTheme } from '@material-ui/core/styles'
 import { gatsbyHighlight, gatsbyHighlightLanguageBadges } from '@cbeyond/ui-kit'
 // consult https://material.io/resources/color to create the color palette
 const theme = createMuiTheme({
@@ -29,7 +29,7 @@ const theme = createMuiTheme({
 
 const gh = gatsbyHighlight(theme)
 const gl = gatsbyHighlightLanguageBadges(theme)
-const scroll = createStyles({
+const scroll = {
   '@global': {
     '*::-webkit-scrollbar': {
       width: theme.spacing(1),
@@ -66,7 +66,7 @@ const scroll = createStyles({
       }
     }
   }
-})
+}
 
 const themeFinal = createMuiTheme({
   ...theme,

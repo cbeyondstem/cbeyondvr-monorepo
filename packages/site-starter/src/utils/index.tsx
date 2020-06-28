@@ -1,0 +1,1 @@
+export { sbDecorator } from './sbDecorator'
