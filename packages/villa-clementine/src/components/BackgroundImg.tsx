@@ -7,6 +7,7 @@ import BackgroundImage from 'gatsby-background-image'
 import { Chip } from '@material-ui/core'
 
 import EuroIcon from '@material-ui/icons/Euro'
+import withWidth, { isWidthDown, WithWidthProps } from '@material-ui/core/withWidth'
 import { HomeBedBaths } from './HomeBedBaths'
 
 const useStyles = makeStyles(theme => ({
@@ -26,12 +27,23 @@ const useStyles = makeStyles(theme => ({
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      fontSize: '150% !important'
+      fontSize: '200% !important',
+      [theme.breakpoints.down('md')]: {
+        fontSize: '150% !important'
+      },
+      '& svg': {
+        paddingRight: theme.spacing(0.5),
+        bottom: '-8px',
+        [theme.breakpoints.down('md')]: {
+          bottom: '-4px'
+        },
+        position: 'relative'
+      }
     }
   }
 }))
 
-export const BackgroundImg: React.FunctionComponent = props => {
+const BackgroundImgBase: React.FunctionComponent<WithWidthProps> = props => {
   const classes = useStyles(props)
 
   return (
@@ -59,11 +71,11 @@ export const BackgroundImg: React.FunctionComponent = props => {
           >
             <div>
               <div>La Roquette sur Siagne</div>
-              <div>Villa 145 m2 avec studio indépendant</div>
+              <div>Villa 144 m2 avec studio indépendant</div>
               <div>
                 <span>
                   <span>720 000</span>
-                  <EuroIcon fontSize="small" />
+                  <EuroIcon fontSize={isWidthDown('md', props.width) ? 'small' : 'large'} />
                 </span>
               </div>
               <HomeBedBaths />
@@ -74,3 +86,5 @@ export const BackgroundImg: React.FunctionComponent = props => {
     />
   )
 }
+
+export const BackgroundImg = withWidth()(BackgroundImgBase)
