@@ -4,6 +4,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import { graphql, StaticQuery } from 'gatsby'
 
 import BackgroundImage from 'gatsby-background-image'
+import { Chip } from '@material-ui/core'
+
+import EuroIcon from '@material-ui/icons/Euro'
 import { HomeBedBaths } from './HomeBedBaths'
 
 const useStyles = makeStyles(theme => ({
@@ -55,9 +58,14 @@ export const BackgroundImg: React.FunctionComponent = props => {
             // backgroundColor={`#040e18`}
           >
             <div>
-              <div>Villa à vendre 145m2 sur terrain de 1000 m²</div>
-              <div>Séjour, Salon, 3 chambres et studio indépendant</div>
               <div>La Roquette sur Siagne</div>
+              <div>Villa 145 m2 avec studio indépendant</div>
+              <div>
+                <span>
+                  <span>720 000</span>
+                  <EuroIcon fontSize="small" />
+                </span>
+              </div>
               <HomeBedBaths />
             </div>
           </BackgroundImage>

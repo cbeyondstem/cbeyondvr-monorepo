@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import desktopImage from '../assets/stories/themePic.jpg'
-import mobileImage from '../assets/stories/BeanToBar.jpg'
+import desktopImage from '../../assets/stories/themePic.jpg'
+import mobileImage from '../../assets/stories/BeanToBar.jpg'
 
 const useWindowWidth = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
