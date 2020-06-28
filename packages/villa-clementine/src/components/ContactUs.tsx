@@ -48,7 +48,7 @@ export const ContactUs: React.FunctionComponent<React.ComponentPropsWithRef<'div
               }}
               startIcon={<CallIcon />}
             >
-              +66 6 07 06 88 56 (Gérard Lainé)
+              +33 6 07 06 88 56 (Gérard Lainé)
             </Button>{' '}
             <Button
               variant="contained"
@@ -58,7 +58,7 @@ export const ContactUs: React.FunctionComponent<React.ComponentPropsWithRef<'div
               }}
               startIcon={<CallIcon />}
             >
-              +66 6 89 85 61 22 (Josette Lainé)
+              +33 6 89 85 61 22 (Josette Lainé)
             </Button>{' '}
           </Grid>
         </Grid>

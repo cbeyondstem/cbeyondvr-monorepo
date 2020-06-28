@@ -8,7 +8,7 @@ import { Home } from '../views/Home'
 export const MyPage = (props: PageProps) => {
   const { location } = props
   return (
-    <Layout location={location} title="PROCESS">
+    <Layout location={location} title="BLOG">
       <div>WORK IN PROGRESS</div>
     </Layout>
   )
