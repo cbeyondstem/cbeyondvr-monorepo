@@ -3,6 +3,8 @@ route: true
 title: Villa Clémentine
 ---
 
+import { Price } from '../components/Price'
+
 - Maison de 5 pièces plus un studio indépendant 145 m², orientée sud et ouest, sur un terrain de 1000 m².
 - Située à La Roquette sur Siagne, nichée sur les collines de la vallée de la Siagne (altitude 80 mètres), elle offre une vue panoramique sur la vallée de la Siagne, la mer et les collines du Tanneron.
 - Salon et salle à manger double exposition, avec grandes baies vitrées Terrasse couverte
@@ -12,12 +14,14 @@ title: Villa Clémentine
 - Piscine de 7,6 sur 3.8 m.
 - Studio indépendant avec cuisine équipée, rangements et salle d’eau WC, grande terrasse
 
+<Price />
+<hr />
 <CarouselView
-  images={[
-    'exterieur_jardin_01.jpg',
-    'exterieur_jardin_02.jpg',
-    'exterieur_succulents.jpg',
-    'piscine_02.jpg',
-    'vue_mer.jpg'
-  ]}
+images={[
+'exterieur_jardin_01.jpg',
+'exterieur_jardin_02.jpg',
+'exterieur_succulents.jpg',
+'piscine_02.jpg',
+'vue_mer.jpg'
+]}
 />
