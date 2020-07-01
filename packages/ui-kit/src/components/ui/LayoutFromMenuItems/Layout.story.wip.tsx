@@ -3,8 +3,7 @@ import * as React from 'react'
 
 import { StoryFn, StoryContext } from '@storybook/addons'
 
-/// <reference path="../../types/paths.macro.d.ts"/>
-import { base } from 'kit/@types/paths.macro'
+import { base } from 'paths.macro'
 // import { action } from '@storybook/addon-actions'
 import { DragAStar } from './DragAStar'
 import { withStage } from '../utils'

@@ -18,12 +18,10 @@
     "javascript",
     "javascriptreact",
     {
-      "language": "typescript",
-      "autoFix": true
+      "language": "typescript"
     },
     {
-      "language": "typescriptreact",
-      "autoFix": true
+      "language": "typescriptreact"
     }
   ]
 }

@@ -1,0 +1,1 @@
+export { BackgroundImgResponsive } from './BackgroundImgResponsive'
