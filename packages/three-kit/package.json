@@ -8,6 +8,7 @@
   "files": [
     "src"
   ],
+  "private": true,
   "scripts": {
     "build": "yarn run clean &&  yarn run compile && yarn run copy-assets && yarn run copy-external-typings",
     "copy-assets": "cp -rv src/assets dist/",

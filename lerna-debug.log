@@ -1,7 +1,0 @@
-0 silly argv { _: [ 'bootstrap' ],
-0 silly argv   lernaVersion: '3.18.3',
-0 silly argv   '$0':
-0 silly argv    'C:\\Users\\Armelle Laine\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\lerna\\cli.js' }
-1 notice cli v3.18.3
-2 verbose rootPath C:\depot\cbeyond\cbeyondvr-monorepo
-3 error

@@ -3,6 +3,7 @@
   "description": "Bean to Bar Chocolate Maker",
   "version": "0.1.0",
   "author": "Henry Dehan and Eloi Devanneaux",
+  "private": true,
   "scripts": {
     "clean": "rimraf public .cache dist && rm -rf tsconfig.build.tsbuildinfo",
     "compile": "tsc -b tsconfig.build.json",

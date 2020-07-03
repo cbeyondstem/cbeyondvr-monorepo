@@ -8,6 +8,7 @@
   "files": [
     "src"
   ],
+  "private": true,
   "scripts": {
     "build": "yarn run gatsby build",
     "clean": "rimraf public .cache dist && rm -rf tsconfig.build.tsbuildinfo",

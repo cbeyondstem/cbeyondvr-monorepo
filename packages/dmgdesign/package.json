@@ -3,6 +3,7 @@
   "description": "DMG Design San-Francisco",
   "version": "0.1.0",
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
+  "private": true,
   "scripts": {
     "build": "yarn run gatsby build",
     "clean": "rimraf public .cache dist && rm -rf tsconfig.build.tsbuildinfo",
