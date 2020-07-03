@@ -1,7 +1,7 @@
 {
   "name": "@cbeyond/site-starter",
   "description": "CBeyondVR site-starter for explorable explanations",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
   "main": "dist/index",
   "types": "dist/index",

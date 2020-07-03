@@ -1,7 +1,7 @@
 {
   "name": "@cbeyond/blas",
   "description": "Bean to Bar Chocolate Maker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Henry Dehan and Eloi Devanneaux",
   "private": true,
   "scripts": {

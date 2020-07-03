@@ -1,7 +1,7 @@
 {
   "name": "@cbeyond/babylonjs-kit",
   "description": "CBeyondVR shared 3D components, based on babylon.js and react-babylonjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
   "main": "src/index",
   "types": "src/index",

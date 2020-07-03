@@ -1,7 +1,7 @@
 {
   "name": "@cbeyond/villa-clementine",
   "description": "Villa Clementine Photos",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Gerard Laine <gerard@cbeyondvr.com>",
   "main": "dist/index",
   "types": "dist/index",

@@ -1,7 +1,7 @@
 {
   "name": "@cbeyond/three-kit",
   "description": "CBeyondVR shared 3D components, based on three.js and react-three-fiber",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
   "main": "src/index",
   "types": "src/index",

@@ -1,7 +1,7 @@
 {
   "name": "@cbeyond/courouble",
   "description": "Courouble Design",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
   "private": true,
   "scripts": {
@@ -28,7 +28,7 @@
     "favicons/**/react": "^16.2.0"
   },
   "dependencies": {
-    "@cbeyond/site-starter": "^1.0.0",
+    "@cbeyond/site-starter": "^1.0.1",
     "@cbeyond/ui-kit": "^1.0.0",
     "@material-ui/core": "^4.5.2",
     "@material-ui/icons": "^4.5.1",

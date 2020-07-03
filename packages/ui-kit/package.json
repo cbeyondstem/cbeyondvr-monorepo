@@ -1,7 +1,7 @@
 {
   "name": "@cbeyond/ui-kit",
   "description": "CBeyondVR shared UI components",
-  "version": "1.0.1-alpha.241+92ef74f",
+  "version": "1.1.0",
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
   "main": "dist/index",
   "types": "dist/index",
