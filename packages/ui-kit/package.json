@@ -3,7 +3,7 @@
   "description": "CBeyondVR shared UI components",
   "version": "1.0.1-alpha.241+92ef74f",
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
-  "main": "src/index",
+  "main": "dist/index",
   "types": "src/index",
   "files": [
     "src"
