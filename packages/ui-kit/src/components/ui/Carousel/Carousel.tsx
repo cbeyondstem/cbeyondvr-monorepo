@@ -7,7 +7,7 @@ import { style } from 'typestyle'
 import * as csx from 'csx'
 import { ImageItemProps } from '../../../types/interfaces'
 import { ImageSharpFluid } from '../../../types/gatsby-graphql-types'
-import { SvgProps } from '../../content/AllSvg'
+import { SvgProps } from '../../providers/AllSvg'
 
 export interface CarouselImgProps {
   path: string

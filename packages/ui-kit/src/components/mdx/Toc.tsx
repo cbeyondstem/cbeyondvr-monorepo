@@ -4,7 +4,7 @@ import { uid } from 'react-uid'
 import { makeStyles } from '@material-ui/core/styles'
 import { List, ListItem, Typography } from '@material-ui/core'
 import { Link } from '../ui/Link'
-import { MdxProps } from '../content/AllMdx'
+import { MdxProps } from '../providers/AllMdx'
 
 const caretRight = '"\\25B8"'
 

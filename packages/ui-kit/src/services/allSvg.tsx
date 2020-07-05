@@ -4,7 +4,7 @@ import { parse as svgParse, HASTElementProps } from 'svg-parser'
 
 import { BehaviorSubject } from 'rxjs'
 import { FileEdge, Query } from '../types/gatsby-graphql-types'
-import { SvgProps } from '../components/content/AllSvg'
+import { SvgProps } from '../components/providers/AllSvg'
 import { hastParse } from './svgHast'
 
 /**

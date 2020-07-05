@@ -4,18 +4,26 @@ import * as React from 'react'
 import { uid } from 'react-uid'
 
 import { makeStyles, createStyles, withStyles } from '@material-ui/core/styles'
-import { Box, Paper, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core'
+import {
+  Box,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@material-ui/core'
 import red from '@material-ui/core/colors/red'
 
 const StyledTableCell = withStyles(theme =>
   createStyles({
     head: {
       backgroundColor: theme.palette.primary.main,
-      color: theme.palette.common.white
+      color: theme.palette.common.white,
     },
     body: {
-      fontSize: 14
-    }
+      fontSize: 14,
+    },
   })
 )(TableCell)
 
@@ -25,23 +33,23 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     marginTop: theme.spacing(3),
-    overflowX: 'auto'
+    overflowX: 'auto',
   },
   table: {
     minWidth: 700,
     '& > thead > tr > th': {
       borderLeftColor: theme.palette.grey[300],
-      borderLeftStyle: 'solid'
-    }
+      borderLeftStyle: 'solid',
+    },
   },
   row: {
     '& > td': {
       borderLeftColor: theme.palette.grey[300],
-      borderLeftStyle: 'solid'
+      borderLeftStyle: 'solid',
     },
     '& > td > ul > div': {
-      paddingLeft: '0px !important'
-    }
+      paddingLeft: '0px !important',
+    },
   },
   header: { color: theme.palette.primary.main },
   em: { backgroundColor: red[100] },
@@ -49,17 +57,19 @@ const useStyles = makeStyles(theme => ({
     '&:before': {
       content: whiteCircle,
       fontSize: 'x-small',
-      paddingRight: '8px'
+      paddingRight: '8px',
       // color: theme.palette.primary.main
-    }
-  }
+    },
+  },
 }))
 
 export interface FeatMapProps {
   children: React.ReactNode[]
 }
 
-export const FeatMap: React.FunctionComponent<FeatMapProps> = (props: FeatMapProps) => {
+export const FeatMap: React.FunctionComponent<FeatMapProps> = (
+  props: FeatMapProps
+) => {
   const classes = useStyles(props)
   const { children } = props
   let addAlert = false
@@ -84,14 +94,16 @@ export const FeatMap: React.FunctionComponent<FeatMapProps> = (props: FeatMapPro
         variantMdx.push(currentRow)
       } else {
         currentRow = ''
-        child.props.children.props.children.slice(1).forEach((c: React.ReactElement) => {
-          variantMdx.push(c)
-          if (typeof c === 'string') {
-            currentRow += c
-          } else {
-            currentRow += `${c.props.children}`
-          }
-        })
+        child.props.children.props.children
+          .slice(1)
+          .forEach((c: React.ReactElement) => {
+            variantMdx.push(c)
+            if (typeof c === 'string') {
+              currentRow += c
+            } else {
+              currentRow += `${c.props.children}`
+            }
+          })
         variantCategory = `${child.props.children.props.children[0].props.children}`
       }
 
@@ -186,7 +198,12 @@ export const FeatMap: React.FunctionComponent<FeatMapProps> = (props: FeatMapPro
   return (
     <Box p={2}>
       <Paper className={classes.root}>
-        {addAlert ? <em>Feature Map malformed: all text before the first second level header is ignored</em> : null}
+        {addAlert ? (
+          <em>
+            Feature Map malformed: all text before the first second level header
+            is ignored
+          </em>
+        ) : null}
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -199,7 +216,11 @@ export const FeatMap: React.FunctionComponent<FeatMapProps> = (props: FeatMapPro
             {rowNames.map((r, ridx) => (
               <TableRow key={uid(r, ridx)} className={classes.row}>
                 {colRawNames.map((c, cidx) => {
-                  return <StyledTableCell key={uid(c, cidx)}>{items[`[${r},${c}]`]}</StyledTableCell>
+                  return (
+                    <StyledTableCell key={uid(c, cidx)}>
+                      {items[`[${r},${c}]`]}
+                    </StyledTableCell>
+                  )
                 })}
               </TableRow>
             ))}

@@ -7,7 +7,7 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline'
 import {
   SiteConfigConsumer,
   SiteConfigProviderProps,
-} from '../../content/SiteConfig'
+} from '../../providers/SiteConfig'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

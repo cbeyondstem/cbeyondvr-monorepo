@@ -1,13 +1,11 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 import { uid } from 'react-uid'
-import { parse as svgParse, HASTElementProps } from 'svg-parser'
+import { HASTElementProps } from 'svg-parser'
 import { useObservable } from '@mindspace-io/react'
 
-import { BehaviorSubject, Observable, iif, of, defer, merge } from 'rxjs'
-import { shareReplay } from 'rxjs/operators'
-import { FileEdge, Query } from '../types/gatsby-graphql-types'
-import { SvgProps } from '../components/content/AllSvg'
+import { BehaviorSubject } from 'rxjs'
+import { SvgProps } from '../components/providers/AllSvg'
 
 export const hastParse = (elems: HASTElementProps[]) => {
   const hastElems: React.ReactNode[] = []

@@ -1,9 +1,7 @@
-[
-  {
-    "id": "Sample Example",
-    "bio": "",
-    "avatar": null,
-    "twitter": "@",
-    "github": "@"
-  }
-]
+{
+  "id": "Sample Example",
+  "bio": "",
+  "avatar": null,
+  "twitter": "@",
+  "github": "@"
+}

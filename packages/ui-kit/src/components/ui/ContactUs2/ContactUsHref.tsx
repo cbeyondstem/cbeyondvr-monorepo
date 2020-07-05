@@ -3,7 +3,7 @@ import * as React from 'react'
 import {
   SiteConfigConsumer,
   SiteConfigProviderProps,
-} from '../../content/SiteConfig'
+} from '../../providers/SiteConfig'
 
 export const ContactUsHref: React.FunctionComponent = props => {
   return (

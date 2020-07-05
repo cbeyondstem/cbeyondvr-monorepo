@@ -21,14 +21,14 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/pix_landscape`,
+        path: `${__dirname}/providers/pix_landscape`,
         name: 'img_landscape'
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/pix_portrait`,
+        path: `${__dirname}/providers/pix_portrait`,
         name: 'img_portrait'
       }
     },
@@ -55,7 +55,7 @@ module.exports = {
     // {
     //   resolve: 'gatsby-plugin-page-creator',
     //   options: {
-    //     path: `${__dirname}/content/blog`,
+    //     path: `${__dirname}/providers/blog`,
     //     ignore: [`*.(js|ts)?(x)`]
     //   }
     // },

@@ -8,7 +8,7 @@ import { parse as svgParse, HASTElementProps } from 'svg-parser'
 import { ToolType, PositionType } from 'react-svg-pan-zoom'
 import { UncontrolledSVGPanZoom } from './UncontrolledSvgPanZoom'
 import { useHtmlAST } from '../../services'
-import { SvgProps, hastParse } from '../../components/content/AllSvg'
+import { SvgProps, hastParse } from '../../components/providers/AllSvg'
 import { useTimeout } from '../../hooks/timeout'
 
 import svgLoading from './spinning-circles'

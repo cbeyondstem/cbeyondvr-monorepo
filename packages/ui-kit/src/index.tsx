@@ -24,27 +24,41 @@ export {
   Svg,
 } from './components/mdx'
 
-// reusable content sourcing components - provider/consumer pattern
+// reusable content sourcing components - React provider/consumer pattern
 export {
   SiteConfig,
   SiteConfigConsumer,
   SiteConfigProvider,
   SiteConfigProps,
-} from './components/content/SiteConfig'
+} from './components/providers/SiteConfig'
 
 export {
   AllMdxConsumer,
   allMdxQueryRender,
   MdxProviderProps,
-} from './components/content/AllMdx'
+} from './components/providers/AllMdx'
 
 export {
   AllSvgConsumer,
   allSvgQueryRender,
   SvgProviderProps,
-} from './components/content/AllSvg'
+} from './components/providers/AllSvg'
 
-export { AllImgConsumer, AllImgProvider } from './components/content/AllImages'
+export {
+  AllImgConsumer,
+  AllImgProvider,
+} from './components/providers/AllImages'
+
+// reusable content sourcing components - rxjs services pattern
+// rxjs services pattern is borrowed from angular framework
+// and is much preferred for its model/view separation and ease of use.
+// @cbeyond uses the service pattern react-implementation from '@mindspace-io/react'
+export {
+  UseAllSvgResponse,
+  useAllSvgService,
+  useHtmlAST,
+  UseSvgHastResponse,
+} from './services'
 
 // reusable Layout components
 export { SEO } from './components/ui/SEO'
@@ -83,5 +97,3 @@ export {
   LazyImageProps,
   LazyImage,
 } from './components/ui/LazyImage'
-
-export { UseAllSvgResponse, useAllSvgService } from './services'

@@ -5,7 +5,7 @@ import { SEOProps } from '../../../types/interfaces'
 import {
   SiteConfigConsumer,
   SiteConfigProviderProps,
-} from '../../content/SiteConfig'
+} from '../../providers/SiteConfig'
 
 export const SEO = (props: SEOProps) => {
   const {

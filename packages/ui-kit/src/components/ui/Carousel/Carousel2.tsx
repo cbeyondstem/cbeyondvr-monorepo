@@ -7,8 +7,7 @@ import { Carousel as CarouselBase } from 'react-responsive-carousel'
 
 import { ImageItemProps } from '../../../types/interfaces'
 import { ImageSharpFluid } from '../../../types/gatsby-graphql-types'
-import { SvgProps } from '../../content/AllSvg'
-import { useTimeout } from '../../../hooks/timeout'
+import { SvgProps } from '../../providers/AllSvg'
 
 export interface CarouselImgProps {
   path: string

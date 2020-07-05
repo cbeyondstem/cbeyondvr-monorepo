@@ -1,8 +1,8 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
-import { FileEdge } from '@cbeyond/ui-kit/dist/types/gatsby-graphql-types'
 import { ProviderProps, CarouselImgProps, AllImgProvider } from '@cbeyond/ui-kit'
+import { FileEdge } from '../../types/gatsby-graphql-types'
 
 export const query = graphql`
   fragment ImgResponsiveDesktop on ImageSharp {

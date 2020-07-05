@@ -12,7 +12,7 @@ import {
   createStyles,
 } from '@material-ui/core'
 import { Link } from '../../components/ui/Link'
-import { MdxProps, AllMdxConsumer } from '../../components/content/AllMdx'
+import { MdxProps, AllMdxConsumer } from '../../components/providers/AllMdx'
 
 const caretRight = '"\\25B8"'
 const useStyles = makeStyles((theme: Theme) =>

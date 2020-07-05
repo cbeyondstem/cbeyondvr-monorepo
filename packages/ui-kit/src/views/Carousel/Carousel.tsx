@@ -13,7 +13,7 @@ import {
 } from '../../components/ui/Carousel'
 
 import { ImageItemProps } from '../../types/interfaces'
-import { AllImgConsumer } from '../../components/content/AllImages'
+import { AllImgConsumer } from '../../components/providers/AllImages'
 import { ImageSharpFluid } from '../../types/gatsby-graphql-types'
 
 export interface CarouselViewProps {

@@ -8,7 +8,7 @@ import MapIcon from '@material-ui/icons/Map'
 import {
   SiteConfigConsumer,
   SiteConfigProviderProps,
-} from '../../content/SiteConfig'
+} from '../../providers/SiteConfig'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

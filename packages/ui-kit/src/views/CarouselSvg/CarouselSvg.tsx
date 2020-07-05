@@ -18,7 +18,7 @@ import PauseIcon from '@material-ui/icons/Pause'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 
 import { useTimeout } from '../../hooks/timeout'
-import { SvgProps } from '../../components/content/AllSvg'
+import { SvgProps } from '../../components/providers/AllSvg'
 import { useAllSvgService } from '../../services'
 import { SvgLazy } from './SvgLazy'
 

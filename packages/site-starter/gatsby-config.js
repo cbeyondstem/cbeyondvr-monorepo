@@ -15,7 +15,7 @@ module.exports = {
   pathPrefix: `/blog-prefix`,
   siteMetadata: site,
   mapping: {
-    'Mdx.fields.author': `AuthorJson`
+    'Mdx.frontmatter.author': `AuthorsJson`
   },
   plugins: [
     {
@@ -26,7 +26,7 @@ module.exports = {
       }
     },
     {
-      resolve: require.resolve(`../../node_modules/@cbeyond/ui-kit/plugins/custom-page-creator`),
+      resolve: require.resolve(`@cbeyond/ui-kit/plugins/custom-page-creator`),
       options: {
         path: `${__dirname}/content/pages`
       }
@@ -39,9 +39,22 @@ module.exports = {
       }
     },
     {
-      resolve: require.resolve(`../../node_modules/@cbeyond/ui-kit/plugins/custom-page-creator`),
+      resolve: require.resolve(`@cbeyond/ui-kit/plugins/custom-page-creator`),
       options: {
         path: `${__dirname}/content/blog`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/authors`,
+        name: `authors`
+      }
+    },
+    {
+      resolve: require.resolve(`@cbeyond/ui-kit/plugins/custom-page-creator`),
+      options: {
+        path: `${__dirname}/content/authors`
       }
     },
     {

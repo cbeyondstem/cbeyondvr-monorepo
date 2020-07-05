@@ -11,7 +11,7 @@ import {
   mdxLayoutStyles,
 } from '../../mdx'
 
-import { AllMdxConsumer } from '../../content/AllMdx'
+import { AllMdxConsumer } from '../../providers/AllMdx'
 
 const useStyles = makeStyles({
   paper: {

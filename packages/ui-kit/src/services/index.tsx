@@ -9,7 +9,7 @@ import {
 import { Observable } from 'rxjs'
 import { Query } from '../types/gatsby-graphql-types'
 
-import { SvgProps } from '../components/content/AllSvg'
+import { SvgProps } from '../components/providers/AllSvg'
 import { AllSvgClass, SvgTitleByPath, SvgByPath } from './allSvg'
 import { SvgHastClass } from './svgHast'
 

@@ -11,7 +11,7 @@ import {
   BrandProps,
 } from '../../../types/interfaces'
 
-import { AllMdxConsumer, MdxProps } from '../../content/AllMdx'
+import { AllMdxConsumer, MdxProps } from '../../providers/AllMdx'
 import { getHeader } from '../HeaderBlog'
 import { Footer } from '../Footer'
 

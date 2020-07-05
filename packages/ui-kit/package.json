@@ -3,10 +3,10 @@
   "description": "CBeyondVR shared UI components",
   "version": "1.1.0",
   "author": "Armelle Laine <armelle@cbeyondvr.com>",
-  "main": "dist/index",
-  "types": "dist/index",
+  "main": "src/index",
+  "types": "src/index",
   "files": [
-    "dist"
+    "src"
   ],
   "private": false,
   "publishConfig": {

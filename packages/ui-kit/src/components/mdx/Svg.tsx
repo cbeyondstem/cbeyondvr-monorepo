@@ -4,8 +4,8 @@ import * as React from 'react'
 import { Container } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import * as URI from 'uri-js'
-import { AllSvgConsumer } from '../content/AllSvg'
-import { MdxProps } from '../content/AllMdx'
+import { AllSvgConsumer } from '../providers/AllSvg'
+import { MdxProps } from '../providers/AllMdx'
 
 const useStyles = makeStyles(() => ({
   root: {
