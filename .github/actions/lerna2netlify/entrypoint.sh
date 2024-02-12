@@ -1,7 +1,7 @@
 #!/bin/sh -l
 
 export NODE_OPTIONS=--openssl-legacy-provider
-lerna bootstrap
+yarn install
 cd packages/ui-kit
 yarn build
 cd ../../$INPUT_PACKAGE_LOCATION
