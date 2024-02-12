@@ -4,7 +4,7 @@ RUN \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y git libglu1 libxi6 libgconf-2-4 && \
-    yarn gobal add lerna netlify-cli
+    npm install -g lerna netlify-cli
 
 COPY . .
 
