@@ -46,7 +46,7 @@ export const GetSvg: (
           let src = _.get(cfg, key, `unknown key ${key}`)
           src = src.replace('./', '').replace('src/', '')
           if (!(src in svgByPath)) {
-            return <em>{`<Svg src=${src}/> not found`}</em>
+            return false // <em>{`<Svg src=${src}/> not found`}</em>
           }
           const { Svg: SvgRaw } = svgByPath[src]
           return <SvgRaw {...props} />

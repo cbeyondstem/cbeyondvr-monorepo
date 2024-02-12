@@ -26,7 +26,7 @@ export const Svg = (props: SvgProps) => {
     <AllSvgConsumer>
       {({ svgByPath }) => {
         if (!(src in svgByPath)) {
-          return <em>{`<Svg src=${src}/> not found`}</em>
+          return false // <em>{`<Svg src=${src}/> not found`}</em>
         }
         const { Svg: SvgRaw } = svgByPath[src]
         return (
