@@ -7,4 +7,4 @@ cd packages/ui-kit
 yarn build
 cd ../../$INPUT_PACKAGE_LOCATION
 yarn build
-yarn run netlify deploy --prod --auth $SECRET_NETLIFY_AUTH --site $SECRET_NETLIFY_SITE_ID --dir public
+netlify deploy --prod --auth $SECRET_NETLIFY_AUTH --site $SECRET_NETLIFY_SITE_ID --dir public
