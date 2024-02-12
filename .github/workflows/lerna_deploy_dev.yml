@@ -15,18 +15,19 @@ env:
 # if: "!contains(github.event.head_commit.message, 'deploy-dev skip')"
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # couroubledesign:
-  #   if: "!contains(github.event.head_commit.message, 'deploy-dev skip')"
-  #   # The type of runner that the job will run on
-  #   runs-on: ubuntu-latest
-  #   # Steps represent a sequence of tasks that will be executed as part of the job
-  #   steps:
-  #   # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-  #   - uses: actions/checkout@v2
-  #   - uses: ./.github/actions/lerna2now
-  #     with:
-  #       PACKAGE_LOCATION: packages/couroubledesign
-  #       DEPLOY_TO: couroubledesign
+  couroubledesign:
+    if: "!contains(github.event.head_commit.message, 'deploy-dev skip')"
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    env:
+      SECRET_NETLIFY_SITE_ID: ${{ secrets.NETLIFY_COUROUBLE_TEST }}
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    - uses: ./.github/actions/lerna2netlify
+      with:
+        PACKAGE_LOCATION: packages/couroubledesign
   dmgdesign:
     if: "!contains(github.event.head_commit.message, 'deploy-dev skip')"
     # The type of runner that the job will run on
