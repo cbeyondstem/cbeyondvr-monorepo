@@ -1,4 +1,4 @@
-FROM node:13.12-stretch-slim
+FROM node:21.6-slim
 
 RUN \
     apt-get update && \

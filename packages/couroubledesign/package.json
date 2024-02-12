@@ -23,9 +23,7 @@
     "gql-gen": "gql-gen"
   },
   "resolutions": {
-    "sharp": "^0.23.1",
-    "favicons/**/sharp": "^0.23.1",
-    "favicons/**/react": "^16.2.0"
+    "sharp": "^0.23.1"
   },
   "dependencies": {
     "@cbeyond/site-starter": "^1.0.1",
@@ -80,7 +78,7 @@
     "react-jss": "^10.0.0",
     "react-live": "^2.2.0",
     "react-uid": "^2.2.0",
-    "sharp": "^0.23.3",
+    "sharp": "^0.33.2",
     "slash": "^3.0.0",
     "storybook": "^5.1.11",
     "svg-parser": "^2.0.2",

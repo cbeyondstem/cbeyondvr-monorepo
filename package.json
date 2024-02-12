@@ -10,15 +10,10 @@
   },
   "resolutions": {
     "babel-loader": "8.0.4",
-    "sharp": "0.23.2",
     "gatsby-image": "^2.2.39",
-    "favicons/**/sharp": "0.23.2",
-    "favicons/**/react": "^16.2.0",
+    "sharp": "^0.33.2",
     "vfile": "^4.0.2",
-    "remark/**/vfile": "^4.0.2",
-    "retext/**/vfile": "^4.0.2",
     "unified": "^8.4.2",
-    "unified/**/vfile": "^4.0.2",
     "@types/vfile": "^4.0.0"
   },
   "license": "MIT",
@@ -29,7 +24,7 @@
     "test": "echo 0"
   },
   "engines": {
-    "node": ">= 13.12.0"
+    "node": ">= 21.6.0"
   },
   "private": true,
   "workspaces": {
@@ -39,5 +34,6 @@
   },
   "devDependencies": {
     "now": "^16.7.3"
-  }
+  },
+  "packageManager": "yarn@4.1.0+sha256.81a00df816059803e6b5148acf03ce313cad36b7f6e5af6efa040a15981a6ffb"
 }
