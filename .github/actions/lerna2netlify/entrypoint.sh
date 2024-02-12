@@ -2,7 +2,6 @@
 export NODE_OPTIONS=--openssl-legacy-provider
 corepack enable && \
 corepack use yarn@* && \
-yarn add netlify-cli lerna
 yarn install
 cd packages/ui-kit
 yarn build
