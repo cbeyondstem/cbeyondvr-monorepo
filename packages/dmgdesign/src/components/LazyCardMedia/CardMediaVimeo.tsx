@@ -9,7 +9,7 @@ const CardMediaVimeo: React.FunctionComponent<React.ComponentPropsWithRef<'ifram
       component="iframe"
       className={className}
       title="DMG Design SF - Project Portfolio"
-      image="https://www.youtube.com/embed/eHNKhHiN8Yw?autoplay=1&muted=1&loop=1&enablejsapi=1"
+      image="https://www.youtube.com/embed/eHNKhHiN8Yw?&autoplay=1&mute=1&loop=1"
       width={width}
       height={height}
       frameBorder="0"
