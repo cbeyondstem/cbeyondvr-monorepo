@@ -53,7 +53,7 @@ const categories = [
   {
     category: `YACHTING`,
     details: undefined,
-    projects: [`gf42`, `rahan`, `cata_mexico`, `powercat`, `racer44`, `offshore47`, `surfboard`, `racer41`, `racer_opt`]
+    projects: [`gf42`, `rahan`, `cata_mexico`, `racer44`, `offshore47`, `surfboard`, `racer41`]
   },
   {
     category: `CONSUMER`,
@@ -69,14 +69,18 @@ const categories = [
 const projects = [
   {
     folder: `flight_works`,
-    project: `ASCENT based propellant for AFRL and NASA missions`,
-    details: `Carbon-composite tank-integrated structures for maneuverable spacecraft / enabling sustained mobility, orbital transfer, and on-orbit refueling, using new ASCENT based propellant for AFRL and NASA missions.`,
+    project: `Innovative ASCENT based propellant`,
+    press: [
+      'https://satnews.com/2024/04/10/flight-works-developing-modular-refuelable-ascent-propulsion-unit-for-afrl/',
+      'https://www.afrl.af.mil/News/Article-Display/Article/4596262/afrl-demonstrates-modular-multimode-propulsion-system-for-sustained-space-maneu/'
+    ],
+    details: `Carbon-composite tank-integrated structures for maneuverable spacecraft, enabling sustained mobility, orbital transfer, and on-orbit refueling, using new ASCENT based propellant for AFRL and NASA missions.`,
     year: `2026`,
     location: `Huntington beach, CA`,
     company: `Flight Works Inc. &trade;`,
     copyright: `Flight Works Inc. &trade;
       / ASCENT based propellant by Courouble Design & Engineering, Inc.`,
-    images: [`afrl_4`, `afrl_5`, `afrl_expo_puma`]
+    images: [`afrl_5`, `afrl_expo_puma`]
   },
   {
     folder: `vectorlaunch`,
@@ -116,7 +120,7 @@ const projects = [
     year: '2026',
     location: `Long Beach, CA`,
     copyright: undefined,
-    images: [`rahan_keel`, `rahan_bow`, `rahan_rudder`]
+    images: [`rahan_rudder2`, `rahan_keel1`, `rahan_bow_cut`, `rahan_bow_sprit`]
   },
   {
     folder: `powercat`,
@@ -130,7 +134,7 @@ const projects = [
   {
     folder: `cata_mexico`,
     project: `Sightseeing power catamaran - Acapulco  mexico`,
-    details: `Structural analysis and design by Courouble Design`,
+    details: `Complete design with structural analysis`,
     year: '2026',
     location: `Long Beach, CA`,
     copyright: undefined,
@@ -235,42 +239,47 @@ Collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
 const images = [
   {
     name: 'cata_mexico1',
-    title: `Structural analysis and design by Courouble Design`
+    title: `Complete design with structural analysis by Courouble Design & Engineering, Inc.`
   },
   {
     name: 'cata_mexico2',
-    title: `Structural analysis and design by Courouble Design`
+    title: `Complete design with structural analysis by Courouble Design & Engineering, Inc.`
   },
   {
     name: 'cata_mexico3',
-    title: `Structural analysis and design by Courouble Design`
+    title: `Complete design with structural analysis by Courouble Design & Engineering, Inc.`
   },
   {
     name: 'cata_mexico_Rendering',
-    title: `Structural analysis and design by Courouble Design`
+    title: `Complete design with structural analysis by Courouble Design & Engineering, Inc.`
   },
   {
     name: '26_powercat',
-    title: `Structural engineering Fiberglass/Carbon by Courouble Design`
+    title: `Structural engineering Fiberglass/Carbon by Courouble Design & Engineering, Inc.`
   },
   {
     name: '26_powercat_structural',
-    title: `Structural engineering Fiberglass/Carbon by Courouble Design`
+    title: `Structural engineering Fiberglass/Carbon by Courouble Design & Engineering, Inc.`
   },
   {
-    name: 'rahan_bow',
-    title: `First 36 - Offshore Racing Transpac Optimisation`,
-    caption: 'Custom Bow designed and built by Courouble Design & Engineering, Inc.'
+    name: 'rahan_bow_sprit',
+    title: `First 36 - Offshore Racing Rules Optimisation`,
+    caption: 'New Bow Sprit optimised for ORR Rating, designed and built by Courouble Design & Engineering, Inc.'
   },
   {
-    name: 'rahan_keel',
-    title: `First 36 - Offshore Racing Transpac Optimisation`,
-    caption: 'Custom Keel designed and built by Courouble Design & Engineering, Inc.'
+    name: 'rahan_bow_cut',
+    title: `First 36 - Offshore Racing Rules Optimisation`,
+    caption: 'New Bow Shape for offshore racing, designed and built by Courouble Design & Engineering, Inc.'
   },
   {
-    name: 'rahan_rudder',
-    title: `First 36 - Offshore Racing Transpac Optimisation`,
-    caption: 'Custom Rudder designed and built by Courouble Design & Engineering, Inc.'
+    name: 'rahan_keel1',
+    title: `First 36 - Offshore Racing Rules Optimisation`,
+    caption: 'New Keel for offshore racing, designed and built by Courouble Design & Engineering, Inc.'
+  },
+  {
+    name: 'rahan_rudder2',
+    title: `First 36 - Offshore Racing Rules Optimisation`,
+    caption: 'New Rudder optimised for ORR Rating, designed and built by Courouble Design & Engineering, Inc.'
   },
   {
     name: '39-5',
@@ -575,7 +584,8 @@ const images = [
   },
   {
     name: 'afrl_5',
-    caption: 'Carbon-composite tank-integrated structures for maneuverable spacecraft'
+    caption:
+      'Carbon-composite tank-integrated structures for maneuverable spacecraft, designed in partnership between Flight Works Inc. and Courouble Design & Engineering, Inc.'
   },
   {
     name: 'afrl_expo_puma',
