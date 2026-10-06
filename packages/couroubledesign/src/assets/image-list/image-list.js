@@ -48,7 +48,7 @@ const categories = [
   {
     category: `AEROSPACE`,
     details: undefined,
-    projects: [`vectorlaunch`, `nanosat`]
+    projects: [`flight_works`, `vectorlaunch`, `nanosat`]
   },
   {
     category: `YACHTING`,
@@ -67,6 +67,17 @@ const categories = [
   }
 ]
 const projects = [
+  {
+    folder: `flight_works`,
+    project: `ASCENT based propellant for AFRL and NASA missions`,
+    details: `Carbon-composite tank-integrated structures for maneuverable spacecraft / enabling sustained mobility, orbital transfer, and on-orbit refueling, using new ASCENT based propellant for AFRL and NASA missions.`,
+    year: `2026`,
+    location: `Huntington beach, CA`,
+    company: `Flight Works Inc. &trade;`,
+    copyright: `Flight Works Inc. &trade;
+      / ASCENT based propellant by Courouble Design & Engineering, Inc.`,
+    images: [`afrl_4`, `afrl_5`, `afrl_expo_puma`]
+  },
   {
     folder: `vectorlaunch`,
     project: `VECTOR-R Rocket`,
@@ -557,6 +568,18 @@ const images = [
     name: 'sprit3',
     title: 'bowsprit removable for cruising or racing  ',
     caption: 'Stainless steel / carbon'
+  },
+  {
+    name: 'afrl_4',
+    caption: 'Carbon-composite tank-integrated structures for maneuverable spacecraft'
+  },
+  {
+    name: 'afrl_5',
+    caption: 'Carbon-composite tank-integrated structures for maneuverable spacecraft'
+  },
+  {
+    name: 'afrl_expo_puma',
+    caption: 'Carbon-composite tank-integrated structures for maneuverable spacecraft'
   },
   {
     name: 'vector1',
