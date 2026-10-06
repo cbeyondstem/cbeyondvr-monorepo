@@ -25,7 +25,7 @@ prototype fabrication in carbon fiber using complex 3D-printed carbon tooling.`,
     title: `NAVAL ARCHITECTURE`,
     details: `Racing yacht and powerboat design, resistance optimization.
 Full engineering with end-to-end project management.`,
-    images: [`GF1`, `47-1`, `47-4`, `sprit3`, `kimono1`, `wasabi0`, `39-5`]
+    images: [`GF1`, `47-1`, `47-4`, `sprit3`, `wasabi0`, `39-5`]
   },
   {
     folder: `service_P`,
