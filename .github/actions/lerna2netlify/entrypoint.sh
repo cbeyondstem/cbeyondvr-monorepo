@@ -1,7 +1,6 @@
 #!/bin/sh -l
 export NODE_OPTIONS=--openssl-legacy-provider
 corepack enable && \
-corepack use yarn@* && \
 yarn install
 cd packages/ui-kit
 yarn build
