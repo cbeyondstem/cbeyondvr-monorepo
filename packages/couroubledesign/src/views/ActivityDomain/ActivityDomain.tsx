@@ -81,7 +81,7 @@ export const ActivityDomain: React.FunctionComponent<ActivityDomainProps> = prop
         const title = projectInfo.company ? `${projectInfo.project}<br/>(${projectInfo.company})` : projectInfo.project
         const caption: string = projectInfo.details
 
-        const projectComponents = {
+        const projectComponents: { [project: string]: React.ReactNode } = {
           art_aitken: (
             <CardMedia
               component="iframe"
@@ -111,6 +111,14 @@ export const ActivityDomain: React.FunctionComponent<ActivityDomainProps> = prop
         }
 
         if (project === 'gf42') {
+          const newImages = [
+            {
+              element: projectComponents[project],
+              thumb:
+                'https://i.vimeocdn.com/video/524435644-6a9714afe4a38adb984fbf4c4975639fe6817e6f71869e1cba89313b6a94759a-d_640?region=us'
+            },
+            ...(images ?? [])
+          ]
           return (
             <Grid item xs={12} lg={12} key={uid(project, projectIdx)}>
               <div className={classes.title}>
@@ -121,8 +129,7 @@ export const ActivityDomain: React.FunctionComponent<ActivityDomainProps> = prop
                   {caption && renderHtml(caption, 1)}
                 </Typography>
               </div>
-              {projectComponents[project]}
-              <CarouselView images={images} renderHtml={renderHtml} imgOrientation={imgOrientation} captions />
+              <CarouselView images={newImages} renderHtml={renderHtml} imgOrientation={imgOrientation} captions />
             </Grid>
           )
         }
@@ -137,7 +144,9 @@ export const ActivityDomain: React.FunctionComponent<ActivityDomainProps> = prop
                 {caption && renderHtml(caption, 1)}
               </Typography>
             </div>
-            {projectComponents[project] || <CarouselView images={images} renderHtml={renderHtml} imgOrientation={imgOrientation} captions />}
+            {projectComponents[project] || (
+              <CarouselView images={images} renderHtml={renderHtml} imgOrientation={imgOrientation} captions />
+            )}
           </Grid>
         )
       })}
