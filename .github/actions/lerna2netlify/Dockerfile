@@ -1,4 +1,4 @@
-FROM node:21.6-slim
+FROM node:25.3-slim
 
 RUN \
     apt-get update && \
