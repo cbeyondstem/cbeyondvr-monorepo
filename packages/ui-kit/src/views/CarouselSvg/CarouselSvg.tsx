@@ -156,7 +156,7 @@ export const CarouselSvg: React.FunctionComponent<CarouselViewProps> = props => 
   const {
     path,
     images: imgList,
-    showPlayButton = true,
+    showPlayButton = false,
     autoplay = false,
     captions = false,
     renderHtml = renderHtmlDefault,

@@ -16,9 +16,17 @@ import { ImageItemProps } from '../../types/interfaces'
 import { AllImgConsumer } from '../../components/providers/AllImages'
 import { ImageSharpFluid } from '../../types/gatsby-graphql-types'
 
+export interface CarouselElementEntry {
+  element: React.ReactNode
+  thumb?: string
+}
+
+const TRANSPARENT_THUMB =
+  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+
 export interface CarouselViewProps {
   path?: string
-  images?: string[]
+  images?: Array<string | CarouselElementEntry | React.ReactNode>
   thumb?: boolean
   showPlayButton?: boolean
   autoplay?: boolean
@@ -207,7 +215,7 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
     path,
     images: imgList,
     thumb = true,
-    showPlayButton = true,
+    showPlayButton = false,
     autoplay = false,
     captions = false,
     renderHtml = renderHtmlDefault,
@@ -221,7 +229,15 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
     isLandscape = imgOrientation === 'Landscape'
   }
 
+  const elementSlides = new Map<string, React.ReactNode>()
   const renderImage = (maxWidth: number) => (item: ImageItemProps) => {
+    if (elementSlides.has(item.original.path)) {
+      return (
+        <Container className={classes.imgContainer} key={item.original.path}>
+          {elementSlides.get(item.original.path)}
+        </Container>
+      )
+    }
     let sources
     if (item.original.mobile) {
       sources = isLandscape
@@ -297,7 +313,20 @@ export const Carousel: React.FunctionComponent<CarouselViewProps> = props => {
         }
         let sortedViewImages: CarouselImgProps[] = []
         if (imgList) {
-          imgList.forEach(imgName => {
+          imgList.forEach((imgName, idx) => {
+            if (typeof imgName !== 'string') {
+              const elementPath = `element-${idx}`
+              const entry: CarouselElementEntry =
+                typeof imgName === 'object' && imgName !== null && 'element' in imgName
+                  ? (imgName as CarouselElementEntry)
+                  : { element: imgName }
+              elementSlides.set(elementPath, entry.element)
+              sortedViewImages.push({
+                path: elementPath,
+                thumb: entry.thumb || TRANSPARENT_THUMB,
+              } as CarouselImgProps)
+              return
+            }
             const entry = _.find(
               selectedImages,
               img => imgName === img.path.split('/').slice(-1)[0]
