@@ -96,7 +96,7 @@ const projects = [
     year: undefined,
     location: `Marina Del Rey, CA`,
     copyright: undefined,
-    images: [`GF4`, `GF22`, `GF6`, `GF5`]
+    images: [`GF0`, `GF4`, `GF22`, `GF6`, `GF5`]
   },
   {
     folder: `racer44`,
@@ -263,6 +263,11 @@ const images = [
     name: 'CFDWL',
     title: 'custom racer ',
     caption: 'Dynamic waterline distribution analysis'
+  },
+  {
+    name: 'GF0',
+    title: 'Racing trimaran',
+    caption: 'under sails'
   },
   {
     name: 'GF1',
