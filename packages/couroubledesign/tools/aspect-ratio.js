@@ -54,7 +54,7 @@ async function transformImages() {
       fs.mkdirSync(landscape, { recursive: true })
       fs.mkdirSync(portrait, { recursive: true })
       const { width, height } = await source.metadata()
-      console.log(width, height)
+      console.log(source.options.input.file, width, height)
       if (width > height) {
         // landscape - crop to 3:2
         if (height > (width * 2) / 3) {
@@ -85,7 +85,10 @@ async function transformImages() {
             fit: 'fill'
           })
           // await widened.jpeg().withMetadata().toFile(path.join(landscape, `${fname}_3x2_widened.jpg`))
-          const buffer = await widened.jpeg().withMetadata().toBuffer()
+          const buffer = await widened
+            .jpeg()
+            .withMetadata()
+            .toBuffer()
           const widened2 = await sharp(buffer)
           // const widened3 = await sharp(path.join(landscape, `${fname}_3x2_widened.jpg`))
           const { width: width2, height: height2 } = await widened2.metadata()
