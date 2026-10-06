@@ -65,7 +65,7 @@ async function transformImages() {
             })
             .jpeg()
             .withMetadata()
-            .toFile(path.join(landscape, `${fname}.jpg`))
+            .toFile(path.join(landscape, `${fname}.jpg`), { force: true })
           await source
             .resize(width, Math.floor((width * 2) / 3), {
               withoutEnlargement: true,
@@ -78,14 +78,14 @@ async function transformImages() {
             })
             .jpeg()
             .withMetadata()
-            .toFile(path.join(portrait, `${fname}.jpg`))
+            .toFile(path.join(portrait, `${fname}.jpg`), { force: true })
         } else {
           // height < (width * 2) / 3) - very wide pix
           const widened = await source.resize(width * 2, height * 2, {
             fit: 'fill'
           })
-          // await widened.jpeg().toFile(path.join(landscape, `${fname}_3x2_widened.jpg`))
-          const buffer = await widened.jpeg().toBuffer()
+          // await widened.jpeg().withMetadata().toFile(path.join(landscape, `${fname}_3x2_widened.jpg`))
+          const buffer = await widened.jpeg().withMetadata().toBuffer()
           const widened2 = await sharp(buffer)
           // const widened3 = await sharp(path.join(landscape, `${fname}_3x2_widened.jpg`))
           const { width: width2, height: height2 } = await widened2.metadata()
@@ -97,10 +97,10 @@ async function transformImages() {
           })
           // const { widthW, heightW } = await widened.toFormat('jpeg').metadata()
           console.log(`widened ${fname} to ${width2}x${height2}`)
-          resized
+          await resized
             .jpeg()
             .withMetadata()
-            .toFile(path.join(landscape, `${fname}.jpg`))
+            .toFile(path.join(landscape, `${fname}.jpg`), { force: true })
           await resized
             .resize(Math.floor((height * 5) / 7), height, {
               withoutEnlargement: true,
@@ -109,7 +109,7 @@ async function transformImages() {
             })
             .jpeg()
             .withMetadata()
-            .toFile(path.join(portrait, `${fname}.jpg`))
+            .toFile(path.join(portrait, `${fname}.jpg`), { force: true })
         }
       } else {
         paths.push(`${fname}.jpg`)
@@ -121,7 +121,7 @@ async function transformImages() {
           })
           .jpeg()
           .withMetadata()
-          .toFile(path.join(portrait, `${fname}.jpg`))
+          .toFile(path.join(portrait, `${fname}.jpg`), { force: true })
         await source
           .resize(width, Math.floor((width * 7) / 5), {
             withoutEnlargement: true,
@@ -134,7 +134,7 @@ async function transformImages() {
           })
           .jpeg()
           .withMetadata()
-          .toFile(path.join(landscape, `${fname}.jpg`))
+          .toFile(path.join(landscape, `${fname}.jpg`), { force: true })
       }
     })
   })

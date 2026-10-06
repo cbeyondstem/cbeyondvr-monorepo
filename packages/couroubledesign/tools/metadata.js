@@ -16,7 +16,7 @@ const { exiftool } = exiftoolVendored
 
 const { services, projects, images } = require('../src/assets/image-list/image-list')
 
-const creator = 'Frederick Corouble'
+const creator = 'Frederick Courouble'
 const copyright_default = '(c) 2020 Courouble Design & Engineering (http://www.couroubledesign.com/) - Rights reserved'
 const location = {
   address: '3744 Industrial Avenue, #404',

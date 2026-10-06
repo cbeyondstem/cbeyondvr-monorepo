@@ -53,7 +53,7 @@ const categories = [
   {
     category: `YACHTING`,
     details: undefined,
-    projects: [`gf42`, `racer44`, `offshore47`, `surfboard`, `racer41`, `racer_opt`]
+    projects: [`gf42`, `rahan`, `cata_mexico`, `powercat`, `racer44`, `offshore47`, `surfboard`, `racer41`, `racer_opt`]
   },
   {
     category: `CONSUMER`,
@@ -97,6 +97,33 @@ const projects = [
     location: `Marina Del Rey, CA`,
     copyright: undefined,
     images: [`GF0`, `GF4`, `GF22`, `GF6`, `GF5`]
+  },
+  {
+    folder: `rahan`,
+    project: `First 36 Offshore RACER`,
+    details: `Full Transpac Customisation`,
+    year: '2026',
+    location: `Long Beach, CA`,
+    copyright: undefined,
+    images: [`rahan_keel`, `rahan_bow`, `rahan_rudder`]
+  },
+  {
+    folder: `powercat`,
+    project: `Fast Power 26' Catamaran`,
+    details: `Structural engineering Fiberglass/Carbon by Courouble Design`,
+    year: '2026',
+    location: `Long Beach, CA`,
+    copyright: undefined,
+    images: [`26_powercat`, `26_powercat_structural`]
+  },
+  {
+    folder: `cata_mexico`,
+    project: `Sightseeing power catamaran - Acapulco  mexico`,
+    details: `Structural analysis and design by Courouble Design`,
+    year: '2026',
+    location: `Long Beach, CA`,
+    copyright: undefined,
+    images: [`cata_mexico1`, `cata_mexico2`, `cata_mexico3`, `cata_mexico_Rendering`]
   },
   {
     folder: `racer44`,
@@ -196,6 +223,45 @@ Collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
 ]
 const images = [
   {
+    name: 'cata_mexico1',
+    title: `Structural analysis and design by Courouble Design`
+  },
+  {
+    name: 'cata_mexico2',
+    title: `Structural analysis and design by Courouble Design`
+  },
+  {
+    name: 'cata_mexico3',
+    title: `Structural analysis and design by Courouble Design`
+  },
+  {
+    name: 'cata_mexico_Rendering',
+    title: `Structural analysis and design by Courouble Design`
+  },
+  {
+    name: '26_powercat',
+    title: `Structural engineering Fiberglass/Carbon by Courouble Design`
+  },
+  {
+    name: '26_powercat_structural',
+    title: `Structural engineering Fiberglass/Carbon by Courouble Design`
+  },
+  {
+    name: 'rahan_bow',
+    title: `First 36 - Offshore Racing Transpac Optimisation`,
+    caption: 'Custom Bow designed and built by Courouble Design & Engineering, Inc.'
+  },
+  {
+    name: 'rahan_keel',
+    title: `First 36 - Offshore Racing Transpac Optimisation`,
+    caption: 'Custom Keel designed and built by Courouble Design & Engineering, Inc.'
+  },
+  {
+    name: 'rahan_rudder',
+    title: `First 36 - Offshore Racing Transpac Optimisation`,
+    caption: 'Custom Rudder designed and built by Courouble Design & Engineering, Inc.'
+  },
+  {
     name: '39-5',
     title: 'Fast power catamaran design concept'
   },
@@ -267,7 +333,7 @@ const images = [
   {
     name: 'GF0',
     title: 'Racing trimaran',
-    caption: 'under sails'
+    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'GF1',
