@@ -80,6 +80,53 @@ export const ActivityDomain: React.FunctionComponent<ActivityDomainProps> = prop
         }
         const title = projectInfo.company ? `${projectInfo.project}<br/>(${projectInfo.company})` : projectInfo.project
         const caption: string = projectInfo.details
+
+        const projectComponents = {
+          art_aitken: (
+            <CardMedia
+              component="iframe"
+              className={classes.iframe}
+              title="Courouble Design & Engineering - Project Portfolio"
+              image="https://player.vimeo.com/video/194116968?byline=false&portrait=false&title=false&fun=false&texttrack=false&autoplay=true&muted=true&loop=1"
+              width={width}
+              height={height}
+              frameBorder="0"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+            />
+          ),
+          gf42: (
+            <CardMedia
+              component="iframe"
+              className={classes.iframe}
+              title="Courouble Design & Engineering - Project Portfolio"
+              image="https://player.vimeo.com/video/131954142?byline=false&portrait=false&title=false&fun=false&texttrack=false&autoplay=true&muted=true&loop=1"
+              width={width}
+              height={height}
+              frameBorder="0"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+            />
+          )
+        }
+
+        if (project === 'gf42') {
+          return (
+            <Grid item xs={12} lg={12} key={uid(project, projectIdx)}>
+              <div className={classes.title}>
+                <Typography variant="button" align="left">
+                  {renderHtml(title)}
+                </Typography>
+                <Typography variant="caption" align="left">
+                  {caption && renderHtml(caption, 1)}
+                </Typography>
+              </div>
+              {projectComponents[project]}
+              <CarouselView images={images} renderHtml={renderHtml} imgOrientation={imgOrientation} captions />
+            </Grid>
+          )
+        }
+
         return (
           <Grid item xs={12} lg={12} key={uid(project, projectIdx)}>
             <div className={classes.title}>
@@ -90,21 +137,7 @@ export const ActivityDomain: React.FunctionComponent<ActivityDomainProps> = prop
                 {caption && renderHtml(caption, 1)}
               </Typography>
             </div>
-            {project === 'art_aitken' ? (
-              <CardMedia
-                component="iframe"
-                className={classes.iframe}
-                title="Courouble Design & Engineering - Project Portfolio"
-                image="https://player.vimeo.com/video/194116968?byline=false&portrait=false&title=false&fun=false&texttrack=false&autoplay=true&muted=true&loop=1"
-                width={width}
-                height={height}
-                frameBorder="0"
-                allow="autoplay; fullscreen"
-                allowFullScreen
-              />
-            ) : (
-              <CarouselView images={images} renderHtml={renderHtml} imgOrientation={imgOrientation} captions />
-            )}
+            {projectComponents[project] || <CarouselView images={images} renderHtml={renderHtml} imgOrientation={imgOrientation} captions />}
           </Grid>
         )
       })}

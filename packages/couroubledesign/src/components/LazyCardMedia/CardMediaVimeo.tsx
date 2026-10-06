@@ -9,8 +9,7 @@ const CardMediaVimeo: React.FunctionComponent<React.ComponentPropsWithRef<'ifram
       component="iframe"
       className={className}
       title="Courouble Design & Engineering - Project Portfolio"
-      image="https://player.vimeo.com/video/131954142?byline=false&portrait=false&title=false&fun=false&texttrack=false&autoplay=true&muted=true&loop=1"
-      // image="https://player.vimeo.com/video/194116968?byline=false&portrait=false&title=false&fun=false&texttrack=false&autoplay=true&muted=true&loop=1"
+      image="https://player.vimeo.com/video/694254339?byline=false&portrait=false&title=false&fun=false&texttrack=false&autoplay=true&muted=true&loop=1"
       width={width}
       height={height}
       frameBorder="0"
