@@ -69,12 +69,12 @@ const categories = [
 const projects = [
   {
     folder: `flight_works`,
-    project: `Innovative ASCENT based propellant`,
+    project: `Innovative Carbon-composite conformal tank`,
     press: [
       'https://satnews.com/2024/04/10/flight-works-developing-modular-refuelable-ascent-propulsion-unit-for-afrl/',
       'https://www.afrl.af.mil/News/Article-Display/Article/4596262/afrl-demonstrates-modular-multimode-propulsion-system-for-sustained-space-maneu/'
     ],
-    details: `Carbon-composite tank-integrated structures for maneuverable spacecraft, enabling sustained mobility, orbital transfer, and on-orbit refueling, using new ASCENT based propellant for AFRL and NASA missions.`,
+    details: `Carbon-composite conformal tank for maneuverable spacecraft, enabling sustained mobility, orbital transfer, and on-orbit refueling, using new ASCENT based propellant for AFRL and NASA missions.`,
     year: `2026`,
     location: `Huntington beach, CA`,
     company: `Flight Works Inc. &trade;`,
@@ -579,17 +579,14 @@ const images = [
     caption: 'Stainless steel / carbon'
   },
   {
-    name: 'afrl_4',
-    caption: 'Carbon-composite tank-integrated structures for maneuverable spacecraft'
-  },
-  {
     name: 'afrl_5',
     caption:
-      'Carbon-composite tank-integrated structures for maneuverable spacecraft, designed in partnership between Flight Works Inc. and Courouble Design & Engineering, Inc.'
+      "The carbon-composite conformal tank developed for AFRL solves structural bottleneck by replacing rigid high-pressure metal cylinders with a flexible, custom-shaped composite vessel that fits directly into the satellite's open structural cavities. <br/> This innovative design is born from a partnership between Flight Works Inc. and Courouble Design & Engineering, Inc."
   },
   {
     name: 'afrl_expo_puma',
-    caption: 'Carbon-composite tank-integrated structures for maneuverable spacecraft'
+    caption:
+      "The carbon-composite conformal tank developed for AFRL solves structural bottleneck by replacing rigid high-pressure metal cylinders with a flexible, custom-shaped composite vessel that fits directly into the satellite's open structural cavities. <br/> This innovative design is born from a partnership between Flight Works Inc. and Courouble Design & Engineering, Inc."
   },
   {
     name: 'vector1',
