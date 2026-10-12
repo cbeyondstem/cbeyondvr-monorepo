@@ -107,15 +107,34 @@ export const ActivityDomain: React.FunctionComponent<ActivityDomainProps> = prop
               allow="autoplay; fullscreen"
               allowFullScreen
             />
+          ),
+          rahan: (
+            <CardMedia
+              component="iframe"
+              className={classes.iframe}
+              title="Courouble Design & Engineering - Project Portfolio"
+              image="https://player.vimeo.com/video/1234277584?byline=false&portrait=false&title=false&fun=false&texttrack=false&autoplay=true&muted=true&loop=1"
+              width={width}
+              height={height}
+              frameBorder="0"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+            />
           )
         }
 
-        if (project === 'gf42') {
+        const videoThumb: { [project: string]: string } = {
+          gf42:
+            'https://i.vimeocdn.com/video/524435644-6a9714afe4a38adb984fbf4c4975639fe6817e6f71869e1cba89313b6a94759a-d_640?region=us',
+          rahan:
+            'https://i.vimeocdn.com/video/2210196607-37bda175ae26080f37d617be591e82420e9291c779d5e655de9c8dead36b9166-d_200x150?region=us'
+        }
+
+        if (['gf42', 'rahan'].includes(project)) {
           const newImages = [
             {
               element: projectComponents[project],
-              thumb:
-                'https://i.vimeocdn.com/video/524435644-6a9714afe4a38adb984fbf4c4975639fe6817e6f71869e1cba89313b6a94759a-d_640?region=us'
+              thumb: videoThumb[project]
             },
             ...(images ?? [])
           ]

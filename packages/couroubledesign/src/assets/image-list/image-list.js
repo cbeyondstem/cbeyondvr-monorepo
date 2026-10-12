@@ -70,16 +70,18 @@ const projects = [
   {
     folder: `flight_works`,
     project: `Innovative Carbon-composite conformal tank`,
-    press: [
+    details: `${href(
       'https://satnews.com/2024/04/10/flight-works-developing-modular-refuelable-ascent-propulsion-unit-for-afrl/',
-      'https://www.afrl.af.mil/News/Article-Display/Article/4596262/afrl-demonstrates-modular-multimode-propulsion-system-for-sustained-space-maneu/'
-    ],
-    details: `Carbon-composite conformal tank for maneuverable spacecraft, enabling sustained mobility, orbital transfer, and on-orbit refueling, using new ASCENT based propellant for AFRL and NASA missions.`,
+      'Modular Refuelable Ascent Propulsion Unit'
+    )} recently demonstrated by ${href(
+      'https://www.afrl.af.mil/News/Article-Display/Article/4596262/afrl-demonstrates-modular-multimode-propulsion-system-for-sustained-space-maneu/',
+      'Air Force Research Laboratory'
+    )}`,
     year: `2026`,
     location: `Huntington beach, CA`,
     company: `Flight Works Inc. &trade;`,
     copyright: `Flight Works Inc. &trade;
-      / ASCENT based propellant by Courouble Design & Engineering, Inc.`,
+      / ASCENT based propellant.`,
     images: [`afrl_5`, `afrl_expo_puma`]
   },
   {
@@ -116,11 +118,14 @@ const projects = [
   {
     folder: `rahan`,
     project: `First 36 Offshore RACER`,
-    details: `Full Transpac Customisation`,
+    details: `Full Transpac Customisation, Winner of the Doublehanded ORR and Navigator's award<br/>${href(
+      'https://pacificcup.org/index.php/post/rahan-roars',
+      'Rahan Roars In'
+    )}`,
     year: '2026',
     location: `Long Beach, CA`,
     copyright: undefined,
-    images: [`rahan_rudder2`, `rahan_keel1`, `rahan_bow_cut`, `rahan_bow_sprit`]
+    images: [`rahan_win`, `rahan_rudder2`, `rahan_keel1`, `rahan_bow_cut2`, `rahan_bow_sprit`]
   },
   {
     folder: `powercat`,
@@ -143,11 +148,11 @@ const projects = [
   {
     folder: `racer44`,
     project: `44' Inshore/Offshore RACER`,
-    details: `Glass / Carbon construction`,
+    details: `Optimized ORR inshore races, 10th winning title in class & Overall .`,
     year: undefined,
     location: `Long Beach, CA`,
     copyright: undefined,
-    images: [`44-2`, `44-1`, `44-3`, `44-0`]
+    images: [`44-2`, `imx40_keel`, `imx40_rudder`]
   },
   {
     folder: `offshore47`,
@@ -267,7 +272,15 @@ const images = [
     caption: 'New Bow Sprit optimised for ORR Rating, designed and built by Courouble Design & Engineering, Inc.'
   },
   {
-    name: 'rahan_bow_cut',
+    name: 'rahan_win',
+    title: `First 36 - Rahan Doublehanded ORR Winner`,
+    caption: `${href(
+      'https://pacificcup.org/index.php/post/rahan-roars',
+      'Rahan Roars In'
+    )}: Rahan won its class and earned the Navigator's award!`
+  },
+  {
+    name: 'rahan_bow_cut2',
     title: `First 36 - Offshore Racing Rules Optimisation`,
     caption: 'New Bow Shape for offshore racing, designed and built by Courouble Design & Engineering, Inc.'
   },
@@ -279,6 +292,16 @@ const images = [
   {
     name: 'rahan_rudder2',
     title: `First 36 - Offshore Racing Rules Optimisation`,
+    caption: 'New Rudder optimised for ORR Rating, designed and built by Courouble Design & Engineering, Inc.'
+  },
+  {
+    name: 'imx40_keel',
+    title: `IMX 40 - Offshore Racing Rules Optimisation`,
+    caption: 'New Keel for offshore racing, designed and built by Courouble Design & Engineering, Inc.'
+  },
+  {
+    name: 'imx40_rudder',
+    title: `IMX 40 - Offshore Racing Rules Optimisation`,
     caption: 'New Rudder optimised for ORR Rating, designed and built by Courouble Design & Engineering, Inc.'
   },
   {
@@ -580,13 +603,13 @@ const images = [
   },
   {
     name: 'afrl_5',
-    caption:
-      "The carbon-composite conformal tank developed for AFRL solves structural bottleneck by replacing rigid high-pressure metal cylinders with a flexible, custom-shaped composite vessel that fits directly into the satellite's open structural cavities. <br/> This innovative design is born from a partnership between Flight Works Inc. and Courouble Design & Engineering, Inc."
+    title: `Design, structural analysis & prototype manufacturing new monocoque composite structure for modular propulsion spacecraft Unit with Modular application for sustained orbital space maneuver and refueling services (AFRL & NASA missions).`,
+    caption: `This innovative design solution is born from a collabpration between  Flight Works Inc. and Courouble Design & Engineering, Inc.`
   },
   {
     name: 'afrl_expo_puma',
-    caption:
-      "The carbon-composite conformal tank developed for AFRL solves structural bottleneck by replacing rigid high-pressure metal cylinders with a flexible, custom-shaped composite vessel that fits directly into the satellite's open structural cavities. <br/> This innovative design is born from a partnership between Flight Works Inc. and Courouble Design & Engineering, Inc."
+    title: `Design, structural analysis & prototype manufacturing new monocoque composite structure for modular propulsion spacecraft Unit with Modular application for sustained orbital space maneuver and refueling services (AFRL & NASA missions).`,
+    caption: `This innovative design solution is born from a collabpration between  Flight Works Inc. and Courouble Design & Engineering, Inc.`
   },
   {
     name: 'vector1',
