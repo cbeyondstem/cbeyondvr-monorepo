@@ -79,8 +79,8 @@ const projects = [
     )}.`,
     year: `2026`,
     location: `Huntington beach, CA`,
-    company: `Flight Works Inc. &trade;`,
-    copyright: `Flight Works Inc. &trade;
+    company: `Flight Works Inc. `,
+    copyright: `Flight Works Inc.
       / ASCENT based propellant.`,
     images: [`afrl_5`, `afrl_expo_puma`]
   },
@@ -90,8 +90,8 @@ const projects = [
     details: `Carbon fiber Thrust Structure by Courouble Design & Engineering, Inc.`,
     year: `2019`,
     location: `Huntington beach, CA`,
-    company: `Vector Launch Inc. &trade;`,
-    copyright: `Vector Launch Inc. &trade;
+    company: `Vector Launch Inc. `,
+    copyright: `Vector Launch Inc.
       / Carbon fiber Thrust Structure by Courouble Design & Engineering, Inc.`,
     images: [`vector1`, `vector4`, `vector7`]
   },
@@ -101,8 +101,8 @@ const projects = [
     details: `Carbon fiber rocket frame designed by Courouble Design & Engineering, Inc.`,
     year: `2019`,
     location: `Long Beach, CA`,
-    company: `CSult & Garvey Spacecraft Corp.&trade;`,
-    copyright: `CSult & Garvey Spacecraft Corp.&trade;
+    company: `CSult & Garvey Spacecraft Corp.`,
+    copyright: `CSult & Garvey Spacecraft Corp.
       / Carbon fiber rocket frame designed by Courouble Design & Engineering, Inc.`,
     images: [`P10-4`, `P10-2`, `P10-3`]
   },
@@ -209,8 +209,8 @@ const projects = [
 Collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
     year: `2017`,
     location: `Boston`,
-    company: `Piaggio Fast Forward&trade;`,
-    copyright: `Piaggio Fast Forward&trade;
+    company: `Piaggio Fast Forward`,
+    copyright: `Piaggio Fast Forward
     / Carbon fiber Structural Engineering by Courouble Design & Engineering, Inc. /
 collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
     images: [`gita2`, `gita5`, `gita3`, `gita0`]
@@ -222,8 +222,8 @@ collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
 Collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
     year: `2016`,
     location: `Milano, Italy`,
-    company: `Nike&trade;`,
-    copyright: `Nike&trade;
+    company: `Nike`,
+    copyright: `Nike
     / Carbon dyneema frame by Courouble Design & Engineering, Inc. /
 Collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
     images: [`Nike21`, `Nike0`, `nike1`]
@@ -234,8 +234,8 @@ Collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
     details: `Design &  engineering of Carbon/Fiberglass chassis`,
     year: `2016`,
     location: `Paris, France`,
-    company: `Hermes&trade;`,
-    copyright: `Hermes&trade;`,
+    company: `Hermes`,
+    copyright: `Hermes`,
     images: [`Hermes1`]
   },
   {
@@ -244,8 +244,8 @@ Collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
     details: `Structural Design and Engineering by Courouble Design & Engineering, Inc.`,
     year: `2017`,
     location: `Catalina Island, CA`,
-    company: href('https://www.dougaitkenworkshop.com/', 'Doug Aitken Workshop&trade;'),
-    copyright: `Doug Aitken Workshop&trade;
+    company: href('https://www.dougaitkenworkshop.com/', 'Doug Aitken Workshop'),
+    copyright: `Doug Aitken Workshop
     / Structural Design and Engineering by Courouble Design & Engineering, Inc.`,
     images: [`catalina5`, `catalina0`, `catalina3`, `catalina10`]
   },
@@ -255,8 +255,8 @@ Collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
     details: `Structural Engineering Concept by Courouble Design & Engineering, Inc.`,
     year: `2016`,
     location: `San Diego, CA`,
-    company: href('https://www.ball-nogues.com/', 'Ball Nogues Studio&trade;'),
-    copyright: `Ball Nogues Studio&trade; / Structural Engineering Concept by Courouble Design & Engineering, Inc.`,
+    company: href('https://www.ball-nogues.com/', 'Ball Nogues Studio'),
+    copyright: `Ball Nogues Studio / Structural Engineering Concept by Courouble Design & Engineering, Inc.`,
     images: [`airport1`, `airport0`, `airport3`]
   }
 ]
@@ -443,7 +443,7 @@ const images = [
   },
   {
     name: 'P10-1',
-    title: 'Prospector 10 (CSult & Garvey Spacecraft Corp.&trade;)',
+    title: 'Prospector 10 (CSult & Garvey Spacecraft Corp.)',
     caption: 'First full carbon structure for a rocket propelled by aerospike multiengine'
   },
   {
@@ -492,28 +492,28 @@ const images = [
     name: 'board0',
     title: 'Guiness record surfboard',
     caption: `Surfboard fiberglass structure engineered to support 70 surfers (6 tons)<br/>
-    shaped by Firewire Surfboard&trade; / "Largest Surfboard" 2015 Guinness World Record!`
+    shaped by Firewire Surfboard / "Largest Surfboard" 2015 Guinness World Record!`
   },
   {
     name: 'board00',
     caption: `Surfboard fiberglass structure engineered to support 70 surfers (6 tons)<br/>
-    shaped by Firewire Surfboard&trade; / "Largest Surfboard" 2015 Guinness World Record!`
+    shaped by Firewire Surfboard / "Largest Surfboard" 2015 Guinness World Record!`
   },
   {
     name: 'board2',
     caption: `Surfboard fiberglass structure engineered to support 70 surfers (6 tons)<br/>
-    shaped by Firewire Surfboard&trade; / "Largest Surfboard" 2015 Guinness World Record!`
+    shaped by Firewire Surfboard / "Largest Surfboard" 2015 Guinness World Record!`
   },
   {
     name: 'board3',
     caption: `Surfboard fiberglass structure engineered to support 70 surfers (6 tons)<br/>
-    shaped by Firewire Surfboard&trade; / "Largest Surfboard" 2015 Guinness World Record!`
+    shaped by Firewire Surfboard / "Largest Surfboard" 2015 Guinness World Record!`
   },
   {
     name: 'board4',
     title: `Largest SurfBoard in the World`,
     caption: `Surfboard fiberglass structure engineered to support 70 surfers (6 tons)<br/>
-    shaped by Firewire Surfboard&trade; / "Largest Surfboard" 2015 Guinness World Record!`
+    shaped by Firewire Surfboard / "Largest Surfboard" 2015 Guinness World Record!`
   },
   {
     name: 'bulb0',
@@ -554,12 +554,12 @@ const images = [
   {
     name: 'fusion3',
     caption: `collaboration with ${href('http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
-    title: `3D printer (${href('https://www.germanreprap.com/', 'German RepRap&trade;')})  for carbon composite tooling`
+    title: `3D printer (${href('https://www.germanreprap.com/', 'German RepRap')})  for carbon composite tooling`
   },
   {
     name: 'fusion4',
     caption: `collaboration with ${href('http://www.fusionformatics.com/', 'Fusion Formatics Inc.')}`,
-    title: `3D printer (${href('https://www.germanreprap.com/', 'German RepRap&trade;')})  for carbon composite tooling`
+    title: `3D printer (${href('https://www.germanreprap.com/', 'German RepRap')})  for carbon composite tooling`
   },
   {
     name: 'fusion6',
@@ -580,7 +580,7 @@ const images = [
   },
   {
     name: 'gita5',
-    title: 'Robotic vehicle "Gita" (Piaggio Fast Forward&trade;)',
+    title: 'Robotic vehicle "Gita" (Piaggio Fast Forward)',
     caption: 'Lightweight carbon structure with marginal deflection supporting heavy luggages'
   },
   {
@@ -638,7 +638,7 @@ const images = [
   },
   {
     name: 'vector2',
-    title: 'Vector-R rocket (Vector Launch Inc. &trade;)',
+    title: 'Vector-R rocket (Vector Launch Inc. )',
     caption: `design and manufacturing of the thrust structure satisfying complex engineering constraints
     of weight, strength and dynamic stability`
   },
