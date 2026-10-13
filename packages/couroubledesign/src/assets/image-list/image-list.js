@@ -9,7 +9,7 @@ const services = [
     details: `Light weight composite design,
 numerical analysis method for optimized structural design and engineering,
 construction process and assembly.`,
-    images: [`gita5`, `airport1`, `Nike21`, `catalina5`, `board4`, `P10-1`, `vector2`, `Hermes1`, `figaro3-1`, `keel1`]
+    images: [`gita5`, `airport1`, `Nike21`, `catalina5`, `board4`, `P10-1`, `vector2`, `figaro3-1`, `keel1`]
   },
   {
     folder: `service_M`,
@@ -53,12 +53,12 @@ const categories = [
   {
     category: `YACHTING`,
     details: undefined,
-    projects: [`gf42`, `rahan`, `cata_mexico`, `racer44`, `offshore47`, `surfboard`, `racer41`]
+    projects: [`gf42`, `rahan`, `cata_mexico`, `racer44`, `imx40`, `offshore47`, `racer41`, `surfboard`]
   },
   {
     category: `CONSUMER`,
     details: `These projects were realised in collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
-    projects: [`piaggio`, `nike`]
+    projects: [`piaggio`, `nike`, `hermes`]
   },
   {
     category: `ART`,
@@ -69,14 +69,14 @@ const categories = [
 const projects = [
   {
     folder: `flight_works`,
-    project: `Innovative Carbon-composite conformal tank`,
-    details: `${href(
+    project: `Innovative full carbon composite tank`,
+    details: `Carbon composite tank design for a ${href(
       'https://satnews.com/2024/04/10/flight-works-developing-modular-refuelable-ascent-propulsion-unit-for-afrl/',
-      'Modular Refuelable Ascent Propulsion Unit'
-    )} recently demonstrated by ${href(
+      'modular refuelable ASCENT propulsion unit'
+    )}, developed through years of R&D collaboration with Flight Works Inc. and recently demonstrated by ${href(
       'https://www.afrl.af.mil/News/Article-Display/Article/4596262/afrl-demonstrates-modular-multimode-propulsion-system-for-sustained-space-maneu/',
-      'Air Force Research Laboratory'
-    )}`,
+      'the Air Force Research Laboratory and NASA'
+    )}.`,
     year: `2026`,
     location: `Huntington beach, CA`,
     company: `Flight Works Inc. &trade;`,
@@ -109,7 +109,10 @@ const projects = [
   {
     folder: `gf42`,
     project: `GF 42' - Racing Trimaran`,
-    details: `Full carbon structure, collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
+    details: `Naval architecture and structural analysis of the carbon hull, in collaboration with ${href(
+      'http://www.glform.com/',
+      'Greg Lynn Form'
+    )}`,
     year: undefined,
     location: `Marina Del Rey, CA`,
     copyright: undefined,
@@ -139,7 +142,7 @@ const projects = [
   {
     folder: `cata_mexico`,
     project: `Sightseeing power catamaran - Acapulco  mexico`,
-    details: `Complete design with structural analysis`,
+    details: `Naval architecture and complete engineering`,
     year: '2026',
     location: `Long Beach, CA`,
     copyright: undefined,
@@ -148,16 +151,25 @@ const projects = [
   {
     folder: `racer44`,
     project: `44' Inshore/Offshore RACER`,
-    details: `Optimized ORR inshore races, 10th winning title in class & Overall .`,
+    details: `Optimized ORR inshore races`,
     year: undefined,
     location: `Long Beach, CA`,
     copyright: undefined,
-    images: [`44-2`, `imx40_keel`, `imx40_rudder`]
+    images: [`44-2`, `44-1`, `44-3`, `44-0`]
+  },
+  {
+    folder: `imx40`,
+    project: `IMX 40' Inshore/Offshore RACER`,
+    details: `Optimized ORR inshore races, 10th winning title in class & Overall.`,
+    year: undefined,
+    location: `Long Beach, CA`,
+    copyright: undefined,
+    images: [`imx40_keel`, `imx40_rudder`]
   },
   {
     folder: `offshore47`,
     project: `47' Offshore RACER `,
-    details: `Full carbon nomex construction`,
+    details: `Naval architecture and full carbon-Nomex design & engineering`,
     year: undefined,
     location: `Long Beach, CA`,
     copyright: undefined,
@@ -175,7 +187,7 @@ const projects = [
   {
     folder: `racer41`,
     project: `41 racer cruiser IRC/ORR `,
-    details: `concept design  offshore/Inshore, collaboration with ${href(
+    details: `Complete design and naval architecture — hull, deck and rig — optimized for offshore/inshore racing, in collaboration with ${href(
       'https://www.naosyachts.com/',
       'Naos Yachts'
     )}`,
@@ -218,6 +230,16 @@ Collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
     / Carbon dyneema frame by Courouble Design & Engineering, Inc. /
 Collaboration with ${href('http://www.glform.com/', 'Greg Lynn Form')}`,
     images: [`Nike21`, `Nike0`, `nike1`]
+  },
+  {
+    folder: `hermes`,
+    project: `English Horse Jumping Saddle - Prototype for Hermes (Paris)`,
+    details: `Design &  engineering of Carbon/Fiberglass chassis`,
+    year: `2016`,
+    location: `Paris, France`,
+    company: `Hermes&trade;`,
+    copyright: `Hermes&trade;`,
+    images: [`Hermes1`]
   },
   {
     folder: `art_aitken`,
@@ -269,7 +291,7 @@ const images = [
   {
     name: 'rahan_bow_sprit',
     title: `First 36 - Offshore Racing Rules Optimisation`,
-    caption: 'New Bow Sprit optimised for ORR Rating, designed and built by Courouble Design & Engineering, Inc.'
+    caption: 'New Bow Sprit optimised for ORR Rating, designed and engineered by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'rahan_win',
@@ -282,27 +304,27 @@ const images = [
   {
     name: 'rahan_bow_cut2',
     title: `First 36 - Offshore Racing Rules Optimisation`,
-    caption: 'New Bow Shape for offshore racing, designed and built by Courouble Design & Engineering, Inc.'
+    caption: 'New Bow Shape for offshore racing, designed and engineered by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'rahan_keel1',
     title: `First 36 - Offshore Racing Rules Optimisation`,
-    caption: 'New Keel for offshore racing, designed and built by Courouble Design & Engineering, Inc.'
+    caption: 'New keel for offshore racing, designed and engineered by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'rahan_rudder2',
     title: `First 36 - Offshore Racing Rules Optimisation`,
-    caption: 'New Rudder optimised for ORR Rating, designed and built by Courouble Design & Engineering, Inc.'
+    caption: 'New rudder optimised for ORR Rating, designed and engineered by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'imx40_keel',
     title: `IMX 40 - Offshore Racing Rules Optimisation`,
-    caption: 'New Keel for offshore racing, designed and built by Courouble Design & Engineering, Inc.'
+    caption: 'New keel for offshore racing, designed and engineered by Courouble Design & Engineering, Inc.'
   },
   {
     name: 'imx40_rudder',
     title: `IMX 40 - Offshore Racing Rules Optimisation`,
-    caption: 'New Rudder optimised for ORR Rating, designed and built by Courouble Design & Engineering, Inc.'
+    caption: 'New rudder optimised for ORR Rating, designed and engineered by Courouble Design & Engineering, Inc.'
   },
   {
     name: '39-5',
@@ -603,13 +625,13 @@ const images = [
   },
   {
     name: 'afrl_5',
-    title: `Design, structural analysis & prototype manufacturing new monocoque composite structure for modular propulsion spacecraft Unit with Modular application for sustained orbital space maneuver and refueling services (AFRL & NASA missions).`,
-    caption: `This innovative design solution is born from a collabpration between  Flight Works Inc. and Courouble Design & Engineering, Inc.`
+    title: `Innovative Full Carbon Composite Tank`,
+    caption: `Design, structural analysis & prototype manufacturing of a full composite structure with integrated tank for a modular propulsion spacecraft unit, enabling sustained orbital maneuvers and refueling services (AFRL & NASA missions). A collaboration between Flight Works Inc. and Courouble Design & Engineering, Inc.`
   },
   {
     name: 'afrl_expo_puma',
-    title: `Design, structural analysis & prototype manufacturing new monocoque composite structure for modular propulsion spacecraft Unit with Modular application for sustained orbital space maneuver and refueling services (AFRL & NASA missions).`,
-    caption: `This innovative design solution is born from a collabpration between  Flight Works Inc. and Courouble Design & Engineering, Inc.`
+    title: `Innovative Full Carbon Composite Tank`,
+    caption: `Design, structural analysis & prototype manufacturing of a full composite structure with integrated tank for a modular propulsion spacecraft unit, enabling sustained orbital maneuvers and refueling services (AFRL & NASA missions). A collaboration between Flight Works Inc. and Courouble Design & Engineering, Inc.`
   },
   {
     name: 'vector1',
