@@ -109,7 +109,7 @@ const projects = [
   {
     folder: `gf42`,
     project: `GF 42' - Racing Trimaran`,
-    details: `Naval architecture and structural analysis of the carbon hull, in collaboration with ${href(
+    details: `Naval architecture and structural analysis of the carbon appendages (foil, rudder), in collaboration with ${href(
       'http://www.glform.com/',
       'Greg Lynn Form'
     )}`,
@@ -151,7 +151,7 @@ const projects = [
   {
     folder: `racer44`,
     project: `44' Inshore/Offshore RACER`,
-    details: `Optimized ORR inshore races`,
+    details: `Optimized ORR inshore/offshore racer`,
     year: undefined,
     location: `Long Beach, CA`,
     copyright: undefined,
@@ -169,7 +169,7 @@ const projects = [
   {
     folder: `offshore47`,
     project: `47' Offshore RACER `,
-    details: `Naval architecture and full carbon-Nomex design & engineering`,
+    details: `Naval architecture, design & appendages engineering`,
     year: undefined,
     location: `Long Beach, CA`,
     copyright: undefined,
@@ -186,11 +186,8 @@ const projects = [
   },
   {
     folder: `racer41`,
-    project: `41 racer cruiser IRC/ORR `,
-    details: `Complete design and naval architecture — hull, deck and rig — optimized for offshore/inshore racing, in collaboration with ${href(
-      'https://www.naosyachts.com/',
-      'Naos Yachts'
-    )}`,
+    project: `41' racer cruiser IRC/ORR `,
+    details: `Complete design and naval architecture — hull, deck and rig — optimized for offshore/inshore racing`,
     year: undefined,
     location: undefined,
     copyright: undefined,
@@ -332,48 +329,45 @@ const images = [
   },
   {
     name: '44-0',
-    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
+    caption: 'Complete engineering and naval architecture'
   },
   {
     name: '44-1',
-    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
+    caption: 'Complete engineering and naval architecture'
   },
   {
     name: '44-2',
-    caption: 'Thrust structure by Courouble Design & Engineering, Inc.'
+    caption: 'Complete engineering and naval architecture'
   },
   {
     name: '44-3',
-    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
+    caption: 'Complete engineering and naval architecture'
   },
   {
     name: '47-1',
     title: "47' offshore racer",
-    caption: 'carbon nomex structure'
+    caption: 'Naval architecture, design & appendages engineering.'
   },
   {
     name: '47-2',
-    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
+    caption: 'Naval architecture, design & appendages engineering.'
   },
   {
     name: '47-3',
-    caption: 'Thrust structure by Courouble Design & Engineering, Inc.'
+    caption: 'Naval architecture, design & appendages engineering.'
   },
   {
     name: '47-4',
-    title: 'Structural layout design concept'
+    caption: 'Naval architecture, design & appendages engineering.'
   },
   {
-    name: '6a',
-    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
+    name: '6a'
   },
   {
-    name: '7a',
-    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
+    name: '7a'
   },
   {
-    name: '8a',
-    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
+    name: '8a'
   },
   {
     name: 'CFD1',
@@ -398,30 +392,30 @@ const images = [
   {
     name: 'GF0',
     title: 'Racing trimaran',
-    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
+    caption: 'Naval architecture and structural analysis.'
   },
   {
     name: 'GF1',
     title: 'Racing trimaran',
-    caption: 'carbon fiber structure'
+    caption: 'Naval architecture and structural analysis.'
   },
   {
     name: 'GF22',
     title: 'Racing trimaran',
-    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
+    caption: 'Naval architecture and structural analysis.'
   },
   {
     name: 'GF4',
     title: 'Racing trimaran',
-    caption: 'Thrust structure by Courouble Design & Engineering, Inc.'
+    caption: 'Naval architecture and structural analysis.'
   },
   {
     name: 'GF5',
-    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
+    caption: 'Naval architecture and structural analysis.'
   },
   {
     name: 'GF6',
-    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
+    caption: 'Naval architecture and structural analysis.'
   },
   {
     name: 'Hermes1',
@@ -497,19 +491,23 @@ const images = [
   {
     name: 'board0',
     title: 'Guiness record surfboard',
-    caption: 'Full structural engineering'
+    caption: `Surfboard fiberglass structure engineered to support 70 surfers (6 tons)<br/>
+    shaped by Firewire Surfboard&trade; / "Largest Surfboard" 2015 Guinness World Record!`
   },
   {
     name: 'board00',
-    caption: 'Thrust structure by Courouble Design & Engineering, Inc.'
+    caption: `Surfboard fiberglass structure engineered to support 70 surfers (6 tons)<br/>
+    shaped by Firewire Surfboard&trade; / "Largest Surfboard" 2015 Guinness World Record!`
   },
   {
     name: 'board2',
-    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
+    caption: `Surfboard fiberglass structure engineered to support 70 surfers (6 tons)<br/>
+    shaped by Firewire Surfboard&trade; / "Largest Surfboard" 2015 Guinness World Record!`
   },
   {
     name: 'board3',
-    caption: 'Carbon structure designed by Courouble Design & Engineering, Inc.'
+    caption: `Surfboard fiberglass structure engineered to support 70 surfers (6 tons)<br/>
+    shaped by Firewire Surfboard&trade; / "Largest Surfboard" 2015 Guinness World Record!`
   },
   {
     name: 'board4',
